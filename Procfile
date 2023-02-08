@@ -1,1 +1,1 @@
-web: gunicorn advisor_finder.wsgi:application
+web: gunicorn advisor_finder.wsgi
