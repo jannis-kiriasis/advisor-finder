@@ -39,6 +39,15 @@ h1 {
     color: var(--liberty);
 }
 
+.h1-emphasis {
+    color: var(--liberty);
+    font-weight: 600;
+}
+
+.black {
+    color: #000000;
+}
+
 input[type=text]:not(.browser-default),
 input[type=date]:not(.browser-default),
 input[type=password]:not(.browser-default),

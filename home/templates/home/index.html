@@ -14,5 +14,28 @@
 
 
 {% block content %}
-<h1 class="display-4 text-success">Test</h1>
+<section>
+    <div class="container">
+        <div class="col-12 text-center">
+
+            <h1 class="black mb-5">
+                Talk to an independent
+                <span class="h1-emphasis">financial advisor</span>
+                that meets your
+                <span class="h1-emphasis">financial needs</span>.
+            </h1>
+
+            <div class="mt-4 mb-4">
+                <a class="btn btn-primary" href="{% url 'account_login' %}">Advisors and seekers Login</a>
+
+            </div>
+            <div class="mt-4 mb-4">
+                <a class="btn btn-secondary" href="{% url 'account_signup' %}">Advisors and seekers Signup</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
