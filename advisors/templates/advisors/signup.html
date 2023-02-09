@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} 
+    {{page_title}}
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="col-6">
+
+            <h1>Advisor signup</h1>
+            <!-- Project form -->
+            <div class="col-12">
+                <form method="POST">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button class="btn mb-4" type="submit">Complete signup
+                    </button>
+
+                </form>
+            </div>
+        </div>
+</section>
+
+</div>
+</div>
+</section>
+
+
+{% endblock %}
