@@ -1,0 +1,77 @@
+/* Google Fonts import*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,800&display=swap');
+
+
+/* Global styles */
+
+:root {
+    --liberty: #054FB9;
+    --liberty-light: #e9ecf7;
+    --liberty-medium: #d4d9ee;
+    --verdigris: #48a9a6;
+    --dark-verdigris: #296161;
+    --verdigris-light: #ecf7f7;
+    --timberwolf: #f4f2f0;
+    --tan: #d4b483;
+    --fuzzy-wuzzy: #9D3801;
+    --fuzzy-wuzzy-light: #f9e7e7;
+}
+
+body,
+html,
+input {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 1.2rem;
+    height: 100%;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--fuzzy-wuzzy);
+    color: #ffffff;
+    border-color: var(--fuzzy-wuzzy);
+}
+
+.btn-secondary:hover {
+    background-color: var(--fuzzy-wuzzy);
+    color: #ffffff;
+    border-color: var(--fuzzy-wuzzy);
+}
+
+.btn-primary:hover {
+    color: var(--fuzzy-wuzzy);
+    background-color: #ffffff;
+    border-color: var(--fuzzy-wuzzy);
+}
+
+.btn-secondary {
+    color: var(--fuzzy-wuzzy);
+    background-color: #ffffff;
+    border-color: var(--fuzzy-wuzzy);
+}
+
+/* Navigation */
+
+nav {
+    background-color: var(--liberty);
+}
+
+.navbar-brand,
+nav > div > ul > li > a {
+    color: #ffffff;
+    display: block;
+    padding: 15px;
+}
+
+nav > div > ul > li > a:hover {
+    color: var(--liberty);
+    background-color: #ffffff;
+}
