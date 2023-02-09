@@ -103,3 +103,7 @@ nav > div > ul > li > a:hover {
     color: var(--liberty);
     background-color: #ffffff;
 }
+
+#forgot-password {
+    font-size: 0.8rem;
+}
