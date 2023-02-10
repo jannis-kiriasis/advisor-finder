@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -8,8 +9,13 @@ def index(request):
     return render(request, 'home/index.html')
 
 
-def signup(request):
+@login_required
+def advisor_seeker(request):
 
-    """Return signup.html page"""
+    """Return advisor or seeker page"""
 
-    return render(request, 'advisors/signup.html')
+    context = {
+        'page_title': 'Are you Advisor or Seeker?'
+    }
+
+    return render(request, 'home/advisor-or-seeker.html', context)

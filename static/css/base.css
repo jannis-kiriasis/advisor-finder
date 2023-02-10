@@ -44,6 +44,11 @@ h1 {
     font-weight: 600;
 }
 
+.h1-red {
+    color: var(--fuzzy-wuzzy);
+    font-weight: 600;
+}
+
 .black {
     color: #000000;
 }
@@ -93,6 +98,18 @@ label {
     color: var(--fuzzy-wuzzy);
     background-color: #ffffff;
     border-color: var(--fuzzy-wuzzy);
+}
+
+.btn-third {
+    background-color: var(--liberty);
+    color: #ffffff;
+    border-color: var(--liberty);
+}
+
+.btn-third:hover {
+    color: var(--liberty);
+    background-color: #ffffff;
+    border-color: var(--liberty);
 }
 
 .message-container {

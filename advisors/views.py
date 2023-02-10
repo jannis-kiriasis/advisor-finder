@@ -25,7 +25,7 @@ def advisor_signup(request):
                 'Signup completed. Now wait for Advice Found profile check.'
                 )
 
-            return redirect('signup')
+            return redirect('advisor_signup')
 
     messages.error(request, 'Signup not completed. Try again.')
 
