@@ -55,7 +55,7 @@ def seeker_profile(request):
     context = {
         'profile': profile,
         'form': form,
-        'page_title': f'{profile.business_name} profile'
+        'page_title': 'profile'
     }
 
     return render(request, 'seekers/profile.html', context)
