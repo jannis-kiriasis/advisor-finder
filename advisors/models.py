@@ -70,4 +70,3 @@ class AdvisorUserProfile(models.Model):
     def __str__(self):
         """Change display value of User profile"""
         return self.business_name
-

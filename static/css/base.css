@@ -108,18 +108,23 @@ label {
 
 /* Navigation */
 
-nav {
+nav,
+.dropdown-menu {
     background-color: var(--liberty);
 }
 
 .navbar-brand,
-nav > div > ul > li > a {
+nav > div > ul > li > a,
+.nav-link,
+.dropdown-item {
     color: #ffffff;
     display: block;
     padding: 15px;
 }
 
-nav > div > ul > li > a:hover {
+nav > div > ul > li > a:hover,
+.nav-link:hover,
+.dropdown-item:hover {
     color: var(--liberty);
     background-color: #ffffff;
 }

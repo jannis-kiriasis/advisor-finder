@@ -33,44 +33,49 @@
     </head>
     <body>
         <header>
-            <nav class="navbar">
-                
-                <div class="container-xxl align-items-center">
-                    <a class="navbar-brand" href="{% url 'home' %}">Advisor finder</a>
+            <nav class="navbar navbar-expand-lg">
 
-                    {% if user.is_authenticated %}
+                <div class="container-fluid container-xxl">
 
-                    <ul class="d-flex flex-row my-0">
-                        <li class="px-2 list-inline-item">
-                            <a href="{% url 'account_signup' %}">
-                                For later
-                            </a>
+                    <a class="navbar-brand" href="{% url 'home' %}">Advice Found</a>
 
-                        </li>
-                        <li class="px-2 list-inline-item">
-                            <a href="{% url 'account_logout' %}">
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
 
-                    {% else %}
+                    <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                    <ul class="d-flex flex-row my-0">
-                        <li class="px-2 list-inline-item">
-                            <a href="{% url 'account_signup' %}">
-                                Register
-                            </a>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav d-flex flex-row">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Menu
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark"
+                                    aria-labelledby="navbarDarkDropdownMenuLink">
+                                    
+                                    {% if user.is_authenticated %}
 
-                        </li>
-                        <li class="px-2 list-inline-item">
-                            <a href="{% url 'account_login' %}">
-                                Login
-                            </a>
-                        </li>
-                    </ul>
+                                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Clients</a></li>
+                                    <li><a class="dropdown-item" href="#">Appointments</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 
-                    {% endif %}
+                                    {% else %}
+
+                                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+
+                                    {% endif %}
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
 
             </nav>
         </header>
