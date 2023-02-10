@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # My apps
     'home',
     'advisors',
+    'seekers',
 
     # Other
     'cloudinary',

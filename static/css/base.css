@@ -20,7 +20,7 @@
 body,
 html {
     height: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 body,
@@ -131,4 +131,10 @@ nav > div > ul > li > a:hover,
 
 #forgot-password {
     font-size: 0.8rem;
+}
+
+/* Seeker signup */
+
+.intro {
+    font-size: 1.2rem;
 }

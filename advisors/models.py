@@ -1,37 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from home.models import Specialisation, Location
 
 STATUS = ((0, 'Not approved'), (1, 'Approved'))
 ACTIVE = ((0, 'Not active'), (1, 'Active'))
-
-
-class Location(models.Model):
-
-    """
-    location model: stores all the specialisation types available.
-    They are equal to the advice seeker need.
-    """
-
-    city = models.CharField(max_length=30)
-
-    def __str__(self):
-        """Change display value of specialisation"""
-        return self.city
-
-
-class Specialisation(models.Model):
-
-    """
-    Specialisations model: stores all the specialisation types available.
-    They are equal to the advice seeker need.
-    """
-
-    type = models.CharField(max_length=30)
-
-    def __str__(self):
-        """Change display value of specialisation"""
-        return self.type
 
 
 class AdvisorUserProfile(models.Model):
