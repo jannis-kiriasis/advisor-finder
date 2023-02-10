@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import AdvisorSignupForm
 
 
@@ -14,11 +15,18 @@ def advisor_signup(request):
 
     if request.method == 'POST':
         form = AdvisorSignupForm(request.POST)
+
         if form.is_valid():
             form.save()
-            # Feedback
-            # messages.success(request, 'You have created a new project!')
-            return redirect('get_todo_list')
+
+            messages.info(
+                request,
+                'Signup completed. Now wait for Advice Found profile check.'
+                )
+
+            return redirect('signup')
+
+    messages.error(request, 'Signup not completed. Try again.')
 
     form = AdvisorSignupForm()
 

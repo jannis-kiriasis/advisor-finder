@@ -12,4 +12,4 @@ def signup(request):
 
     """Return signup.html page"""
 
-    return render(request, 'home/signup.html')
+    return render(request, 'advisors/signup.html')

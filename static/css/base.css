@@ -95,6 +95,17 @@ label {
     border-color: var(--fuzzy-wuzzy);
 }
 
+.message-container {
+    position:fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 999999;
+}
+
+.errorlist {
+    color: var(--fuzzy-wuzzy);
+}
+
 /* Navigation */
 
 nav {
