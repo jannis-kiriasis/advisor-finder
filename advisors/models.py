@@ -64,6 +64,7 @@ class AdvisorUserProfile(models.Model):
         related_name='specialisations'
     )
 
+    registration_number = models.CharField(max_length=100)
     status = models.IntegerField(choices=STATUS, default=0)
     active = models.IntegerField(choices=ACTIVE, default=1)
 

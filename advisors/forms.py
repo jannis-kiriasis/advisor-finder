@@ -17,7 +17,9 @@ class AdvisorSignupForm(forms.ModelForm):
             'postcode',
             'town_or_city',
             'street_address',
+            'registration_number',
         ]
+        
         widgets = {
             'business_description': Textarea(attrs={'cols': 80, 'rows': 5}),
         }
