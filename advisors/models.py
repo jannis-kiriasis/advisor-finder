@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from home.models import Specialisation, Location
 
-STATUS = ((0, 'Not approved'), (1, 'Approved'))
 ACTIVE = ((0, 'Not active'), (1, 'Active'))
 
 
@@ -37,7 +36,7 @@ class AdvisorUserProfile(models.Model):
     )
 
     registration_number = models.CharField(max_length=100)
-    status = models.IntegerField(choices=STATUS, default=0)
+    approved = models.BooleanField(default=False)
     active = models.IntegerField(choices=ACTIVE, default=1)
 
     def __str__(self):
