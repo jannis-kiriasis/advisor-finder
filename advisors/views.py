@@ -5,6 +5,7 @@ from .forms import AdvisorSignupForm
 from .models import AdvisorUserProfile, User
 
 
+@login_required
 def advisor_signup(request):
 
     """

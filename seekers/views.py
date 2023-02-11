@@ -5,6 +5,7 @@ from .forms import SeekerSignupForm
 from .models import SeekerUserProfile, User
 
 
+@login_required
 def seeker_signup(request):
 
     """
