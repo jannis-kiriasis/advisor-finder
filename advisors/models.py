@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from home.models import Specialisation, Location
 
+APPROVED = ((0, 'pending'), (1, 'approved'), (2, 'not approved'))
 ACTIVE = ((0, 'Not active'), (1, 'Active'))
 
 
@@ -36,7 +37,7 @@ class AdvisorUserProfile(models.Model):
     )
 
     registration_number = models.CharField(max_length=100)
-    approved = models.BooleanField(default=False)
+    approved = models.IntegerField(choices=APPROVED, default=0)
     active = models.IntegerField(choices=ACTIVE, default=1)
 
     def __str__(self):

@@ -6,8 +6,12 @@ from .models import AdvisorUserProfile
 class AdvisorAdmin(admin.ModelAdmin):
 
     actions = [
-        'approve_advisor'
+        'approve_advisor',
+        'not_approve_advisor'
         ]
 
     def approve_advisor(self, request, queryset):
-        queryset.update(approved=True)
+        queryset.update(approved=1)
+
+    def not_approve_advisor(self, request, queryset):
+        queryset.update(approved=2)
