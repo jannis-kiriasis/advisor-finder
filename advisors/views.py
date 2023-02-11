@@ -45,7 +45,7 @@ def advisor_profile(request):
     advisor_profile view for profile.html.
     Render all the business details related to an advisor.
     """
-    
+
     user = request.user
     queryset = AdvisorUserProfile.objects
     profile = get_object_or_404(queryset, user=user)

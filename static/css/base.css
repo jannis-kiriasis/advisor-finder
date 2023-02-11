@@ -123,6 +123,7 @@ label {
     color: var(--fuzzy-wuzzy);
 }
 
+
 /* Navigation */
 
 nav,
@@ -150,8 +151,19 @@ nav > div > ul > li > a:hover,
     font-size: 0.8rem;
 }
 
+
 /* Seeker signup */
 
 .intro {
     font-size: 1.2rem;
+}
+
+
+/* Advisor profile */
+
+.btn-position {
+    position: unset !important;
+    float: right ;
+    padding: 0 !important;
+    align-items: right !important;
 }
