@@ -52,3 +52,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profiles'
     )
+
+    def __str__(self):
+        """Change display value of userProfile"""
+        return f'{self.user.username} | f{self.user_type}'
