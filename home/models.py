@@ -1,4 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
+# Use to define user type in UserProfileModel
+
+USER_TYPE = (
+    (0, 'Advisor'),
+    (1, 'Seeker')
+)
 
 
 class Location(models.Model):
@@ -27,3 +36,19 @@ class Specialisation(models.Model):
     def __str__(self):
         """Change display value of specialisation"""
         return self.type
+
+
+class UserProfile(models.Model):
+
+    """
+    UserProfile model: at signup auser is asked whether they are Advisors
+    or Seekers and the asnwer is stored in this model. This is needed to decide
+    what signup form to show next: the one for advisors or the one for seekers.
+    If this model is undefined for a user, this step will alsways appear first 
+    when someone logs in to the app again.
+    """
+
+    user_type = models.IntegerField(choices=USER_TYPE, blank=True)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='profiles'
+    )
