@@ -60,4 +60,4 @@ class UserProfile(models.Model):
         l_name = self.user.last_name
         f_name = self.user.first_name
 
-        return f'{f_name} {l_name}  | f{self.user_type}'
+        return f'{f_name} {l_name} | {self.user_type}'
