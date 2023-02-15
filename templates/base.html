@@ -62,13 +62,13 @@
 
                                         <li><a class="dropdown-item" href="#">Clients</a></li>
                                         <li><a class="dropdown-item" href="#">Appointments</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'advisor_profile' %}">Profile</a></li>
                                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 
                                         {% elif request.user.profiles.user_type == 1 %}
                                         
                                         <li><a class="dropdown-item" href="#">Advisor</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'seeker_profile' %}">Profile</a></li>
                                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 
                                         {% else %}

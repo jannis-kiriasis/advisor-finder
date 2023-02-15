@@ -19,6 +19,8 @@ def advisor_signup(request):
         form = AdvisorSignupForm(request.POST)
 
         if form.is_valid():
+
+            form.instance.user = request.user
             form.save()
 
             messages.success(

@@ -10,7 +10,6 @@ class SeekerSignupForm(forms.ModelForm):
     class Meta:
         model = SeekerUserProfile
         fields = [
-            'user',
             'need',
             'postcode',
             'town_or_city',

@@ -19,6 +19,8 @@ def seeker_signup(request):
         form = SeekerSignupForm(request.POST)
 
         if form.is_valid():
+
+            form.instance.user = request.user
             form.save()
 
             messages.success(

@@ -10,7 +10,6 @@ class AdvisorSignupForm(forms.ModelForm):
     class Meta:
         model = AdvisorUserProfile
         fields = [
-            'user',
             'business_name',
             'business_description',
             'specialisation',
