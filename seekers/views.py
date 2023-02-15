@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SeekerSignupForm
 from .models import SeekerUserProfile, User
+from django.contrib.auth import logout
 
 
 @login_required
@@ -65,7 +66,7 @@ def seeker_profile(request):
 
             messages.success(
                 request,
-                'Your profile has been approved.'
+                'Your profile has been updated.'
             )
 
             return redirect('seeker_profile')
@@ -84,3 +85,19 @@ def seeker_profile(request):
     }
 
     return render(request, 'seekers/profile.html', context)
+
+
+@login_required
+def delete_profile(request):
+    """
+    View to delete profile.
+    If profile is deleted, send a feedback.
+    """
+
+    user = request.user
+    profile = get_object_or_404(SeekerUserProfile, user=user)
+    profile.delete()
+    messages.success(request, 'Your profile has been deleted.')
+    logout(request)
+
+    return redirect('')
