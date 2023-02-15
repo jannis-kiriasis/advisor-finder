@@ -27,6 +27,8 @@
         {% endblock %}
 
         {% block extra_js %}
+            <!-- Sweet alert script - To use Sweet alerts (Swal.fire in JS files) -->
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         {% endblock %}
 
         <title>{% block extra_title %}{% endblock %} | Financial Advisor Finder</title>
@@ -113,6 +115,7 @@
         {% endblock %}
     
         {% block postloadjs %}
+            <script src="{% static 'js/script.js' %}"></script>
         {% endblock %}
     
         
