@@ -21,7 +21,10 @@
     <div class="container">
         <div class="col-6">
 
-            <h1>{{ profile.business_name }}'s Profile</h1>
+            <h1>
+                {{ profile.user.first_name }} 
+                {{ profile.user.last_name }} Profile
+            </h1>
 
             <!-- Advisro signup form -->
             <div class="col-12">

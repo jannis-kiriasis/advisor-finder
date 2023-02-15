@@ -55,6 +55,29 @@ def advisor_profile(request):
 
     form = AdvisorSignupForm(instance=profile)
 
+    if request.method == 'POST':
+
+        form = AdvisorSignupForm(request.POST, instance=profile)
+
+        if form.is_valid():
+
+            profile.approved = 0
+            profile = form.save()
+
+            messages.success(
+                request,
+                'Your update request has been forwarded. Now wait for Advice Found review.'
+            )
+
+            return redirect('advisor_profile')
+
+        else:
+
+            messages.error(
+                request,
+                "Your update request didn't go through. Try again."
+            )
+
     context = {
         'profile': profile,
         'form': form,

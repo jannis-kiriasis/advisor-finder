@@ -28,7 +28,7 @@ def seeker_signup(request):
                 'Signup completed.'
                 )
 
-            return redirect('signup')
+            return redirect('seeker_signup')
 
     messages.error(request, 'Signup not completed. Try again.')
 
@@ -55,10 +55,32 @@ def seeker_profile(request):
 
     form = SeekerSignupForm(instance=profile)
 
+    if request.method == 'POST':
+
+        form = SeekerSignupForm(request.POST, instance=profile)
+
+        if form.is_valid():
+
+            profile = form.save()
+
+            messages.success(
+                request,
+                'Your profile has been approved.'
+            )
+
+            return redirect('seeker_profile')
+
+        else:
+
+            messages.error(
+                request,
+                "Your update request didn't go through. Try again."
+            )
+
     context = {
         'profile': profile,
         'form': form,
-        'page_title': 'profile'
+        'page_title': f'{profile.user.first_name} {profile.user.last_name}'
     }
 
     return render(request, 'seekers/profile.html', context)
