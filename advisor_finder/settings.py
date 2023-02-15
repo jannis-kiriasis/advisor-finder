@@ -196,3 +196,8 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
 }
+
+
+ACCOUNT_FORMS = {
+    'signup': 'home.forms.CustomSignupForm',
+}

@@ -54,5 +54,10 @@ class UserProfile(models.Model):
     )
 
     def __str__(self):
+
         """Change display value of userProfile"""
-        return f'{self.user.username} | f{self.user_type}'
+
+        l_name = self.user.last_name
+        f_name = self.user.first_name
+
+        return f'{f_name} {l_name}  | f{self.user_type}'
