@@ -126,7 +126,7 @@ function goToDeactivateAdvisor() {
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
 */
-function confirmUpdateSeeker(event) {
+function deactivateAdvisor(event) {
     event.preventDefault();
     Swal.fire({
         title: 'Are you sure you want to deactivate you profile?',
@@ -136,7 +136,7 @@ function confirmUpdateSeeker(event) {
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
         cancelButtonColor: 'var(--fuzzy-wuzzy)',
-        confirmButtonText: 'Yes, update it!'
+        confirmButtonText: 'Yes, deactivate me!'
     }).then((result) => {
         if (result.isConfirmed) {
             goToDeactivateAdvisor();
