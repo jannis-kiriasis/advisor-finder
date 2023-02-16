@@ -85,3 +85,21 @@ def advisor_profile(request):
     }
 
     return render(request, 'advisors/profile.html', context)
+
+
+@login_required
+def deactivate_profile(request):
+    """
+    View to deactivate profile.
+    If profile is deactivated / activated, send a feedback.
+    """
+
+    user = request.user
+    profile = get_object_or_404(AdvisorUserProfile, user=user)
+
+    profile.active = 0
+    profile.save()
+
+    messages.success(request, 'Your profile has been deactivated.')
+
+    return redirect('advisor_profile')

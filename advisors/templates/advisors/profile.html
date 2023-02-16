@@ -70,11 +70,16 @@
                     {% csrf_token %}
                     {{ form.as_p }}
 
-                    <button class="btn mb-4" id="update_advisor" type="submit">
+                    <button class="btn mb-5" id="update_advisor" type="submit">
                         Update profile
                     </button>
 
                 </form>
+
+                <a href="{% url 'deactivate_profile' %}"
+                class="btn btn-secondary mt-5" id="deactivate_advisor"
+                aria-label="Deactivate profile">Deactivate profile</a>
+
             </div>
         </div>
 </section>
