@@ -29,7 +29,7 @@ function goToDeleteUrl() {
 
 
 /** Prevent button click, fire SweetAlerts2, 
-* after defensive design redirect to /delete/{{ project.id }}
+* after defensive design redirect.
 */
 function confirmDelete(event) {
     event.preventDefault();
@@ -164,6 +164,11 @@ function activateAdvisor(event) {
     });  
 }
 
+
+/** For deactivate_advisor button:
+ * if button text is Deactivate profile call deativate function 
+ * else call activate.
+*/
 function deactivateAdvisorChoice(event) {
 
     if (deactivateButton.text === 'Deactivate profile') {
