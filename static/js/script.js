@@ -3,7 +3,6 @@ const updateAdvisorButton = document.getElementById('update_advisor');
 const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
 
-
 // Event listeners for SweetAlerts defensive design
 if (deleteButton) {
     deleteButton.addEventListener('click', confirmDelete);
@@ -18,7 +17,7 @@ if (updateSeekerButton) {
 }
 
 if (deactivateButton) {
-    deactivateButton.addEventListener('click', deactivateAdvisor);
+    deactivateButton.addEventListener('click', deactivateAdvisorChoice);
 }
 
 /** Get href url of button delete.
@@ -128,6 +127,7 @@ function goToDeactivateAdvisor() {
 */
 function deactivateAdvisor(event) {
     event.preventDefault();
+
     Swal.fire({
         title: 'Are you sure you want to deactivate you profile?',
         text: 'You will be hidden and not assigned new leads.',
@@ -141,5 +141,35 @@ function deactivateAdvisor(event) {
         if (result.isConfirmed) {
             goToDeactivateAdvisor();
         }
-    });
+    })
+}
+
+
+function activateAdvisor(event) {
+    event.preventDefault();
+
+    Swal.fire({
+        title: 'Are you sure you want to activate you profile?',
+        text: 'You will be visible and will start to receive new leads.',
+        icon: 'warning',
+        iconColor: 'var(--tan)',
+        showCancelButton: true,
+        confirmButtonColor: 'var(--verdigris)',
+        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        confirmButtonText: 'Yes, activate me!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            goToDeactivateAdvisor();
+        }
+    });  
+}
+
+function deactivateAdvisorChoice(event) {
+
+    if (deactivateButton.text === 'Deactivate profile') {
+        deactivateAdvisor(event);
+    } else if (deactivateButton.text === 'Activate profile') {
+        activateAdvisor(event);
+    }
+
 }

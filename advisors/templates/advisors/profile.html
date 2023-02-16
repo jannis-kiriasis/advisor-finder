@@ -76,9 +76,19 @@
 
                 </form>
 
-                <a href="{% url 'deactivate_profile' %}"
-                class="btn btn-secondary mt-5" id="deactivate_advisor"
-                aria-label="Deactivate profile">Deactivate profile</a>
+                {% if profile.active == 1 %}
+
+                    <a href="{% url 'deactivate_profile' %}"
+                        class="btn btn-secondary mt-5" id="deactivate_advisor"
+                        aria-label="Deactivate profile">Deactivate profile</a>
+
+                {% else %}
+
+                    <a href="{% url 'deactivate_profile' %}"
+                        class="btn btn-secondary mt-5" id="deactivate_advisor"
+                        aria-label="Deactivate profile">Activate profile</a>
+
+                {% endif %}
 
             </div>
         </div>

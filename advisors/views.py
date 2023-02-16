@@ -97,9 +97,18 @@ def deactivate_profile(request):
     user = request.user
     profile = get_object_or_404(AdvisorUserProfile, user=user)
 
-    profile.active = 0
-    profile.save()
+    if profile.active == 1:
 
-    messages.success(request, 'Your profile has been deactivated.')
+        profile.active = 0
+        profile.save()
+
+        messages.success(request, 'Your profile has been deactivated.')
+
+    else:
+        
+        profile.active = 1
+        profile.save()
+
+        messages.success(request, 'Your profile has been activated.')
 
     return redirect('advisor_profile')
