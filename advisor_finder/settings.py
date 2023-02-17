@@ -115,7 +115,6 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/advisor-or-seeker/'
 
 
-
 WSGI_APPLICATION = 'advisor_finder.wsgi.application'
 
 

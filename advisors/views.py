@@ -3,6 +3,21 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import AdvisorSignupForm
 from .models import AdvisorUserProfile, User
+from django.conf import settings
+from django.core.mail import send_mail
+
+
+def advisor_approved_email(user, profile):
+
+    """
+    Email advisor when profile is approved after signup or edit.
+    """
+
+    subject = 'Profile approved'
+    message = f'Hi {user.username}, your profile has been approved. you can now login.'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [user.email, ]
+    send_mail(subject, message, email_from, recipient_list)
 
 
 @login_required
@@ -69,6 +84,8 @@ def advisor_profile(request):
                 'Your update request has been forwarded. Now wait for Advice Found review.'
             )
 
+            advisor_approved_email(user, profile)
+
             return redirect('advisor_profile')
 
         else:
@@ -105,7 +122,7 @@ def deactivate_profile(request):
         messages.success(request, 'Your profile has been deactivated.')
 
     else:
-        
+
         profile.active = 1
         profile.save()
 
