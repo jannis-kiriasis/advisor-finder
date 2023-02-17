@@ -3,22 +3,45 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import AdvisorSignupForm
 from .models import AdvisorUserProfile, User
-from django.conf import settings
-from django.core.mail import send_mail
 
 
-def advisor_approved_email(user, profile):
+# def advisor_to_approve_email(user, profile):
 
-    """
-    Email advisor when profile is approved after signup or edit.
-    """
+#     """
+#     Email AdviceFound when profile is submitted after signup or edit.
+#     """
 
-    subject = 'Profile approved'
-    message = f'Hi {user.username}, your profile has been approved. you can now login.'
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [user.email, ]
-    send_mail(subject, message, email_from, recipient_list)
+#     subject = 'Advisor Profile to review'
+#     message = f'A new profile {profile.business_name} has been sent for review. Login to the admin panel to review and approve it.'
+#     email_from = settings.EMAIL_HOST_USER
+#     recipient_list = [settings.EMAIL_HOST_USER, ]
+#     send_mail(subject, message, email_from, recipient_list)
 
+
+# def advisor_to_approve_email(user, profile):
+
+#     """
+#     Email AdviceFound when profile is submitted after signup or edit.
+#     """
+
+#     subject = 'Advisor Profile to review'
+#     message = f'A new profile {profile.business_name} has been sent for review. Login to the admin panel to review and approve it.'
+#     email_from = settings.EMAIL_HOST_USER
+#     recipient_list = [settings.EMAIL_HOST_USER, ]
+#     send_mail(subject, message, email_from, recipient_list)
+
+
+# def advisor_to_approve_email(user, profile):
+
+#     """
+#     Email AdviceFound when profile is submitted after signup or edit.
+#     """
+
+#     subject = 'Advisor Profile to review'
+#     message = f'A new profile {profile.business_name} has been sent for review. Login to the admin panel to review and approve it.'
+#     email_from = settings.EMAIL_HOST_USER
+#     recipient_list = [settings.EMAIL_HOST_USER, ]
+#     send_mail(subject, message, email_from, recipient_list)
 
 @login_required
 def advisor_signup(request):
@@ -42,6 +65,8 @@ def advisor_signup(request):
                 request,
                 'Signup completed. Now wait for Advice Found profile check.'
                 )
+
+            advisor_to_approve_email(user, profile)
 
             return redirect('advisor_signup')
 
@@ -84,7 +109,7 @@ def advisor_profile(request):
                 'Your update request has been forwarded. Now wait for Advice Found review.'
             )
 
-            advisor_approved_email(user, profile)
+            advisor_to_approve_email(user, profile)
 
             return redirect('advisor_profile')
 
@@ -119,12 +144,16 @@ def deactivate_profile(request):
         profile.active = 0
         profile.save()
 
+        advisor_deactivated_email(user, profile)
+
         messages.success(request, 'Your profile has been deactivated.')
 
     else:
 
         profile.active = 1
         profile.save()
+
+        advisor_activated_email(user, profile)
 
         messages.success(request, 'Your profile has been activated.')
 
