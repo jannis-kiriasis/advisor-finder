@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import AdvisorSignupForm
 from .models import AdvisorUserProfile, User
+from . import emails
 
 
 # def advisor_to_approve_email(user, profile):

@@ -1,14 +1,12 @@
-from .forms import AdvisorSignupForm
-from .models import AdvisorUserProfile, User
 from django.conf import settings
 from django.core.mail import send_mail
-from .advisors import views
 
 
 def advisor_to_approve_email(user, profile):
 
     """
-    Email AdviceFound when profile is submitted after signup or edit.
+    Specifics of Advice Found email received when advisors signs up
+    or edit their account.
     """
 
     subject = 'Advisor Profile to review'
@@ -21,7 +19,7 @@ def advisor_to_approve_email(user, profile):
 def advisor_deactivated_email(user, profile):
 
     """
-    Email user when profile is deactivated.
+    Specifics of Advisor account deactivated email.
     """
 
     subject = 'Advisor Profile deactivated'
@@ -34,11 +32,24 @@ def advisor_deactivated_email(user, profile):
 def advisor_activated_email(user, profile):
 
     """
-    Email user when profile is activated.
+    Specifics of Advisor account activated email.
     """
 
     subject = 'Advisor Profile activated'
     message = f'Dear {profile.business_name}, your profile has been activated. You are now able to receive new leads.'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [user.email, ]
+    send_mail(subject, message, email_from, recipient_list)
+
+
+def send_approval_email(self, is_approved):
+
+    """
+    Specifics of Advisor approval email.
+    """
+
+    subject = 'Advisor profile approval update'
+    message = f'The advisor profile for {self.business_name} has been {is_approved}.'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [self.user.email, ]
     send_mail(subject, message, email_from, recipient_list)
