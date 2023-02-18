@@ -67,7 +67,10 @@ def advisor_signup(request):
                 'Signup completed. Now wait for Advice Found profile check.'
                 )
 
-            advisor_to_approve_email(user, profile)
+            queryset = AdvisorUserProfile.objects
+            profile = get_object_or_404(queryset, user=request.user)
+
+            advisor_to_approve_email(profile)
 
             return redirect('advisor_signup')
 

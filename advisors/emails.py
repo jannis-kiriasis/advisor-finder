@@ -2,7 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 
-def advisor_to_approve_email(user, profile):
+def advisor_to_approve_email(profile):
 
     """
     Specifics of Advice Found email received when advisors signs up
