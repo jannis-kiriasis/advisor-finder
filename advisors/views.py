@@ -113,7 +113,7 @@ def advisor_profile(request):
                 'Your update request has been forwarded. Now wait for Advice Found review.'
             )
 
-            advisor_to_approve_email(user, profile)
+            advisor_to_approve_email(profile)
 
             return redirect('advisor_profile')
 

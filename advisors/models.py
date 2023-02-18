@@ -55,7 +55,7 @@ class AdvisorUserProfile(models.Model):
 
             if old_approved_choice.approved == 0 and self.approved == 1:
 
-                send_approval_email(self, 'approved. Now you can logit at https://advisor-finder.herokuapp.com/advisors/login/')
+                send_approval_email(self, 'approved. Now you can login at https://advisor-finder.herokuapp.com/accounts/login/')
 
             elif old_approved_choice.approved == 0 and self.approved == 2:
 
