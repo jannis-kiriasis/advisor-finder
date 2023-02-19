@@ -34,8 +34,8 @@ a {
 }
 
 h1 {
-    margin-top: 2.8rem;
-    margin-bottom: 1.68rem;
+    padding-top: 2.8rem;
+    padding-bottom: 1.68rem;
     color: var(--liberty);
 }
 
@@ -166,4 +166,8 @@ nav > div > ul > li > a:hover,
     float: right ;
     padding: 0 !important;
     align-items: right !important;
+}
+
+.match {
+    background-color: var(--fuzzy-wuzzy-light);
 }

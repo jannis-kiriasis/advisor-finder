@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_title %} 
+    {{page_title}}
+{% endblock %}
+
+
+{% block page_header %}
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+    <div class="match pb-5">
+
+        <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
+
+            <div class="col-12 ">
+                <h1 class="text-center">{{ user.first_name }}!
+                    We found a financial advisor that specialise in {{ seeker.need }}.
+                    We beleive {{ advisor.business_name }} is the best option for you.
+                </h1>
+
+            </div>
+
+            <div class="card text-center col-6">
+                <div class="card-body">
+                    <h2 class="card-title pb-2">{{ advisor.business_name }}</h2>
+                    <p class="card-text"><span class="fw-bold">Location: </span>{{ advisor.town_or_city }}</p>
+                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ advisor.specialisation }}</p>
+                    <p class="card-text">{{ advisor.business_description }}.</p>
+                </div>
+            </div>
+
+            <div class="card text-center mt-4 col-6">
+                    <a href="#" class="btn btn-primary">Message advisor</a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}
