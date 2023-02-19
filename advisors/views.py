@@ -6,44 +6,6 @@ from .models import AdvisorUserProfile, User
 from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email
 
 
-# def advisor_to_approve_email(user, profile):
-
-#     """
-#     Email AdviceFound when profile is submitted after signup or edit.
-#     """
-
-#     subject = 'Advisor Profile to review'
-#     message = f'A new profile {profile.business_name} has been sent for review. Login to the admin panel to review and approve it.'
-#     email_from = settings.EMAIL_HOST_USER
-#     recipient_list = [settings.EMAIL_HOST_USER, ]
-#     send_mail(subject, message, email_from, recipient_list)
-
-
-# def advisor_to_approve_email(user, profile):
-
-#     """
-#     Email AdviceFound when profile is submitted after signup or edit.
-#     """
-
-#     subject = 'Advisor Profile to review'
-#     message = f'A new profile {profile.business_name} has been sent for review. Login to the admin panel to review and approve it.'
-#     email_from = settings.EMAIL_HOST_USER
-#     recipient_list = [settings.EMAIL_HOST_USER, ]
-#     send_mail(subject, message, email_from, recipient_list)
-
-
-# def advisor_to_approve_email(user, profile):
-
-#     """
-#     Email AdviceFound when profile is submitted after signup or edit.
-#     """
-
-#     subject = 'Advisor Profile to review'
-#     message = f'A new profile {profile.business_name} has been sent for review. Login to the admin panel to review and approve it.'
-#     email_from = settings.EMAIL_HOST_USER
-#     recipient_list = [settings.EMAIL_HOST_USER, ]
-#     send_mail(subject, message, email_from, recipient_list)
-
 @login_required
 def advisor_signup(request):
 
@@ -74,7 +36,8 @@ def advisor_signup(request):
 
             return redirect('advisor_signup')
 
-    messages.error(request, 'Signup not completed. Try again.')
+        else:
+            messages.error(request, 'Signup not completed. Try again.')
 
     form = AdvisorSignupForm()
 
