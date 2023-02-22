@@ -7,6 +7,20 @@ import random
 from random import shuffle
 
 
+def save_match(advisor, seeeker):
+
+    """
+    Save the matched in a model/
+    """
+
+    match = Match.objects.create(
+        advisor=advisor,
+        seeeker=seeker
+    )
+
+    match.save()
+
+
 @login_required
 def match(request):
 
@@ -35,9 +49,11 @@ def match(request):
     # Query all the advisors that specialise in the seeker need.
     # Return the queryset in random order
 
-    # other_advisors = list(AdvisorUserProfile.objects.filter(specialisation=seeker.need))
-    other_advisors = AdvisorUserProfile.objects.all()
-    # shuffle(other_advisors)
+    other_advisors = list(AdvisorUserProfile.objects.filter(specialisation=seeker.need))
+    # other_advisors = AdvisorUserProfile.objects.all()
+    shuffle(other_advisors)
+
+    save_match(advisor, seeker)
 
     context = {
         'seeker': seeker,

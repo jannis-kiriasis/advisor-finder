@@ -72,52 +72,28 @@ Advice Found is for advice seeker and financial advisor.
 ## User Experience (UX) – The needs
 Now that we are familiar with Advice Found target audience and offering, we are looking at the needs the app users may have. 
 
-I have identified 2 main stakeholders (you guessed them by now):
+I have identified 3 main stakeholders (you guessed them by now):
 
-### The advice seeker (PM)
-The advice seeker is looking for a financial advisor and doens't know how to choose one or where to go.
+### The advice seeker (AS)
+The advice seeker is looking for a financial advisor and doens't know how to choose one or where to find one.
 
 The advice seeker wants a financial advisor close to its location and that can best solve their issue.
 
-To summarise, a project or document that needs to ‘go through the checklist’ (from here the name The Checklistar) always has:
-- A title
-- A description
-- An attachment
-- A due date
-- The departments that need to approve it
-- An aimed approval due date for each department to make sure the process doesn’t stop somewhere
+The advice seeker wants to be guided in the choice. This is because the market is full of advisors it is often not clear 
+what advisors do and how they can help.
 
-Not every project goes smoothly through the checklist every time. The PM faces different struggles:
+### The financial advisor (FA)
 
-1. Some approvers forget to follow up and return the project approved on time. They are always busy, they (we) always get thousands of emails every day and the email with the project approval request gets forgotten under a pile of other urgent emails. The PM needs to remind the approvers constantly.
+The financial advisor wants to find new leads. An online platform can extend their reach to the entire country. They will
+not be limited to local clients as it is more common for brick and mortar businesses.
 
-3. Some approvers come back with suggestions or change requests. The project/document needs to be reviewed. The approver and the project owner start to exchange many emails back and forth. Someone else may be called in to approve the project too.
+The financial advisor nees to be able to talk to their clients from remote and keep track of all the appointments.
 
-4. The PM also needs to collect evidence of every approval. All the approvals are recorded in case of an audit from third parties. The risk controllers regularly test a few projects to make sure that the company is limiting the risks as much as possible. The PM problem is that those approvals aren’t saved in a database, but in their mailbox. So they need to go and find all the email threads (from point 2) and keep a record of all the approval received. 
+### The Advice found (AF)
 
-5. Deadlines are missed because of points 1,2,3. The project owner is considered responsible because it’s ‘the owner’.
+The company needs to make sure that the advisors are legit businesses.
 
-### The project approver (PA)
-The project approver is the person that needs to review and approve a project. Every project may have more than one approver. Usually, the approvals need to be given in a specific order.
-
-The PA also faces different problems:
-
-1. The PA receives many requests for approvals per week. Some of them take longer than others to review. The PA is usually one designated person in a department. It’s difficult to keep track of all the approval requests if the only place they are found is their mailbox.
-2. The PA needs to be always aware of the approval deadlines. Because it is difficult to keep up with all the incoming requests, the approver must be aware of all the deadlines. Some of the documents/projects are time-sensitive, and others may be regulatory changes. 
-
-### The risk controller (RC)
-The risk controller is someone that oversees the process from the outside. The RC isn’t actively involved, however, they periodically ‘test’ the process. They have to make sure that all the projects/documents completed went through the checklist rigorously and that the approvals needed have been recorded.
-
-Even if not actively involved, the RC also faces some problems:
-
-1. While performing the tests, the RC needs to review all of the approval recordings. They need to examine the evidence provided. That evidence may be different from project to project. Every PM also collects them differently. The RC issue with this is that it’s time-consuming and not immediate the answer. The RC may have to knock at the PM door to ask for explanations about the evidence collected because not clear enough.
-1. The RC also needs to evaluate the quality of the evidence and decide whether it is satisfactory for risk control. This means that the RC needs to influence the way the checklist is compiled and the way the evidence is recorded. Again this process takes time as it isn’t standardised.
-
-The first step was to outline all the problems the 3 main stakeholders have. Those problems were then translated into needs, in other words, the stakeholders ‘wants’ from the approval management system.
-
-The app needs to be able to solve all of them. The following step I took was to transform those needs into Epics and then User stories.
-
-At this point defining the epics was intuitive enough: I created 3 main epics, each of them addressing the issues of one of the stakeholders.
+They also need to guarantee an afflux of possible clients to the platform so that advisors will also join.
 
 ## Epics and User Stories
 

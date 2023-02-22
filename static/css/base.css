@@ -23,6 +23,11 @@ html {
     font-size: 1rem;
 }
 
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 body,
 html,
 input {
@@ -152,14 +157,14 @@ nav > div > ul > li > a:hover,
 }
 
 
-/* Seeker signup */
+/* seekers/signup/ */
 
 .intro {
     font-size: 1.2rem;
 }
 
 
-/* Advisor profile */
+/* advisors/profile/ */
 
 .btn-position {
     position: unset !important;
@@ -168,6 +173,15 @@ nav > div > ul > li > a:hover,
     align-items: right !important;
 }
 
+/* dashboard */
+
+
 .match {
     background-color: var(--fuzzy-wuzzy-light);
+}
+
+/* advisors/clients */
+
+.card-clients {
+    width: 18rem;
 }

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_title %} 
+    {{page_title}}
+{% endblock %}
+
+
+{% block page_header %}
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+    <div class="pb-5">
+
+        <div class="col-12">
+            <h1 class="text-center">Your matches</h1>
+        </div>
+
+        <div class="container container-xxl row justify-content-center align-items-center mx-auto">
+
+            {% for match in matches %}
+            <div class="card card-clients mx-1 my-1 col-md-1">
+
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+
+                <div class="card-body">
+
+                    <h2 class="card-title">
+                        {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
+                    </h2>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p> -->
+
+                </div>
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        Need: {{ match.seeker.need }}
+                    </li>
+                    <li class="list-group-item">
+                        Location: {{ match.seeker.town_or_city }}
+                    </li>
+        
+                </ul>
+
+                <div class="card-body text-center">
+
+                    <a href="#" class="btn btn-outline-dark">Chat</a>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

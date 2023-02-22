@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import AdvisorSignupForm
 from .models import AdvisorUserProfile, User
 from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email
+from matches.models import Match
 
 
 @login_required
@@ -125,3 +126,28 @@ def deactivate_profile(request):
         messages.success(request, 'Your profile has been activated.')
 
     return redirect('advisor_profile')
+
+
+@login_required
+def clients(request):
+
+    """
+    View to show all of an advisor matches and clients.
+    """
+
+    # # Get advisor profile of logged in user
+
+    user = request.user
+    advisor_objects = AdvisorUserProfile.objects
+    advisor = get_object_or_404(advisor_objects, user=user)
+
+    # Filter matches by logged in advisor
+
+    matches = Match.objects.filter(advisor=advisor)
+
+    context = {
+        'matches': matches,
+        'page_title': 'My matches & Clients'
+    }
+
+    return render(request, 'advisors/clients.html', context)
