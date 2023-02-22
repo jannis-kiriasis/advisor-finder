@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_title %} 
+    {{page_title}}
+{% endblock %}
+
+
+{% block page_header %}
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+    <div class="match pb-5">
+
+        <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
+
+            <div class="col-12 ">
+                <h1 class="text-center">Your Advisor
+                </h1>
+
+            </div>
+
+            <div class="card text-center col-6">
+                <div class="card-body">
+                    <h2 class="card-title pb-2">{{ match.advisor.business_name }}</h2>
+                    <p class="card-text"><span class="fw-bold">Location: </span>{{ match.advisor.town_or_city }}</p>
+                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.advisor.specialisation }}</p>
+                    <p class="card-text">{{ match.advisor.business_description }}.</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+
+        <div class="col-12 mt-5 mb-5">
+            <h2 class="text-center">Messages
+            </h2>
+        </div>
+
+        {% for advisor in other_advisors %}
+        <!-- <div class="card mt-4 text-center col-6">
+            <div class="card-body">
+                <h3 class="card-title pb-2">{{ advisor.business_name }}</h3>
+                <p class="card-text"><span class="fw-bold">Location: </span>{{ advisor.town_or_city }}</p>
+                <p class="card-text">{{ advisor.business_description }}.</p>
+                <a href="#" class="btn btn-outline-dark">Message advisor</a>
+
+            </div>
+        </div> -->
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

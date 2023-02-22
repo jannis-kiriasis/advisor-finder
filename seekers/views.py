@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import SeekerSignupForm
 from .models import SeekerUserProfile, User
 from django.contrib.auth import logout
+from matches.models import Match
 
 
 @login_required
@@ -101,3 +102,26 @@ def delete_profile(request):
     logout(request)
 
     return redirect('')
+
+
+@login_required
+def advisor_profile(request):
+
+    """
+    View to show advisor profile to the seeker.
+    """
+
+    # Get advisor profile of logged in user
+
+    user = request.user
+    seeker = get_object_or_404(SeekerUserProfile, user=user)
+
+    matches = Match.objects
+    match = get_object_or_404(matches, seeker=seeker)
+
+    context = {
+        'match': match,
+        'page_title': 'My advisor'
+    }
+
+    return render(request, 'seekers/advisor.html', context)

@@ -129,10 +129,10 @@ def deactivate_profile(request):
 
 
 @login_required
-def clients(request):
+def matches_list(request):
 
     """
-    View to show all of an advisor matches and clients.
+    View to show all of an advisor matches.
     """
 
     # # Get advisor profile of logged in user
@@ -143,11 +143,36 @@ def clients(request):
 
     # Filter matches by logged in advisor
 
-    matches = Match.objects.filter(advisor=advisor)
+    matches = Match.objects.filter(advisor=advisor, is_client=False)
 
     context = {
         'matches': matches,
-        'page_title': 'My matches & Clients'
+        'page_title': 'My Matches'
+    }
+
+    return render(request, 'advisors/matches.html', context)
+
+
+@login_required
+def clients_list(request):
+
+    """
+    View to show all of an advisor clients.
+    """
+
+    # # Get advisor profile of logged in user
+
+    user = request.user
+    advisor_objects = AdvisorUserProfile.objects
+    advisor = get_object_or_404(advisor_objects, user=user)
+
+    # Filter matches by logged in advisor
+
+    matches = Match.objects.filter(advisor=advisor, is_client=True)
+
+    context = {
+        'matches': matches,
+        'page_title': 'My Clients'
     }
 
     return render(request, 'advisors/clients.html', context)
