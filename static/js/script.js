@@ -2,6 +2,7 @@ const deleteButton = document.getElementById('delete');
 const updateAdvisorButton = document.getElementById('update_advisor');
 const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
+const messageButton = document.getElementById('message');
 
 // Event listeners for SweetAlerts defensive design
 if (deleteButton) {
@@ -20,6 +21,9 @@ if (deactivateButton) {
     deactivateButton.addEventListener('click', deactivateAdvisorChoice);
 }
 
+if (messageButton) {
+    messageButton.addEventListener('click', messageAdvisor);
+}
 /** Get href url of button delete.
 */
 function goToDeleteUrl() {
@@ -177,4 +181,25 @@ function deactivateAdvisorChoice(event) {
         activateAdvisor(event);
     }
 
+}
+
+/** Fire alert before to message advisor for the first time.
+*/
+function messageAdvisor(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Info',
+        icon: 'info',
+        text:
+        "By continuing to the chat, you'll be assigned to this advisor. Should you wish to change advisor in the future you can contact jannis.kiriasis@gmail.com",
+        showCloseButton: true,
+        showCancelButton: false,
+        focusConfirm: false,
+        confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+        '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down'
+    })
 }

@@ -70,7 +70,7 @@
 
                                         {% elif request.user.profiles.user_type == 1 %}
                                         
-                                        <li><a class="dropdown-item" href="#">Advisor</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'advisor' %}">Advisor</a></li>
                                         <li><a class="dropdown-item" href="{% url 'seeker_profile' %}">Profile</a></li>
                                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 

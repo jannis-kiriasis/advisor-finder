@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from advisors.models import AdvisorUserProfile
 from seekers.models import SeekerUserProfile
+from .models import Match
 
 import random
 from random import shuffle
 
 
-def save_match(advisor, seeeker):
+def save_match(advisor, seeker):
 
     """
     Save the matched in a model/
@@ -15,7 +16,7 @@ def save_match(advisor, seeeker):
 
     match = Match.objects.create(
         advisor=advisor,
-        seeeker=seeker
+        seeker=seeker
     )
 
     match.save()
@@ -49,7 +50,10 @@ def match(request):
     # Query all the advisors that specialise in the seeker need.
     # Return the queryset in random order
 
-    other_advisors = list(AdvisorUserProfile.objects.filter(specialisation=seeker.need))
+    other_advisors = list(
+        AdvisorUserProfile.objects.filter(specialisation=seeker.need)
+    )
+
     # other_advisors = AdvisorUserProfile.objects.all()
     shuffle(other_advisors)
 
@@ -63,3 +67,6 @@ def match(request):
     }
 
     return render(request, 'matches/match.html', context)
+
+
+
