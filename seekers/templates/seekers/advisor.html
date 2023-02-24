@@ -18,7 +18,7 @@
 
         <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
 
-            <div class="col-12 ">
+            <div class="col-12">
                 <h1 class="text-center">Your Advisor
                 </h1>
 
@@ -46,17 +46,45 @@
             </h2>
         </div>
 
-        {% for advisor in other_advisors %}
-        <!-- <div class="card mt-4 text-center col-6">
-            <div class="card-body">
-                <h3 class="card-title pb-2">{{ advisor.business_name }}</h3>
-                <p class="card-text"><span class="fw-bold">Location: </span>{{ advisor.town_or_city }}</p>
-                <p class="card-text">{{ advisor.business_description }}.</p>
-                <a href="#" class="btn btn-outline-dark">Message advisor</a>
+        {% for message in messages %}
 
+        <!-- Send messages -->
+        <div class="row">
+            <!-- Section for comments form -->
+            <div class="col-12">
+                <div class="comment-form flex-row">
+
+
+
+                </div>
             </div>
-        </div> -->
+        </div>
+ 
         {% endfor %}
+
+        <div class="fixed-bottom">
+
+            <div class="row">
+                <div class="col message-form-container">
+
+                    <form method="POST" class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
+
+                        {% csrf_token %}
+                        {{ message_form }}
+
+                        <button type="submit" class="btn btn-primary">
+                            Send
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+    
+    </div>
+        
+
+
 
     </div>
 

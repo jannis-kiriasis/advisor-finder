@@ -4,7 +4,8 @@ from django.contrib import messages
 from .forms import SeekerSignupForm
 from .models import SeekerUserProfile, User
 from django.contrib.auth import logout
-from matches.models import Match
+from matches.models import Match, Message
+from .forms import MessageForm
 
 
 @login_required
@@ -119,9 +120,29 @@ def advisor_profile(request):
     matches = Match.objects
     match = get_object_or_404(matches, seeker=seeker)
 
+    if request.method == 'POST':
+        message_form = MessageForm(data=request.POST)
+
+        # If message form is valid get user id and save
+
+        if message_form.is_valid():
+
+            user = request.user
+            seeker_profile = SeekerUserProfile.objects.filter(user=user)
+            message_form.instance.match = match
+            message_form.instance.user = request.user
+
+            message_form.save()
+
+            messages.success(request, 'You have sent a message successfully. You advisor will reply as soon as possible.')
+
+        else:
+            message_form = MessageForm()
+
     context = {
         'match': match,
-        'page_title': 'My advisor'
+        'page_title': 'My advisor',
+        'message_form': MessageForm
     }
 
     return render(request, 'seekers/advisor.html', context)

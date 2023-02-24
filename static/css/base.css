@@ -185,3 +185,17 @@ nav > div > ul > li > a:hover,
 .card-clients {
     width: 18rem;
 }
+
+.message-form-container {
+    background-color: var(--fuzzy-wuzzy-light);
+    height: 100px;
+}
+
+textarea {
+    margin: 0 0.6rem;
+}
+
+
+label[for="id_body"] {
+    display: none;
+}
