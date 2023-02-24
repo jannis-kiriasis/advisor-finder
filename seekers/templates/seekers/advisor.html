@@ -39,23 +39,27 @@
 
     </div>
 
-    <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+    <div class="container container-xxl h-100 d-flex flex-column pb-5">
 
-        <div class="col-12 mt-5 mb-5">
+        <div class="justify-content-center align-items-center col-12 mt-5 mb-5">
             <h2 class="text-center">Messages
             </h2>
         </div>
 
-        {% for message in messages %}
+        {% for note in notes %}
 
-        <!-- Send messages -->
         <div class="row">
-            <!-- Section for comments form -->
-            <div class="col-12">
-                <div class="comment-form flex-row">
+            <div class="col-6">
+                <div class="comment-form flex-column">
+                    {% if note.user == request.user %}
+                    <div class="row text-start">
+                        <small>{{ note.created_on }}</small>
+                        <div class="text-start message-bg card message-card">
+                            <p>{{ note.body }}</p>
+                        </div>
+                    </div>
 
-
-
+                    {% endif %}
                 </div>
             </div>
         </div>

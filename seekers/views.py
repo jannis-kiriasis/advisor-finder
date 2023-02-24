@@ -120,6 +120,8 @@ def advisor_profile(request):
     matches = Match.objects
     match = get_object_or_404(matches, seeker=seeker)
 
+    notes = Message.objects.filter(match=match)
+
     if request.method == 'POST':
         message_form = MessageForm(data=request.POST)
 
@@ -142,7 +144,8 @@ def advisor_profile(request):
     context = {
         'match': match,
         'page_title': 'My advisor',
-        'message_form': MessageForm
+        'message_form': MessageForm,
+        'notes': notes
     }
 
     return render(request, 'seekers/advisor.html', context)

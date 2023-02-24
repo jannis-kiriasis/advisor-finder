@@ -186,8 +186,24 @@ nav > div > ul > li > a:hover,
     width: 18rem;
 }
 
-.message-form-container {
+/* seekers/advisor/ */
+
+.message-form-container,
+.message-bg {
     background-color: var(--fuzzy-wuzzy-light);
+}
+
+.message-card {
+    border-radius: 50px;
+}
+
+.message-card > p {
+    height: max-content;
+    line-height: 40px;
+    padding: 0 10px;
+}
+
+.message-form-container {
     height: 100px;
 }
 
