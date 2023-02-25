@@ -24,15 +24,19 @@
 
             </div>
 
-            <div class="card text-center col-6">
-                <div class="card-body">
-                    <h2 class="card-title pb-2">{{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
-                    </h2>
-                    <p class="card-text"><span class="fw-bold">Location: </span>{{ match.seeker.town_or_city }}</p>
-                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.seeker.need }}</p>
+                <div class="card text-center col-6">
+                    <div class="card-body">
+                        <h2 class="card-title pb-2">{{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
+                        </h2>
+                        <p class="card-text"><span class="fw-bold">Location: </span>{{ match.seeker.town_or_city }}</p>
+                        <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.seeker.need }}</p>
+                    </div>
+    
                 </div>
 
-            </div>
+                <div class="mt-4 text-center col-6 message-bg">
+                    {% include 'consultations/consultation-form.html' %}
+                </div>
 
         </div>
 

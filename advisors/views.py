@@ -5,6 +5,8 @@ from .forms import AdvisorSignupForm, MessageForm
 from .models import AdvisorUserProfile, User
 from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email, email_note_to_seeker
 from matches.models import Match, Message
+# from consultations.views import create_consultation
+from consultations.forms import ConsultationForm
 
 
 @login_required
@@ -193,36 +195,66 @@ def seeker_profile(request, match_id):
     notes = Message.objects.filter(match=match)
 
     if request.method == 'POST':
-        message_form = MessageForm(data=request.POST)
 
-        # If message form is valid get user id and save
+        if 'consultation' not in request.POST:
+            message_form = MessageForm(data=request.POST)
 
-        if message_form.is_valid():
+            # If message form is valid get user id and save
 
-            user = request.user
-            message_form.instance.match = match
-            message_form.instance.user = request.user
+            if message_form.is_valid():
 
-            message_form.save()
+                user = request.user
+                message_form.instance.match = match
+                message_form.instance.user = request.user
 
-            messages.success(request, 'You have sent a message successfully. Your client will receive an email.')
+                message_form.save()
 
-            # Email last message to advisor
+                messages.success(request, 'You have sent a message successfully. Your client will receive an email.')
 
-            # Get all messages by logged in user
-            messages_sent = Message.objects.filter(user=user)
+                # Email last message to advisor
 
-            # Get last message for logged in user by created_on and send
-            last_message = messages_sent.latest('created_on')
-            email_note_to_seeker(last_message)
+                # Get all messages by logged in user
+                messages_sent = Message.objects.filter(user=user)
 
-        else:
-            message_form = MessageForm()
+                # Get last message for logged in user by created_on and send
+                last_message = messages_sent.latest('created_on')
+                email_note_to_seeker(last_message)
+
+
+
+        elif 'consultation' in request.POST:
+            # create_consultation(request, match_id)
+
+            form = ConsultationForm(data=request.POST)
+
+            if form.is_valid():
+
+                form.instance.match = match
+                form.save()
+
+                # Email consultation to seeker
+
+                # Get all consultations by logged in user
+                consultations = Consultation.objects.filter(user=request.user)
+
+                # Get last message for logged in user by created_on and send
+                consultation = consultations.latest('created_on')
+                # email_consultation_to_seeker(consultation)
+
+                messages.success(
+                    request,
+                    'Consultation created. An email has been sent to your client.'
+                    )
+
+    else:
+        message_form = MessageForm()
+        form = ConsultationForm()
 
     context = {
         'match': match,
         'notes': notes,
-        'message_form': MessageForm
-    }
+        'message_form': MessageForm,
+        'consultation_form': ConsultationForm
+        }
 
     return render(request, 'advisors/client-profile.html', context)

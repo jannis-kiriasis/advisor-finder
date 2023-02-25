@@ -99,7 +99,8 @@ label {
     border-color: var(--fuzzy-wuzzy);
 }
 
-.btn-secondary {
+.btn-secondary,
+.btn:first-child:active {
     color: var(--fuzzy-wuzzy);
     background-color: #ffffff;
     border-color: var(--fuzzy-wuzzy);
@@ -214,4 +215,22 @@ textarea {
 
 label[for="id_body"] {
     display: none;
+}
+
+.pb-150 {
+    padding-bottom: 150px;
+}
+
+#consultation-form > div > label,
+#consultation-form > div > input {
+    margin: 0 5px;
+}
+
+input[type="number"] {
+    border-radius: 0.5rem;
+    border: 1px solid var(--liberty-medium);
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 10px;
 }

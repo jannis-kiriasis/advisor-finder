@@ -31,5 +31,5 @@ class MessageForm(forms.ModelForm):
         fields = ['body',]
 
         widgets = {
-          'body': Textarea(attrs={'rows': 2, 'cols':20}),
+          'body': Textarea(attrs={'rows': 2, 'cols': 20}),
         }
