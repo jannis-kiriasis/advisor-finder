@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_title %} 
+    {{page_title}}
+{% endblock %}
+
+
+{% block page_header %}
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+    <div class="match pb-5">
+
+        <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
+
+            <div class="col-12">
+                <h1 class="text-center">Your Client
+                </h1>
+
+            </div>
+
+            <div class="card text-center col-6">
+                <div class="card-body">
+                    <h2 class="card-title pb-2">{{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}</h2>
+                    <p class="card-text"><span class="fw-bold">Location: </span>{{ match.seeker.town_or_city }}</p>
+                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.seeker.need }}</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="container container-xxl h-100 d-flex flex-column pb-5">
+
+        <div class="justify-content-center align-items-center col-12 mt-5 mb-5">
+            <h2 class="text-center">Messages
+            </h2>
+        </div>
+<!-- 
+        {% for note in notes %}
+
+        <div class="row">
+            <div class="col-6">
+                <div class="comment-form flex-column">
+                    {% if note.user == request.user %}
+                    <div class="row text-start">
+                        <small>{{ note.created_on }}</small>
+                        <div class="text-start message-bg card message-card">
+                            <p>{{ note.body }}</p>
+                        </div>
+                    </div>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+ 
+        {% endfor %}
+
+        <div class="fixed-bottom">
+
+            <div class="row">
+                <div class="col message-form-container">
+
+                    <form method="POST" class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
+
+                        {% csrf_token %}
+                        {{ message_form }}
+
+                        <button type="submit" class="btn btn-primary">
+                            Send
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+     -->
+    </div>
+        
+
+
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -176,3 +176,22 @@ def clients_list(request):
     }
 
     return render(request, 'advisors/clients.html', context)
+
+
+@login_required
+def seeker_profile(request, match_id):
+
+    """
+    project_details view for project-details.html.
+    Render all the details related to a project and its comments.
+    """
+
+    # Get seeker details
+
+    match = get_object_or_404(Match, id=match_id)
+
+    context = {
+        'match': match
+    }
+
+    return render(request, 'advisors/client-profile.html', context)
