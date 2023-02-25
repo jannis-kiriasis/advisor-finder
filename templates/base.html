@@ -62,28 +62,40 @@
 
                                         {% if request.user.profiles.user_type == 0 %}
 
-                                        <li><a class="dropdown-item" href="{% url 'clients' %}">Clients</a></li>
-                                        <li><a class="dropdown-item" href="#">Appointments</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'matches' %}">Matches</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'advisor_profile' %}">Profile</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                                            {% if request.user.users %}
+
+                                                <li><a class="dropdown-item" href="{% url 'clients' %}">Clients</a></li>
+                                                <li><a class="dropdown-item" href="#">Appointments</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'matches' %}">Matches</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'advisor_profile' %}">Profile</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+
+                                            {% else %}
+
+                                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+
+                                            {% endif %}
 
                                         {% elif request.user.profiles.user_type == 1 %}
                                         
-                                        <li><a class="dropdown-item" href="{% url 'advisor' %}">Advisor</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'seeker_profile' %}">Profile</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                                            {% if request.user.seekers %}
 
-                                        {% else %}
+                                                <li><a class="dropdown-item" href="{% url 'advisor' %}">Advisor</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'seeker_profile' %}">Profile</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 
-                                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                                            {% else %}
+
+                                                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+
+                                            {% endif %}
 
                                         {% endif %}
 
                                     {% else %}
 
-                                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
 
                                     {% endif %}
 

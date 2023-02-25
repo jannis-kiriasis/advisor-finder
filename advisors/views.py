@@ -190,6 +190,8 @@ def seeker_profile(request, match_id):
 
     match = get_object_or_404(Match, id=match_id)
 
+    notes = Message.objects.filter(match=match)
+
     if request.method == 'POST':
         message_form = MessageForm(data=request.POST)
 
@@ -219,6 +221,7 @@ def seeker_profile(request, match_id):
 
     context = {
         'match': match,
+        'notes': notes,
         'message_form': MessageForm
     }
 

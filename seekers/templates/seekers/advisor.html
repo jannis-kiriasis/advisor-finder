@@ -2,8 +2,8 @@
 {% load static %}
 
 
-{% block extra_title %} 
-    {{page_title}}
+{% block extra_title %}
+{{page_title}}
 {% endblock %}
 
 
@@ -28,17 +28,18 @@
                 <div class="card-body">
                     <h2 class="card-title pb-2">{{ match.advisor.business_name }}</h2>
                     <p class="card-text"><span class="fw-bold">Location: </span>{{ match.advisor.town_or_city }}</p>
-                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.advisor.specialisation }}</p>
+                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.advisor.specialisation }}
+                    </p>
                     <p class="card-text">{{ match.advisor.business_description }}.</p>
                 </div>
-                
+
             </div>
 
         </div>
-
-
     </div>
+</section>
 
+<section>
     <div class="container container-xxl h-100 d-flex flex-column pb-5">
 
         <div class="justify-content-center align-items-center col-12 mt-5 mb-5">
@@ -48,50 +49,62 @@
 
         {% for note in notes %}
 
-        <div class="row">
-            <div class="col-6">
-                <div class="comment-form flex-column">
-                    {% if note.user == request.user %}
-                    <div class="row text-start">
+        <div class="row justify-content-between">
+            <div class="comment-form flex-column">
+                {% if note.user == request.user %}
+                <div class="row text-start justify-content-start">
+
+                    <div class="col-auto">
                         <small>{{ note.created_on }}</small>
                         <div class="text-start message-bg card message-card">
                             <p>{{ note.body }}</p>
                         </div>
                     </div>
 
-                    {% endif %}
                 </div>
+                {% else %}
+
+                <div class="row text-end justify-content-end">
+
+                    <div class="col-auto">
+                        <small>{{ note.created_on }}</small>
+                        <div class="text-end card message-card">
+                            <p>{{ note.body }}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% endif %}
             </div>
         </div>
- 
+
         {% endfor %}
+    </div>
+</section>
 
-        <div class="fixed-bottom">
+<section>
+    <div class="fixed-bottom">
 
-            <div class="row">
-                <div class="col message-form-container">
+        <div class="row">
+            <div class="col message-form-container">
 
-                    <form method="POST" class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
+                <form method="POST"
+                    class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
 
-                        {% csrf_token %}
-                        {{ message_form }}
+                    {% csrf_token %}
+                    {{ message_form }}
 
-                        <button type="submit" class="btn btn-primary">
-                            Send
-                        </button>
+                    <button type="submit" class="btn btn-primary">
+                        Send
+                    </button>
 
-                    </form>
+                </form>
 
-                </div>
             </div>
-    
-    </div>
-        
-
-
+        </div>
 
     </div>
-
 </section>
 
 {% endblock %}
