@@ -34,6 +34,9 @@ class SeekerUserProfile(models.Model):
         related_name='needs'
     )
 
-    # def __str__(self):
-    #     """Change display value of seeker profile"""
-    #     return self.user.id
+    def __str__(self):
+
+        """
+        Change display value of seeker profile
+        """
+        return f'{self.user.first_name} {self.user.last_name}'

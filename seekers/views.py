@@ -6,6 +6,7 @@ from .models import SeekerUserProfile, User
 from django.contrib.auth import logout
 from matches.models import Match, Message
 from .forms import MessageForm
+from .emails import email_note_to_advisor
 
 
 @login_required
@@ -137,6 +138,15 @@ def advisor_profile(request):
             message_form.save()
 
             messages.success(request, 'You have sent a message successfully. You advisor will reply as soon as possible.')
+
+            # Email last message to advisor
+
+            # Get all messages by logged in user
+            messages_sent = Message.objects.filter(user=user)
+
+            # Get last message for logged in user by created_on and send
+            last_message = messages_sent.latest('created_on')
+            email_note_to_advisor(last_message)
 
         else:
             message_form = MessageForm()
