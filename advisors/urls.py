@@ -10,6 +10,7 @@ urlpatterns = [
     path('deactivate/', views.deactivate_profile, name='deactivate_profile'),
     path('matches/', views.matches_list, name='matches'),
     path('clients/', views.clients_list, name='clients'),
-    path('matches/clients/<match_id>', views.seeker_profile, name='seeker_profile'),
+    path('matches/client/<match_id>', views.seeker_profile, name='seeker_profile'),
+    path('clients/client/<match_id>', views.seeker_profile, name='seeker_profile'),
 
 ]

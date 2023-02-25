@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import AdvisorSignupForm
+from .forms import AdvisorSignupForm, MessageForm
 from .models import AdvisorUserProfile, User
-from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email
-from matches.models import Match
+from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email, email_note_to_seeker
+from matches.models import Match, Message
 
 
 @login_required
@@ -190,8 +190,36 @@ def seeker_profile(request, match_id):
 
     match = get_object_or_404(Match, id=match_id)
 
+    if request.method == 'POST':
+        message_form = MessageForm(data=request.POST)
+
+        # If message form is valid get user id and save
+
+        if message_form.is_valid():
+
+            user = request.user
+            message_form.instance.match = match
+            message_form.instance.user = request.user
+
+            message_form.save()
+
+            messages.success(request, 'You have sent a message successfully. Your client will receive an email.')
+
+            # Email last message to advisor
+
+            # Get all messages by logged in user
+            messages_sent = Message.objects.filter(user=user)
+
+            # Get last message for logged in user by created_on and send
+            last_message = messages_sent.latest('created_on')
+            email_note_to_seeker(last_message)
+
+        else:
+            message_form = MessageForm()
+
     context = {
-        'match': match
+        'match': match,
+        'message_form': MessageForm
     }
 
     return render(request, 'advisors/client-profile.html', context)

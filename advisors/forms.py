@@ -1,6 +1,7 @@
 from .models import AdvisorUserProfile
 from django import forms
 from django.forms import Textarea
+from matches.models import Message
 
 
 class AdvisorSignupForm(forms.ModelForm):
@@ -21,4 +22,19 @@ class AdvisorSignupForm(forms.ModelForm):
 
         widgets = {
             'business_description': Textarea(attrs={'cols': 80, 'rows': 5}),
+        }
+
+
+class MessageForm(forms.ModelForm):
+
+    """
+    Create chat message form
+    """
+
+    class Meta:
+        model = Message
+        fields = ['body',]
+
+        widgets = {
+          'body': Textarea(attrs={'rows': 2, 'cols':20}),
         }
