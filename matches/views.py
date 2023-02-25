@@ -46,8 +46,6 @@ def match(request):
         specialisation=seeker.need
     )
 
-    length_advisors_queryset = len(filter_advisors)
-
     advisor = random.choice(filter_advisors)
 
     # Query all the advisors that specialise in the seeker need.
