@@ -29,4 +29,4 @@ class Consultation(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Consultation on {self.date} at {self.time}'
+        return f'{self.id}'

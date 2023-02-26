@@ -40,23 +40,16 @@ class Order(models.Model):
 
         return uuid.uuid4().hex.upper()
 
-    def update_grand_total(self):
-
-        """
-        Update grand total including Advice Found fee.
-        """
-
-        af_fee = self.price * 5 / 100
-        self.grand_total = self.price + af_fee
-
-        self.save()
-
     def save(self, *args, **kwargs):
 
         """
         Override the original save method to set the order number
-        if it hasn't been set already.
+        if it hasn't been set already and
+        add Advice Found fee to the grand total.
         """
+
+        af_fee = self.price * 5 / 100
+        self.grand_total = self.price + af_fee
 
         if not self.order_number:
             self.order_number = self._generate_order_number()
