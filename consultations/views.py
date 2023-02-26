@@ -4,6 +4,7 @@ from .models import Consultation
 from matches.models import Match
 from django.contrib import messages
 from django.utils.crypto import get_random_string
+from .emails import email_consultation_seeker
 
 
 def create_consultation(consultation_form, match, request):
@@ -26,7 +27,7 @@ def create_consultation(consultation_form, match, request):
             'Consultation created. An email has been sent to your client.'
             )
 
-        email_appointment_seeker(consultation_form)
+        email_consultation_seeker(consultation_form)
 
     else:
         form = ConsultationForm(data=request.POST)
