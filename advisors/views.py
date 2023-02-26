@@ -7,6 +7,9 @@ from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor
 from matches.models import Match, Message
 from consultations.views import create_consultation
 from consultations.forms import ConsultationForm
+from consultations.models import Consultation
+from itertools import chain
+
 
 @login_required
 def advisor_signup(request):
@@ -193,6 +196,12 @@ def seeker_profile(request, match_id):
 
     notes = Message.objects.filter(match=match)
 
+    consultations = Consultation.objects.filter(match=match)
+
+    # Combine notes and consultations in 1 iterable list for template
+
+    elements = list(chain(notes, consultations))
+
     if request.method == 'POST':
 
         if 'consultation' not in request.POST:
@@ -226,21 +235,16 @@ def seeker_profile(request, match_id):
 
             consultation_form = ConsultationForm(data=request.POST)
 
-            # if consultation_form.is_valid():
-
-            #     consultation_form.instance.match = match
-            #     consultation_form.save()
-
-            #     messages.success(request, 'ggod')
-
             create_consultation(consultation_form, match, request)
 
     context = {
         'match': match,
         'notes': notes,
+        'consultations': consultations,
         'message_form': MessageForm,
         'consultation_form': ConsultationForm,
-        'page_title': f'{ match }'
+        'page_title': f'{ match }',
+        'elements': elements
         }
 
     return render(request, 'advisors/client-profile.html', context)
