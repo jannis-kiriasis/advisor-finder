@@ -1,13 +1,15 @@
-<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">Schedule consultation</button>
+<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">
+    Schedule consultation
+</button>
 
-<div id="demo" class="collapse">
+<div id="demo" class="collapse mt-4">
     <form id="consultation-form" method="POST">
 
         {% csrf_token %}
-        {{ consultation_form }}
+        {{ consultation_form.as_p }}
 
-        <button type="submit" name="consultation" value="{{ match.id }}" class="btn btn-primary">
-            Send invite
+        <button type="submit" name="consultation" class="btn btn-primary">
+            Send consultation invite
         </button>
 
     </form>

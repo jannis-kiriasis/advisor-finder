@@ -1,5 +1,6 @@
 from django.db import models
 from matches.models import Match
+from django import forms
 
 
 class Consultation(models.Model):
@@ -19,7 +20,7 @@ class Consultation(models.Model):
     date = models.DateField()
     time = models.TimeField()
 
-    link = models.CharField(max_length=20)
+    link = models.CharField(max_length=30)
 
     created_on = models.DateTimeField(auto_now_add=True)
 

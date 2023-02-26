@@ -183,8 +183,8 @@ def clients_list(request):
 def seeker_profile(request, match_id):
 
     """
-    project_details view for project-details.html.
-    Render all the details related to a project and its comments.
+    Show the seekers details together with their messages.
+    Show the consultation form and the message form.
     """
 
     # Get seeker details
@@ -223,13 +223,24 @@ def seeker_profile(request, match_id):
                 message_form = MessageForm()
 
         elif 'consultation' in request.POST:
-            create_consultation(request, match)
+
+            consultation_form = ConsultationForm(data=request.POST)
+
+            # if consultation_form.is_valid():
+
+            #     consultation_form.instance.match = match
+            #     consultation_form.save()
+
+            #     messages.success(request, 'ggod')
+
+            create_consultation(consultation_form, match, request)
 
     context = {
         'match': match,
         'notes': notes,
         'message_form': MessageForm,
-        'consultation_form': ConsultationForm
+        'consultation_form': ConsultationForm,
+        'page_title': f'{ match }'
         }
 
     return render(request, 'advisors/client-profile.html', context)

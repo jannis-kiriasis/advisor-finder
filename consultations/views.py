@@ -2,27 +2,24 @@ from django.shortcuts import render
 from .forms import ConsultationForm
 from .models import Consultation
 from matches.models import Match
+from django.contrib import messages
+from django.utils.crypto import get_random_string
 
 
-def create_consultation(request, match):
+def create_consultation(consultation_form, match, request):
 
     """
+    Save consultation object in Consultation model
     """
-    form = ConsultationForm(data=request.POST)
 
-    if form.is_valid():
+    if consultation_form.is_valid():
 
-        form.instance.match = match
-        form.save()
+        consultation_form.instance.match = match
 
-        # Email consultation to seeker
+        # Create meeting link with random string
+        consultation_form.instance.link = 'https://gotalk.to/' + get_random_string(length=10)
 
-        # Get all consultations by logged in user
-        consultations = Consultation.objects.filter(user=request.user)
-
-        # Get last message for logged in user by created_on and send
-        consultation = consultations.latest('created_on')
-        # email_consultation_to_seeker(consultation)
+        consultation_form.save()
 
         messages.success(
             request,
@@ -30,5 +27,6 @@ def create_consultation(request, match):
             )
 
     else:
+        form = ConsultationForm(data=request.POST)
 
-        form = ConsultationForm()
+        messages.error(request, 'not valid')
