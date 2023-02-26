@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'seekers',
     'matches',
     'consultations',
+    'checkout',
 ]
 
 MIDDLEWARE = [
