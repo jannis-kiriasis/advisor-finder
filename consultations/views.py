@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import ConsultationForm
 from .models import Consultation
 from matches.models import Match
@@ -27,7 +27,9 @@ def create_consultation(consultation_form, match, request):
             'Consultation created. An email has been sent to your client.'
             )
 
-        email_consultation_seeker(consultation_form)
+        consultation = Consultation.objects.filter(match=match).latest('match')
+
+        email_consultation_seeker(consultation)
 
     else:
         form = ConsultationForm(data=request.POST)
