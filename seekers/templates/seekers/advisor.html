@@ -39,50 +39,106 @@
     </div>
 </section>
 
-<section class="pb-150">
-    <div class="container container-xxl h-100 d-flex flex-column pb-5">
+<section>
+    <div class="container container-xxl h-100 d-flex flex-column pb-150">
 
         <div class="justify-content-center align-items-center col-12 mt-5 mb-5">
             <h2 class="text-center">Messages
             </h2>
         </div>
 
-        {% for note in notes %}
+        <!-- Iterate through elements list -->
+
+        {% for el in elements %}
 
         <div class="row justify-content-between">
             <div class="comment-form flex-column">
-                {% if note.user == request.user %}
-                <div class="row text-start justify-content-start">
 
-                    <div class="col-auto">
-                        <small>{{ note.created_on }}</small>
-                        <div class="text-start message-bg card message-card">
-                            <p>{{ note.body }}</p>
+                <!-- If the element in the list has a user value,
+                     it must be a note -->
+
+                {% if el.user %}
+
+                    <!-- If the note is from the requester do this -->
+
+                    {% if el.user == request.user %}
+
+                        <div class="row text-end justify-content-end">
+
+                            <div class="col-auto">
+                                <div class="text-start card message-card message-bg">
+                                    <p>{{ el.body }}</p>
+                                    <p>
+                                        <span class="small">
+                                            {{ el.created_on }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
 
-                </div>
+                    <!-- If the note is not from the requester do this -->
+
+                    {% elif el.user != request.user %}
+
+                        <div class="row text-start justify-content-start">
+
+                            <div class="col-auto">
+                                <div class="text-start card message-card">
+                                    <p>{{ el.body }}</p>
+                                    <p>
+                                        <span class="small">
+                                            {{ el.created_on }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                <!-- If the el.user is not true, 
+                    the element in the list must be a consultation, 
+                    so do this -->
+
                 {% else %}
 
-                <div class="row text-end justify-content-end">
+                    <div class="row text-start justify-content-start">
 
-                    <div class="col-auto">
-                        <small>{{ note.created_on }}</small>
-                        <div class="text-end card message-card">
-                            <p>{{ note.body }}</p>
+                        <div class="col-auto">
+                            <div class="text-start py-4 card message-card">
+                                <p class="fw-bold">Consultation:</p>
+                                <p><span class="fw-bold">date:</span> 
+                                    {{ el.date }}
+                                </p>
+                                <p><span class="fw-bold">Time:</span> 
+                                    {{ el.time }}
+                                </p>
+                                <p><span class="fw-bold">Fee:</span> 
+                                    {{ el.price }}
+                                </p>
+                                <a class="btn btn-primary" href="#">
+                                    Confirm
+                                </a>
+                                <p>
+                                    <span class="small">
+                                        {{ el.created }}
+                                    </span>
+                                </p>
+                            </div>
                         </div>
+
                     </div>
 
-                </div>
-
                 {% endif %}
+
             </div>
         </div>
 
         {% endfor %}
-    </div>
 </section>
-
 <section>
     <div class="fixed-bottom">
 

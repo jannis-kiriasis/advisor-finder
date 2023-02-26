@@ -1,0 +1,8 @@
+Hi {{ seeker }},   
+Your advisor {{ advisor }} send you a consultation request.
+date: {{ date }}
+time: {{ time }}
+fee: {{ price }}
+Login to complete the payment and accept the invite.
+
+Thank you for usying Advice Found.

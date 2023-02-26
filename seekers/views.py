@@ -7,6 +7,8 @@ from django.contrib.auth import logout
 from matches.models import Match, Message
 from .forms import MessageForm
 from .emails import email_note_to_advisor
+from consultations.models import Consultation
+from itertools import chain
 
 
 @login_required
@@ -122,6 +124,11 @@ def advisor_profile(request):
     match = get_object_or_404(matches, seeker=seeker)
 
     notes = Message.objects.filter(match=match)
+    consultations = Consultation.objects.filter(match=match)
+
+    # Combine notes and consultations in 1 iterable list for template
+
+    elements = list(chain(notes, consultations))
 
     if request.method == 'POST':
         message_form = MessageForm(data=request.POST)
@@ -155,7 +162,7 @@ def advisor_profile(request):
         'match': match,
         'page_title': 'My advisor',
         'message_form': MessageForm,
-        'notes': notes
+        'elements': elements
     }
 
     return render(request, 'seekers/advisor.html', context)

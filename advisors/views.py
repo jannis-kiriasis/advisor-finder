@@ -231,11 +231,15 @@ def seeker_profile(request, match_id):
             else:
                 message_form = MessageForm()
 
+            return reditect('seeker_profile')
+
         elif 'consultation' in request.POST:
 
             consultation_form = ConsultationForm(data=request.POST)
 
             create_consultation(consultation_form, match, request)
+
+            return reditect('seeker_profile')
 
     context = {
         'match': match,
