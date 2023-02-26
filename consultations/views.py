@@ -26,6 +26,8 @@ def create_consultation(consultation_form, match, request):
             'Consultation created. An email has been sent to your client.'
             )
 
+        email_appointment_seeker(consultation_form)
+
     else:
         form = ConsultationForm(data=request.POST)
 
