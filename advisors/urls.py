@@ -12,5 +12,6 @@ urlpatterns = [
     path('clients/', views.clients_list, name='clients'),
     path('matches/client/<match_id>', views.seeker_profile, name='seeker_profile'),
     path('clients/client/<match_id>', views.seeker_profile, name='seeker_profile'),
+    path('appointments/', views.consultation_list, name='consultations'),
 
 ]

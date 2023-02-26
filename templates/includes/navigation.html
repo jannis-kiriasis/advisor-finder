@@ -23,14 +23,12 @@
                         
                         {% if user.is_authenticated %}
 
-                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-
                             {% if request.user.profiles.user_type == 0 %}
 
                                 {% if request.user.users %}
 
                                     <li><a class="dropdown-item" href="{% url 'clients' %}">Clients</a></li>
-                                    <li><a class="dropdown-item" href="#">Appointments</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'consultations' %}">Appointments</a></li>
                                     <li><a class="dropdown-item" href="{% url 'matches' %}">Matches</a></li>
                                     <li><a class="dropdown-item" href="{% url 'advisor_profile' %}">Profile</a></li>
                                     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>

@@ -3,6 +3,8 @@ from matches.models import Match
 from django import forms
 
 
+CONFIRMED = ((0, 'Not confirmed'), (1, 'Confirmed'))
+
 class Consultation(models.Model):
 
     """
@@ -21,6 +23,8 @@ class Consultation(models.Model):
     time = models.TimeField()
 
     link = models.CharField(max_length=30)
+
+    status = models.IntegerField(choices=CONFIRMED, default=0)
 
     created = models.DateTimeField(auto_now_add=True)
 

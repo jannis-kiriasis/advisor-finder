@@ -252,3 +252,27 @@ def seeker_profile(request, match_id):
         }
 
     return render(request, 'advisors/client-profile.html', context)
+
+
+@login_required
+def consultation_list(request):
+
+    """
+    """ 
+
+    get_advisor_profile = get_object_or_404(AdvisorUserProfile, user=request.user)
+
+    get_all_matches = Match.objects.filter(advisor=get_advisor_profile)
+
+    consultations = Consultation.objects.filter(
+        match__id__in=get_all_matches
+        ).order_by(
+            '-date'
+        )
+
+    context = {
+        'consultations': consultations,
+        'page_title': 'Your appointments'
+    }
+
+    return render(request, 'advisors/appointments.html', context)
