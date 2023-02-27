@@ -99,129 +99,243 @@ They also need to guarantee an afflux of possible clients to the platform so tha
 
 Following, you can find the epics and the user stories breakdown used to plan the development of the app.
 
-### Epic 1 – The project manager
 
-The PM requires a workflow to get some projects/documents approved. 
-The PM needs to be able to submit certain information with the project/document. The PM needs to designate some approvers within the organization to review and approve the project. The PM needs to keep track of all the interactions with the PAs and collect approvals within certain deadlines. The approval evidence needs to be recorded for risk management reasons.
-
-### E1 - User story 1 – Create a project
-As a PM, I want to be able to create a project so that I don’t need to submit the project via email.
-
-Acceptance criteria:
-1. The project needs to include a project id, title, description, attachment, due date and an unlimited number of approvers.
-
-### E1 - User story 2 – Set the project workflow
-As a project manager, I want to be able to assign unlimited approvers to a project so that I can get all the approvals needed for completion.
-
-Acceptance criteria:
-1. Set unlimited approvers when I’m creating the project
-2. The approvers must be associated with a department and have a deadline
-
-### E1 - User story 3 – Create the main dashboard
-As a project manager, I want to be able to see at what stage a process is and how many steps are missing so that I can make sure we are in line with deadlines.
-
-Acceptance criteria:
-1. Create a dashboard page with all the projects open and the approvals required for each project
-2. It should be immediate to notice what approvals have been given and what approvals are missing
-
-### E1 - User story 4 – Edit a project
-As a project manager, I want to be able to update a project anytime, so that if the requirements change, I can update the workflow.
-
-Acceptance criteria:
-1. Project title, description, due date approvers and approval due dates must be editable.
-2. Only the project owner can edit a project.
-
-### E1 - User story 5 – Delete a workflow
-As a project manager, I want to be able to delete a project, so that if a project is cancelled, I can also delete it from the platform.
-
-Acceptance criteria:
-1. Include the option to cancel a project and related approvers.
-2. Only the project owner can delete a project.
-
-### E1 - User story 6 – See all the projects open
-As a project manager, I want to be able to see all the projects I’ve started and their approvers, so that I can quickly see where I need to focus.
-
-Acceptance criteria:
-1. Create a page where the PM can see only the projects the logged-in PM has started
-2. Make instantly evident what projects are completed and what aren’t
-3. The projects should be ordered by descending created date
-
-### E1 - User story 7 - Add a comment (Create)  
-As a project manager, I can add a comment to a specific project, so that I can update other people or discuss a specific issue without sending emails.
-
-Acceptance criteria:
-1. Projects should be comment-able 
-2. Comments should be in a thread and ordered by the newest
-
-### E1 - User story 8 - Notify PM
-As a PM, I want to be notified when a comment is added to the project, or approval is given so that I can decide how to proceed next
-
-Acceptance criteria:
-1. Send me a notification when a project is approved
-2. Send me a notification when a project is commented
+### Epic 1 - The profiles: The Advisers and the Seekers need to be able to create profiles that they can cancel and update.
 
 
-### E1 - User story 9 - Registration and sign-in project owner
-As a project owner, I can register and log in to the software, so that I will be the only one able to create, edit, complete and cancel my projects.
+#### USER STORY 1: Advisor profile creation
 
-Acceptance criteria:
-1. Users need to be able to sign up to use the app.
-2. PM must be authenticated to create, edit, cancel or complete a project.
+As a financial adviser,
+I want to register to the platform by creating my advisor profile,
+so that I can market my specialisations to potential clients.
 
-## Epic 2 – The approvers/stages
-The approvers need to be able to find all the projects they need to approve easily. They’ll have a list of works they need to review so that nothing goes lost and they can make sure deadlines are respected. The approver needs to be able to comment on and approve projects.
+**Acceptance criteria:**
+- The adviser's required information is a business name, business address, email, phone, business description, advisor photo/logo, location and specialisations, and registration number.
+- Log-in details and user profile are created simultaneously
+- Use defensive design to avoid mistakes
+- Implement real-time feedback on the action taken
+
+**Subtasks:**
+1. Create model AdviserUserProfile
+2. Create model Specialisation
+3. Create model Location
+4. Create basic HTML navigation with sign-in / out, create adviser profile
+5. Create add adviser profile form (template, view and URLs)
+6. Add on-page notification of profile created
+7. Add defensive design: Are you sure you want to submit your profile for approval?
+8. Create an adviser profile page (template, view and URLs)
 
 
-### E2 - User story 1 - See projects pending approval (Read) 
-As an approver, I want to quickly see what projects are pending my approval so that I can concentrate and get the work done.
+#### USER STORY 2: Advisor edit profile
 
-Acceptance criteria:
-1. All the approvers’ projects need to be on a page and the deadline should be visible.
-2. The projects needing approval by the logged-in approver need to be identified easily.
+As a financial adviser,
+I want to edit and cancel my profile
+so that if I don’t work with this app anymore or make changes to my business profile, those changes are visible to potential customers.
 
-### E2 - User story 2 - See projects by the due date
-As an approver, I want to see when all the projects pending my approval are due so that I can prioritise my work.
+**Acceptance criteria:**
+- All the Adviser information can be edited
+- Use defensive design to avoid mistakes
+- Implement real-time feedback on the action taken
+- The adviser can pause their account not to get other clients and not be shown
 
-Acceptance criteria
-1. The due date will be visible in the dashboard, my approvals and my projects views for each project.
+**Subtasks:**
+1. Create an edit button in the Adviser profile template with views and URLs
+2. Create an edit adviser form template with views and URLs
+3. Add on-page notification of profile updated request sent
+4. Add defensive design: Are you sure you want to submit your profile update request for approval?
+5. Add a button to make advisor active /inactive
+6. Add active/inactive defensive design
 
-### E2 - User story 3 - Approvers feedback
-As an approver, I want to be able to add a comment to the project, so that I can record my feedback and don’t get lost in email threads. 
+Dependency US 1
 
-Acceptance criteria:
-1. The approver needs to be able to comment on the project
 
-### E2 - User story 4 - Approve a project
-As an approver, I want to be able to approve a project so that it can be sent to the next approver.
+#### USER STORY 3: Admin registration approval
 
-Acceptance criteria:
-1. A feature needs to allow the approver to approve the project
-2. Only the approver specified by the project manager can approve a project
+As an admin,
+I want to approve the adviser registration request and edit requests so that
+I can validate the quality and legitimacy of the information declared.
 
-### E2 – user story 5 - Notify approvers
-As an approver, I want to be notified when a project is assigned to me so that I can take an action.
+**Acceptance criteria:**
+- Admin needs to approve new profiles and edit requests before the updates are published
+- Approved or not approved status needs to be reflected on the adviser profile page
 
-Acceptance criteria:
-1. The approver needs to receive a notification when he has been assigned a project.
+**Subtasks:**
+1. Create admin panel
+2. Create approve new profile button in the admin panel
+3. Create approve edit request in the admin panel
+4. Add pending approval status in the Adviser profile page (template and views)
+5. Add visual feedback in the Adviser template when the profile is approved
+6. Add visual feedback in the Adviser template when the profile is not approved
+7. Add visual feedback in the Adviser template when the edit request is approved
+8. Add visual feedback in the Adviser template when the edit request is not approved
 
-### E2 – user story 6 - Registration and sign approvers
-As an approver, I can register and log in to the software, so that I will be the only one able to approve a project for my department.
 
-Acceptance criteria:
-1. Users need to be able to sign up to use the app.
-2. Approvers must be authenticated to approve a project.
+#### USER STORY 4: Seeker profile creation
 
-## E3 – The risk controllers
+As an Advice Seeker,
+I want to register for the app and find the best financial advisor so that
+I can find an advisor.
 
-The tool will allow risk controllers to keep track of all the work done and make sure that it has been carried out respecting regulations to lower risk levels. The tool records all the projects/ works done and the evidence should be collectable easily.
+**Acceptance criteria:**
+- Give a Seeker the ability to register 
+- The Seeker required information are: name, address, email, phone, location and need.
+- The Seeker must log in in order to create a profile
+- Implement real-time feedback on the action taken
+- Log-in details and user profile are created simultaneously
 
-### E3 - User story 1 - The risk controller
-As a risk controller, I can download a list of the projects approved, so that I can record risk assessments and evidence.
+**Subtasks:**
+1. Create model SeekerUserProfile
+2. Create add seeker profile form (template, view and URLs)
+3. Add on-page notification of profile created
+4. Create a Seeker profile page (template, view and URLs)
 
-Acceptance criteria:
-1. The RC needs to find a list of all the projects approved.
-2. The completed projects need to be accessible easily.
-3. Completed projects and approvals need to be downloadable
+
+#### USER STORY 5: Seeker profile edit and cancel: 
+
+As a Seeker,
+I want to edit and cancel my profile so that
+if I don’t work with this app anymore or make changes to my profile, those changes are visible.
+
+**Acceptance criteria:**
+- All the Seeker information can be edited
+- The profile can be cancelled
+- Use defensive design to avoid mistakes
+- Implement real-time feedback of the action taken
+
+**Subtasks:**
+1. Create an edit button in the Seeker profile template with views and URLs
+2. Create an edit seeker form template with views and URLs
+3. Add on-page notification of profile updated request sent
+4. Add defensive design: Are you sure you want to submit your profile update request for approval?
+5. Create a delete button in the Seeker profile template with views and URLs
+6. Add on-page notification of profile deleted
+7. Add defensive design: Are you sure you want to delete your profile 
+
+Dependency US 1, US 4
+
+
+### Epic 2 - The Matcher: The matcher connects Seekers and Advisers and shows the best match and the other results based on the algorithm criteria (specified in user stories).
+
+
+#### USER STORY 7: Matching logic
+
+As an advice seeker,
+I want to be matched with a financial advisor
+that best suits my need.
+
+**Acceptance criteria:** 
+- One main option must be given to the Seeker
+- The Seeker can still see other possible good options
+- The match must be based at least on location and specialisation/need
+- Add other relevant advisors after the best match
+- Notify the advisor when there is a new match
+
+**Subtasks:**
+1. Create a few Adviser profiles
+2. Create a few Seekers profiles
+3. Create a match template (HTML + CSS)
+4. Create a view to filter Advisers by the Seeker’s location, need
+5. Create URLs
+6. Create queryset to add to the template other possible advisors
+
+
+#### USER STORY 8: Clients and matches view
+
+As an Adviser,
+I want to see all the Seekers I matched and the seekers who are already clients so that
+I can follow up on conversations easily.
+
+**Acceptance criteria:** 
+- See a list of the Seekers matched and their profile information (Name, need, location)
+- See a list of the clients and their profile information (Name, need, location)
+- See the individual conversations with the Seekers
+
+**Subtasks:**
+1. Create clients  and matches template
+2. Create views
+3. Create URLs
+
+
+### Epic 3 - The chat: Creation of the app that will facilitate the Seeker and the Adviser conversations.
+
+
+#### USER STORY 9: The chat - Seeker
+
+As an advice seeker,
+I want to message the advisor I matched with so that
+we can schedule a consultation.
+
+**Acceptance criteria:** 
+- On the advisor’s page, the seeker must find a button to message the advisor
+- I want to be notified when I have a message to read
+
+**Subtasks:**
+1. Create a chat template on the seeker’s advisor page
+2. Create chat view and URL
+3. Create message template
+4. Create message form
+5. Create model message
+6. Email advisor when there is a new message
+
+
+#### USER STORY 10: The chat - Advisor
+
+As an advisor,
+I want to message the seeker I matched with so that
+we can schedule a consultation.
+
+**Acceptance criteria:**
+- On the client's page, there is a button to open the client’s profile whit the chat
+- On the client profile, there is a message form to message the client
+- On the client profile, the advisor can see the client’s details and chat
+- The client must be notified when there is a message to read
+
+**Subtasks:**
+1. Create a button to open the chat or client page
+2. Create a client profile template page
+3. Create client profile view and URL
+4. Create conversation logic on the client profile page
+5. Send an email to the client when the advisor adds a message
+
+
+#### USER STORY 11: Advisor view
+
+As an Advice seeker,
+I want to see all the Information of the advisor I matched with and our conversation so that
+I can find our information easily.
+
+**Acceptance criteria:** 
+- On the advisor page, I have to find his business info and the chat to contact them easily
+
+**Subtasks:**
+1. Create advisor template
+2. Create views
+3. Create URLs
+4. Epic 4 - The order: Creation of the checkout and payment processes.
+
+
+#### USER STORY 12: Schedule consultation
+
+As a financial advisor,
+I want to schedule a consultation,
+so that I can meet the Seeker.
+
+**Acceptance criteria:**
+- The advisor can send an appointment with a link to a video chat
+- The advisor received an on-screen notification on consultation sent
+- The appointment appears in the chat
+- The Seeker receives an email with the appointment details and a link to pay
+- The Seeker receives the appointment by a chat with a button to confirm
+- When the first consultation is scheduled, the adviser becomes the Seeker’s adviser and it will be visible in the seeker's profile
+
+**Subtasks:**
+1. Create consultation form
+2. Create consultation message view and template
+3. Create a message output template
+4. Create consultation model
+5. The seeker receives an email with consultation details
+6. Seeker sees the appointment in the chat with the advisor
+
 
 
 Mapping out the user stories helped me easily identify the problems the application solves:
