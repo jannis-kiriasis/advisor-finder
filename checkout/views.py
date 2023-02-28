@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from .models import Order
 
 
 from .forms import OrderForm
@@ -35,6 +36,11 @@ def checkout(request):
 
         return redirect('advisor')
 
+    total = consultation.price
+
+    af_fee = total * 5 / 100
+    grand_total = total + af_fee
+
     if request.method == 'POST':
 
         order_form = OrderForm(request.POST)
@@ -43,12 +49,13 @@ def checkout(request):
 
             order_form.instance.consultation = consultation
             order_form.instance.fee = total
-            order_form.instance.grand_total = grand_total
+
+            stripe_total = round(total * 100)
+            order_form.instance.stripe_total = stripe_total
 
             order = order_form.save()
 
-            total = order.fee
-            stripe_total = round(total * 100)
+            request.session['save_info'] = 'save-info' in request.POST
 
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]
@@ -60,11 +67,6 @@ def checkout(request):
                 Please double check your information.')
 
     elif request.method == 'GET':
-
-        total = consultation.price
-
-        af_fee = total * 5 / 100
-        grand_total = total + af_fee
 
         stripe_total = round(total * 100)
 
@@ -97,3 +99,23 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
+
+
+def checkout_success(request, order_number):
+
+    """
+    Handle successfullt checkouts
+    """
+
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    context = {
+        'order': order,
+    }
+
+    return render(request, 'checkout/checkout-success.html', context)

@@ -25,6 +25,7 @@ class Order(models.Model):
     street_address = models.CharField(max_length=80, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     fee = models.DecimalField(max_digits=5, decimal_places=2)
+    af_fee = models.DecimalField(max_digits=5, decimal_places=2)
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0
     )
@@ -48,8 +49,8 @@ class Order(models.Model):
         add Advice Found fee to the grand total.
         """
 
-        # af_fee = self.price * 5 / 100
-        # self.grand_total = self.price + af_fee
+        self.af_fee = self.fee * 5 / 100
+        self.grand_total = self.fee + self.af_fee
 
         if not self.order_number:
             self.order_number = self._generate_order_number()
