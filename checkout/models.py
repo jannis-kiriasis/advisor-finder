@@ -48,8 +48,8 @@ class Order(models.Model):
         add Advice Found fee to the grand total.
         """
 
-        af_fee = self.price * 5 / 100
-        self.grand_total = self.price + af_fee
+        # af_fee = self.price * 5 / 100
+        # self.grand_total = self.price + af_fee
 
         if not self.order_number:
             self.order_number = self._generate_order_number()
