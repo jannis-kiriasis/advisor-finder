@@ -18,12 +18,22 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    # Get the seeker profile
     get_seeker_profile = get_object_or_404(SeekerUserProfile, user=request.user)
+
+    # Get the seeker matches (it's 1 only)
     get_all_matches = Match.objects.filter(seeker=get_seeker_profile)
 
-    consultation = Consultation.objects.filter(
-        match__id__in=get_all_matches
-        ).latest('created')
+    # Get latest consultation schedule of the match if it exisits.
+    # If it doesn't exist redirect user to chat.
+    try:
+        consultation = Consultation.objects.filter(
+            match__id__in=get_all_matches
+            ).latest('created')
+    except Consultation.DoesNotExist:
+        message.error(request, ("Consultation doesn't exist."))
+
+        return redirect('advisor')
 
     if request.method == 'POST':
 
@@ -32,14 +42,13 @@ def checkout(request):
         if order_form.is_valid():
 
             order_form.instance.consultation = consultation
+            order_form.instance.fee = total
+            order_form.instance.grand_total = grand_total
 
             order = order_form.save()
 
-            total = consultation.price
+            total = order.fee
             stripe_total = round(total * 100)
-
-            # Save the info to the user's profile if all is well
-            request.session['save_info'] = 'save-info' in request.POST
 
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]
