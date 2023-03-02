@@ -5,6 +5,7 @@ from django import forms
 
 CONFIRMED = ((0, 'Not confirmed'), (1, 'Confirmed'))
 
+
 class Consultation(models.Model):
 
     """

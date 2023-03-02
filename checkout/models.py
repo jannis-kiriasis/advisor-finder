@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import Sum
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
+from consultations.services import confirm_consultation
 
 
 class Order(models.Model):
@@ -16,7 +17,7 @@ class Order(models.Model):
         SeekerUserProfile, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='seeker'
     )
-    first_name = models.CharField(max_length=50, null=False, blank=False)
+    name = models.CharField(max_length=50, null=False, blank=False)
     last_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -49,11 +50,16 @@ class Order(models.Model):
         add Advice Found fee to the grand total.
         """
 
+        self.fee = self.consultation.price or 0
         self.af_fee = self.fee * 5 / 100
         self.grand_total = self.fee + self.af_fee
 
         if not self.order_number:
             self.order_number = self._generate_order_number()
+
+        order = self
+        confirm_consultation(order)
+
         super().save(*args, **kwargs)
 
     def __str__(self):

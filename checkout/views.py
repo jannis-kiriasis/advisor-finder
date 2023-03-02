@@ -12,6 +12,7 @@ from seekers.models import SeekerUserProfile
 from matches.models import Match
 from consultations.models import Consultation
 
+import json
 import stripe
 
 
@@ -23,7 +24,11 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'save_info': request.POST.get('save_info'),
             'username': request.user,
+            'save_consultation': request.POST.get('save_consultation'),
+            'save_seeker': request.POST.get('save_seeker'),
+            'save_last_name': request.POST.get('save_last_name')
         })
+
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry, your payment cannot be \
@@ -67,8 +72,11 @@ def checkout(request):
 
         if order_form.is_valid():
 
-            order_form.instance.consultation = consultation
+            # order_form.instance.seeker = get_seeker_profile
+            # order_form.instance.consultation = consultation
             order_form.instance.fee = total
+            order_form.instance.af_fee = af_fee
+            order_form.instance.grand_total = grand_total
 
             stripe_total = round(total * 100)
             order_form.instance.stripe_total = stripe_total
@@ -78,6 +86,9 @@ def checkout(request):
             order.stripe_pid = pid
             order.save()
 
+            request.session['save_consultation'] = 'save-consultation' in request.POST
+            request.session['save_seeker'] = 'save-seeker' in request.POST
+            request.session['save_last_name'] = 'save-last-name' in request.POST
             request.session['save_info'] = 'save-info' in request.POST
 
             return redirect(reverse(
@@ -100,9 +111,12 @@ def checkout(request):
         )
 
         data = {
-                'first_name': request.user.first_name,
-                'last_name': request.user.last_name,
-                'email': request.user.email
+            'name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'email': request.user.email,
+            'town_or_city': get_seeker_profile.town_or_city,
+            'consultation': consultation,
+            'seeker': get_seeker_profile
         }
 
         order_form = OrderForm(data)
