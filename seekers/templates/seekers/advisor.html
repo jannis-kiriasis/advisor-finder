@@ -119,9 +119,19 @@
                                 <p><span class="fw-bold">Fee:</span> 
                                     {{ el.price }}
                                 </p>
-                                <a class="btn btn-primary" href="{% url 'checkout' %}">
-                                    Confirm consultation
-                                </a>
+
+                                {% if el.status == 0 %}
+
+                                    <a class="btn btn-primary mt-2" href="{% url 'checkout' %}">
+                                        Confirm consultation
+                                    </a>
+                                {% else %}
+                                    <a class="btn btn-primary mt-2" href="{{ consultation.link }}">
+                                        Start meeting
+                                    </a>
+
+                                {% endif %}
+
                                 <p>
                                     <span class="small">
                                         {{ el.created }}
