@@ -337,13 +337,73 @@ so that I can meet the Seeker.
 6. Seeker sees the appointment in the chat with the advisor
 
 
+### USER STORY 13: Appointments
+
+As an advisor,
+I want to see all the appointments I have scheduled,
+so that I can keep up with every client.
+
+**Acceptance Criteria:**
+- Appointments need to be ordered by the closest one
+- Appointments need to be labelled confirmed or not confirmed
+
+**Subtasks:**
+1. Create template and URLs for appointment page
+2. Create appointment view
+3. Create a view to mark the appointment confirmed after payment 	
+4. Change consultation status
+5. Disable cancel button
+6. Seeker seeks link to the meeting instead of to confirm the consultation
+
+
+### USER STORY 14: The checkout
+
+As a seeker,
+I want to pay for the consultation
+so that I can talk to an Adviser.
+
+**Acceptance Criteria**
+- The Seeker needs to go through the checkout and pay for the consultation
+- The Adviser receives an email with the payment confirmed
+- The Seeker receives an email with the confirmation
+- The link to connect to the advisor becomes active
+
+**Subtasks:**
+1. Order model
+2. Create checkout form
+3. Create checkout views 
+4. Create checkout template
+5. Connect stripe
+6. Send payment intent to stripe
+7. Add on page notification of order processed
+8. Send email to seeker with consultation schedule and payment link
+9. Remove button on checkout to pay after the consultation has been paid (redirect to order page)
+
+
+### USER STORY 15: Notify advisor of consultation confirmed
+
+As an adviser, 
+
+I want to be notified about the payment success and the consultation confirmation 
+
+so that I can get ready for the meeting.
+
+**Acceptance Criteria**
+- Send an email to the Adviser with the payment confirmation and the link to access the chat.
+
+**Subtasks:**
+1. Create send the email logic
+2. Create the email template
+
 
 Mapping out the user stories helped me easily identify the problems the application solves:
 
-- There is no need to save/download approval emails as they are all stored in a database
-- The RC can find all projects completed easily and download all the approvals from the database
-- There is no need to exchange emails as the projects can be commented on.
-- Everything related to a project is centralised. So comments, approvals, deadlines and other project details can be found in the same place.
+- This app helps seekers who are not sure where to find financial advice
+- Advisors are selected based on the seeker need and close to their location
+- Advisors can find new clients easily that they can help as they specialise in the seekers' need
+- Advisors can find clients nationwide
+- Advisors don't need to handle online payments of install any technology
+- Payments are happening securely online
 
 
 ## Features
@@ -352,34 +412,49 @@ In the following paragraphs, we are going to see what features appear on the web
 
 ### 1. Main navigation
 
-   The main navigation includes the following pages:
-   - Create a project
-   - Dashboard – contains all the projects opened by anyone 
-   - My projects – the projects the logged-in user has started
-   - My approvals – the approvals the logged-in user needs to give
-   - Notification centre – a list of things that happened related to the logged-in user
+   The main navigation in different from logged in users and logged out users.
 
-The navigation allows users to filter the projects to easily find the projects they need to approve, and started and the option to create a project. 
+   Logged out users can only see the links to login and register to the app.
 
-![Logged in nav](./media/README-files/logged-in-nav.png)  
+   Navigation is also different for users that have completed the signup process and users that haven't completed the sign up process.
 
-Non-logged-in users can only see sign-up and sign-in in the navigation.  
+   Users that haven't completed the signup process can only see a link to logout.
 
-![Logged out nav](./media/README-files/logged-out-nav.png)  
+   Users that have completed the signup process see different navigation whether they are seekers or advisors.
 
-### 2. The projects
+   Advisors see the following links:
 
-The project includes the project details that the PM outlined. It also includes the approvers that need to approve it and their approval due dates.
+   ![Advisors nav](./media/README-files/navigation-advisor.png)  
 
-![Normal project](./media/README-files/project-blue.png)  
+   They are self explenatory. The difference between a match and a client is that a client has accepted a consultation, a match hasn't.
 
-The content seen is personalised for the signed-in user. On the ‘My approvals’ page, if the logged-in user has already approved the project, it will have a green background (otherwise light blue)
+   Seekers see the following links:
 
-![Project approved](./media/README-files/project-approved.png)  
+   ![Advisors nav](./media/README-files/navigation-seeker.png)  
 
-On the ‘my projects’ page, if the logged-in user has already completed a project, it will have a green background (otherwise light blue).
 
-![My project completed](./media/README-files/project-green.png)  
+### 2. The signup - User creation
+
+The first part of the signup process requires the user to create an account with their personal informations.
+
+   ![Advisors nav](./media/README-files/navigation-seeker.png)  
+
+### 2. The signup - User choice
+
+The second part of the signup process requires users to select whether they are a seekers or advisors.
+
+### 2. The signup - Seeker or advisor profile creation
+
+The third step of the signup process requires users to complete the seeker or advisor forms with information specific to each user type.
+
+**Advisor form**
+   ![Advisors nav](./media/README-files/advisor-form.png)  
+
+**Seeker form**
+   ![Advisors nav](./media/README-files/seeker-form.png)  
+
+
+
 
 ### 3. The project details
 
