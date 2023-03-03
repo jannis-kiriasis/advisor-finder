@@ -129,8 +129,10 @@ button:focus:not(:focus-visible) {
 /* Navigation */
 
 nav,
-.dropdown-menu {
+.dropdown-menu,
+footer {
     background-color: var(--liberty);
+    color: #ffffff;
 }
 
 .navbar-brand,
@@ -170,12 +172,6 @@ nav > div > ul > li > a:hover,
     align-items: right !important;
 }
 
-/* dashboard */
-
-
-.match {
-    background-color: var(--fuzzy-wuzzy-light);
-}
 
 /* advisors/clients */
 
@@ -184,9 +180,11 @@ nav > div > ul > li > a:hover,
 }
 
 /* seekers/advisor/ */
+/* dashboard */
 
 .message-form-container,
-.message-bg {
+.message-bg,
+.match {
     background-color: var(--fuzzy-wuzzy-light);
 }
 

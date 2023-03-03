@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    {% block extra_meta %}
+    {% endblock %}
+    
     <title>{% block head_title %}{% endblock %}</title>
     {% block extra_head %}
     {% endblock %}

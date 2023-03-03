@@ -41,8 +41,7 @@ def seeker_signup(request):
     form = SeekerSignupForm()
 
     context = {
-        'form': form,
-        'page_title': 'Advice Seeker Signup'
+        'form': form
     }
     return render(request, 'seekers/signup.html', context)
 
@@ -155,12 +154,13 @@ def advisor_profile(request):
             last_message = messages_sent.latest('created_on')
             email_note_to_advisor(last_message)
 
+            return redirect(reverse('advisor'))
+
         else:
             message_form = MessageForm()
 
     context = {
         'match': match,
-        'page_title': 'My advisor',
         'message_form': MessageForm,
         'elements': elements
     }

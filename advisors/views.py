@@ -47,9 +47,9 @@ def advisor_signup(request):
     form = AdvisorSignupForm()
 
     context = {
-        'form': form,
-        'page_title': 'Financial Advisor Signup'
+        'form': form
     }
+
     return render(request, 'advisors/signup.html', context)
 
 
@@ -150,8 +150,7 @@ def matches_list(request):
     matches = Match.objects.filter(advisor=advisor, is_client=False)
 
     context = {
-        'matches': matches,
-        'page_title': 'My Matches'
+        'matches': matches
     }
 
     return render(request, 'advisors/matches.html', context)
@@ -175,8 +174,7 @@ def clients_list(request):
     matches = Match.objects.filter(advisor=advisor, is_client=True)
 
     context = {
-        'matches': matches,
-        'page_title': 'My Clients'
+        'matches': matches
     }
 
     return render(request, 'advisors/clients.html', context)
@@ -247,7 +245,7 @@ def seeker_profile(request, match_id):
         'consultations': consultations,
         'message_form': MessageForm,
         'consultation_form': ConsultationForm,
-        'page_title': f'{ match }',
+        'page_title': f'{ match.seeker }',
         'elements': elements
         }
 

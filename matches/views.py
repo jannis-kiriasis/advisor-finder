@@ -64,10 +64,6 @@ def match(request):
         'seeker': seeker,
         'advisor': advisor,
         'other_advisors': other_advisors,
-        'page_title': 'Dashboard'
     }
 
     return render(request, 'matches/match.html', context)
-
-
-
