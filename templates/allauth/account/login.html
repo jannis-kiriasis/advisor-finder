@@ -4,6 +4,23 @@
 {% load i18n %}
 {% load account socialaccount %}
 
+{% block extra_meta %}
+    <!-- SEO metadata -->
+    <meta name="description" content="Login to Advice Found to find a financial advisor or talk to your advisor. Log in now.">
+    <meta name="keywords" content="Login Advice Found, Advice Found login">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url 'account_login' }}">
+
+    <!-- OG tags-->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Login to Advice Found | Advice Found">
+    <meta property="og:description" content="Login to Advice Found to find a financial advisor or talk to your advisor. Log in now.">
+    <meta name="image" property="og:image" content="assets/images/advice-found-logo.png">
+    <meta property="og:url" content="{{ url 'account_login' }}">
+    <meta property="og:site_name" content="Advice Found">
+    <meta name="author" content="Jannis Kiriasis">
+{% endblock %}
+
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
