@@ -239,7 +239,7 @@ def seeker_profile(request, match_id):
 
             create_consultation(consultation_form, match, request)
 
-            return reditect('seeker_profile')
+            return redirect('seeker_profile')
 
     context = {
         'match': match,
@@ -276,3 +276,17 @@ def consultation_list(request):
     }
 
     return render(request, 'advisors/appointments.html', context)
+
+
+@login_required
+def delete_consultation(request, consultation_id):
+
+    """
+    Delete consultation and show message.
+    """
+
+    consultation = get_object_or_404(Consultation, id=consultation_id)
+    consultation.delete()
+    messages.success(request, 'The consultation has been deleted.')
+
+    return redirect('consultations')
