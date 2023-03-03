@@ -34,13 +34,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = 'DEVELOPMENT' in os.environ
-if os.environ.get("DEVELOPMENT"):
-    development = True
-else:
-    development = False
-
-DEBUG = development
+DEBUG = False
 
 ALLOWED_HOSTS = ['advisor-finder.herokuapp.com', 'localhost']
 
