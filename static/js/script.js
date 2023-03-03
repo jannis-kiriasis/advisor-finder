@@ -183,23 +183,25 @@ function deactivateAdvisorChoice(event) {
 
 }
 
+
 /** Fire alert before to message advisor for the first time.
 */
 function messageAdvisor(event) {
     event.preventDefault();
+
     Swal.fire({
-        title: 'Info',
+        title: 'Ready to chat?',
+        text: "You'll be assigned to this advisor. Should you wish to change advisor in the future please contact jannis.kiriasis@gmail.com",
         icon: 'info',
-        text:
-        "By continuing to the chat, you'll be assigned to this advisor. Should you wish to change advisor in the future you can contact jannis.kiriasis@gmail.com",
-        showCloseButton: true,
-        showCancelButton: false,
-        focusConfirm: false,
-        confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Great!',
-        confirmButtonAriaLabel: 'Thumbs up, great!',
-        cancelButtonText:
-        '<i class="fa fa-thumbs-down"></i>',
-        cancelButtonAriaLabel: 'Thumbs down'
-    })
+        iconColor: 'var(--tan)',
+        showCancelButton: true,
+        confirmButtonColor: 'var(--verdigris)',
+        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        confirmButtonText: 'Yes, start chat!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = event.target.href
+        }
+    });  
 }
+

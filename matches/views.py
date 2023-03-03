@@ -5,23 +5,11 @@ from seekers.models import SeekerUserProfile
 from seekers.forms import SeekerSignupForm
 from .models import Match
 from django.contrib import messages
+from django.contrib.auth.models import User
+
 
 import random
 from random import shuffle
-
-
-def save_match(advisor, seeker):
-
-    """
-    Save the matched in a model/
-    """
-
-    match = Match.objects.create(
-        advisor=advisor,
-        seeker=seeker
-    )
-
-    match.save()
 
 
 @login_required
@@ -48,7 +36,7 @@ def match(request):
         specialisation=seeker.need
     )
 
-    try:
+    if random.choice(filter_advisors):
         advisor = random.choice(filter_advisors)
 
         # Query all the advisors that specialise in the seeker need.
@@ -61,26 +49,39 @@ def match(request):
         # other_advisors = AdvisorUserProfile.objects.all()
         shuffle(other_advisors)
 
-        save_match(advisor, seeker)
-
         context = {
             'seeker': seeker,
-            'advisor': advisor,
+            'best_advisor': advisor,
             'other_advisors': other_advisors,
         }
 
         return render(request, 'matches/match.html', context)
 
-    except:
+    else:
         messages.warning(
             request,
             'There are no advisors available currently, try again later.'
         )
+        return redirect('seeker_profile')
 
-    form = SeekerSignupForm(instance=seeker)
 
-    context = {
-        'profile': seeker,
-        'form': form
-    }
-    return render(request, 'seekers/profile.html', context)
+def create_match(request, *arg, **kwargs):
+
+    """
+    Save the matched in a model. After swal confirmation.
+    """
+
+    # get view url
+    url = request.path
+
+    # The digits after the last '/' are equal to the advisor_id choosen
+    advisor_id = url.split('select-advisor/', 1)[1]
+
+    user = request.user
+    advisor = AdvisorUserProfile(id=advisor_id)
+
+    match = Match.objects.create(
+        advisor=advisor,
+        seeker=get_object_or_404(SeekerUserProfile, user=user)
+    )
+    return redirect('advisor')

@@ -25,16 +25,16 @@
 
             <div class="card text-center col-6">
                 <div class="card-body">
-                    <h2 class="card-title pb-2">{{ advisor.business_name }}</h2>
-                    <p class="card-text"><span class="fw-bold">Location: </span>{{ advisor.town_or_city }}</p>
-                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ advisor.specialisation }}</p>
-                    <p class="card-text">{{ advisor.business_description }}.</p>
+                    <h2 class="card-title pb-2">{{ best_advisor.business_name }}</h2>
+                    <p class="card-text"><span class="fw-bold">Location: </span>{{ best_advisor.town_or_city }}</p>
+                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ best_advisor.specialisation }}</p>
+                    <p class="card-text">{{ best_advisor.business_description }}.</p>
                 </div>
                 
             </div>
 
             <div class="card text-center mt-4 col-6">
-                    <a href="#" id="message" class="btn btn-primary">Message advisor</a>
+                    <a href="{% url 'create_match' best_advisor.id %}" id="message" class="btn btn-primary">Message advisor</a>
                 </div>
             </div>
 
@@ -50,12 +50,12 @@
             </h2>
         </div>
 
-        {% for advisor in other_advisors %}
+        {% for other_advisor in other_advisors %}
         <div class="card mt-4 text-center col-6">
             <div class="card-body">
-                <h3 class="card-title pb-2">{{ advisor.business_name }}</h3>
-                <p class="card-text"><span class="fw-bold">Location: </span>{{ advisor.town_or_city }}</p>
-                <p class="card-text">{{ advisor.business_description }}.</p>
+                <h3 class="card-title pb-2">{{ other_advisor.business_name }}</h3>
+                <p class="card-text"><span class="fw-bold">Location: </span>{{ other_advisor.town_or_city }}</p>
+                <p class="card-text">{{ other_advisor.business_description }}.</p>
                 <a href="#" class="btn btn-outline-dark">Message advisor</a>
 
             </div>
