@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import AdvisorSignupForm, MessageForm
@@ -239,7 +239,7 @@ def seeker_profile(request, match_id):
 
             create_consultation(consultation_form, match, request)
 
-            return reditect('seeker_profile')
+            return redirect('seeker_profile')
 
     context = {
         'match': match,
@@ -276,3 +276,60 @@ def consultation_list(request):
     }
 
     return render(request, 'advisors/appointments.html', context)
+
+
+@login_required
+def match_delete_consultation(request, consultation_id, match_id):
+
+    """
+    Delete consultation and show message.
+    """
+    find_consultation = Consultation.objects.filter(
+        match=match_id,
+    )
+    consultation = get_object_or_404(
+        find_consultation,
+        id=consultation_id
+    )
+
+    consultation.delete()
+
+    messages.success(request, 'The consultation has been deleted.')
+
+    return redirect(reverse('match_profile', kwargs={'match_id': match_id}))
+
+
+@login_required
+def delete_consultation(request, consultation_id):
+
+    """
+    Delete consultation and show message.
+    """
+
+    consultation = get_object_or_404(Consultation, id=consultation_id)
+    consultation.delete()
+    messages.success(request, 'The consultation has been deleted.')
+
+    return redirect('consultations')
+
+
+@login_required
+def client_delete_consultation(request, consultation_id, match_id):
+
+    """
+    Delete consultation and show message.
+    """
+
+    find_consultation = Consultation.objects.filter(
+        match=match_id,
+    )
+    consultation = get_object_or_404(
+        find_consultation,
+        id=consultation_id
+    )
+
+    consultation.delete()
+
+    messages.success(request, 'The consultation has been deleted.')
+
+    return redirect(reverse('client_profile', kwargs={'match_id': match_id}))

@@ -5,6 +5,7 @@
 
 ## Table of contents
 -  [Introduction](#introduction)
+-  [Ecommerce business model](#ecommerce-business-model)
 -	[User Experience (UX)](#user-experience-ux---user-stories)
 -	[Features](#features)
 -	[Where user stories meet features](#where-user-stories-meet-features)

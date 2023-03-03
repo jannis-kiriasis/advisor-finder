@@ -60,7 +60,7 @@
 
                 <div class="card-body text-center">
                     {% if consultation.status == 0 %}
-                    <a href="#" class="btn btn-secondary">Cancel</a>
+                    <a href="delete/{{ consultation.id }} " class="btn btn-secondary">Cancel</a>
 
                     {% else %}
                     <a href="{{ consultation.link }}" class="btn btn-primary">Start meeting</a>

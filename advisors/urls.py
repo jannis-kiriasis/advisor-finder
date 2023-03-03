@@ -10,8 +10,37 @@ urlpatterns = [
     path('deactivate/', views.deactivate_profile, name='deactivate_profile'),
     path('matches/', views.matches_list, name='matches'),
     path('clients/', views.clients_list, name='clients'),
-    path('matches/client/<match_id>', views.seeker_profile, name='seeker_profile'),
-    path('clients/client/<match_id>', views.seeker_profile, name='seeker_profile'),
-    path('appointments/', views.consultation_list, name='consultations'),
+    path(
+        'matches/client/<match_id>',
+        views.seeker_profile,
+        name='match_profile'
+    ),
+    path(
+        'matches/client/<match_id>/delete/<consultation_id>',
+        views.match_delete_consultation,
+        name='match_delete_consultation'
+    ),
+
+    path(
+        'clients/client/<match_id>',
+        views.seeker_profile,
+        name='client_profile'
+    ),
+    path(
+        'clients/client/<match_id>/delete/<consultation_id>',
+        views.client_delete_consultation,
+        name='client_delete_consultation'
+    ),
+
+    path(
+        'appointments/',
+        views.consultation_list,
+        name='consultations'
+    ),
+    path(
+        'appointments/delete/<consultation_id>',
+        views.delete_consultation,
+        name='delete'
+    ),
 
 ]

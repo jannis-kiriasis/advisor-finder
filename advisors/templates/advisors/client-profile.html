@@ -131,7 +131,7 @@
                                     Not confirmed
                                 </p>
 
-                                <a class="btn btn-secondary mt-2" href="#">
+                                <a class="btn btn-secondary mt-2" href="{{match.id}}/delete/{{ el.id }}">
                                     Cancel
                                 </a>
                                 {% else %}
@@ -140,7 +140,7 @@
                                     Confirmed
                                 </p>
 
-                                <a class="btn btn-primary mt-2" href="{{ consultation.link }}">
+                                <a class="btn btn-primary mt-2" href="{{ el.link }}">
                                     Start meeting
                                 </a>
                                 {% endif %}
