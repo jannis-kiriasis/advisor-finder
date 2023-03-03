@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from advisors.models import AdvisorUserProfile
 from seekers.models import SeekerUserProfile
+from seekers.forms import SeekerSignupForm
 from .models import Match
+from django.contrib import messages
 
 import random
 from random import shuffle
@@ -46,24 +48,39 @@ def match(request):
         specialisation=seeker.need
     )
 
-    advisor = random.choice(filter_advisors)
+    try:
+        advisor = random.choice(filter_advisors)
 
-    # Query all the advisors that specialise in the seeker need.
-    # Return the queryset in random order
+        # Query all the advisors that specialise in the seeker need.
+        # Return the queryset in random order
 
-    other_advisors = list(
-        AdvisorUserProfile.objects.filter(specialisation=seeker.need)
-    )
+        other_advisors = list(
+            AdvisorUserProfile.objects.filter(specialisation=seeker.need)
+        )
 
-    # other_advisors = AdvisorUserProfile.objects.all()
-    shuffle(other_advisors)
+        # other_advisors = AdvisorUserProfile.objects.all()
+        shuffle(other_advisors)
 
-    save_match(advisor, seeker)
+        save_match(advisor, seeker)
+
+        context = {
+            'seeker': seeker,
+            'advisor': advisor,
+            'other_advisors': other_advisors,
+        }
+
+        return render(request, 'matches/match.html', context)
+
+    except:
+        messages.warning(
+            request,
+            'There are no advisors available currently, try again later.'
+        )
+
+    form = SeekerSignupForm(instance=seeker)
 
     context = {
-        'seeker': seeker,
-        'advisor': advisor,
-        'other_advisors': other_advisors,
+        'profile': seeker,
+        'form': form
     }
-
-    return render(request, 'matches/match.html', context)
+    return render(request, 'seekers/profile.html', context)

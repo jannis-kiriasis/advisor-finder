@@ -34,7 +34,7 @@ def seeker_signup(request):
                 'Signup completed.'
                 )
 
-            return redirect('seeker_signup')
+            return redirect('match')
 
     messages.error(request, 'Signup not completed. Try again.')
 

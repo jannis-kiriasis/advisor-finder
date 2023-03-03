@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserTypeForm
 from .models import UserProfile
+from advisors.models import AdvisorUserProfile
+from seekers.models import SeekerUserProfile
+from matches.models import Match
 
 
 def index(request):
@@ -46,21 +49,50 @@ def advisor_seeker(request):
         'page_title': 'Are you Advisor or Seeker?'
     }
 
-    # if the logged in user has a user profile already, complete the advisor or
-    # the seeker signup process
+    # check if the logged in user has a userProfile. If not, create one
 
     if UserProfile.objects.filter(user=request.user).exists():
 
-        user = UserProfile.objects.get(user=request.user)
+        user_profile = UserProfile.objects.get(user=request.user)
 
-        if user.user_type == 0:
-            return redirect('advisor_signup')
+        # if the userProfile exists, check whether it's Advisor or Seeker
+        if user_profile.user_type == 0:
 
-        elif user.user_type == 1:
-            return redirect('seeker_signup')
+            # If it's advisor, check advisor profile has been created.
+            # If not, create one.
+            if AdvisorUserProfile.objects.filter(user=request.user).exists():
 
-    # if the logged in user doesn't have a profile, render the
-    # /advisor-or-seeker/ template to choose a user type.
+                # check the profile is approved. If so show clients.
+                # If not, show profile
+                advisor = AdvisorUserProfile.objects.get(user=request.user)
+
+                if advisor.approved == 1:
+                    return redirect('clients')
+                else:
+                    return redirect('advisor_profile')
+
+            else:
+                return redirect('advisor_signup')
+
+        elif user_profile.user_type == 1:
+
+            # If seeker profile exists,
+            # check whether an advisor has been assigned
+
+            if SeekerUserProfile.objects.filter(user=request.user).exists():
+
+                seeker = SeekerUserProfile.objects.get(user=request.user)
+
+                # If the seeker has an advisor, go to advisor page
+                # if not, go to match page
+
+                if Match.objects.filter(seeker=seeker):
+                    return redirect('advisor')
+                else:
+                    return redirect('match')
+
+            else:
+                return redirect('seeker_signup')
 
     else:
         return render(request, 'home/advisor-or-seeker.html', context)

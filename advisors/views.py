@@ -29,17 +29,17 @@ def advisor_signup(request):
             form.instance.user = request.user
             form.save()
 
-            messages.success(
-                request,
-                'Signup completed. Now wait for Advice Found profile check.'
-                )
-
             queryset = AdvisorUserProfile.objects
             profile = get_object_or_404(queryset, user=request.user)
 
             advisor_to_approve_email(profile)
 
-            return redirect('advisor_signup')
+            return redirect('advisor_profile')
+
+            messages.success(
+                request,
+                'Signup completed. Now wait for Advice Found profile check.'
+                )
 
         else:
             messages.error(request, 'Signup not completed. Try again.')
