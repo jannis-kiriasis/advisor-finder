@@ -1,11 +1,11 @@
-Hi {{ advisor }},
+Hi {{ order.consultation.match.advisor }},
 
-Your consultation with {{ seeker }} has been confirmed. 
+Your consultation with {{ order.seeker }} has been confirmed. 
 Your consultation details are:
 
-- date: {{ date }}
-- time: {{ time }}
-- online meeting: {{ link }}
+- date: {{ order.consultation.date }}
+- time: {{ order.consultation.time }}
+- online meeting: {{ order.consultation.link }}
 
 Login to Advice Found and your consultation details will be
 in your client's messages.

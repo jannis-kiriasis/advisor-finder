@@ -1,6 +1,6 @@
-Hi {{ seeker }},
+Hi {{ order.seeker }},
 
-Your your payment for the consultation {{ order }} failed.
+Your your payment for the consultation {{ order.order_number }} failed.
 
 Login to Advice Found and to try again.
 
