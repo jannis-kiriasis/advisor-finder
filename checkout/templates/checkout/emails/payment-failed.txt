@@ -1,4 +1,5 @@
-Hi {{ seeker }},   
+Hi {{ seeker }},
+
 Your your payment for the consultation {{ order }} failed.
 
 Login to Advice Found and to try again.

@@ -1,0 +1,14 @@
+Hi {{ advisor }},
+
+Your consultation with {{ seeker }} has been confirmed. 
+Your consultation details are:
+
+- date: {{ date }}
+- time: {{ time }}
+- online meeting: {{ link }}
+
+Login to Advice Found and your consultation details will be
+in your client's messages.
+
+Thank you for usying Advice Found.
+
