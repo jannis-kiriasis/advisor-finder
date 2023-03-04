@@ -197,6 +197,7 @@ def seeker_profile(request, match_id):
     elements = list(chain(notes, consultations))
 
     hide_consultation_form = False
+    consultation_not_confirmed = False
 
     if hide_consultation_form is False:
 
