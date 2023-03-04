@@ -36,7 +36,7 @@
 
         <title>{% block extra_title %}{% endblock %} | Financial Advisor Finder</title>
     </head>
-    <body class="pd-150">
+    <body class="d-flex flex-column min-vh-100">
         <header>
             {% include 'includes/navigation.html' %}
         </header>
@@ -59,7 +59,7 @@
         {% block content %}
         {% endblock %}
     
-        <footer class="fixed-bottom py-3 pt-4 pb-4 mt-4 pb-150">
+        <footer class="py-3 pt-4 pb-4 mt-4 mt-auto">
             <p class="text-center">© 2023 Advice Found</p>
         </footer>
 
