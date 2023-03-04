@@ -9,7 +9,6 @@ from matches.models import Match
 
 
 def index(request):
-
     """Return index.html page"""
 
     return render(request, 'home/index.html')

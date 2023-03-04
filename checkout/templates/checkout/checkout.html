@@ -21,7 +21,6 @@
         </div>
     </div>
 
-    {% if no_consultation %}
     <div class="row">
         <div class="col-6 mb-3 mt-3 mx-auto text-center">
             <h2>Order Summary</h2>
@@ -108,18 +107,7 @@
             </span>
         </h1>
     </div>
-    {% else %}
 
-    <p class="text-center">There are no consultations to checkout.</p>
-    <div class="row">
-        <div class="col-12 col-md-6 text-center mt-5 mx-auto">
-                <a href="{% url 'advisor' %}" class="btn btn-secondary">
-                    <span class="text-uppercase">Back to the chat</span>
-                </a>
-        </div>
-    </div>
-
-    {% endif %}
 </div>
 
 {% endblock %}

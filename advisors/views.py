@@ -148,8 +148,10 @@ def matches_list(request):
     # Filter matches by logged in advisor
 
     matches = Match.objects.filter(advisor=advisor, is_client=False)
+    matches_count = matches.count()
 
     context = {
+        'matches_count': matches_count,
         'matches': matches
     }
 
@@ -172,9 +174,11 @@ def clients_list(request):
     # Filter matches by logged in advisor
 
     matches = Match.objects.filter(advisor=advisor, is_client=True)
+    matches_count = matches.count()
 
     context = {
-        'matches': matches
+        'matches': matches,
+        'matches_count': matches_count
     }
 
     return render(request, 'advisors/clients.html', context)

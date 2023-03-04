@@ -27,6 +27,10 @@
         <div class="container container-xxl row justify-content-center align-items-center mx-auto">
 
             {% for match in matches %}
+            
+            {% if matches_count == 0 %}
+            <p>You have no clients. You will be match with advice seekers soon.</p>
+            {% else %}
             <div class="card card-clients mx-1 my-1 col-md-1">
 
                 <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
@@ -59,6 +63,7 @@
                 </div>
 
             </div>
+            {% endif %}
             {% endfor %}
 
         </div>
