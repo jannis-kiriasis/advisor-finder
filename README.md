@@ -455,50 +455,98 @@ The third step of the signup process requires users to complete the seeker or ad
    ![Advisors nav](./media/README-files/seeker-form.png)  
 
 
+### 3. The matching page
+
+On the matching page, seekers are presented with their best matches. Should they decide to match with another advisor, they have the option to do it.
+
+The seeker is matched with an advisor based on the following criteria:
+1. seeker's need is equal to the advisor specialisation
+2. seeker's location is equal to the advisor location
+3. a randomiser select 1 advisor out of the restricted pool to make sure it isn't always the same advisor
+
+In case there isn't an advisor in the same city, the match is based on the need and the randomiser.
+There should always be an advisor for every specialisation, however in case it is also missing, the advisor selection is randomised.
+
+Below the best match, the is the remaining list of advisors available in random order in case the seeker wants to choose a different advisor.
+
+To be included in the matching logic, the advisor must:
+1. have been approved (by Advice Found)
+2. not be inactive (advisors can deactivate their profile if they don't want to be matched)
+
+Currently, the seekers can't be rematched. This feature can be added in the future. Anyway generally, this is a long lasting relationship.
+
+### 4. The seeker profile
+
+On this page, the seeker can review their generalities and update them if needed.
+
+### 5. The seeker's advisor
+
+On this page, the seekers can see the main information about their advisors and can send a message.
+
+Here is where the seekers will receive the messages and the consultation proposals.
+
+On this same page, on the consultation proposals, the seeker can accept the consultation and go through the checkout.
+
+Only after the checkout is completed, the seeker receives the video conference link to meeet the advisor on the date agreed.
+
+### 6. The checkout
+
+On the checkout page, the seekers can review their fees, their personal details and pay.
+
+The checkout page doesn't appear if there are not consultations to checkout.
+
+### 7. The checkout success
+
+After the checkout is completed, the user sees a checkout completed page with a recap of their order.
+
+They receive an email with the details of the consultation.
+
+The can now see the meeting link also on their advisor's consultation proposal.
+
+### 8. The advisor profile page
+
+The advisor can review their personal details on their profile page.
+
+For security reasons, if the advisor needs to make an change to their profile, the amendments needs to be approved by Advice Found.
+
+This is to make sure that the advisor are real businesses and registered.
+
+From this page, the advisor can deactivate their profile. Deactivating the profile means that the advisor will not receive new clients.
+
+The advisor can't cancel their profile as the seekers will need to be re-matched. This fetuare could be developed on a future sprint.
+
+### 9. The advisor's appointments page
+
+On this page, the advisors can see all the appointment they have scheduled and their status. An appointment must be paid by 
+the seeker before it's confirmed.
+
+From this page the advisor can also navigate to the seeker's profile pages.
+
+### 10. The adviror's seekers profiles
+
+On their client personal pages, the advisor can see all the main details about a client as well a schedule a meeting and send a normal message.
+
+The advisor can schedule only 1 meeting at a time. If their is a consultation pending confirmation, the option to schedule another meeting is disabled.
+
+On this page the advisor also see the full conversation wit the client.
+
+### 11. The consultation scheduler
+With the meeting scheduler, the advisor can schedule a meeting with the seeker.
+
+The fields required are date (can't be a past date), time and consultation fee.
+
+The meeting link is automatically generated with a thid party tool https://gotalk.to/. it's fee to use and doesn't require an account.
+
+The seeker receives the meeting link after the payment is completed.
+
+### 12. The clients page
+
+On the clients page, the advisor sees a list of all of their clients, and a link to go to their personal profiles.
 
 
-### 3. The project details
-
-By clicking on view details on any project, it will open a project details page. There everyone can see more details about a project as well as its comments and the buttons to edit, approve, delete and complete. It also includes the form to submit a comment on the project.
-
-Only the PM can see edit, delete and complete. Only the approvers can see the approve button and only their correspondent button.
-
-The defensive design has been implemented to approve, complete and delete a project. The user will need to confirm twice before to complete those actions.
-
-Page feedback has been implemented when a project is approved, completed, deleted or updated.
-
-![Project details](./media/README-files/project-details.png)  
-
-### 4. My projects
-
-The 'my projects' view filters the projects by projects opened from the logged-in user. The projects are also divided between completed and not completed. The projects completed have a light green background whereas the projects not completed have a light blue background.
-
-![My projects](./media/README-files/my-projects.png)  
-
-### 5. My approvals
-
-The 'my approvals' view filters the projects by projects that the logged-in person needs to approve. The projects are also divided by approved and not approved. The projects approved have a light green background and the projects not approved have a light blue background.
-
-![My approvals](./media/README-files/my-approvals.png)  
 
 
-### 6. Notification centre
 
-The notification centre includes a list of notifications personalised for the logged-in user. The user is notified when:
-
-- a comment is added to a project where the user is an approver or a project owner
-- a project is assigned to an approver
-- a project has been approved
-
-![Notifications](./media/README-files/notification-centre.png)  
-
-### 7. Create and edit a project forms
-
-As the title says, this form allows the user to create or edit a form. Every field is editable. Approvers can be added and removed during creation or when editing a project and the records are automatically added or removed from the database.
-
-Page feedback has been implemented when a project is created and updated.
-
-![Create and edit project](./media/README-files/create-edit-project.png)  
 
 ### 8. Login
 
@@ -508,11 +556,7 @@ Page feedback has been implemented when a user logs in and signs up.
 
 ![Login](./media/README-files/sign-in.png)  
 
-### 9. Signup
 
-The signup form allows users to sign up and use the tool. At sign-up, they need to enter their department so that if they are selected as approvers, their department will show up in the approvers' list of each project.
-
-![Sign up](./media/README-files/sign-up.png)  
 
 ### 10. The admin panel
 
