@@ -79,9 +79,14 @@ def create_match(request, *arg, **kwargs):
 
     user = request.user
     advisor = AdvisorUserProfile(id=advisor_id)
+    seeker = get_object_or_404(SeekerUserProfile, user=user)
 
-    match = Match.objects.create(
-        advisor=advisor,
-        seeker=get_object_or_404(SeekerUserProfile, user=user)
-    )
+    # Check if the seeker already has an advisor, if not create the match
+    if Match.objects.filter(seeker=seeker):
+        messages.warning(request, 'You already have an advisor.')
+    else:
+        match = Match.objects.create(
+            advisor=advisor,
+            seeker=get_object_or_404(SeekerUserProfile, user=user)
+        )
     return redirect('advisor')
