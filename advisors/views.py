@@ -229,7 +229,9 @@ def seeker_profile(request, match_id):
             else:
                 message_form = MessageForm()
 
-            return reditect('seeker_profile')
+            return redirect(reverse(
+                'match_profile', args=[match.id]
+            ))
 
         elif 'consultation' in request.POST:
 
@@ -237,7 +239,9 @@ def seeker_profile(request, match_id):
 
             create_consultation(consultation_form, match, request)
 
-            return redirect('seeker_profile')
+            return redirect(reverse(
+                'match_profile', args=[match.id]
+            ))
 
     context = {
         'match': match,

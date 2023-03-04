@@ -29,7 +29,7 @@ def create_consultation(consultation_form, match, request):
 
         consultation = Consultation.objects.filter(match=match).latest('match')
 
-        email_consultation_seeker(consultation)
+        # email_consultation_seeker(consultation)
 
     else:
         form = ConsultationForm(data=request.POST)
