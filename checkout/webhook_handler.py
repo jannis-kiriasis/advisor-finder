@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.conf import settings
+# from django.core.mail import send_mail
+# from django.template.loader import render_to_string
+# from django.conf import settings
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from .models import Order
@@ -19,62 +19,62 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-    def _consultation_confirmed_email_advisor(self, order):
-        """
-        Send email to advisor with details of the consultation confirmed.
-        """
-        email = order.consultation.match.advisor.user.email
-        subject = render_to_string(
-            'checkout/emails/consultation-confirmed-advisor.txt',
-            {'order': order})
-        body = render_to_string(
-            'checkout/emails/consultation-confirmed-advisor.txt',
-            {'order': order})
+    # def _consultation_confirmed_email_advisor(self, order):
+    #     """
+    #     Send email to advisor with details of the consultation confirmed.
+    #     """
+    #     email = order.consultation.match.advisor.user.email
+    #     subject = render_to_string(
+    #         'checkout/emails/consultation-confirmed-advisor.txt',
+    #         {'order': order})
+    #     body = render_to_string(
+    #         'checkout/emails/consultation-confirmed-advisor.txt',
+    #         {'order': order})
 
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [email]
-        )
+    #     send_mail(
+    #         subject,
+    #         body,
+    #         settings.DEFAULT_FROM_EMAIL,
+    #         [email]
+    #     )
 
-    def _consultation_confirmed_email_seeker(self, orer):
-        """
-        Send email to seeker with details of the consultation confirmed.
-        """
-        email = order.email
-        subject = render_to_string(
-            'checkout/emails/consultation-confirmation-seeker.txt',
-            {'order': order})
-        body = render_to_string(
-            'checkout/emails/consultation-confirmation-seeker.txt',
-            {'order': order})
+    # def _consultation_confirmed_email_seeker(self, orer):
+    #     """
+    #     Send email to seeker with details of the consultation confirmed.
+    #     """
+    #     email = order.email
+    #     subject = render_to_string(
+    #         'checkout/emails/consultation-confirmation-seeker.txt',
+    #         {'order': order})
+    #     body = render_to_string(
+    #         'checkout/emails/consultation-confirmation-seeker.txt',
+    #         {'order': order})
 
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [email]
-        )
+    #     send_mail(
+    #         subject,
+    #         body,
+    #         settings.DEFAULT_FROM_EMAIL,
+    #         [email]
+    #     )
 
-    def _consultation_confirmed_email_seeker(self, orer):
-        """
-        Send email to seeker when payment fails.
-        """
-        email = order.email
-        subject = render_to_string(
-            'checkout/emails/payment-failed.txt',
-            {'order': order})
-        body = render_to_string(
-            'checkout/emails/payment-failed.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+    # def _consultation_confirmed_email_seeker(self, orer):
+    #     """
+    #     Send email to seeker when payment fails.
+    #     """
+    #     email = order.email
+    #     subject = render_to_string(
+    #         'checkout/emails/payment-failed.txt',
+    #         {'order': order})
+    #     body = render_to_string(
+    #         'checkout/emails/payment-failed.txt',
+    #         {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [email]
-        )
+    #     send_mail(
+    #         subject,
+    #         body,
+    #         settings.DEFAULT_FROM_EMAIL,
+    #         [email]
+    #     )
 
     def handle_event(self, event):
         """
@@ -133,9 +133,9 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
             confirm_consultation(order)
-            self._consultation_confirmed_email_advisor(order)
+            # self._consultation_confirmed_email_advisor(order)
 
-            self._consultation_confirmed_email_seeker(order)
+            # self._consultation_confirmed_email_seeker(order)
 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
@@ -169,8 +169,8 @@ class StripeWH_Handler:
                     status=500)
 
         confirm_consultation(order)
-        self._consultation_confirmed_email_advisor(order)
-        self._consultation_confirmed_email_seeker(order)
+        # self._consultation_confirmed_email_advisor(order)
+        # self._consultation_confirmed_email_seeker(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
