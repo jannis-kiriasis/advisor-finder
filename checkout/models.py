@@ -38,6 +38,7 @@ class Order(models.Model):
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default=''
     )
+    paid = models.BooleanField(default=False, blank=False)
 
     def _generate_order_number(self):
 
@@ -58,7 +59,7 @@ class Order(models.Model):
         self.fee = self.consultation.price or 0
         self.af_fee = self.fee * 5 / 100
         self.grand_total = self.fee + self.af_fee
-
+        
         if not self.order_number:
             self.order_number = self._generate_order_number()
 

@@ -191,14 +191,35 @@ def seeker_profile(request, match_id):
     # Get seeker details
 
     match = get_object_or_404(Match, id=match_id)
-
     notes = Message.objects.filter(match=match)
-
     consultations = Consultation.objects.filter(match=match)
-
     # Combine notes and consultations in 1 iterable list for template
-
     elements = list(chain(notes, consultations))
+
+    hide_consultation_form = False
+
+    if hide_consultation_form is False:
+
+        try:
+            consultation_not_confirmed = get_object_or_404(
+                Consultation,
+                status=0
+            )
+
+        except:
+            messages.success(
+                request, (
+                    'There are no pending consultations. Schedule the next one!'
+                )
+            )
+        if consultation_not_confirmed:
+            hide_consultation_form = True
+
+        messages.error(
+            request, (
+                'There is one consultation pending confirmation.'
+            )
+        )
 
     if request.method == 'POST':
 
@@ -250,7 +271,8 @@ def seeker_profile(request, match_id):
         'message_form': MessageForm,
         'consultation_form': ConsultationForm,
         'page_title': f'{ match.seeker }',
-        'elements': elements
+        'elements': elements,
+        'hide_consultation_form': hide_consultation_form
         }
 
     return render(request, 'advisors/client-profile.html', context)

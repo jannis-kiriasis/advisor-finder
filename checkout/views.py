@@ -54,8 +54,9 @@ def checkout(request):
     # If it doesn't exist redirect user to chat.
     try:
         consultation = Consultation.objects.filter(
-            match__id__in=get_all_matches
-            ).latest('created')
+            match__id__in=get_all_matches,
+            status=0
+            )
     except Consultation.DoesNotExist:
         message.error(request, ("Consultation doesn't exist."))
 

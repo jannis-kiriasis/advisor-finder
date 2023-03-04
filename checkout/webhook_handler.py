@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from .models import Order
+from .functions import order_paid
 from home.models import Location
 from home.models import UserProfile
 from consultations.services import confirm_consultation
@@ -124,7 +125,8 @@ class StripeWH_Handler:
             try:
 
                 order = get_object_or_404(Order, consultation=consultation)
-
+                order.paid = False
+                order.save()
                 order_exists = True
 
                 break
@@ -133,6 +135,8 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
             confirm_consultation(order)
+            order_paid(order)
+
             # self._consultation_confirmed_email_advisor(order)
 
             # self._consultation_confirmed_email_seeker(order)
@@ -157,6 +161,7 @@ class StripeWH_Handler:
                     seeker=seeker,
                     fee=consultation.price,
                     stripe_pid=pid,
+                    paid=False
                 )
 
             except Exception as e:
@@ -169,8 +174,10 @@ class StripeWH_Handler:
                     status=500)
 
         confirm_consultation(order)
+        order_paid(order)
         # self._consultation_confirmed_email_advisor(order)
         # self._consultation_confirmed_email_seeker(order)
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)

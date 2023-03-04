@@ -1,6 +1,13 @@
+
+{% if hide_consultation_form is True %}
+<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo" disabled>
+    Consultation pending
+</button>
+{% else %}
 <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo">
     Schedule consultation
 </button>
+{% endif %}
 
 <div id="demo" class="collapse mt-4">
     <form id="consultation-form" method="POST">

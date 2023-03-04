@@ -237,3 +237,10 @@ input[type="time"] {
     padding: 10px;
     margin-bottom: 10px;
 }
+
+/* advisors/matches/client */
+
+.btn:disabled {
+    background-color: var(--fuzzy-wuzzy);
+    border-color: var(--fuzzy-wuzzy);
+}

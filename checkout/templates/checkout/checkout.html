@@ -82,10 +82,15 @@
 
 
                 <div class="submit-button text-right mt-5 mb-5">
-
+                    {% if consultation.consultation.paid %}
+                    <button id="submit-button" class="btn btn-primary" disabled>
+                        <span class="font-weight-bold">Order completed</span>
+                    </button>
+                    {% else %}
                     <button id="submit-button" class="btn btn-primary">
                         <span class="font-weight-bold">Complete Order</span>
                     </button>
+                    {% endif %}
                     <p class="small text-danger my-0">
                         <span>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
                     </p>
