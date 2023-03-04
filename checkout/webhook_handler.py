@@ -8,8 +8,6 @@ from home.models import UserProfile
 from consultations.services import confirm_consultation
 import stripe
 import time
-from .emails import consultation_confirmed_email, payment_failed_email
-from .emails import payment_succeeded_email
 
 
 class StripeWH_Handler:
@@ -67,8 +65,6 @@ class StripeWH_Handler:
 
                 order = get_object_or_404(Order, consultation=consultation)
 
-                confirm_consultation(order)
-
                 order_exists = True
 
                 break
@@ -77,8 +73,7 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
 
-            consultation_confirmed_email(order)
-            payment_succeeded_email(order)
+            confirm_consultation(order)
 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
@@ -112,9 +107,6 @@ class StripeWH_Handler:
                     status=500)
 
                 payment_failed_email(order)
-
-        consultation_confirmed_email(order)
-        payment_succeeded_email(order)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',

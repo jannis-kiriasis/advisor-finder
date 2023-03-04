@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 
 def define_context(order):
@@ -7,12 +8,12 @@ def define_context(order):
     Define the variables to use in all the emails' contexts
     """
     context = {
-        'seeker': f'{order.seeker.user.first_nam} \
+        'seeker': f'{order.seeker.user.first_name} \
                     {order.seeker.user.first_name}',
         'advisor': order.consultation.match.advisor.business_name,
         'date': order.consultation.date,
         'time': order.consultation.time,
-        'fee': order.af_feeconsultation.price,
+        'fee': order.consultation.price,
         'link': order.consultation.link,
         'order': order
     }
