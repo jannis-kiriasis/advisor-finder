@@ -29,8 +29,9 @@ class StripeWH_Handler:
         intent = event.data.object
         pid = intent.id
         save_info = intent.metadata.save_info
+        consultation = intent.metadata.save_consultation
+        seeker = intent.metadata.save_seeker
 
-        print(intent)
         # Get the Charge object
         stripe_charge = stripe.Charge.retrieve(
             intent.latest_charge
@@ -44,7 +45,6 @@ class StripeWH_Handler:
         # profile = SeekerUserProfile.objects.get(user=user)
         # if save_info:
         #     profile.phone_number = shipping_details.phone
-        #     profile.country = shipping_details.address.country
         #     profile.postcode = shipping_details.address.postal_code
         #     profile.town_or_city = shipping_details.address.city
         #     profile.street_address = shipping_details.address.line1
@@ -54,16 +54,8 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                order = Order.objects.get(
-                    name=billing_details.name,
-                    email=billing_details.email,
-                    phone_number=billing_details.phone,
-                    postcode=billing_details.address.postal_code,
-                    town_or_city=billing_details.address.city,
-                    street_address=billing_details.address.line1,
-                    grand_total=grand_total,
-                    stripe_pid=pid,
-                )
+
+                order = get_object_or_404(Order, consultation=consultation)
 
                 order_exists = True
 
@@ -76,39 +68,31 @@ class StripeWH_Handler:
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
 
-        # else:
-        #     order = None
-        #     try:
+        else:
+            order = None
+            try:
 
-        #         get_seeker = get_object_or_404(
-        #             SeekerUserProfile, id=intent.metadata.save_seeker
-        #         )
+                order = Order.objects.create(
+                    name=billing_details.name,
+                    last_name=intent.metadata.save_last_name,
+                    email=billing_details.email,
+                    phone_number=billing_details.phone,
+                    postcode=billing_details.address.postal_code,
+                    town_or_city=billing_details.address.city,
+                    street_address=billing_details.address.line1,
+                    consultation=consultation,
+                    seeker=seeker,
+                    fee=consultation.price,
+                    stripe_pid=pid,
+                )
+            except Exception as e:
+                if order:
+                    order.delete()
+                return HttpResponse(
+                    content=f'Webhook received: {event["type"]} | ERROR: {e}',
+                    status=500)
 
-        #         get_consultation = get_object_or_404(
-        #             Consultation, id=intent.metadata.save_consultation
-        #         )
-
-        #         order = Order.objects.create(
-        #             name=billing_details.name,
-        #             last_name=intent.metadata.save_last_name,
-        #             email=billing_details.email,
-        #             phone_number=billing_details.phone,
-        #             postcode=billing_details.address.postal_code,
-        #             town_or_city=billing_details.address.city,
-        #             street_address=billing_details.address.line1,
-        #             consultation=get_consultation,
-        #             seeker=get_seeker,
-        #             grand_total=grand_total,
-        #             stripe_pid=pid,
-        #         )
-        #     except Exception as e:
-        #         if order:
-        #             order.delete()
-        #         return HttpResponse(
-        #             content=f'Webhook received: {event["type"]} | ERROR: {e}',
-        #             status=500)
-
-        #     # send_email(payment_failed)
+            # send_email(payment_failed)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
