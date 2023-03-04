@@ -68,7 +68,8 @@ def match(request):
 def create_match(request, *arg, **kwargs):
 
     """
-    Save the matched in a model. After swal confirmation.
+    Save the match after defensive design confirmation. 
+    Make sure seekers doesn't have an adviser yet.
     """
 
     # get view url
@@ -89,4 +90,5 @@ def create_match(request, *arg, **kwargs):
             advisor=advisor,
             seeker=get_object_or_404(SeekerUserProfile, user=user)
         )
+
     return redirect('advisor')

@@ -114,6 +114,9 @@ button:focus:not(:focus-visible) {
     border-color: var(--liberty);
 }
 
+.swal2-styled {
+    color: #ffffff !important;
+}
 .message-container {
     position:fixed;
     top: 72px;

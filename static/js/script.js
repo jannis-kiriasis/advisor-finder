@@ -2,7 +2,7 @@ const deleteButton = document.getElementById('delete');
 const updateAdvisorButton = document.getElementById('update_advisor');
 const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
-const messageButton = document.getElementById('message');
+const chooseAdvisorButton = document.getElementsByClassName('advisor');
 
 // Event listeners for SweetAlerts defensive design
 if (deleteButton) {
@@ -21,9 +21,12 @@ if (deactivateButton) {
     deactivateButton.addEventListener('click', deactivateAdvisorChoice);
 }
 
-if (messageButton) {
-    messageButton.addEventListener('click', messageAdvisor);
+if (chooseAdvisorButton) {
+    for (var i = 0 ; i < chooseAdvisorButton.length; i++) {
+        chooseAdvisorButton[i].addEventListener('click' , messageAdvisor) ; 
+     }
 }
+
 /** Get href url of button delete.
 */
 function goToDeleteUrl() {
