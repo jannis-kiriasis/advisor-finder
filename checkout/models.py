@@ -62,9 +62,6 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self._generate_order_number()
 
-        order = self
-        confirm_consultation(order)
-
         super().save(*args, **kwargs)
 
     def __str__(self):

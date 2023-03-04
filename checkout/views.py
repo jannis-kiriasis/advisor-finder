@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .models import Order
-
+from home.models import UserProfile
 
 from .forms import OrderForm
 from seekers.models import SeekerUserProfile
@@ -72,8 +72,6 @@ def checkout(request):
 
         if order_form.is_valid():
 
-            # order_form.instance.seeker = get_seeker_profile
-            # order_form.instance.consultation = consultation
             order_form.instance.fee = total
             order_form.instance.af_fee = af_fee
             order_form.instance.grand_total = grand_total
@@ -114,7 +112,10 @@ def checkout(request):
             'name': request.user.first_name,
             'last_name': request.user.last_name,
             'email': request.user.email,
+            'phone': request.user.profiles.phone_number,
+            'postcode': get_seeker_profile.postcode,
             'town_or_city': get_seeker_profile.town_or_city,
+            'Address': get_seeker_profile.street_address,
             'consultation': consultation,
             'seeker': get_seeker_profile
         }

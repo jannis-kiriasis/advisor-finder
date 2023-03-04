@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from seekers.models import SeekerUserProfile
@@ -9,6 +8,8 @@ from home.models import UserProfile
 from consultations.services import confirm_consultation
 import stripe
 import time
+from .emails import consultation_confirmed_email, payment_failed_email
+from .emails import payment_succeeded_email
 
 
 class StripeWH_Handler:
@@ -45,7 +46,7 @@ class StripeWH_Handler:
 
         # Update profile information if save_info was checked
         seeker = SeekerUserProfile.objects.get(id=seeker)
-        user = User.objects.get(id=seeker.user_id)
+        user = UserProfile.objects.get(user_id=seeker.user_id)
 
         location = Location.objects.get(
             id=billing_details.address.city
@@ -66,6 +67,8 @@ class StripeWH_Handler:
 
                 order = get_object_or_404(Order, consultation=consultation)
 
+                confirm_consultation(order)
+
                 order_exists = True
 
                 break
@@ -73,6 +76,10 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+
+            consultation_confirmed_email(order)
+            payment_succeeded_email(order)
+
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
@@ -94,6 +101,9 @@ class StripeWH_Handler:
                     fee=consultation.price,
                     stripe_pid=pid,
                 )
+
+                confirm_consultation(order)
+
             except Exception as e:
                 if order:
                     order.delete()
@@ -101,14 +111,14 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
 
-            # send_email(payment_failed)
+                payment_failed_email(order)
+
+        consultation_confirmed_email(order)
+        payment_succeeded_email(order)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
-
-        # confirm_consultation(order)
-        # send_email(payment_succeeded)
 
     def handle_payment_intent_payment_failed(self, event):
         """
