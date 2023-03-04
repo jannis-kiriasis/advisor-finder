@@ -19,7 +19,7 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-    def _consultation_confirmed_email_advisor(self, orer):
+    def _consultation_confirmed_email_advisor(self, order):
         """
         Send email to advisor with details of the consultation confirmed.
         """
@@ -29,7 +29,7 @@ class StripeWH_Handler:
             {'order': order})
         body = render_to_string(
             'checkout/emails/consultation-confirmed-advisor.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            {'order': order})
 
         send_mail(
             subject,
@@ -48,7 +48,7 @@ class StripeWH_Handler:
             {'order': order})
         body = render_to_string(
             'checkout/emails/consultation-confirmation-seeker.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+            {'order': order})
 
         send_mail(
             subject,
