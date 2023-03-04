@@ -15,7 +15,7 @@ class SeekerUserProfile(models.Model):
         User, on_delete=models.CASCADE, related_name='seekers'
     )
 
-    postcode = models.CharField(max_length=20, null=True, blank=True)
+    postcode = models.CharField(max_length=12, null=True, blank=True)
 
     town_or_city = models.ForeignKey(
         Location,
@@ -23,7 +23,7 @@ class SeekerUserProfile(models.Model):
         related_name='address'
     )
 
-    street_address = models.CharField(max_length=80, null=False, blank=False)
+    street_address = models.CharField(max_length=30, null=True, blank=True)
 
     need = models.ForeignKey(
         Specialisation,

@@ -5,6 +5,7 @@ from django.db.models import Sum
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from consultations.services import confirm_consultation
+from home.models import Location
 
 
 class Order(models.Model):
@@ -22,7 +23,11 @@ class Order(models.Model):
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
-    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    town_or_city = models.ForeignKey(
+        Location,
+        on_delete=models.CASCADE,
+        related_name='cities'
+    )
     street_address = models.CharField(max_length=80, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     fee = models.DecimalField(max_digits=5, decimal_places=2)

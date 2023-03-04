@@ -15,7 +15,6 @@ class OrderForm(forms.ModelForm):
             'phone_number',
             'street_address',
             'town_or_city',
-            'postcode',
             'consultation',
             'seeker'
         )
@@ -40,7 +39,6 @@ class OrderForm(forms.ModelForm):
             'phone_number': 'Phone Number',
             'street_address': 'Address',
             'town_or_city': 'Town or city',
-            'postcode': 'Postcode',
             'consultation': 'Consultation',
             'seeker': 'Seeker'
         }

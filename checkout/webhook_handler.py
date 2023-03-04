@@ -1,8 +1,11 @@
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from .models import Order
+from home.models import Location
+from home.models import UserProfile
 from consultations.services import confirm_consultation
 import stripe
 import time
@@ -41,14 +44,20 @@ class StripeWH_Handler:
         grand_total = round(stripe_charge.amount / 100, 2)
 
         # Update profile information if save_info was checked
-        # user = intent.metadata.user
-        # profile = SeekerUserProfile.objects.get(user=user)
-        # if save_info:
-        #     profile.phone_number = shipping_details.phone
-        #     profile.postcode = shipping_details.address.postal_code
-        #     profile.town_or_city = shipping_details.address.city
-        #     profile.street_address = shipping_details.address.line1
-        #     profile.save()
+        seeker = SeekerUserProfile.objects.get(id=seeker)
+        user = User.objects.get(id=seeker.user_id)
+
+        location = Location.objects.get(
+            id=billing_details.address.city
+        )
+
+        if save_info:
+            user.phone_number = billing_details.phone
+            seeker.postcode = billing_details.address.postal_code
+            seeker.town_or_city = location
+            seeker.street_address = billing_details.address.line1
+            user.save()
+            seeker.save()
 
         order_exists = False
         attempt = 1
