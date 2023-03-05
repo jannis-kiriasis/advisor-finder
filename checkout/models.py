@@ -25,7 +25,7 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20, null=True, blank=True)
     town_or_city = models.ForeignKey(
         Location,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='cities'
     )
     street_address = models.CharField(max_length=80, null=False, blank=False)

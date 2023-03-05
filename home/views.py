@@ -39,7 +39,7 @@ def advisor_seeker(request):
             elif form.instance.user_type == 1:
                 return redirect('seeker_signup')
 
-    messages.error(request, 'Signup not completed. Try again.')
+        messages.error(request, 'Signup not completed. Try again.')
 
     form = UserTypeForm()
 

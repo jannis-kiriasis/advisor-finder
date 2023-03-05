@@ -12,14 +12,14 @@ class SeekerUserProfile(models.Model):
     """
 
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='seekers'
+        User, on_delete=models.PROTECT, related_name='seekers'
     )
 
     postcode = models.CharField(max_length=12, null=True, blank=True)
 
     town_or_city = models.ForeignKey(
         Location,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='address'
     )
 
@@ -27,7 +27,7 @@ class SeekerUserProfile(models.Model):
 
     need = models.ForeignKey(
         Specialisation,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='needs'
     )
 

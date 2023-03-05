@@ -16,7 +16,7 @@ class AdvisorUserProfile(models.Model):
     """
 
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='users'
+        User, on_delete=models.PROTECT, related_name='users'
     )
 
     business_name = models.CharField(max_length=100)
@@ -25,7 +25,7 @@ class AdvisorUserProfile(models.Model):
 
     town_or_city = models.ForeignKey(
         Location,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='locations'
     )
 
@@ -33,7 +33,7 @@ class AdvisorUserProfile(models.Model):
 
     specialisation = models.ForeignKey(
         Specialisation,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='specialisations'
     )
 

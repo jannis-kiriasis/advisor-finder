@@ -121,7 +121,7 @@ button:focus:not(:focus-visible) {
     /* position:fixed; */
     /* top: 72px;
     right: 15px; */
-    z-index: 999999;
+    /* z-index: 999999; */
 }
 
 .errorlist {

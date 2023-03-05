@@ -12,18 +12,17 @@ class Match(models.Model):
 
     advisor = models.ForeignKey(
         AdvisorUserProfile,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='Advisors'
     )
 
     seeker = models.OneToOneField(
         SeekerUserProfile,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='Seekers'
     )
 
     matched_on = models.DateTimeField(auto_now_add=True)
-    is_client = models.BooleanField(default=False)
 
     def __str__(self):
         """Change display value of User profile"""
@@ -38,11 +37,11 @@ class Message(models.Model):
     """
 
     match = models.ForeignKey(
-        Match, on_delete=models.CASCADE,
+        Match, on_delete=models.PROTECT,
         related_name='match'
         )
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE,
+        User, on_delete=models.PROTECT,
         related_name='sender'
         )
     body = models.TextField()

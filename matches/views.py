@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 from advisors.models import AdvisorUserProfile
 from seekers.models import SeekerUserProfile
 from seekers.forms import SeekerSignupForm
@@ -36,33 +38,47 @@ def match(request):
         specialisation=seeker.need
     )
 
-    if random.choice(filter_advisors):
-        advisor = random.choice(filter_advisors)
+    if not filter_advisors:
 
-        # Query all the advisors that specialise in the seeker need.
-        # Return the queryset in random order
-
-        other_advisors = list(
-            AdvisorUserProfile.objects.filter(specialisation=seeker.need)
+        filter_advisors = advisor_objects.filter(
+            approved=1,
+            active=1,
+            specialisation=seeker.need
         )
 
-        # other_advisors = AdvisorUserProfile.objects.all()
-        shuffle(other_advisors)
+        if not filter_advisors:
 
-        context = {
-            'seeker': seeker,
-            'best_advisor': advisor,
-            'other_advisors': other_advisors,
-        }
+            filter_advisors = advisor_objects.filter(
+                approved=1,
+                active=1,
+            )
 
-        return render(request, 'matches/match.html', context)
+        else:
+            messages.warning(
+                request,
+                'There are no advisors available currently, try again later.'
+            )
+            logout(request)
 
-    else:
-        messages.warning(
-            request,
-            'There are no advisors available currently, try again later.'
-        )
-        return redirect('seeker_profile')
+    advisor = random.choice(filter_advisors)
+
+    # Query all the advisors that specialise in the seeker need.
+    # Return the queryset in random order
+
+    other_advisors = list(
+        AdvisorUserProfile.objects.filter(specialisation=seeker.need)
+    )
+
+    # other_advisors = AdvisorUserProfile.objects.all()
+    shuffle(other_advisors)
+
+    context = {
+        'seeker': seeker,
+        'best_advisor': advisor,
+        'other_advisors': other_advisors,
+    }
+
+    return render(request, 'matches/match.html', context)
 
 
 def create_match(request, *arg, **kwargs):

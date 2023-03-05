@@ -43,6 +43,9 @@
 
     </div>
 
+    {% if not other_advisors %}
+
+    {% else %}
     <div class="container container-xxl d-flex flex-column justify-content-center align-items-center pb-5">
 
         <div class="col-12 mt-5 mb-5">
@@ -63,6 +66,8 @@
         {% endfor %}
 
     </div>
+
+    {% endif %}
 
 </section>
 

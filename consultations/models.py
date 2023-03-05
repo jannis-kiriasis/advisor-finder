@@ -14,7 +14,7 @@ class Consultation(models.Model):
     """
 
     match = models.ForeignKey(
-        Match, on_delete=models.CASCADE,
+        Match, on_delete=models.PROTECT,
         related_name='consultation'
         )
 
