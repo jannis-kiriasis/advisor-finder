@@ -2,9 +2,17 @@ from django.db import models
 from matches.models import Match
 from django import forms
 from django.utils.crypto import get_random_string
+from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 
 CONFIRMED = ((0, 'Not confirmed'), (1, 'Confirmed'))
+
+
+def validate_date(date):
+
+    if date < timezone.now().date():
+        raise ValidationError("Date cannot be in the past")
 
 
 class Consultation(models.Model):
@@ -32,11 +40,6 @@ class Consultation(models.Model):
 
     def __str__(self):
         return f'{self.id}'
-
-    def validate_date(date):
-
-        if date < timezone.now().date():
-            raise ValidationError("Date cannot be in the past")
 
     def save(self, *args, **kwargs):
 
