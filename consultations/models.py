@@ -1,6 +1,7 @@
 from django.db import models
 from matches.models import Match
 from django import forms
+from django.utils.crypto import get_random_string
 
 
 CONFIRMED = ((0, 'Not confirmed'), (1, 'Confirmed'))
@@ -20,7 +21,7 @@ class Consultation(models.Model):
 
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
-    date = models.DateField()
+    date = models.DateField(validators=[validate_date])
     time = models.TimeField()
 
     link = models.CharField(max_length=30)
@@ -31,3 +32,14 @@ class Consultation(models.Model):
 
     def __str__(self):
         return f'{self.id}'
+
+    def validate_date(date):
+
+        if date < timezone.now().date():
+            raise ValidationError("Date cannot be in the past")
+
+    def save(self, *args, **kwargs):
+
+        # Create meeting link with random string
+        self.link = 'https://gotalk.to/' + get_random_string(length=10)
+        super().save(*args, **kwargs)

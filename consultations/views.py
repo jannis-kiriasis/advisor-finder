@@ -3,7 +3,7 @@ from .forms import ConsultationForm
 from .models import Consultation
 from matches.models import Match
 from django.contrib import messages
-from django.utils.crypto import get_random_string
+# from django.utils.crypto import get_random_string
 from .emails import email_consultation_seeker
 
 
@@ -17,8 +17,8 @@ def create_consultation(consultation_form, match, request):
 
         consultation_form.instance.match = match
 
-        # Create meeting link with random string
-        consultation_form.instance.link = 'https://gotalk.to/' + get_random_string(length=10)
+        # # Create meeting link with random string
+        # consultation_form.instance.link = 'https://gotalk.to/' + get_random_string(length=10)
 
         consultation_form.save()
 
