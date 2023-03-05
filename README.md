@@ -6,7 +6,7 @@
 ## Table of contents
 -  [Introduction](#introduction)
 -  [Ecommerce business model](#ecommerce-business-model)
--	[User Experience (UX)](#user-experience-ux---user-stories)
+-   [User Experience (UX)](#user-experience-ux---user-stories)
 -	[Features](#features)
 -	[Where user stories meet features](#where-user-stories-meet-features)
 -	[Wireframes](#wireframes)
@@ -191,7 +191,7 @@ I can find an advisor.
 4. Create a Seeker profile page (template, view and URLs)
 
 
-#### USER STORY 5: Seeker profile edit and cancel: 
+#### USER STORY 5: Seeker profile edit and cancel 
 
 As a Seeker,
 I want to edit and cancel my profile so that
@@ -218,7 +218,7 @@ Dependency US 1, US 4
 ### Epic 2 - The Matcher: The matcher connects Seekers and Advisers and shows the best match and the other results based on the algorithm criteria (specified in user stories).
 
 
-#### USER STORY 7: Matching logic
+#### USER STORY 6: Matching logic
 
 As an advice seeker,
 I want to be matched with a financial advisor
@@ -240,7 +240,7 @@ that best suits my need.
 6. Create queryset to add to the template other possible advisors
 
 
-#### USER STORY 8: Clients and matches view
+#### USER STORY 7: Clients and matches view
 
 As an Adviser,
 I want to see all the Seekers I matched and the seekers who are already clients so that
@@ -260,7 +260,7 @@ I can follow up on conversations easily.
 ### Epic 3 - The chat: Creation of the app that will facilitate the Seeker and the Adviser conversations.
 
 
-#### USER STORY 9: The chat - Seeker
+#### USER STORY 8: The chat - Seeker
 
 As an advice seeker,
 I want to message the advisor I matched with so that
@@ -279,7 +279,7 @@ we can schedule a consultation.
 6. Email advisor when there is a new message
 
 
-#### USER STORY 10: The chat - Advisor
+#### USER STORY 9: The chat - Advisor
 
 As an advisor,
 I want to message the seeker I matched with so that
@@ -299,7 +299,7 @@ we can schedule a consultation.
 5. Send an email to the client when the advisor adds a message
 
 
-#### USER STORY 11: Advisor view
+#### USER STORY 10: Advisor view
 
 As an Advice seeker,
 I want to see all the Information of the advisor I matched with and our conversation so that
@@ -315,7 +315,7 @@ I can find our information easily.
 4. Epic 4 - The order: Creation of the checkout and payment processes.
 
 
-#### USER STORY 12: Schedule consultation
+#### USER STORY 11: Schedule consultation
 
 As a financial advisor,
 I want to schedule a consultation,
@@ -338,7 +338,7 @@ so that I can meet the Seeker.
 6. Seeker sees the appointment in the chat with the advisor
 
 
-### USER STORY 13: Appointments
+### USER STORY 12: Appointments
 
 As an advisor,
 I want to see all the appointments I have scheduled,
@@ -357,7 +357,7 @@ so that I can keep up with every client.
 6. Seeker seeks link to the meeting instead of to confirm the consultation
 
 
-### USER STORY 14: The checkout
+### USER STORY 13: The checkout
 
 As a seeker,
 I want to pay for the consultation
@@ -381,7 +381,7 @@ so that I can talk to an Adviser.
 9. Remove button on checkout to pay after the consultation has been paid (redirect to order page)
 
 
-### USER STORY 15: Notify advisor of consultation confirmed
+### USER STORY 14: Notify advisor of consultation confirmed
 
 As an adviser, 
 
@@ -543,12 +543,7 @@ The seeker receives the meeting link after the payment is completed.
 
 On the clients page, the advisor sees a list of all of their clients, and a link to go to their personal profiles.
 
-
-
-
-
-
-### 8. Login
+### 13. Login
 
 A form to authenticate the user to the app. A non authenticated user who tries to navigate the site will always be redirected to the sign in page.
 
@@ -556,23 +551,7 @@ Page feedback has been implemented when a user logs in and signs up.
 
 ![Login](./media/README-files/sign-in.png)  
 
-
-
-### 10. The admin panel
-
-The admin panel allows a superuser to see all the records saved in the database including:
-
-- projects
-- project approvals
-- users and user profiles
-- Notifications
-- comments
-
-From the admin panel, projects and project approvals can be downloaded as a CSV file to be handed to the RC and fulfil their requirements.
-
-![Admin panel](./media/README-files/admin-panel.png)  
-
-### 11. Feedbacks and popups
+### 14. Feedbacks and popups
 
 The application let the users know every time they perform an action whether it has been completed or not.
 
@@ -580,62 +559,51 @@ The application let the users know every time they perform an action whether it 
 
 ![Feedback](./media/README-files/feedback.png)  
 
-### 12. 404 and 500 error pages
+### 15. 404 and 500 error pages
 
-The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.!
+The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.
 
 [Custom 404 page](./media/README-files/404.png)  
-
 
 ## Where user stories meet features
 
 In the following table, I’m going to match features with user stories and the issues the app solves. All the user stories, features and needs outlined in the paragraphs above have a number that corresponds to the number you see in the table below.
 
-| User stories | Features |
-|--------------|----------|
-| E1 US1 - Create a project       | 7, 11        |
-| E1 US2 – Set the project workflow      | 7        |
-| E1 US3 – Create main dashboard      | 2, 3     |
-| E1 US4 – Edit a project      | 7, 11        |
-| E1 US5 – Delete a workflow      | 3, 11        |
-| E1 US6 – See all the projects open      | 4        |
-| E1 US7 - Add a comment (Create)      | 3, 11       |
-| E1 US8 - Notify PM      | 6        |
-| E1 US9 - Registration and sign in project owner      | 8, 9     |
-| E2 US1 - See projects pending approval (Read)      | 5        |
-| E2 US2 - See project by due date      | 5, 3     |
-| E2 US3 - Approvers feedback      | 3        |
-| E2 US4 - Approve a project      | 3, 11        |
-| E2 US5 - Notify approvers      | 6,        |
-| E2 US6 - Registration and sign approvers      | 8, 9     |
-| E3 US1 - The risk controller      | 10       |
+|                    User stories                    | Features  |
+|:--------------------------------------------------:|-----------|
+| E1 US1 - Advisor profile creation                  | 2         |
+| E1 US2 – Advisor edit profile                      | 8         |
+| E1 US3 – Admin registration approval               |           |
+| E1 US4 – Seeker profile creation                   | 2, 14     |
+| E1 US5 – Seeker profile edit and cancel            | 4, 14     |
+| E2 US6 – Matching logic                            | 3, 14     |
+| E2 US7 - Clients view                              | 1, 12     |
+| E3 US8 - The chat - Seeker                         | 1, 14     |
+| E3 US9 - The chat - Advisor                        | 1, 10, 14 |
+| E3 US10 - Advisor view                             | 1, 7      |
+| E3 US11 - Schedule consultation                    | 1, 11     |
+| E3 US12 - Appointments                             | 1, 8, 14  |
+| E3 US13 - The checkout                             | 6         |
+| E3 US14 - Notify advisor of consultation confirmed | 14        |
 
 
 ## Wireframes
 
 The first draft of the website was completed by creating wireframes using Balsamic.
 
-Below you can find the initial wireframes created. The main goal when I created 
+Below you can find a link the initial wireframes created. The main goal when I created 
 the wireframes was to fulfil the user story requirements. Later on during the development
 I've upgraded the styling getting to the final version that you see live.
 
-**Create a project**  
-![Create project page wireframe](./media/README-files/create-project.png)  
-
-**Dashboard**  
-![Dashboard wireframe](./media/README-files/dashboard.png)  
-
-**View details**  
-![View details wireframe](./media/README-files/view-project.png)  
+![Wireframe](./media/README-files/wireframes.pdf)  
 
 
-## Features left to implement 
+## Features to be implemented
 
-- Create checklist templates. A set of predefined approvers. Every template has differently predefined approves. Improves UX.
-- Implement email notifications. When a notification is created, an email can also be created.
-- Option to upload more than 1 document. Possibly a versioning system.
-- Approvals are to be given in a specific order, so disable the approver button until the approver's turn comes.
-- Signup with a social media account or Google.
+- Let advisors cancel their profile and handle advisor's clients
+- Let seekers find a different advisor
+- Create admin dashboard to see Advice Found revenue
+- Build a report to see the most active advisors and those scheduling more meetings
 
 
 ## Design
@@ -644,15 +612,18 @@ In the following paragraph, I'm going to explain the colours, typography and ima
 
 ### Colours
 
-I've used a similar colour palette to a project I previously realised (pp2) so the reasoning behind the colour choice is very similar.
+I've used a similar colour palette to a project I previously realised (pp2 and pp4) so the reasoning behind the colour choice is very similar.
 
 The main colour used is a shade of blue (Liberty). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
 
-All the main buttons are in a shade of green, Verdigris. It's different enough to differentiate from the main Liberty colour. I've also used a share of red (Fuzzy Wuzzy) for the 'delete' button and the 'remove approver' button.
+All the main buttons are in red, Fuzzy Wuzzy. It's different enough to differentiate from the main Liberty colour. The secondary buttons are white with red borders.
 
-I've also used a tan colour for the 'edit', 'complete' and 'approve'. Those aren't standard actions (for which I've used Verdigris) and they aren't 'delete' actions so Fuzzy Wuzzy red wasn't a good choice for those. 
+A lighter shade of Fuzzy Wuzzy was used to highlight the best match, the seeker's advisor and the advisor's clients profiles.
+It was also used to color the background of the messages sent.
 
-Lighter shades of Verdigris and Liberty have been created to highlight complete/non-completed and approved / not approved projects in the templates 'dashboard', 'my approvals', 'my projects'.
+
+
+
 
 
 ![Color Palette](./media/README-files/colors.png)  

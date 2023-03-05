@@ -48,13 +48,12 @@
 <h1>{{ profile.business_name }}'s Profile</h1>
 
 <!-- Advisro signup form -->
-<div class="col-12">
     <form method="POST">
 
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button class="btn mb-5" id="update_advisor" type="submit">
+        <button class="btn mt-5 mb-5" id="update_advisor" type="submit">
             Update profile
         </button>
 

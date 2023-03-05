@@ -42,6 +42,7 @@
                 {% include 'includes/navigation.html' %}
             </header>
     
+            <div class="message-cointainer">
             {% block page_header %}
                 {% if messages %}
                     {% for message in messages %}
@@ -49,7 +50,7 @@
                     {% endfor %}
                 {% endif %}
             {% endblock %}
-
+            </div>
         </section>
 
 
