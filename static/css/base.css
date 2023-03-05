@@ -118,9 +118,9 @@ button:focus:not(:focus-visible) {
     color: #ffffff !important;
 }
 .message-container {
-    position:fixed;
-    top: 72px;
-    right: 15px;
+    /* position:fixed; */
+    /* top: 72px;
+    right: 15px; */
     z-index: 999999;
 }
 

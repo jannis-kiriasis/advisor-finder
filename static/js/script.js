@@ -4,22 +4,30 @@ const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
 const chooseAdvisorButton = document.getElementsByClassName('advisor');
 
+let alert = document.getElementsByClassName('alert')[0];
+
+// Remove alert box after 5 seconds
+setTimeout(() => {
+    alert.classList.remove('show')
+    alert.addClass('hide')
+}, 5000)
+
 // Event listeners for SweetAlerts defensive design
-if (deleteButton) {
-    deleteButton.addEventListener('click', confirmDelete);
-}
+// if (deleteButton) {
+//     deleteButton.addEventListener('click', confirmDelete);
+// }
 
-if (updateAdvisorButton) {
-    updateAdvisorButton.addEventListener('click', confirmUpdateAdvisor);
-}
+// if (updateAdvisorButton) {
+//     updateAdvisorButton.addEventListener('click', confirmUpdateAdvisor);
+// }
 
-if (updateSeekerButton) {
-    updateSeekerButton.addEventListener('click', confirmUpdateSeeker);
-}
+// if (updateSeekerButton) {
+//     updateSeekerButton.addEventListener('click', confirmUpdateSeeker);
+// }
 
-if (deactivateButton) {
-    deactivateButton.addEventListener('click', deactivateAdvisorChoice);
-}
+// if (deactivateButton) {
+//     deactivateButton.addEventListener('click', deactivateAdvisorChoice);
+// }
 
 if (chooseAdvisorButton) {
     for (var i = 0 ; i < chooseAdvisorButton.length; i++) {
@@ -58,13 +66,13 @@ function confirmDelete(event) {
 }
 
 
-/** Get href url of button update advisor.
-*/
-function goToUpdateUrlAdvisor() {
-    let href = document.getElementById('update_advisor').getAttribute(
-        'href');
-    window.location.href = `${href}`;
-}
+// /** Get href url of button update advisor.
+// */
+// function goToUpdateUrlAdvisor() {
+//     // let href = document.getElementById('update_advisor').getAttribute(
+//     //     'href');
+//     window.location.href = `#`;
+// }
 
 
 /** Prevent button click, fire SweetAlerts2, 
@@ -84,7 +92,7 @@ function confirmUpdateAdvisor(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            goToUpdateUrlAdvisor();
+            window.location.reload();
         }
     });
 }
@@ -207,4 +215,5 @@ function messageAdvisor(event) {
         }
     });  
 }
+
 
