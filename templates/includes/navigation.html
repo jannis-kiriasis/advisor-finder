@@ -1,72 +1,51 @@
 <nav class="navbar navbar-expand-lg">
-
-    <div class="container-fluid container-xxl">
-
+    <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">Advice Found</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-end">
+            {% if user.is_authenticated %}
 
+                {% if request.user.profiles.user_type == 0 %}
 
-        <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                    {% if request.user.users %}
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Menu
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark"
-                        aria-labelledby="navbarDarkDropdownMenuLink">
-                        
-                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'consultations' %}">Appointments</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'clients' %}">Clients</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor_profile' %}">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
 
-                            {% if request.user.profiles.user_type == 0 %}
+                    {% else %}
 
-                                {% if request.user.users %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
 
-                                    <li><a class="dropdown-item" href="{% url 'clients' %}">Clients</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'consultations' %}">Appointments</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'matches' %}">Matches</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'advisor_profile' %}">Profile</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                    {% endif %}
 
-                                {% else %}
+                {% elif request.user.profiles.user_type == 1 %}
+                
+                    {% if request.user.seekers %}
 
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor' %}">Advisor</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'seeker_profile' %}">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
 
-                                {% endif %}
+                    {% else %}
 
-                            {% elif request.user.profiles.user_type == 1 %}
-                            
-                                {% if request.user.seekers %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
 
-                                    <li><a class="dropdown-item" href="{% url 'advisor' %}">Advisor</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'seeker_profile' %}">Profile</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                    {% endif %}
 
-                                {% else %}
+                {% endif %}
 
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+            {% else %}
 
-                                {% endif %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
 
-                            {% endif %}
-
-                        {% else %}
-
-                            <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
-
-                        {% endif %}
-
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
+            {% endif %}
+        </ul>
+      </div>
     </div>
-
-</nav>
+  </nav>

@@ -66,7 +66,7 @@ def advisor_seeker(request):
                 advisor = AdvisorUserProfile.objects.get(user=request.user)
 
                 if advisor.approved == 1:
-                    return redirect('clients')
+                    return redirect('matches')
                 else:
                     return redirect('advisor_profile')
 

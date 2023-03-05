@@ -8,18 +8,17 @@ urlpatterns = [
     path('signup/', views.advisor_signup, name='advisor_signup'),
     path('profile/', views.advisor_profile, name='advisor_profile'),
     path('deactivate/', views.deactivate_profile, name='deactivate_profile'),
-    path('matches/', views.matches_list, name='matches'),
     path('clients/', views.clients_list, name='clients'),
-    path(
-        'matches/client/<match_id>',
-        views.seeker_profile,
-        name='match_profile'
-    ),
-    path(
-        'matches/client/<match_id>/delete/<consultation_id>',
-        views.match_delete_consultation,
-        name='match_delete_consultation'
-    ),
+    # path(
+    #     'matches/client/<match_id>',
+    #     views.seeker_profile,
+    #     name='match_profile'
+    # ),
+    # path(
+    #     'matches/client/<match_id>/delete/<consultation_id>',
+    #     views.match_delete_consultation,
+    #     name='match_delete_consultation'
+    # ),
 
     path(
         'clients/client/<match_id>',

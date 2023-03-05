@@ -10,6 +10,8 @@ class AdvisorAdmin(admin.ModelAdmin):
         'not_approve_advisor'
         ]
 
+    list_display = ('business_name', 'user', 'approved')
+
     def approve_advisor(self, request, queryset):
         queryset.update(approved=1)
 

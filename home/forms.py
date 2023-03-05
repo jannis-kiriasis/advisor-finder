@@ -23,8 +23,8 @@ class CustomSignupForm(SignupForm):
     Validate and save the new fields.
     """
 
-    first_name = forms.CharField(max_length=30, label='First name')
-    last_name = forms.CharField(max_length=30, label='Last name')
+    first_name = forms.CharField(max_length=30, label='First name', widget=forms.TextInput(attrs={'placeholder': 'First name'}))
+    last_name = forms.CharField(max_length=30, label='Last name', widget=forms.TextInput(attrs={'placeholder': 'Last name'}))
 
     def signup(self, request, user):
 

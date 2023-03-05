@@ -5,80 +5,71 @@
 {% load account socialaccount %}
 
 {% block extra_meta %}
-    <!-- SEO metadata -->
-    <meta name="description" content="Login to Advice Found to find a financial advisor or talk to your advisor. Log in now.">
-    <meta name="keywords" content="Login Advice Found, Advice Found login">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{% url 'account_login' %}">
+<!-- SEO metadata -->
+<meta name="description"
+    content="Login to Advice Found to find a financial advisor or talk to your advisor. Log in now.">
+<meta name="keywords" content="Login Advice Found, Advice Found login">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{% url 'account_login' %}">
 
-    <!-- OG tags-->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Login to Advice Found | Advice Found">
-    <meta property="og:description" content="Login to Advice Found to find a financial advisor or talk to your advisor. Log in now.">
-    <meta name="image" property="og:image" content="assets/images/advice-found-logo.png">
-    <meta property="og:url" content="{% url 'account_login' %}">
-    <meta property="og:site_name" content="Advice Found">
-    <meta name="author" content="Jannis Kiriasis">
+<!-- OG tags-->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Login to Advice Found | Advice Found">
+<meta property="og:description"
+    content="Login to Advice Found to find a financial advisor or talk to your advisor. Log in now.">
+<meta name="image" property="og:image" content="assets/images/advice-found-logo.png">
+<meta property="og:url" content="{% url 'account_login' %}">
+<meta property="og:site_name" content="Advice Found">
+<meta name="author" content="Jannis Kiriasis">
 {% endblock %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block extra_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
 
-<section>
+<h1>
+    Welcome to Advice Found.
+    <br>
+    Login to your account.
+</h1>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-9">
+{% get_providers as socialaccount_providers %}
 
-        <h1>
-          Welcome to Advice Found. 
-          <br>
-          Login to your account.
-        </h1>
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+    of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+    for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-        {% get_providers as socialaccount_providers %}
+<div class="socialaccount_ballot">
 
-        {% if socialaccount_providers %}
-        <p>{% blocktrans with site.name as site_name %}Please sign in with one
-          of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-          for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+    <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+    </ul>
 
-        <div class="socialaccount_ballot">
+    <div class="login-or">{% trans 'or' %}</div>
 
-          <ul class="socialaccount_providers">
-            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-          </ul>
+</div>
 
-          <div class="login-or">{% trans 'or' %}</div>
+{% include "socialaccount/snippets/login_extra.html" %}
 
-        </div>
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
 
-        {% include "socialaccount/snippets/login_extra.html" %}
-
-        {% else %}
-        <p>{% blocktrans %}If you have not created an account yet, then please
-          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-        {% endif %}
-
-        <form class="login" method="POST" action="{% url 'account_login' %}">
-          {% csrf_token %}
-          {{ form.as_p }}
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-          <div class="mt-4 mb-4">
-            <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-          </div>
-
-          <a id="forgot-password" class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-
-        </form>
-
-      </div>
+<form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div class="mt-4 mb-4">
+        <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
     </div>
-  </div>
 
-</section>
+    <a id="forgot-password" class="button secondaryAction"
+        href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+
+</form>
 
 {% endblock %}

@@ -2,89 +2,74 @@
 {% load static %}
 
 
-{% block extra_title %} 
-    {{page_title}}
+{% block extra_title %}
+{{page_title}}
 {% endblock %}
 
 
 {% block page_header %}
+<div class="row">
 
     {% if profile.approved == 1 %}
 
-      <div class="container-fluid p-0">
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <div class="container-xxl">
-                  Your profile has been approved! You can now receive contact requests.
-              </div>
-          </div>
-      </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="container">
+            Your profile has been approved! You can now receive contact requests.
+        </div>
+    </div>
 
     {% elif profile.approved == 0 %}
 
-        <div class="container-fluid p-0">
-            <div class="alert alert-warning fade show alert-dismissible" role="alert" >
-                <div class="container-xxl">
-                    Advice Found is reviewing your profile. You'll be notified once approved.
-                </div>
-            </div>
+    <div class="alert alert-warning fade show alert-dismissible" role="alert">
+        <div class="container">
+            Advice Found is reviewing your profile. You'll be notified once approved.
         </div>
+    </div>
+
 
     {% else %}
 
-    <div class="container-fluid p-0">
-        <div class="alert alert-danger fade show alert-dismissible" role="alert" >
-            <div class="container-xxl">
-                Your profile has been not approved. Please contact Advice Found to know the reasons and get your profile approved.
-            </div>
+    <div class="alert alert-danger fade show alert-dismissible" role="alert">
+        <div class="container">
+            Your profile has been not approved. Please contact Advice Found to know the reasons and get your profile
+            approved.
         </div>
     </div>
-      
+
     {% endif %}
+
+</div>
 
 {% endblock %}
 
 
 {% block content %}
-<section>
-    <div class="container">
-        <div class="col-6">
 
-            <h1>{{ profile.business_name }}'s Profile</h1>
+<h1>{{ profile.business_name }}'s Profile</h1>
 
-            <!-- Advisro signup form -->
-            <div class="col-12">
-                <form method="POST">
+<!-- Advisro signup form -->
+<div class="col-12">
+    <form method="POST">
 
-                    {% csrf_token %}
-                    {{ form.as_p }}
+        {% csrf_token %}
+        {{ form.as_p }}
 
-                    <button class="btn mb-5" id="update_advisor" type="submit">
-                        Update profile
-                    </button>
+        <button class="btn mb-5" id="update_advisor" type="submit">
+            Update profile
+        </button>
 
-                </form>
+    </form>
 
-                {% if profile.active == 1 %}
+    {% if profile.active == 1 %}
 
-                    <a href="{% url 'deactivate_profile' %}"
-                        class="btn btn-secondary mt-5" id="deactivate_advisor"
-                        aria-label="Deactivate profile">Deactivate profile</a>
+    <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
+        aria-label="Deactivate profile">Deactivate profile</a>
 
-                {% else %}
+    {% else %}
 
-                    <a href="{% url 'deactivate_profile' %}"
-                        class="btn btn-secondary mt-5" id="deactivate_advisor"
-                        aria-label="Deactivate profile">Activate profile</a>
+    <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
+        aria-label="Deactivate profile">Activate profile</a>
 
-                {% endif %}
+    {% endif %}
 
-            </div>
-        </div>
-</section>
-
-</div>
-</div>
-</section>
-
-
-{% endblock %}
+    {% endblock %}

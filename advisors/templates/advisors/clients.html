@@ -3,7 +3,7 @@
 
 
 {% block extra_title %} 
-    My clients
+    My matches
 {% endblock %}
 
 
@@ -16,20 +16,23 @@
 <section>
     <div class="pb-5">
 
-        <div class="col-12">
-            <h1 class="text-center">Your clients</h1>
-            <p class="text-center">
-                Here you see all the clients you have been in touch with. After accepting the consultation, the seeker matched appears on this page.
-            </p>
+        <div class="row mb-5">
+            <div class="col-12">
+                <h1 class="text-center">My clients</h1>
+                <p class="text-center">
+                    Here you see all the clients you have been matched. 
+                </p>
+            </div>
         </div>
-
+</section>
+<section>
         <div class="container container-xxl row justify-content-center align-items-center mx-auto">
 
             {% for match in matches %}
-            {% if matches.count == 0 %}
+            
+            {% if matches_count == 0 %}
             <p>You have no clients. You will be match with advice seekers soon.</p>
             {% else %}
-
             <div class="card card-clients mx-1 my-1 col-md-1">
 
                 <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
@@ -63,7 +66,6 @@
 
             </div>
             {% endif %}
-
             {% endfor %}
 
         </div>

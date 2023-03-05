@@ -133,7 +133,7 @@ def deactivate_profile(request):
 
 
 @login_required
-def matches_list(request):
+def clients_list(request):
 
     """
     View to show all of an advisor matches.
@@ -147,38 +147,12 @@ def matches_list(request):
 
     # Filter matches by logged in advisor
 
-    matches = Match.objects.filter(advisor=advisor, is_client=False)
+    matches = Match.objects.filter(advisor=advisor)
     matches_count = matches.count()
 
     context = {
         'matches_count': matches_count,
         'matches': matches
-    }
-
-    return render(request, 'advisors/matches.html', context)
-
-
-@login_required
-def clients_list(request):
-
-    """
-    View to show all of an advisor clients.
-    """
-
-    # # Get advisor profile of logged in user
-
-    user = request.user
-    advisor_objects = AdvisorUserProfile.objects
-    advisor = get_object_or_404(advisor_objects, user=user)
-
-    # Filter matches by logged in advisor
-
-    matches = Match.objects.filter(advisor=advisor, is_client=True)
-    matches_count = matches.count()
-
-    context = {
-        'matches': matches,
-        'matches_count': matches_count
     }
 
     return render(request, 'advisors/clients.html', context)
@@ -256,7 +230,7 @@ def seeker_profile(request, match_id):
                 message_form = MessageForm()
 
             return redirect(reverse(
-                'match_profile', args=[match.id]
+                'client_profile', args=[match.id]
             ))
 
         elif 'consultation' in request.POST:
@@ -266,7 +240,7 @@ def seeker_profile(request, match_id):
             create_consultation(consultation_form, match, request)
 
             return redirect(reverse(
-                'match_profile', args=[match.id]
+                'client_profile', args=[match.id]
             ))
 
     context = {

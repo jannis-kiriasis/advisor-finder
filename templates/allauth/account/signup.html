@@ -4,54 +4,43 @@
 {% load i18n %}
 
 {% block extra_meta %}
-    <!-- SEO metadata -->
-    <meta name="description" content="Register to Advice Found to find a financial advisor in Ireland that suits your needs. Sign up now.">
-    <meta name="keywords" content="Sign up Advice Found, Advice Found signup, Advice Found register">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{% url 'account_signup' %}">
+<!-- SEO metadata -->
+<meta name="description"
+    content="Register to Advice Found to find a financial advisor in Ireland that suits your needs. Sign up now.">
+<meta name="keywords" content="Sign up Advice Found, Advice Found signup, Advice Found register">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{% url 'account_signup' %}">
 
-    <!-- OG tags-->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Signup to Advice Found | Advice Found">
-    <meta property="og:description" content="Register to Advice Found to find a financial advisor in Ireland that suits your needs. Sign up now.">
-    <meta name="image" property="og:image" content="assets/images/advice-found-logo.png">
-    <meta property="og:url" content="{% url 'account_signup' %}">
-    <meta property="og:site_name" content="Advice Found">
-    <meta name="author" content="Jannis Kiriasis">
+<!-- OG tags-->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Signup to Advice Found | Advice Found">
+<meta property="og:description"
+    content="Register to Advice Found to find a financial advisor in Ireland that suits your needs. Sign up now.">
+<meta name="image" property="og:image" content="assets/images/advice-found-logo.png">
+<meta property="og:url" content="{% url 'account_signup' %}">
+<meta property="og:site_name" content="Advice Found">
+<meta name="author" content="Jannis Kiriasis">
 {% endblock %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block extra_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<section>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-9">
+<h1>Sign up to Advice Found</h1>
 
-        <h1>Sign up to Advice Found</h1>
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button type="submit" class="mt-5">{% trans "Sign Up" %} &raquo;</button>
+</form>
 
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-          {% csrf_token %}
-          {{ form.as_p }}
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-          <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-        </form>
-    
-        <p class="mt-4">
-          {% blocktrans %}Already have an account? Then please 
-          <a href="{{ login_url }}">sign in</a>
-          .{% endblocktrans %}
-        </p>
-
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
+<p class="mt-4">
+    {% blocktrans %}Already have an account? Then please
+    <a href="{{ login_url }}">sign in</a>
+    .{% endblocktrans %}
+</p>
 
 {% endblock %}
