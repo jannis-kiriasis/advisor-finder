@@ -118,9 +118,12 @@ def advisor_profile(request):
 
     user = request.user
     seeker = get_object_or_404(SeekerUserProfile, user=user)
-
-    matches = Match.objects
-    match = get_object_or_404(matches, seeker=seeker)
+    match = False
+    try:
+        matches = Match.objects
+        match = get_object_or_404(matches, seeker=seeker)
+    except:
+        pass
 
     notes = Message.objects.filter(match=match)
     consultations = Consultation.objects.filter(match=match)

@@ -11,83 +11,135 @@
 
 {% block content %}
 
-<section>
-    <div class="match pb-5">
+    {% if not match %}
+    <p class="mt-5 text-center">
+        You don't have an advisor yet. Go to 
+        <a href="{% url 'match' %}">the matchign page</a> 
+        to see all the advisors availalbe.
+    </p>
+    {% else %}
+    <section>
+        <div class="match pb-5">
 
-        <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
+            <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
 
-            <div class="col-12">
-                <h1 class="text-center">Your Advisor
-                </h1>
+                <div class="col-12">
+                    <h1 class="text-center">Your Advisor
+                    </h1>
 
-            </div>
+                </div>
 
-            <div class="card text-center col-6">
-                <div class="card-body">
-                    <h2 class="card-title pb-2">{{ match.advisor.business_name }}</h2>
-                    <p class="card-text"><span class="fw-bold">Location: </span>{{ match.advisor.town_or_city }}</p>
-                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.advisor.specialisation }}
-                    </p>
-                    <p class="card-text">{{ match.advisor.business_description }}.</p>
+                <div class="card text-center col-6">
+                    <div class="card-body">
+                        <h2 class="card-title pb-2">{{ match.advisor.business_name }}</h2>
+                        <p class="card-text"><span class="fw-bold">Location: </span>{{ match.advisor.town_or_city }}</p>
+                        <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.advisor.specialisation }}
+                        </p>
+                        <p class="card-text">{{ match.advisor.business_description }}.</p>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<section>
-    <div class="container container-xxl h-100 d-flex flex-column pb-150">
+    <section>
+        <div class="container container-xxl h-100 d-flex flex-column pb-150">
 
-        <div class="justify-content-center align-items-center col-12 mt-5 mb-5">
-            <h2 class="text-center">Messages
-            </h2>
-        </div>
+            <div class="justify-content-center align-items-center col-12 mt-5 mb-5">
+                <h2 class="text-center">Messages
+                </h2>
+            </div>
 
-        <!-- Iterate through elements list -->
+            <!-- Iterate through elements list -->
 
-        {% for el in elements %}
+            {% for el in elements %}
 
-        <div class="row justify-content-between">
-            <div class="comment-form flex-column">
+            <div class="row justify-content-between">
+                <div class="comment-form flex-column">
 
-                <!-- If the element in the list has a user value,
-                     it must be a note -->
+                    <!-- If the element in the list has a user value,
+                        it must be a note -->
 
-                {% if el.user %}
+                    {% if el.user %}
 
-                    <!-- If the note is from the requester do this -->
+                        <!-- If the note is from the requester do this -->
 
-                    {% if el.user == request.user %}
+                        {% if el.user == request.user %}
 
-                        <div class="row text-end justify-content-end">
+                            <div class="row text-end justify-content-end">
 
-                            <div class="col-auto">
-                                <div class="text-start card message-card message-bg">
-                                    <p>{{ el.body }}</p>
-                                    <p>
-                                        <span class="small">
-                                            {{ el.created_on }}
-                                        </span>
-                                    </p>
+                                <div class="col-auto">
+                                    <div class="text-start card message-card message-bg">
+                                        <p>{{ el.body }}</p>
+                                        <p>
+                                            <span class="small">
+                                                {{ el.created_on }}
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
+
                             </div>
 
-                        </div>
+                        <!-- If the note is not from the requester do this -->
 
-                    <!-- If the note is not from the requester do this -->
+                        {% elif el.user != request.user %}
 
-                    {% elif el.user != request.user %}
+                            <div class="row text-start justify-content-start">
+
+                                <div class="col-auto">
+                                    <div class="text-start card message-card">
+                                        <p>{{ el.body }}</p>
+                                        <p>
+                                            <span class="small">
+                                                {{ el.created_on }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    <!-- If the el.user is not true, 
+                        the element in the list must be a consultation, 
+                        so do this -->
+
+                    {% else %}
 
                         <div class="row text-start justify-content-start">
 
                             <div class="col-auto">
-                                <div class="text-start card message-card">
-                                    <p>{{ el.body }}</p>
+                                <div class="text-start py-4 card message-card">
+                                    <p class="fw-bold">Consultation:</p>
+                                    <p><span class="fw-bold">date:</span> 
+                                        {{ el.date }}
+                                    </p>
+                                    <p><span class="fw-bold">Time:</span> 
+                                        {{ el.time }}
+                                    </p>
+                                    <p><span class="fw-bold">Fee:</span> 
+                                        {{ el.price }}
+                                    </p>
+
+                                    {% if el.status == 0 %}
+
+                                        <a class="btn btn-primary mt-2" href="{% url 'checkout' %}">
+                                            Confirm consultation
+                                        </a>
+                                    {% else %}
+                                        <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank">
+                                            Start meeting
+                                        </a>
+
+                                    {% endif %}
+
                                     <p>
                                         <span class="small">
-                                            {{ el.created_on }}
+                                            {{ el.created }}
                                         </span>
                                     </p>
                                 </div>
@@ -97,78 +149,34 @@
 
                     {% endif %}
 
-                <!-- If the el.user is not true, 
-                    the element in the list must be a consultation, 
-                    so do this -->
-
-                {% else %}
-
-                    <div class="row text-start justify-content-start">
-
-                        <div class="col-auto">
-                            <div class="text-start py-4 card message-card">
-                                <p class="fw-bold">Consultation:</p>
-                                <p><span class="fw-bold">date:</span> 
-                                    {{ el.date }}
-                                </p>
-                                <p><span class="fw-bold">Time:</span> 
-                                    {{ el.time }}
-                                </p>
-                                <p><span class="fw-bold">Fee:</span> 
-                                    {{ el.price }}
-                                </p>
-
-                                {% if el.status == 0 %}
-
-                                    <a class="btn btn-primary mt-2" href="{% url 'checkout' %}">
-                                        Confirm consultation
-                                    </a>
-                                {% else %}
-                                    <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank">
-                                        Start meeting
-                                    </a>
-
-                                {% endif %}
-
-                                <p>
-                                    <span class="small">
-                                        {{ el.created }}
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                {% endif %}
-
+                </div>
             </div>
-        </div>
 
-        {% endfor %}
-</section>
-<section>
-    <div class="fixed-bottom">
+            {% endfor %}
+    </section>
+    <section>
+        <div class="fixed-bottom">
 
-        <div class="row">
-            <div class="col message-form-container">
+            <div class="row">
+                <div class="col message-form-container">
 
-                <form method="POST"
-                    class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
+                    <form method="POST"
+                        class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
 
-                    {% csrf_token %}
-                    {{ message_form }}
+                        {% csrf_token %}
+                        {{ message_form }}
 
-                    <button type="submit" class="btn btn-primary">
-                        Send
-                    </button>
+                        <button type="submit" class="btn btn-primary">
+                            Send
+                        </button>
 
-                </form>
+                    </form>
 
+                </div>
             </div>
-        </div>
 
-    </div>
-</section>
+        </div>
+    </section>
+    {% endif %}
 
 {% endblock %}
