@@ -27,6 +27,17 @@ def match(request):
     seeker_objects = SeekerUserProfile.objects
     seeker = get_object_or_404(seeker_objects, user=user)
 
+    # If seeker is already matched, go to advisor page
+    find_match = False
+
+    if not find_match:
+        find_match = Match.objects.filter(
+            seeker=seeker
+        )
+
+    if find_match:
+        return redirect('advisor')
+
     # Filter advisors by approved and active statuses and then location 
     # and specialisation. Finally, take a random object from the queryset
 
