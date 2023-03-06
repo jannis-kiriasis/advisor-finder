@@ -13,6 +13,7 @@
 
 body,
 html {
+    font-family: 'Open Sans', Helvetica, sans-serif;
     height: 100%;
     font-size: 1rem;
 }
@@ -60,16 +61,16 @@ p {
 h1 {
     padding-top: 2.8rem;
     padding-bottom: 1.68rem;
-    color: var(--liberty);
+    color: var(--sapphire);
 }
 
 .h1-emphasis {
-    color: var(--liberty);
+    color: var(--sapphire);
     font-weight: 600;
 }
 
 .h1-red {
-    color: var(--fuzzy-wuzzy);
+    color: var(--brown);
     font-weight: 600;
 }
 
@@ -89,14 +90,14 @@ select,
 textarea {
     border-radius: 0.5rem;
     background-color: #ffffff;
-    border: 1px solid var(--liberty-medium);
+    border: 1px solid var(--sapphire-medium);
     width: 100%;
     font-size: 1rem;
     padding: 10px;
 } */
 
 .partners {
-    background-color: var(--fuzzy-wuzzy-light);
+    background-color: var(--brown-light);
 }
 
 input[type=checkbox] {
@@ -115,9 +116,9 @@ label {
 [type=submit]:not(:disabled),
 .btn-primary,
 .btn-secondary:hover {
-    background-color: var(--fuzzy-wuzzy);
+    background-color: var(--brown);
     color: #ffffff;
-    border-color: var(--fuzzy-wuzzy);
+    border-color: var(--brown);
     border-radius: 5px;
     width: 200px;
 }
@@ -126,25 +127,25 @@ label {
 .btn-primary:hover,
 .btn-secondary,
 button:focus:not(:focus-visible) {
-    color: var(--fuzzy-wuzzy);
+    color: var(--brown);
     background-color: #ffffff;
-    border-color: var(--fuzzy-wuzzy);
+    border-color: var(--brown);
     border-radius: 5px;
     width: 200px;
 }
 
 .btn-third {
-    background-color: var(--liberty);
+    background-color: var(--sapphire);
     color: #ffffff;
-    border-color: var(--liberty);
+    border-color: var(--sapphire);
     border-radius: 5px;
     width: 250px;
 }
 
 .btn-third:hover {
-    color: var(--liberty);
+    color: var(--sapphire);
     background-color: #ffffff;
-    border-color: var(--liberty);
+    border-color: var(--sapphire);
     border-radius: 5px;
     width: 250px;
 }
@@ -158,7 +159,7 @@ textarea[name=body]{
 }
 
 .errorlist {
-    color: var(--fuzzy-wuzzy);
+    color: var(--brown);
 }
 
 
@@ -167,7 +168,7 @@ textarea[name=body]{
 nav,
 .dropdown-menu,
 footer {
-    background-color: var(--liberty);
+    background-color: var(--sapphire);
     color: #ffffff;
 }
 
@@ -183,7 +184,7 @@ nav > div > ul > li > a,
 nav > div > ul > li > a:hover,
 .nav-link:hover,
 .dropdown-item:hover {
-    color: var(--liberty);
+    color: var(--sapphire);
     background-color: #ffffff;
 }
 
@@ -222,7 +223,7 @@ nav > div > ul > li > a:hover,
 .message-bg,
 .match,
 .bg {
-    background-color: var(--fuzzy-wuzzy-light);
+    background-color: var(--brown-light);
 }
 
 .message-card {
@@ -260,7 +261,7 @@ label[for="id_body"] {
 input[type="number"],
 input[type="time"] {
     border-radius: 0.5rem;
-    border: 1px solid var(--liberty-medium);
+    border: 1px solid var(--sapphire-medium);
     width: 100%;
     font-size: 1rem;
     padding: 10px;
@@ -277,7 +278,7 @@ textarea,
   transition: box-shadow 150ms ease;
   border-radius: 0.5rem;
   background-color: #ffffff;
-  border: 1px solid var(--liberty-medium) !important;
+  border: 1px solid var(--sapphire-medium) !important;
   font-size: 1rem;
   padding: 10px;
 }
@@ -295,6 +296,6 @@ select {
 /* advisors/matches/client */
 
 .btn:disabled {
-    background-color: var(--fuzzy-wuzzy);
-    border-color: var(--fuzzy-wuzzy);
+    background-color: var(--brown);
+    border-color: var(--brown);
 }

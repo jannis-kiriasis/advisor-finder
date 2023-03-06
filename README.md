@@ -614,35 +614,24 @@ In the following paragraph, I'm going to explain the colours, typography and ima
 
 I've used a similar colour palette to a project I previously realised (pp2 and pp4) so the reasoning behind the colour choice is very similar.
 
-The main colour used is a shade of blue (Liberty). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
+The main colour used is a shade of blue (sapphire). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
 
-All the main buttons are in red, Fuzzy Wuzzy. It's different enough to differentiate from the main Liberty colour. The secondary buttons are white with red borders.
+All the main buttons are in brown. It's different enough to differentiate from the main sapphire colour. The secondary buttons are white with brown borders.
 
-A lighter shade of Fuzzy Wuzzy was used to highlight the best match, the seeker's advisor and the advisor's clients profiles.
+A lighter shade of brown was used to highlight the best match, the seeker's advisor and the advisor's clients profiles.
 It was also used to color the background of the messages sent.
-
-
-
-
-
 
 ![Color Palette](./media/README-files/colors.png)  
 
 All the text colour combinations have been tested for accessibility and they all achieve WCAG AAA.
-- [Colour contrast test: white on blue](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=3B4D97)   
-- [Colour contrast test: black on light blue](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=E9ECF7)   
-- [Colour contrast test: black on green](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=48A9A6) 
-- [Colour contrast test: white on red](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=A42D2D)   
-- [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
-- [Colour contrast test: blue on light blue](https://webaim.org/resources/contrastchecker/?fcolor=E9ECF7&bcolor=3B4D97)   
-- [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
-- [Colour contrast test: dark green on white](https://webaim.org/resources/contrastchecker/?fcolor=296161&bcolor=FFFFFF)   
+- [Colour contrast test: shappire on white](https://webaim.org/resources/contrastchecker/?fcolor=054FB9&bcolor=FFFFFF)   
+- [Colour contrast test: brown on white](https://webaim.org/resources/contrastchecker/?fcolor=9D3801&bcolor=FFFFFF)   
 
 Tested with [Contrast checker](https://webaim.org/resources/contrastchecker/).
 
 ### Typography
 
-The typography was chosen for my liking, again I've used it in previous projects PP2). Open Sans is a very popular font if not the most popular.
+The typography was chosen for my liking, again I've used it in previous projects PP2. Open Sans is a very popular font if not the most popular.
 
 I used [Open Sans](https://fonts.google.com/specimen/Open+Sans) for all body elements.  
 
@@ -655,16 +644,68 @@ The only image used in this project is the favicon.
 
 ## Accessibility
 
-As mentioned above, all the colour combinations used for text passed a contrast ratio test. During the testing phase, Verdigris didn't pass the test and so it was darkened creating the Dark Verdigris colour achieving the WCAG AAA score for accessibility.
+As mentioned above, all the colour combinations used for text passed a contrast ratio test.
 
-I've also used alt tags to describe images and aria labels to describe links.  
+I've also aria labels to describe links.  
 The pages have been structured using semantic HTML markup.  
 
 
 ## SEO
 
-While the most important SEO meta tags have been used in the base.html template head, this app is for internal use, so it isn't made to be found on search engines. 
-SEO is irrelevant to this project.
+This app has been created for advice seeker to find indipendent financial advice. The main action and offering of the homepage is giving users a way to get financial advice. Therefore, the search intent I'm going after is those of users looking for financial advice. 
+
+With a quick brainstorming I thought that users looking for financial advice on Google would look for:
+- Find a financial advisor
+- find a financial advisor in Ireland
+- financial advice
+- financial advisor finder
+- financial planners
+- financial advisors
+- Indipendent financial advisors 
+- Indipendent financial advisors in Ireland
+
+Then I validated my ideas with Google Ads keywords planner.
+
+From here the question is: what do people looking for financial advisors want to know? 
+I need to answer this question to make the content exhaustive.
+By looking at the serp results seems like the majority of results are actual advisors.
+So looking at what content they have on their page, the most common topics are:
+
+- what benefits seekers can get from them
+- the services / products they cover
+- testimonials / client stories
+
+So this is what I'm going to include on the homepage.
+In a real world, I would include also:
+
+- number of clients and advisors using the platform (social proof)
+- review widgets, the like of Trustpilot (social proof + I can add schema markup on the page)
+
+![Google Snippet](./media/README-files/google.png)  
+
+The only 4 public pages of my site are:
+
+- The homepage 
+- signup
+- login
+- password reset
+
+On all of the 4 pages I've set:
+
+- Open graph tags ( to render the image and title nicely when the page is shared on social media)
+- meta description
+- meta robots
+- canonical link
+- title tag
+
+Those are not necessary for all of the other pages since the are behind a login wall and search engine crawlers can't crawl (and so index) them.
+
+I also made sure that:
+- There aren't broken internal links
+- All external links have a rel tag attribute
+- 404 errors and server errors are handled nicely
+- accessibility score is good (more on the Lighthouse report below)
+- Core web vitals are good (more on the Lighthouse report below)
 
 
 ## Planning

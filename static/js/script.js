@@ -55,8 +55,8 @@ function confirmDelete(event) {
         icon: 'warning',
         iconColor: 'var(--tan)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--fuzzy-wuzzy)',
-        cancelButtonColor: 'var(--liberty)',
+        confirmButtonColor: 'var(--brown)',
+        cancelButtonColor: 'var(--sapphire)',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -88,7 +88,7 @@ function confirmUpdateAdvisor(event) {
         iconColor: 'var(--tan)',
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
-        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -118,7 +118,7 @@ function confirmUpdateSeeker(event) {
         iconColor: 'var(--tan)',
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
-        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -150,7 +150,7 @@ function deactivateAdvisor(event) {
         iconColor: 'var(--tan)',
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
-        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, deactivate me!'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -170,7 +170,7 @@ function activateAdvisor(event) {
         iconColor: 'var(--tan)',
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
-        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, activate me!'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -207,7 +207,7 @@ function messageAdvisor(event) {
         iconColor: 'var(--tan)',
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
-        cancelButtonColor: 'var(--fuzzy-wuzzy)',
+        cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, start chat!'
     }).then((result) => {
         if (result.isConfirmed) {
