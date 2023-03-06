@@ -2,8 +2,8 @@
 {% load static %}
 
 
-{% block extra_title %} 
-    {{page_title}}
+{% block extra_title %}
+{{page_title}}
 {% endblock %}
 
 
@@ -11,67 +11,63 @@
 {% endblock %}
 
 
-{% block content %}
+{% block white_bg_content %}
 
-<section>
-    <div class="pb-5">
+<div class="pb-5">
 
-        <div class="col-12">
-            <h1 class="text-center">Your appointments</h1>
-            <p class="text-center">
-                Here you see all the appointments you have scheduled and their status.
-            </p>
-        </div>
+    <h1 class="text-center">Your appointments</h1>
+    <p class="text-center">
+        Here you see all the appointments you have scheduled and their status.
+    </p>
 
-        <div class="container container-xxl row justify-content-center align-items-center mx-auto">
+    <div class="justify-content-center align-items-center mx-auto">
 
-            {% for consultation in consultations %}
-            <div class="card card-clients mx-1 my-1 col-md-1">
+        {% for consultation in consultations %}
+        <div class="card card-clients mx-1 my-1 col-md-1">
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <h2 class="card-title">
-                        {{ consultation.match.seeker.user.first_name }} {{ consultation.match.seeker.user.last_name }}
-                    </h2>
-
-                </div>
-
-                <ul class="list-group list-group-flush">
-
-                    <li class="list-group-item">
-                        <span class="fw-bold">Date:</span> {{ consultation.date }}
-                    </li>
-                    <li class="list-group-item">
-                        <span class="fw-bold">Time:</span> {{ consultation.time }}
-                    </li>                    
-                    <li class="list-group-item">
-                        <span class="fw-bold">Fee:</span> {{ consultation.price }}
-                    </li>
-                    <li class="list-group-item">
-                        <span class="fw-bold">Status:</span> 
-                        {% if consultation.status == 0 %}
-                            Not confirmed
-                        {% else %}
-                            Confirmed
-                        {% endif %}
-                    </li>
-        
-                </ul>
-
-                <div class="card-body text-center">
-                    {% if consultation.status == 0 %}
-                    <a href="delete/{{ consultation.id }} " class="btn btn-secondary">Cancel</a>
-
-                    {% else %}
-                    <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank">Start meeting</a>
-                    {% endif %}
-                </div>
+                <h2 class="card-title">
+                    {{ consultation.match.seeker.user.first_name }} {{ consultation.match.seeker.user.last_name }}
+                </h2>
 
             </div>
-            {% endfor %}
+
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <span class="fw-bold">Date:</span> {{ consultation.date }}
+                </li>
+                <li class="list-group-item">
+                    <span class="fw-bold">Time:</span> {{ consultation.time }}
+                </li>
+                <li class="list-group-item">
+                    <span class="fw-bold">Fee:</span> {{ consultation.price }}
+                </li>
+                <li class="list-group-item">
+                    <span class="fw-bold">Status:</span>
+                    {% if consultation.status == 0 %}
+                    Not confirmed
+                    {% else %}
+                    Confirmed
+                    {% endif %}
+                </li>
+
+            </ul>
+
+            <div class="card-body text-center">
+                {% if consultation.status == 0 %}
+                <a href="delete/{{ consultation.id }} " class="btn btn-secondary">Cancel</a>
+
+                {% else %}
+                <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank">Start meeting</a>
+                {% endif %}
+            </div>
 
         </div>
+        {% endfor %}
+
     </div>
-</section>
+</div>
 
 {% endblock %}

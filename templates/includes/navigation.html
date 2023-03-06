@@ -12,10 +12,10 @@
 
                     {% if request.user.users %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'consultations' %}">Appointments</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'clients' %}">Clients</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor_profile' %}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'consultations' %}">Appointments</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'clients' %}">Clients</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'advisor_profile' %}">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'account_logout' %}">Logout</a></li>
 
                     {% else %}
 

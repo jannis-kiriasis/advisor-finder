@@ -149,6 +149,10 @@ button:focus:not(:focus-visible) {
     width: 250px;
 }
 
+textarea[name=body]{
+    margin: 10px;
+}
+
 .swal2-styled {
     color: #ffffff !important;
 }
@@ -265,7 +269,8 @@ input[type="time"] {
 
 input,
 select,
-textarea {
+textarea,
+.card {
   box-sizing: border-box;
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
@@ -273,9 +278,14 @@ textarea {
   border-radius: 0.5rem;
   background-color: #ffffff;
   border: 1px solid var(--liberty-medium) !important;
-  width: 100%;
   font-size: 1rem;
   padding: 10px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
 }
 
 input,

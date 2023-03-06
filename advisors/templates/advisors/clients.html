@@ -2,74 +2,70 @@
 {% load static %}
 
 
-{% block extra_title %} 
-    My matches
+{% block extra_title %}
+My matches
 {% endblock %}
 
+<div class="bg">
+    {% block page_header %}
+    {% endblock %}
+</div>
 
-{% block page_header %}
+{% block light_red_bg_content %}
+<div class="pb-5">
+    <h1 class="text-center">My clients</h1>
+    <p class="text-center">
+        Here you see all the clients you have been matched.
+    </p>
+
+</div>
 {% endblock %}
 
+{% block white_bg_content %}
+<div class="py-5">
+    <div class="container container-xxl row justify-content-center align-items-center mx-auto">
 
-{% block content %}
+        {% for match in matches %}
 
-<section>
-    <div class="pb-5">
+        {% if matches_count == 0 %}
+        <p>You have no clients. You will be match with advice seekers soon.</p>
+        {% else %}
+        <div class="card card-clients mx-1 my-1 col-md-1">
 
-        <div class="row mb-5">
-            <div class="col-12">
-                <h1 class="text-center">My clients</h1>
-                <p class="text-center">
-                    Here you see all the clients you have been matched. 
-                </p>
-            </div>
-        </div>
-</section>
-<section>
-        <div class="container container-xxl row justify-content-center align-items-center mx-auto">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 
-            {% for match in matches %}
-            
-            {% if matches_count == 0 %}
-            <p>You have no clients. You will be match with advice seekers soon.</p>
-            {% else %}
-            <div class="card card-clients mx-1 my-1 col-md-1">
+            <div class="card-body">
 
-                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-
-                <div class="card-body">
-
-                    <h2 class="card-title">
-                        {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
-                    </h2>
-                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                <h2 class="card-title">
+                    {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
+                </h2>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p> -->
 
-                </div>
+            </div>
 
-                <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush">
 
-                    <li class="list-group-item">
-                        Need: {{ match.seeker.need }}
-                    </li>
-                    <li class="list-group-item">
-                        Location: {{ match.seeker.town_or_city }}
-                    </li>
-        
-                </ul>
+                <li class="list-group-item">
+                    Need: {{ match.seeker.need }}
+                </li>
+                <li class="list-group-item">
+                    Location: {{ match.seeker.town_or_city }}
+                </li>
 
-                <div class="card-body text-center">
+            </ul>
 
-                    <a href="client/{{ match.id }}" class="btn btn-outline-dark">Profile and chat</a>
+            <div class="card-body text-center">
 
-                </div>
+                <a href="client/{{ match.id }}" class="btn btn-outline-dark">Profile and chat</a>
 
             </div>
-            {% endif %}
-            {% endfor %}
 
         </div>
+        {% endif %}
+        {% endfor %}
+
     </div>
-</section>
+</div>
 
 {% endblock %}

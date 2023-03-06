@@ -43,11 +43,11 @@
 {% endblock %}
 
 
-{% block content %}
+{% block white_bg_content %}
+<div class="pb-5 col-9 justify-content-center align-items-center mx-auto">
+    <h1>{{ profile.business_name }}'s Profile</h1>
 
-<h1>{{ profile.business_name }}'s Profile</h1>
-
-<!-- Advisro signup form -->
+    <!-- Advisro signup form -->
     <form method="POST">
 
         {% csrf_token %}
@@ -69,6 +69,8 @@
     <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
         aria-label="Deactivate profile">Activate profile</a>
 
-    {% endif %}
+</div>
 
-    {% endblock %}
+{% endif %}
+
+{% endblock %}

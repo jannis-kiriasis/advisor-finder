@@ -24,8 +24,13 @@
 Find a Financial Advisor in Ireland | Advice Found
 {% endblock %}
 
-{% block section_one %}
-    <div class="container text-center">
+<div class="bg">
+    {% block page_header %}
+    {% endblock %}
+</div>
+
+{% block light_red_bg_content %}
+    <div class="container text-center py-4">
 
         <h1 class="black mb-5">
             Talk to an independent
@@ -43,11 +48,10 @@ Find a Financial Advisor in Ireland | Advice Found
         </div>
 
     </div>
-
 {% endblock %}
 
-{% block section_two %}
-    <div class="row d-flex justify-content-center">
+{% block white_bg_content %}
+    <div class="row d-flex justify-content-center py-5">
     <!-- Begin Mailchimp Signup Form -->
     <div id="mc_embed_signup" class="text-center">
         <h2>Why do you need financial advice?</h2>

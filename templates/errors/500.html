@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block white_bg_content %}
+
+<div class="row h-100">
+    <div class="col-7 col-md-6 my-auto">
+        <h1 class="display-4">
+            You have incontered a server error.
+        </h1>
+        <div class="my-5">
+            <h4>
+                <a href="{% url 'home' %}" class="btn btn-secondary">
+                    Return to homepage
+                </a>
+            </h4>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

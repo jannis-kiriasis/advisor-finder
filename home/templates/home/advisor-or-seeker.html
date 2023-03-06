@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %} 
-    Are you seeker or adivisor?
+{% block extra_title %}
+Are you seeker or adivisor?
 {% endblock %}
 
-{% block content %}
+{% block white_bg_content %}
 
 <section>
-    <div class="container">
-        <div class="col-12 text-center">
+    <div class="col-12 text-center">
+        <form method="POST">
 
-            <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-                {% csrf_token %}
-                {{ form.as_p }}
+            <button class="btn mb-4" type="submit">Complete signup
+            </button>
 
-                <button class="btn mb-4" type="submit">Complete signup
-                </button>
-
-            </form>
-
-        </div>
+        </form>
     </div>
 </section>
 
