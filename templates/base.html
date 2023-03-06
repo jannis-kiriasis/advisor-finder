@@ -54,11 +54,22 @@
         </section>
 
 
-        <section>
-            <div class="container d-flex justify-content-center text-center pb-5">
+        <section class="bg">
+            <div class="container d-flex justify-content-center text-center py-5">
                 <div class="row">
                     <div class="col-12">
-                        {% block content %}
+                        {% block section_one %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container d-flex justify-content-center text-center py-5">
+                <div class="row">
+                    <div class="col-12">
+                        {% block section_two %}
                         {% endblock %}
                     </div>
                 </div>

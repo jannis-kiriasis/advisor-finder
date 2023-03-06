@@ -77,6 +77,10 @@ h1 {
     color: #000000;
 }
 
+.img-fluid {
+    filter: brightness(0) invert(1);
+}
+
 /* input[type=text]:not(.browser-default),
 input[type=date]:not(.browser-default),
 input[type=password]:not(.browser-default),
@@ -90,6 +94,10 @@ textarea {
     font-size: 1rem;
     padding: 10px;
 } */
+
+.partners {
+    background-color: var(--fuzzy-wuzzy-light);
+}
 
 input[type=checkbox] {
     height: inherit;
@@ -208,7 +216,8 @@ nav > div > ul > li > a:hover,
 
 .message-form-container,
 .message-bg,
-.match {
+.match,
+.bg {
     background-color: var(--fuzzy-wuzzy-light);
 }
 
