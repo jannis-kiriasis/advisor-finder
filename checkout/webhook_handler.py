@@ -24,7 +24,7 @@ class StripeWH_Handler:
         """
         Send email to advisor with details of the consultation confirmed.
         """
-        email = order.email
+        email = order.consultation.match.advisor.user.email
         subject = 'Consultation confirmed'
         body = render_to_string(
             'checkout/emails/consultation-confirmed-advisor.txt',
@@ -37,43 +37,39 @@ class StripeWH_Handler:
             [email]
         )
 
-    # def _consultation_confirmed_email_seeker(self, orer):
-    #     """
-    #     Send email to seeker with details of the consultation confirmed.
-    #     """
-    #     email = order.email
-    #     subject = render_to_string(
-    #         'checkout/emails/consultation-confirmation-seeker.txt',
-    #         {'order': order})
-    #     body = render_to_string(
-    #         'checkout/emails/consultation-confirmation-seeker.txt',
-    #         {'order': order})
+    def _consultation_confirmed_email_seeker(self, orer):
+        """
+        Send email to seeker with details of the consultation confirmed.
+        """
+        email = order.email
+        subject = 'Consultation and and confirmed'
+        body = render_to_string(
+            'checkout/emails/consultation-confirmation-seeker.txt',
+            {'order': order})
 
-    #     send_mail(
-    #         subject,
-    #         body,
-    #         settings.DEFAULT_FROM_EMAIL,
-    #         [email]
-    #     )
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [email]
+        )
 
-    # def _consultation_confirmed_email_seeker(self, orer):
-    #     """
-    #     Send email to seeker when payment fails.
-    #     """
-    #     email = order.email
-    #     subject = render_to_string(
-    #         'checkout/emails/payment-failed.txt',
-    #         {'order': order})
-    #     body = render_to_string(
-    #         'checkout/emails/payment-failed.txt',
-    #         {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+    def _send_payment_failed_email(self, orer):
+        """
+        Send email to seeker when payment fails.
+        """
+        email = order.email
+        subject = 'Payment failed - order not created'
+        body = render_to_string(
+            'checkout/emails/payment-failed.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-    #     send_mail(
-    #         subject,
-    #         body,
-    #         settings.DEFAULT_FROM_EMAIL,
-    #         [email]
-    #     )
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [email]
+        )
 
     def handle_event(self, event):
         """
@@ -137,7 +133,7 @@ class StripeWH_Handler:
 
             self._consultation_confirmed_email_advisor(order)
 
-            # self._consultation_confirmed_email_seeker(order)
+            self._consultation_confirmed_email_seeker(order)
 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
@@ -174,7 +170,7 @@ class StripeWH_Handler:
         confirm_consultation(order)
         order_paid(order)
         self._consultation_confirmed_email_advisor(order)
-        # self._consultation_confirmed_email_seeker(order)
+        self._consultation_confirmed_email_seeker(order)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
