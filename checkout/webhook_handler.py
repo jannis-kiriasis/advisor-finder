@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-# from django.core.mail import send_mail
-# from django.template.loader import render_to_string
-# from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from .models import Order
@@ -20,24 +20,22 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-    # def _consultation_confirmed_email_advisor(self, order):
-    #     """
-    #     Send email to advisor with details of the consultation confirmed.
-    #     """
-    #     email = order.consultation.match.advisor.user.email
-    #     subject = render_to_string(
-    #         'checkout/emails/consultation-confirmed-advisor.txt',
-    #         {'order': order})
-    #     body = render_to_string(
-    #         'checkout/emails/consultation-confirmed-advisor.txt',
-    #         {'order': order})
+    def _consultation_confirmed_email_advisor(self, order):
+        """
+        Send email to advisor with details of the consultation confirmed.
+        """
+        email = order.email
+        subject = 'Consultation confirmed'
+        body = render_to_string(
+            'checkout/emails/consultation-confirmed-advisor.txt',
+            {'order': order})
 
-    #     send_mail(
-    #         subject,
-    #         body,
-    #         settings.DEFAULT_FROM_EMAIL,
-    #         [email]
-    #     )
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [email]
+        )
 
     # def _consultation_confirmed_email_seeker(self, orer):
     #     """
@@ -137,7 +135,7 @@ class StripeWH_Handler:
             confirm_consultation(order)
             order_paid(order)
 
-            # self._consultation_confirmed_email_advisor(order)
+            self._consultation_confirmed_email_advisor(order)
 
             # self._consultation_confirmed_email_seeker(order)
 
@@ -175,7 +173,7 @@ class StripeWH_Handler:
 
         confirm_consultation(order)
         order_paid(order)
-        # self._consultation_confirmed_email_advisor(order)
+        self._consultation_confirmed_email_advisor(order)
         # self._consultation_confirmed_email_seeker(order)
 
         return HttpResponse(
