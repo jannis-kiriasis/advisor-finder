@@ -41,8 +41,8 @@ class StripeWH_Handler:
         """
         Send email to seeker with details of the consultation confirmed.
         """
-        email = order.email
-        subject = 'Consultation and and confirmed'
+        email = order.consultation.match.seeker.user.email
+        subject = 'Consultation and payment confirmed'
         body = render_to_string(
             'checkout/emails/consultation-confirmation-seeker.txt',
             {'order': order})
@@ -58,7 +58,7 @@ class StripeWH_Handler:
         """
         Send email to seeker when payment fails.
         """
-        email = order.email
+        email = order.consultation.match.seeker.user.email
         subject = 'Payment failed - order not created'
         body = render_to_string(
             'checkout/emails/payment-failed.txt',
@@ -136,7 +136,8 @@ class StripeWH_Handler:
             self._consultation_confirmed_email_seeker(order)
 
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} \
+                    | SUCCESS: Verified order already in database',
                 status=200)
 
         else:
@@ -162,7 +163,6 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
 
-                self._send_payment_failed_email(order)
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
@@ -173,13 +173,17 @@ class StripeWH_Handler:
         self._consultation_confirmed_email_seeker(order)
 
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} \
+                | SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
+
+        self._send_payment_failed_email(order)
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
