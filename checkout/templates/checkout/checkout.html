@@ -51,7 +51,7 @@ Checkout
         {% csrf_token %}
         <h2>Details</h2>
         {{ order_form }}
-        <div class="form-check form-check-inline float-right mr-0 mb-3">
+        <!-- <div class="form-check form-check-inline float-right mr-0 mb-3">
             {% if user.is_authenticated %}
             <label class="form-check-label" for="id-save-info">Save this delivery information to my
                 profile</label>
@@ -62,7 +62,7 @@ Checkout
                 <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
             </label>
             {% endif %}
-        </div>
+        </div> -->
 
         <div>
             <h2 class="text-center">Payment</h2>

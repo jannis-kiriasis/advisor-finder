@@ -85,7 +85,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        save_info = intent.metadata.save_info
+        # save_info = intent.metadata.save_info
         consultation = intent.metadata.save_consultation
         seeker = intent.metadata.save_seeker
 
@@ -105,13 +105,14 @@ class StripeWH_Handler:
             id=billing_details.address.city
         )
 
-        if save_info:
-            user.phone_number = billing_details.phone
-            seeker.postcode = billing_details.address.postal_code
-            seeker.town_or_city = location
-            seeker.street_address = billing_details.address.line1
-            user.save()
-            seeker.save()
+        # if save_info:
+        #     user.phone_number = billing_details.phone
+        #     seeker.postcode = billing_details.address.postal_code
+        #     seeker.town_or_city = location
+        #     seeker.street_address = billing_details.address.line1
+        #     user.save()
+        #     seeker.save()
+        print(seeker)
 
         order_exists = False
         attempt = 1
@@ -130,9 +131,8 @@ class StripeWH_Handler:
         if order_exists:
             confirm_consultation(order)
             order_paid(order)
-
+            print(order.consultation)
             self._consultation_confirmed_email_advisor(order)
-
             self._consultation_confirmed_email_seeker(order)
 
             return HttpResponse(

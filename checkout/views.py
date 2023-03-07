@@ -89,7 +89,7 @@ def checkout(request):
             request.session['save_consultation'] = 'save-consultation' in request.POST
             request.session['save_seeker'] = 'save-seeker' in request.POST
             request.session['save_last_name'] = 'save-last-name' in request.POST
-            request.session['save_info'] = 'save-info' in request.POST
+            # request.session['save_info'] = 'save-info' in request.POST
 
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]
@@ -111,13 +111,13 @@ def checkout(request):
         )
 
         data = {
-            'name': request.user.first_name,
-            'last_name': request.user.last_name,
-            'email': request.user.email,
-            'phone': request.user.profiles.phone_number,
+            'name': get_seeker_profile.user.first_name,
+            'last_name': get_seeker_profile.user.last_name,
+            'email': get_seeker_profile.user.email,
+            'phone_number': get_seeker_profile.user.profiles.phone_number,
             'postcode': get_seeker_profile.postcode,
             'town_or_city': get_seeker_profile.town_or_city,
-            'Address': get_seeker_profile.street_address,
+            'street_address': get_seeker_profile.street_address,
             'consultation': consultation,
             'seeker': get_seeker_profile
         }

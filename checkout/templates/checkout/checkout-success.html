@@ -60,7 +60,7 @@ Checkout processed
                 <tbody>
                     <tr>
                         <td class="col-6">First name</td>
-                        <td class="col-6">{{ order.first_name }}</td>
+                        <td class="col-6">{{ order.name }}</td>
                     </tr>
                     <tr>
                         <td class="col-6">Last name</td>
@@ -84,10 +84,14 @@ Checkout processed
                         <td class="col-6">{{ order.postcode }}</td>
                     </tr>
                     {% endif %}
+                    {% if order.postcode %}
+
                     <tr>
                         <td class="col-6">Phone number</td>
                         <td class="col-6">{{ order.phone_number }}</td>
                     </tr>
+                    {% endif %}
+
                 </tbody>
             </table>
         </div>

@@ -54,7 +54,7 @@ form.addEventListener('submit', function(ev) {
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
 
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    // var saveInfo = Boolean($('#id-save-info').attr('checked'));
     var saveConsultation = $('#id_consultation').attr('value');
     var saveSeeker = $('#id_seeker').attr('value');
     var saveLastName = $('#id_last_name').attr('value');
@@ -63,7 +63,7 @@ form.addEventListener('submit', function(ev) {
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
-        'save_info': saveInfo,
+        // 'save_info': saveInfo,
         'save_consultation': saveConsultation,
         'save_seeker': saveSeeker,
         'save_last_name': saveLastName,
