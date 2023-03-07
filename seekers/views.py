@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SeekerSignupForm
@@ -9,11 +9,11 @@ from .forms import MessageForm
 from .emails import email_note_to_advisor
 from consultations.models import Consultation
 from itertools import chain
+from home.models import Location, Specialisation
 
 
 @login_required
 def seeker_signup(request):
-
     """
     View to let an seeker signup. Takes the form it is valid
     and if so save the objects in the related models.
@@ -65,22 +65,22 @@ def seeker_profile(request):
         form = SeekerSignupForm(request.POST, instance=profile)
 
         if form.is_valid():
+            request.session[
+                'save_need'
+                ] = 'save_need' in request.POST
+            request.session[
+                'save_postcode'
+                ] = 'save_postcode' in request.POST
+            request.session[
+                'save_town_or_city'
+                ] = 'save_town_or_city' in request.POST
+            request.session[
+                'save_street_address'
+                ] = 'save_street_address' in request.POST
 
-            profile = form.save()
-
-            messages.success(
-                request,
-                'Your profile has been updated.'
-            )
-
-            return redirect('seeker_profile')
-
-        else:
-
-            messages.error(
-                request,
-                "Your update request didn't go through. Try again."
-            )
+            return redirect(reverse(
+                'seeker_update',
+            ))
 
     context = {
         'profile': profile,
@@ -89,6 +89,49 @@ def seeker_profile(request):
     }
 
     return render(request, 'seekers/profile.html', context)
+
+
+@login_required
+def update_profile(request):
+    """
+    View to delete profile.
+    If profile is deleted, send a feedback.
+    """
+
+    saved_need = request.POST['save_need']
+    saved_postcode = request.POST['save_postcode']
+    saved_street_address = request.POST['save_street_address']
+    saved_town_or_city = request.POST['save_town_or_city']
+
+    print(saved_town_or_city)
+
+    specialisation = get_object_or_404(
+        Specialisation,
+        type=saved_need
+    )
+
+    town_or_city = Location.objects.filter(
+        city=saved_town_or_city
+    ).latest('city')
+
+    profile = get_object_or_404(
+        SeekerUserProfile,
+        user=request.user
+        )
+
+    profile.need = specialisation
+    profile.postcode = saved_postcode
+    profile.street_address = saved_street_address
+    profile.town_or_city = town_or_city
+    new_profile = profile.save()
+
+    print(profile.need)
+    messages.success(
+        request,
+        'Your profile has been updated.'
+    )
+
+    return redirect('seeker_profile')
 
 
 @login_required

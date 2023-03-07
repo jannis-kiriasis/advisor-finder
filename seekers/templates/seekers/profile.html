@@ -30,7 +30,7 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-            <button class="btn my-5" id="update_seeker" type="submit">Update profile
+            <button class="btn my-5" id="update_seeker" data-url="{% url 'seeker_update' %}" type="submit">Update profile
             </button>
 
         </form>

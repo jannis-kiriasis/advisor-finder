@@ -38,14 +38,23 @@ class Message(models.Model):
 
     match = models.ForeignKey(
         Match, on_delete=models.CASCADE,
+        null=True,
+        blank=True,
         related_name='match'
         )
+
     user = models.ForeignKey(
-        User, on_delete=models.PROTECT,
+        User, on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
         related_name='sender'
         )
+
     body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+
+    created_on = models.DateTimeField(
+        auto_now_add=True
+        )
 
     class Meta:
         ordering = ['created_on']

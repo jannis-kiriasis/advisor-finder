@@ -7,23 +7,25 @@ const chooseAdvisorButton = document.getElementsByClassName('advisor');
 let alert = document.getElementsByClassName('alert')[0];
 
 // Remove alert box after 5 seconds
-setTimeout(() => {
-    alert.classList.remove('show')
-    alert.addClass('hide')
-}, 5000)
+if (alert) {
+    setTimeout(() => {
+        alert.classList.remove('show')
+        alert.addClass('hide')
+    }, 5000)
+}
 
 // Event listeners for SweetAlerts defensive design
-// if (deleteButton) {
-//     deleteButton.addEventListener('click', confirmDelete);
-// }
+if (deleteButton) {
+    deleteButton.addEventListener('click', confirmDelete);
+}
 
 // if (updateAdvisorButton) {
 //     updateAdvisorButton.addEventListener('click', confirmUpdateAdvisor);
 // }
 
-// if (updateSeekerButton) {
-//     updateSeekerButton.addEventListener('click', confirmUpdateSeeker);
-// }
+if (updateSeekerButton) {
+    updateSeekerButton.addEventListener('click', confirmUpdateSeeker);
+}
 
 // if (deactivateButton) {
 //     deactivateButton.addEventListener('click', deactivateAdvisorChoice);
@@ -95,18 +97,35 @@ function confirmUpdateAdvisor(event) {
 }
 
 /** Get href url of button update seeker.
-*/
-function goToUpdateUrlSeeker() {
-    let href = document.getElementById('update_seeker').getAttribute(
-        'href');
-    window.location.href = `${href}`;
-}
+// */
+// function goToUpdateUrlSeeker() {
+//     let url = document.getElementById('update_seeker').getAttribute(
+//         'data-url');
+//         window.location.href = url;
+// }
 
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
 */
 function confirmUpdateSeeker(event) {
     event.preventDefault();
+
+    var saveNeed = $("#id_need :selected").text();
+    var savePostcode = $('#id_postcode').attr('value');
+    var saveTownOrCity = $('#id_town_or_city :selected').text();
+    var saveStreetAddress = $('#id_street_address').attr('value');
+    // From using {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'save_need': saveNeed,
+        'save_postcode': savePostcode,
+        'save_town_or_city': saveTownOrCity,
+        'save_street_address': saveStreetAddress,
+    };
+    var url = document.getElementById('update_seeker').getAttribute(
+        'data-url');;
+
     Swal.fire({
         title: 'Are you sure you want to update you profile?',
         icon: 'warning',
@@ -117,7 +136,7 @@ function confirmUpdateSeeker(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            goToUpdateUrlSeeker();
+            $.post(url, postData);
         }
     });
 }

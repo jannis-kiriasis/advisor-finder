@@ -23,7 +23,8 @@ class Consultation(models.Model):
     """
 
     match = models.ForeignKey(
-        Match, on_delete=models.PROTECT,
+        Match, on_delete=models.SET_NULL,
+        null=True, blank=True,
         related_name='consultation'
         )
 
