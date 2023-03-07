@@ -40,6 +40,10 @@
     border: 1px solid #000;
 }
 
+label[for=id-save-info] {
+    display: inline-block;
+}
+
 select,
 select option {
     color: #000000;

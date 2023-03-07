@@ -176,8 +176,12 @@ textarea[name=body]{
 
 .errorlist {
     color: var(--brown);
+    list-style-type: none;
 }
 
+.errorlist > input {
+    border-color: var(--brown);
+}
 
 /* Navigation */
 
