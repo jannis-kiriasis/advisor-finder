@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from home.models import Specialisation, Location
+from home.models import Specialisation, Location, UserProfile
 
 
 class SeekerUserProfile(models.Model):
@@ -12,7 +12,7 @@ class SeekerUserProfile(models.Model):
     """
 
     user = models.OneToOneField(
-        User, on_delete=models.PROTECT, related_name='seekers'
+        User, on_delete=models.CASCADE, related_name='seekers'
     )
 
     postcode = models.CharField(max_length=12, null=True, blank=True)

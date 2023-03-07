@@ -112,9 +112,9 @@ textarea {
     padding: 10px;
 } */
 
-.partners {
+/* .partners {
     background-color: var(--lavander-blush);
-}
+} */
 
 input[type=checkbox] {
     height: inherit;
@@ -232,7 +232,7 @@ nav > div > ul > li > a:hover,
 .message-bg,
 .match,
 .bg {
-    background-color: var(--lavander-blush);
+    background-color: var(--lavander-blush) !important;
 }
 
 .message-card {

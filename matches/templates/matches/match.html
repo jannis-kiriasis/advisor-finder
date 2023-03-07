@@ -15,7 +15,7 @@ Choose your advisor
 
             <h1 class="text-center">{{ user.first_name }}!
                 We found a financial advisor that specialise in {{ seeker.need|lower }}.
-                We beleive {{ advisor.business_name }} is the best option for you.
+                We believe {{ best_advisor.business_name }} is the best option for you.
             </h1>
 
             <div class="card text-center">
@@ -41,9 +41,9 @@ Choose your advisor
 {% endblock %}
 {% block white_bg_content %}
 
-<div class="col-12 col-md-6">
     {% if not other_advisors %}
     {% else %}
+    <div class="col-12 col-md-6">
     <div class="d-flex flex-column justify-content-center align-items-center pb-5">
         <div class="mt-5 mb-5">
             <h2 class="text-center">Other advisors specialising in {{ seeker.need|lower }}

@@ -97,14 +97,16 @@ def delete_profile(request):
     View to delete profile.
     If profile is deleted, send a feedback.
     """
-
-    user = request.user
-    profile = get_object_or_404(SeekerUserProfile, user=user)
+    profile = get_object_or_404(SeekerUserProfile, user=request.user)
     profile.delete()
+
+    user = get_object_or_404(User, id=request.user.id)
+    user.delete()
+
     messages.success(request, 'Your profile has been deleted.')
     logout(request)
 
-    return redirect('')
+    return redirect('home')
 
 
 @login_required

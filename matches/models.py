@@ -18,7 +18,7 @@ class Match(models.Model):
 
     seeker = models.OneToOneField(
         SeekerUserProfile,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='Seekers'
     )
 
@@ -37,7 +37,7 @@ class Message(models.Model):
     """
 
     match = models.ForeignKey(
-        Match, on_delete=models.PROTECT,
+        Match, on_delete=models.CASCADE,
         related_name='match'
         )
     user = models.ForeignKey(
