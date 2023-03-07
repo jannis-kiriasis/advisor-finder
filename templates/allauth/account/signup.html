@@ -25,22 +25,23 @@
 {% block extra_title %}{% trans "Signup" %}{% endblock %}
 
 {% block white_bg_content %}
+<div class="col-12 col-md-6">
 
-<h1>Sign up to Advice Found</h1>
+    <h1>Sign up to Advice Found</h1>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <button type="submit" class="mt-5">{% trans "Sign Up" %} &raquo;</button>
-</form>
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button type="submit" class="mt-5">{% trans "Sign Up" %} &raquo;</button>
+    </form>
 
-<p class="mt-4">
-    {% blocktrans %}Already have an account? Then please
-    <a href="{{ login_url }}">sign in</a>
-    .{% endblocktrans %}
-</p>
-
+    <p class="mt-4">
+        {% blocktrans %}Already have an account? Then please
+        <a href="{{ login_url }}">sign in</a>
+        .{% endblocktrans %}
+    </p>
+</div>
 {% endblock %}

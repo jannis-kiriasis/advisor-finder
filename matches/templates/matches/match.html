@@ -1,74 +1,67 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %} 
-    Choose your advisor
+{% block extra_title %}
+Choose your advisor
 {% endblock %}
 
 {% block page_header %}
 {% endblock %}
 
-{% block content %}
-
-<section>
+{% block light_red_bg_content %}
+<div class="text-center my-5">
     <div class="match pb-5">
+        <div class="h-100 d-flex flex-column justify-content-center align-items-center">
 
-        <div class="container container-xxl h-100 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="text-center">{{ user.first_name }}!
+                We found a financial advisor that specialise in {{ seeker.need|lower }}.
+                We beleive {{ advisor.business_name }} is the best option for you.
+            </h1>
 
-            <div class="col-12 ">
-                <h1 class="text-center">{{ user.first_name }}!
-                    We found a financial advisor that specialise in {{ seeker.need|lower }}.
-                    We beleive {{ advisor.business_name }} is the best option for you.
-                </h1>
-
-            </div>
-
-            <div class="card text-center col-6">
+            <div class="card text-center">
                 <div class="card-body">
                     <h2 class="card-title pb-2">{{ best_advisor.business_name }}</h2>
                     <p class="card-text"><span class="fw-bold">Location: </span>{{ best_advisor.town_or_city }}</p>
-                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ best_advisor.specialisation }}</p>
+                    <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ best_advisor.specialisation }}
+                    </p>
                     <p class="card-text">{{ best_advisor.business_description }}.</p>
                 </div>
-                
+
             </div>
 
-            <div class="card text-center mt-4 col-6">
-                    <a href="{% url 'create_match' best_advisor.id %}" id="message" class="btn btn-primary advisor">Message advisor</a>
-                </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'create_match' best_advisor.id %}" id="message" class="btn btn-primary advisor">Message
+                    advisor</a>
             </div>
-
         </div>
 
-
     </div>
+</div>
 
+{% endblock %}
+{% block white_bg_content %}
+
+<div class="col-12 col-md-6">
     {% if not other_advisors %}
-
     {% else %}
-    <div class="container container-xxl d-flex flex-column justify-content-center align-items-center pb-5">
-
-        <div class="col-12 mt-5 mb-5">
+    <div class="d-flex flex-column justify-content-center align-items-center pb-5">
+        <div class="mt-5 mb-5">
             <h2 class="text-center">Other advisors specialising in {{ seeker.need|lower }}
             </h2>
         </div>
-
         {% for other_advisor in other_advisors %}
-        <div class="card mt-4 text-center col-6">
+        <div class="card mt-4 text-center">
             <div class="card-body">
                 <h3 class="card-title pb-2">{{ other_advisor.business_name }}</h3>
                 <p class="card-text"><span class="fw-bold">Location: </span>{{ other_advisor.town_or_city }}</p>
                 <p class="card-text">{{ other_advisor.business_description }}.</p>
-                <a href="{% url 'create_match' other_advisor.id %}" class="btn btn-outline-dark advisor">Message advisor</a>
+                <a href="{% url 'create_match' other_advisor.id %}" class="btn btn-outline-dark advisor">Message
+                    advisor</a>
 
             </div>
         </div>
         {% endfor %}
-
     </div>
-
     {% endif %}
-
-</section>
-
+</div>
 {% endblock %}

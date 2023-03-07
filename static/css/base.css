@@ -48,6 +48,22 @@ input,
 select,
 textarea {
     margin: 10px 0px;
+    width: 100%;
+
+}
+
+input,
+select {
+    height: 40px;
+}
+
+::placeholder,
+option,
+input,
+select,
+textarea {
+    --bs-text-opacity: 1;
+    color: var(--bs-secondary-color)!important;
 }
 
 a {
@@ -97,7 +113,7 @@ textarea {
 } */
 
 .partners {
-    background-color: var(--brown-light);
+    background-color: var(--lavander-blush);
 }
 
 input[type=checkbox] {
@@ -193,13 +209,6 @@ nav > div > ul > li > a:hover,
 }
 
 
-/* seekers/signup/ */
-
-.intro {
-    font-size: 1.2rem;
-}
-
-
 /* advisors/profile/ */
 
 .btn-position {
@@ -223,7 +232,7 @@ nav > div > ul > li > a:hover,
 .message-bg,
 .match,
 .bg {
-    background-color: var(--brown-light);
+    background-color: var(--lavander-blush);
 }
 
 .message-card {
@@ -283,16 +292,6 @@ textarea,
   padding: 10px;
 }
 
-input,
-select,
-textarea {
-    width: 100%;
-}
-
-input,
-select {
-    height: 40px;
-}
 /* advisors/matches/client */
 
 .btn:disabled {

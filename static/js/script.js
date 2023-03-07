@@ -42,7 +42,6 @@ function goToDeleteUrl() {
     window.location.href = `${href}`;
 }
 
-
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
 */
@@ -65,7 +64,6 @@ function confirmDelete(event) {
     });
 }
 
-
 // /** Get href url of button update advisor.
 // */
 // function goToUpdateUrlAdvisor() {
@@ -73,7 +71,6 @@ function confirmDelete(event) {
 //     //     'href');
 //     window.location.href = `#`;
 // }
-
 
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
@@ -87,7 +84,7 @@ function confirmUpdateAdvisor(event) {
         icon: 'warning',
         iconColor: 'var(--tan)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--verdigris)',
+        confirmButtonColor: 'var(--dark-verdigris)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
@@ -97,7 +94,6 @@ function confirmUpdateAdvisor(event) {
     });
 }
 
-
 /** Get href url of button update seeker.
 */
 function goToUpdateUrlSeeker() {
@@ -105,7 +101,6 @@ function goToUpdateUrlSeeker() {
         'href');
     window.location.href = `${href}`;
 }
-
 
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
@@ -117,7 +112,7 @@ function confirmUpdateSeeker(event) {
         icon: 'warning',
         iconColor: 'var(--tan)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--verdigris)',
+        confirmButtonColor: 'var(--dark-verdigris)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
@@ -127,7 +122,6 @@ function confirmUpdateSeeker(event) {
     });
 }
 
-
 /** Get href url of deactivate button.
 */
 function goToDeactivateAdvisor() {
@@ -135,7 +129,6 @@ function goToDeactivateAdvisor() {
         'href');
     window.location.href = `${href}`;
 }
-
 
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
@@ -149,7 +142,7 @@ function deactivateAdvisor(event) {
         icon: 'warning',
         iconColor: 'var(--tan)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--verdigris)',
+        confirmButtonColor: 'var(--dark-verdigris)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, deactivate me!'
     }).then((result) => {
@@ -169,7 +162,7 @@ function activateAdvisor(event) {
         icon: 'warning',
         iconColor: 'var(--tan)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--verdigris)',
+        confirmButtonColor: 'var(--dark-verdigris)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, activate me!'
     }).then((result) => {
@@ -206,7 +199,7 @@ function messageAdvisor(event) {
         icon: 'info',
         iconColor: 'var(--tan)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--verdigris)',
+        confirmButtonColor: 'var(--dark-verdigris)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, start chat!'
     }).then((result) => {

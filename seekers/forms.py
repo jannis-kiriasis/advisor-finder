@@ -19,6 +19,20 @@ class SeekerSignupForm(forms.ModelForm):
             'street_address',
         ]
 
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super(SeekerSignupForm, self).__init__(*args, **kwargs)
+
+        self.fields['postcode'].widget.attrs['placeholder'] = 'Your postcode'
+        self.fields['street_address'].widget.attrs['placeholder'] = 'Your street address'
+        self.fields['need'].empty_label = 'What is the main area your are looking for advice on?'
+        self.fields['town_or_city'].empty_label = 'Your location (town or city)'
+        self.fields['need'].widget.attrs['class'] = 'text-muted'
+        self.fields['town_or_city'].widget.attrs['class'] = 'text-muted'
+
 
 class MessageForm(forms.ModelForm):
 

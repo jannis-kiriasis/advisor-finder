@@ -7,18 +7,21 @@ Are you seeker or adivisor?
 
 {% block white_bg_content %}
 
-<section>
-    <div class="col-12 text-center">
-        <form method="POST">
+<div class="col-12 col-md-6 text-center">
 
-            {% csrf_token %}
-            {{ form.as_p }}
+    <h1 class="black my-5">
+        Are you looking for financial advice or are you a financial advisor?
+    </h1>
 
-            <button class="btn mb-4" type="submit">Complete signup
-            </button>
+    <form method="POST">
 
-        </form>
-    </div>
-</section>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="btn my-5" type="submit">Next
+        </button>
+
+    </form>
+</div>
 
 {% endblock %}

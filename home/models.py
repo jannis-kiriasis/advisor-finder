@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 # Use to define user type in UserProfileModel
 
 USER_TYPE = (
-    (0, 'Advisor'),
-    (1, 'Seeker')
+    (0, "I'm a financial advisor"),
+    (1, "I'm looking for advice")
 )
 
 
