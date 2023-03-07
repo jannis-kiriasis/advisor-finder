@@ -3,66 +3,55 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
 
-def define_context(order):
-    """
-    Define the variables to use in all the emails' contexts
-    """
-    context = {
-        'seeker': f'{order.seeker.user.first_name} \
-                    {order.seeker.user.first_name}',
-        'advisor': order.consultation.match.advisor.business_name,
-        'date': order.consultation.date,
-        'time': order.consultation.time,
-        'fee': order.consultation.price,
-        'link': order.consultation.link,
-        'order': order
-    }
-
-    return context
-
-
-def consultation_confirmed_email(order):
+def _consultation_confirmed_email_advisor(order):
     """
     Send email to advisor with details of the consultation confirmed.
     """
-    context = define_context(order)
+    email = order.consultation.match.advisor.user.email
+    subject = 'Consultation confirmed'
+    body = render_to_string(
+        'checkout/emails/consultation-confirmed-advisor.txt',
+        {'order': order})
 
-    subject = f'Consultation confirmed'
-    message = render_to_string('emails/consultation-confirmed.txt', context)
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [order.consultation.match.advisor.user.email, ]
-    send_mail(subject, message, email_from, recipient_list)
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [email]
+    )
 
 
-def payment_failed_email(order):
-
+def _consultation_confirmed_email_seeker(order):
     """
-    Send email to seeker when order payment fails.
+    Send email to seeker with details of the consultation confirmed.
     """
+    email = order.seeker.user.email
+    subject = 'Consultation and payment confirmed'
+    body = render_to_string(
+        'checkout/emails/consultation-confirmation-seeker.txt',
+        {'order': order})
 
-    context = define_context(order)
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [email]
+    )
 
-    subject = f'Order payment failed | Advice Found'
-    message = render_to_string('emails/payment-failed.txt', context)
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [order.seeker.user.email, ]
-    send_mail(subject, message, email_from, recipient_list)
 
-
-def payment_succeeded_email(order):
-
+def _send_payment_failed_email(order):
     """
-    Send email to seeker with details of the payment confirmed 
-    and meeting details.
+    Send email to seeker when payment fails.
     """
+    email = order.seeker.user.email
+    subject = 'Payment failed - order not created'
+    body = render_to_string(
+        'checkout/emails/payment-failed.txt',
+        {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-    context = define_context(order)
-
-    subject = f'Consultation confirmed'
-    message = render_to_string(
-        'emails/consultation-confirmed-seeker.txt',
-        context
-        )
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [order.seeker.user.email, ]
-    send_mail(subject, message, email_from, recipient_list)
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [email]
+    )

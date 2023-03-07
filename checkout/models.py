@@ -6,6 +6,7 @@ from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from consultations.services import confirm_consultation
 from home.models import Location
+from checkout.emails import _consultation_confirmed_email_advisor, _consultation_confirmed_email_seeker
 
 
 class Order(models.Model):
@@ -41,27 +42,33 @@ class Order(models.Model):
     paid = models.BooleanField(default=False, blank=False)
 
     def _generate_order_number(self):
-
         """
         Generate a random, unique order number using UUID
         """
-
         return uuid.uuid4().hex.upper()
 
-    def save(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__original_paid = self.paid
 
+    def save(self, *args, **kwargs):
         """
         Override the original save method to set the order number
         if it hasn't been set already and
         add Advice Found fee to the grand total.
         """
-
         self.fee = self.consultation.price or 0
         self.af_fee = self.fee * 5 / 100
         self.grand_total = self.fee + self.af_fee
-        
+
         if not self.order_number:
             self.order_number = self._generate_order_number()
+
+        if self.paid != self.__original_paid:
+            if self.paid:
+                order = self
+                _consultation_confirmed_email_advisor(order)
+                _consultation_confirmed_email_seeker(order)
 
         super().save(*args, **kwargs)
 

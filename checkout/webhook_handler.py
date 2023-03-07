@@ -12,6 +12,7 @@ from home.models import UserProfile
 from consultations.services import confirm_consultation
 import stripe
 import time
+from .emails import _send_payment_failed_email
 
 
 class StripeWH_Handler:
@@ -19,57 +20,6 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
-
-    def _consultation_confirmed_email_advisor(self, order):
-        """
-        Send email to advisor with details of the consultation confirmed.
-        """
-        email = order.consultation.match.advisor.user.email
-        subject = 'Consultation confirmed'
-        body = render_to_string(
-            'checkout/emails/consultation-confirmed-advisor.txt',
-            {'order': order})
-
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [email]
-        )
-
-    def _consultation_confirmed_email_seeker(self, orer):
-        """
-        Send email to seeker with details of the consultation confirmed.
-        """
-        email = order.consultation.match.seeker.user.email
-        subject = 'Consultation and payment confirmed'
-        body = render_to_string(
-            'checkout/emails/consultation-confirmation-seeker.txt',
-            {'order': order})
-
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [email]
-        )
-
-    def _send_payment_failed_email(self, orer):
-        """
-        Send email to seeker when payment fails.
-        """
-        email = order.consultation.match.seeker.user.email
-        subject = 'Payment failed - order not created'
-        body = render_to_string(
-            'checkout/emails/payment-failed.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [email]
-        )
 
     def handle_event(self, event):
         """
@@ -112,7 +62,6 @@ class StripeWH_Handler:
         #     seeker.street_address = billing_details.address.line1
         #     user.save()
         #     seeker.save()
-        print(seeker)
 
         order_exists = False
         attempt = 1
@@ -131,9 +80,8 @@ class StripeWH_Handler:
         if order_exists:
             confirm_consultation(order)
             order_paid(order)
-            print(order.consultation)
-            self._consultation_confirmed_email_advisor(order)
-            self._consultation_confirmed_email_seeker(order)
+            # self._consultation_confirmed_email_advisor(order)
+            # self._consultation_confirmed_email_seeker(order)
 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} \
@@ -156,7 +104,7 @@ class StripeWH_Handler:
                     seeker=seeker,
                     fee=consultation.price,
                     stripe_pid=pid,
-                    paid=False
+                    paid=True
                 )
 
             except Exception as e:
@@ -169,8 +117,8 @@ class StripeWH_Handler:
 
         confirm_consultation(order)
         order_paid(order)
-        self._consultation_confirmed_email_advisor(order)
-        self._consultation_confirmed_email_seeker(order)
+        # self._consultation_confirmed_email_advisor(order)
+        # self._consultation_confirmed_email_seeker(order)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} \
