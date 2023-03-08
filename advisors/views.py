@@ -11,6 +11,7 @@ from consultations.models import Consultation
 from itertools import chain
 from home.models import Specialisation, Location
 
+
 @login_required
 def advisor_signup(request):
 

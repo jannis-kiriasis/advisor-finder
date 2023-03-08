@@ -92,7 +92,7 @@ function confirmUpdateAdvisor(event) {
     };
 
     var url = document.getElementById('update_advisor').getAttribute(
-        'data-url');;
+        'data-url');
 
     Swal.fire({
         title: 'Are you sure you want to update your profile?',
@@ -106,7 +106,12 @@ function confirmUpdateAdvisor(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            $.post(url, postData);
+            $.post(url, postData).done(function(){
+                console.log('the data has been updated.')
+            }).fail(function () {
+                // just reload the page, the error will be in django messages
+                console.log('There was a problem updating the data. Try again later.')
+            });
         }
     });
 }
