@@ -6,10 +6,10 @@ from django.conf import settings
 from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from .models import Order
-from .functions import order_paid
+from .utils import order_paid
 from home.models import Location
 from home.models import UserProfile
-from consultations.services import confirm_consultation
+from consultations.utils import confirm_consultation
 import stripe
 import time
 from .emails import _send_payment_failed_email
@@ -55,14 +55,6 @@ class StripeWH_Handler:
             id=billing_details.address.city
         )
 
-        # if save_info:
-        #     user.phone_number = billing_details.phone
-        #     seeker.postcode = billing_details.address.postal_code
-        #     seeker.town_or_city = location
-        #     seeker.street_address = billing_details.address.line1
-        #     user.save()
-        #     seeker.save()
-
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -96,7 +88,7 @@ class StripeWH_Handler:
                     name=billing_details.name,
                     last_name=intent.metadata.save_last_name,
                     email=billing_details.email,
-                    phone_number=billing_details.phone,
+                    # phone_number=billing_details.phone,
                     postcode=billing_details.address.postal_code,
                     town_or_city=billing_details.address.city,
                     street_address=billing_details.address.line1,
