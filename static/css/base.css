@@ -94,9 +94,9 @@ h1 {
     color: #000000;
 }
 
-.img-fluid {
+/* .img-fluid {
     filter: brightness(0) invert(1);
-}
+} */
 
 /* input[type=text]:not(.browser-default),
 input[type=date]:not(.browser-default),
@@ -132,21 +132,21 @@ label {
 [type=submit]:not(:disabled),
 .btn-primary,
 .btn-secondary:hover {
-    background-color: var(--brown);
-    color: #ffffff;
-    border-color: var(--brown);
-    border-radius: 5px;
-    width: 200px;
+    background-color: var(--brown) !important;
+    color: #ffffff !important;
+    border-color: var(--brown) !important;
+    border-radius: 5px !important;
+    width: 200px !important;
 }
 
 [type=submit]:hover,
 .btn-primary:hover,
 .btn-secondary,
 button:focus:not(:focus-visible) {
-    color: var(--brown);
-    background-color: #ffffff;
-    border-color: var(--brown);
-    border-radius: 5px;
+    color: var(--brown) !important;
+    background-color: #ffffff !important;
+    border-color: var(--brown) !important;
+    border-radius: 5px !important;
     width: 200px;
 }
 
@@ -170,7 +170,8 @@ textarea[name=body]{
     margin: 10px;
 }
 
-.swal2-styled {
+.swal2-confirm {
+    background-color: var(--dark-verdigris) !important;
     color: #ffffff !important;
 }
 

@@ -103,8 +103,6 @@ def update_profile(request):
     saved_street_address = request.POST['save_street_address']
     saved_town_or_city = request.POST['save_town_or_city']
 
-    print(saved_town_or_city)
-
     specialisation = get_object_or_404(
         Specialisation,
         type=saved_need
@@ -125,7 +123,6 @@ def update_profile(request):
     profile.town_or_city = town_or_city
     new_profile = profile.save()
 
-    print(profile.need)
     messages.success(
         request,
         'Your profile has been updated.'

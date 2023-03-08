@@ -44,7 +44,7 @@
 
 
 {% block white_bg_content %}
-<div class="pb-5 col-9 justify-content-center align-items-center mx-auto">
+<div class="pb-5 col-12 col-md-6 justify-content-center align-items-center mx-auto">
     <h1>{{ profile.business_name }}'s Profile</h1>
 
     <!-- Advisro signup form -->
@@ -53,7 +53,7 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button class="btn mt-5 mb-5" id="update_advisor" type="submit">
+        <button class="btn mt-5 mb-5" id="update_advisor" data-url="{% url 'update_advisor' %}" type="submit">
             Update profile
         </button>
 

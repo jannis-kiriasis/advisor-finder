@@ -9,7 +9,7 @@ from consultations.views import create_consultation
 from consultations.forms import ConsultationForm
 from consultations.models import Consultation
 from itertools import chain
-
+from home.models import Specialisation, Location
 
 @login_required
 def advisor_signup(request):
@@ -72,25 +72,31 @@ def advisor_profile(request):
         form = AdvisorSignupForm(request.POST, instance=profile)
 
         if form.is_valid():
-
-            profile.approved = 0
-            profile = form.save()
-
-            messages.success(
-                request,
-                'Your update request has been forwarded. Now wait for Advice Found review.'
-            )
-
-            advisor_to_approve_email(profile)
-
-            return redirect('advisor_profile')
-
-        else:
-
-            messages.error(
-                request,
-                "Your update request didn't go through. Try again."
-            )
+            request.session[
+                'save_business_name'
+                ] = 'save_business_name' in request.POST
+            request.session[
+                'save_business_description'
+                ] = 'save_business_description' in request.POST
+            request.session[
+                'save_specialisation'
+                ] = 'save_specialisation' in request.POST
+            request.session[
+                'save_postcode'
+                ] = 'save_postcode' in request.POST
+            request.session[
+                'save_street_address'
+                ] = 'save_street_address' in request.POST
+            request.session[
+                'save_town_or_city'
+                ] = 'save_town_or_city' in request.POST
+            request.session[
+                'save_registration_number'
+                ] = 'save_registration_number' in request.POST
+            print(request.session['save_registration_number'])
+            return redirect(reverse(
+                'update_advisor',
+            ))
 
     context = {
         'profile': profile,
@@ -99,6 +105,57 @@ def advisor_profile(request):
     }
 
     return render(request, 'advisors/profile.html', context)
+
+
+@login_required
+def update_advisor(request):
+    """
+    advisor_profile view for profile.html.
+    Rende
+    """
+
+    saved_specialisation = request.POST['save_specialisation']
+    saved_business_name = request.POST['save_business_name']
+    saved_business_description = request.POST['save_business_description']
+    saved_registration_number = request.POST['save_registration_number']
+    saved_postcode = request.POST['save_postcode']
+    saved_street_address = request.POST['save_street_address']
+    saved_town_or_city = request.POST['save_town_or_city']
+
+    specialisation = get_object_or_404(
+        Specialisation,
+        type=saved_specialisation
+    )
+
+    town_or_city = Location.objects.filter(
+        city=saved_town_or_city
+    ).latest('city')
+
+    profile = get_object_or_404(
+        AdvisorUserProfile,
+        user=request.user
+        )
+    print(saved_registration_number)
+    profile.specialisation = specialisation
+    profile.business_name = saved_business_name
+    profile.business_description = saved_business_description
+    profile.registration_number = saved_registration_number
+    profile.postcode = saved_postcode
+    profile.street_address = saved_street_address
+    profile.town_or_city = town_or_city
+    profile.approved = 0
+
+    new_profile = profile.save()
+
+    advisor_to_approve_email(profile)
+
+    messages.success(
+        request,
+        'Your update request has been forwarded. \
+        Now wait for Advice Found review.'
+    )
+
+    return redirect(reverse('advisor_profile'))
 
 
 @login_required
@@ -118,7 +175,10 @@ def deactivate_profile(request):
 
         advisor_deactivated_email(user, profile)
 
-        messages.success(request, 'Your profile has been deactivated.')
+        messages.success(
+            request,
+            'Your profile has been deactivated.'
+            )
 
     else:
 
@@ -127,7 +187,10 @@ def deactivate_profile(request):
 
         advisor_activated_email(user, profile)
 
-        messages.success(request, 'Your profile has been activated.')
+        messages.success(
+            request,
+            'Your profile has been activated.'
+        )
 
     return redirect('advisor_profile')
 

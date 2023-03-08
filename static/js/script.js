@@ -10,7 +10,6 @@ let alert = document.getElementsByClassName('alert')[0];
 if (alert) {
     setTimeout(() => {
         alert.classList.remove('show')
-        alert.addClass('hide')
     }, 5000)
 }
 
@@ -19,17 +18,17 @@ if (deleteButton) {
     deleteButton.addEventListener('click', confirmDelete);
 }
 
-// if (updateAdvisorButton) {
-//     updateAdvisorButton.addEventListener('click', confirmUpdateAdvisor);
-// }
+if (updateAdvisorButton) {
+    updateAdvisorButton.addEventListener('click', confirmUpdateAdvisor);
+}
 
 if (updateSeekerButton) {
     updateSeekerButton.addEventListener('click', confirmUpdateSeeker);
 }
 
-// if (deactivateButton) {
-//     deactivateButton.addEventListener('click', deactivateAdvisorChoice);
-// }
+if (deactivateButton) {
+    deactivateButton.addEventListener('click', deactivateAdvisorChoice);
+}
 
 if (chooseAdvisorButton) {
     for (var i = 0 ; i < chooseAdvisorButton.length; i++) {
@@ -71,6 +70,30 @@ function confirmDelete(event) {
 */
 function confirmUpdateAdvisor(event) {
     event.preventDefault();
+
+    var saveSpecialisation = $("#id_specialisation :selected").text();
+    var savePostcode = $('#id_postcode').val();
+    var saveBusinessName = $('#id_business_name').val();
+    var saveBusinessDescription = $('#id_business_description').text();
+    var saveRegistrationNumber = $('#id_registration_number').val();
+    var saveTownOrCity = $('#id_town_or_city :selected').text();
+    var saveStreetAddress = $('#id_street_address').val();
+    // From using {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'save_specialisation': saveSpecialisation,
+        'save_business_name': saveBusinessName,
+        'save_business_description': saveBusinessDescription,
+        'save_registration_number': saveRegistrationNumber,
+        'save_postcode': savePostcode,
+        'save_town_or_city': saveTownOrCity,
+        'save_street_address': saveStreetAddress,
+    };
+
+    var url = document.getElementById('update_advisor').getAttribute(
+        'data-url');;
+
     Swal.fire({
         title: 'Are you sure you want to update your profile?',
         text: 
@@ -83,7 +106,7 @@ function confirmUpdateAdvisor(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.reload();
+            $.post(url, postData);
         }
     });
 }
@@ -95,9 +118,9 @@ function confirmUpdateSeeker(event) {
     event.preventDefault();
 
     var saveNeed = $("#id_need :selected").text();
-    var savePostcode = $('#id_postcode').attr('value');
+    var savePostcode = $('#id_postcode').val();
     var saveTownOrCity = $('#id_town_or_city :selected').text();
-    var saveStreetAddress = $('#id_street_address').attr('value');
+    var saveStreetAddress = $('#id_street_address').val();
     // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
