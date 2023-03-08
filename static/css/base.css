@@ -66,7 +66,6 @@ textarea {
     color: var(--bs-secondary-color)!important;
 }
 
-
 .navbar-toggler:focus,
 .navbar-toggler {
     max-width: min-content;
@@ -102,28 +101,6 @@ h1 {
     color: #000000;
 }
 
-/* .img-fluid {
-    filter: brightness(0) invert(1);
-} */
-
-/* input[type=text]:not(.browser-default),
-input[type=date]:not(.browser-default),
-input[type=password]:not(.browser-default),
-input[type=email]:not(.browser-default),
-select,
-textarea {
-    border-radius: 0.5rem;
-    background-color: #ffffff;
-    border: 1px solid var(--sapphire-medium);
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px;
-} */
-
-/* .partners {
-    background-color: var(--lavander-blush);
-} */
-
 input[type=checkbox] {
     height: inherit;
     box-shadow: none;
@@ -146,17 +123,16 @@ label {
     border-radius: 5px;
 }
 
+/* button:focus:not(:focus-visible) */
 [type=submit]:hover,
 .btn-primary:hover,
-.btn-secondary,
-button:focus:not(:focus-visible) {
+.btn-secondary {
     color: var(--brown) !important;
     background-color: #ffffff;
     border-color: var(--brown);
     border-radius: 5px;
 }
 
-button,
 .btn {
     border-style: solid;
     width: 250px;
@@ -180,13 +156,12 @@ button,
     width: 250px;
 }
 
-textarea[name=body]{
-    margin: 10px;
+.swal2-confirm:target .swal2-styled:target .swal2-default-outline:target {
+    color: #ffffff !important;
 }
 
-.swal2-confirm {
-    background-color: var(--dark-verdigris) !important;
-    color: #ffffff !important;
+textarea[name=body]{
+    margin: 10px;
 }
 
 .errorlist {

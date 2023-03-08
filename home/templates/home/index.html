@@ -5,9 +5,8 @@
 <!-- SEO metadata -->
 <meta name="description"
     content="The first platform in Ireland that finds a financial advisor that suits your needs. Fast, indipendent and reliable. Find an advisor today.">
-<meta name="keywords" content="Find a financial advisor, financial advisor finder, financial advice Ireland">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="{% url 'home' %}">
+<link rel="canonical" href="{% block canonical_url %}{{ canonical_url }}{% endblock %}">
 
 <!-- OG tags-->
 <meta property="og:type" content="article">
@@ -21,7 +20,7 @@
 {% endblock %}
 
 {% block extra_title %}
-Find Indipendent Financial Advisors in Ireland | Advice Found
+Find Indipendent Financial Advisors in Ireland
 {% endblock %}
 
 <div class="bg">

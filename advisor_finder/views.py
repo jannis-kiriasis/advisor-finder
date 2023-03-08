@@ -24,3 +24,4 @@ def handler404(request, exception):
 def handler500(request, exception=None):
     """ Error Handler 500 - Page Not Found """
     return render(request, "errors/500.html", status=500)
+
