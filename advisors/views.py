@@ -323,10 +323,10 @@ def seeker_profile(request, match_id):
 
 @login_required
 def consultation_list(request):
-
     """
-    """ 
-
+    Render all the consultations the advisor have scheduled.
+    Order by date.
+    """
     get_advisor_profile = get_object_or_404(AdvisorUserProfile, user=request.user)
 
     get_all_matches = Match.objects.filter(advisor=get_advisor_profile)
@@ -343,27 +343,6 @@ def consultation_list(request):
     }
 
     return render(request, 'advisors/appointments.html', context)
-
-
-@login_required
-def match_delete_consultation(request, consultation_id, match_id):
-
-    """
-    Delete consultation and show message.
-    """
-    find_consultation = Consultation.objects.filter(
-        match=match_id,
-    )
-    consultation = get_object_or_404(
-        find_consultation,
-        id=consultation_id
-    )
-
-    consultation.delete()
-
-    messages.success(request, 'The consultation has been deleted.')
-
-    return redirect(reverse('match_profile', kwargs={'match_id': match_id}))
 
 
 @login_required

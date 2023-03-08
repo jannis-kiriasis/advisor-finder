@@ -142,22 +142,28 @@ label {
 .btn-secondary:hover {
     background-color: var(--brown);
     color: #ffffff !important;
-    border-color: var(--brown);
+    border-color: var(--brown) !important;
     border-radius: 5px;
-    width: 200px;
 }
 
 [type=submit]:hover,
 .btn-primary:hover,
 .btn-secondary,
 button:focus:not(:focus-visible) {
-    color: var(--brown) ;
+    color: var(--brown) !important;
     background-color: #ffffff;
     border-color: var(--brown);
     border-radius: 5px;
-    width: 200px;
 }
 
+button,
+.btn {
+    border-style: solid;
+    width: 250px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
 .btn-third {
     background-color: var(--sapphire);
     color: #ffffff;
@@ -213,9 +219,7 @@ nav > div > ul > li > a,
 nav > div > ul > li > a:hover,
 .nav-link:hover,
 .dropdown-item:hover {
-    color: var(--sapphire);
-    background-color: #ffffff;
-}
+    text-decoration: underline;}
 
 #forgot-password {
     font-size: 0.8rem;
