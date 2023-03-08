@@ -1,4 +1,19 @@
 from django.shortcuts import render
+from django.shortcuts import HttpResponse
+
+
+def sitemap(request):
+    """
+    View to render the xml sitemap.
+    """
+    return HttpResponse(open('sitemap.xml').read(), content_type='text/xml')
+
+
+def robots(request):
+    """
+    View to render the robots.txt.
+    """
+    return HttpResponse(open('robots.txt').read(), content_type='text/plain')
 
 
 def handler404(request, exception):

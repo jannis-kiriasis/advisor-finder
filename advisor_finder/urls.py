@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import handler404, handler500
+from django.views.generic.base import TemplateView
+from . import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +27,8 @@ urlpatterns = [
     path('match/', include('matches.urls')),
     path('', include('home.urls')),
     path('checkout/', include('checkout.urls')),
+    path('sitemap.xml', views.sitemap,),
+    path('robots.txt', views.robots),
 ]
 
 handler404 = 'advisor_finder.views.handler404'
