@@ -114,7 +114,7 @@ def checkout(request):
             'name': get_seeker_profile.user.first_name,
             'last_name': get_seeker_profile.user.last_name,
             'email': get_seeker_profile.user.email,
-            'phone_number': get_seeker_profile.user.profiles.phone_number,
+            # 'phone_number': get_seeker_profile.user.profiles.phone_number,
             'postcode': get_seeker_profile.postcode,
             'town_or_city': get_seeker_profile.town_or_city,
             'street_address': get_seeker_profile.street_address,
