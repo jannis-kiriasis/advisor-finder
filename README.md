@@ -70,6 +70,33 @@ Advice Found is for advice seeker and financial advisor.
 
 ![The Checklistar responsive design](./media/README-files/i-am-responsive.png)  
 
+
+## Business model
+
+Advice Found put together financial advisers and financial advice seekers. It offers them a platform to meet and communicate.
+
+It is an opportunity for advisors to find new clients online without having to worry about managing payment 
+and marketing their business. That is what Advice Found do.
+
+It is also an opportunity for seekers to to be matched with an advisor that knows what do to.
+Every situation is different and many seekers don't know where to start from when looking for financial advice.
+It's their money we are talking about so they want to be carefull. From here the idea of a 'best match'.
+
+## Where does Advice found revenue come from?
+
+At the moment Advice Found adds a 5% fee on the transactions. So everytime a consultation is confirmed,
+Advice Found makes 5% of it. The fee is on the seekers. To grow the revenue it is also possible to apply a fee to the advisors.
+
+The idea is that seekers and advisors can build a long lasting relationship on the platform. The risk is that once the 2 parties get to know each other, they make the conversation off the platform. For this reason it's important to keep the payment on the platform and keep building features and tools that advisor and seekers would use manage their finances. The likes of tax calculators, budget calculators, savings and investment growth calculatorsl, financial health check etc.
+
+The more tools we can build to keep the engagement on the platform and the more seekers and advisors will come back to use it.
+
+In order to onboard brokers, there will be a mix of offline and online channels. 
+
+To onboard seekeres, digital channels will be the favourites with a mix of organic and paid search and social media.
+
+More on SEO and marketing in the following paragraphs.
+
 ## User Experience (UX) – The needs
 Now that we are familiar with Advice Found target audience and offering, we are looking at the needs the app users may have. 
 

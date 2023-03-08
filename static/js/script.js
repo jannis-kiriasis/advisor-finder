@@ -66,14 +66,6 @@ function confirmDelete(event) {
     });
 }
 
-// /** Get href url of button update advisor.
-// */
-// function goToUpdateUrlAdvisor() {
-//     // let href = document.getElementById('update_advisor').getAttribute(
-//     //     'href');
-//     window.location.href = `#`;
-// }
-
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
 */
@@ -95,14 +87,6 @@ function confirmUpdateAdvisor(event) {
         }
     });
 }
-
-/** Get href url of button update seeker.
-// */
-// function goToUpdateUrlSeeker() {
-//     let url = document.getElementById('update_seeker').getAttribute(
-//         'data-url');
-//         window.location.href = url;
-// }
 
 /** Prevent button click, fire SweetAlerts2, 
 * after defensive design redirect.
