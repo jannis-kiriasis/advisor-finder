@@ -737,11 +737,11 @@ I also made sure that:
 
 ## Planning
 
-To build this app I've used [Jira](https://kiria.atlassian.net/jira/software/c/projects/TC/boards/2/backlog?view=detail&selectedIssue=TC-154&issueLimit=100) as an agile tool. 
+To build this app I've used [Jira](https://kiria.atlassian.net/jira/software/c/projects/AF/boards/3/backlog?atlOrigin=eyJpIjoiYzI4YTU2NjJkY2IyNDBkZGJkNWM5Nzg5MGNkNWI5ODciLCJwIjoiaiJ9) (Access was given to the CI assessment team) as an agile tool. 
 
-The development took 5 sprints of different lengths in terms of days but with similar total story points (around 25-27 per sprint).
+The development took 5 sprints of different lengths in terms of days but with similar total story points (around 27-29 per sprint).
 
-The tasks in each sprint were prioritised using the moscow method and the priority settings in the task details. With the moscow method, user stories and tasks are categorised in: Must do, Should do, Could do, Won't do.
+The tasks in each sprint were prioritised using the moscow method and the priority settings in the task details as well as using labels. With the moscow method, user stories and tasks are categorised in: Must do, Should do, Could do, Won't do.
 
 In every sprint, about 60% of the user stories had a priority level of Must do or Should do. The remaining 40% was Could do or Won't do.
 Many of the tasks and user stories that were marked as won't do in a sprint, were marked as should do or must do in the following sprint.
@@ -750,82 +750,97 @@ You have probably seen the epics and user stories few paragraphs above. They are
 
 
 ## Data model  
-For this app, I've created 5 data models and inherited others from Django Allauth.
+For this app, I've created 10 data models and inherited others from Django Allauth.
 
 In this paragraph I'm going to focus on the data models I've created and the most important inherited ones.
 
-For more details on all the fields and models available and their relations, you can view this [database schema](/media/README-files/data-schema.svg).
+For more details on all the fields and models available and their relations, you can view this [database schema](/media/README-files/data-model-advice-found.png).
+
+**Location**
+Contains an Irish city or town.
+- city 
+
+**Specialisation**
+Contains an area of specialisation of the financial advisors or need of the seekers.
+- type
 
 **User model**  
-The User model contains all the generalities of the app users, including:
+Contains the personal details of a user:
 - username
 - first name
 - last name
 - email address
 - password
 
-**UserProfile model**  
-The UserProfile model extends the User model. Any extra fields related to a user are in the UserProfile.
-Between a User and a UserProfile, there is a one-to-one relationship where the user is the connection.
+**UserProfile**
+Contains the type of user (seeker or advisor):
+- user_type
+- user FK
 
-The UserProfile includes:
-- user (1to1 relation with User)
-- department
+**AdvisorUserProfile**  
+Contains the business generalities of the user:
+- user FK
+- business_name
+- business_description
+- postcode
+- town_or_city FK
+- street_address
+- specialisation FK
+- registration_number
+- approved
+- active
 
-**Project model**  
-The Project model includes all the information related to a project.
-Between a project owner and a User, there is a one-to-many relationship because a user can have many projects but a project owner belongs to one project.
+**SeekerUserProfile**
+Contains the generalities of the seeker.
+- user FK
+- postcode
+- town_or_city FK
+- street_address
+- need FK
 
-The Project model includes:
-- title
-- slug
-- description
-- document
-- owner (FK to User)
-- date created (when the project was created)
-- status (the project is completed or not)
-- due (project due date)
+**Match**
+Contains the FK to seeker and advisor who matched.
+- advisor FK
+- seeker FK
+- matched_on (date of match)
 
-**ProjectApproval model**  
-The ProjectApproval model includes all the information related to the approval required for a project.
-One project can require many approvals, however, one approval belongs only to one project.
-One user can give many approvals, however one project approval belongs only to one user.
+**Consultation**
+Contains the details of the online appointment setup by thr advisor.
+- match FK
+- price
+- date
+- time
+- link
+- status (confirmed or not)
+- created (created on)
 
-The ProjectApproval model includes:
-- project (FK to Project)
-- Approver (FK to UserProfile)
-- Approval due by (Approval deadline)
-- Approved date (When the approval was given)
-- Created on (when the approval request was created)
-- Approved (True if approved, false if not)
+**Order**
+Contains the details of the order:
+- order_number
+- consultation FK
+- seeker FK
+- name
+- last_name
+- email
+- postcode
+- town_or_city FK
+- street_address
+- date
+- fee
+- af_fee
+- grand_total
+- stripe_pid
+- paid
 
-**Comment model**  
-The Comment model includes all the information related to a comment left on a project.
-One comment belongs to a project only, however, a project can have many comments.
-
-The Comment model includes:
-- Project (FK to Project)
-- Body (Comment body)
-- Created on (When the comment was created)
-- Email 
-- Name (Name of the user)
-
-**Notification model**  
-The Notification model includes all the information related to a notification send after an action has been taken.
-These actions can be comments, approvals given and approval requests sent. 
-One notification belongs to one user, however, one user can send many notifications.
-One notification is received by one user, however, one user can receive many notifications.
-
-The Notification model includes:
-- Created by (FK to User)
-- To user (FK to User)
-- Created at (When the comment was created)
-- extra id 
-- is read (The notification is read or not)
-- notification type (the type of notification, comment or approval or approval request)
+**Message**
+Contains the message send from a seeker to the advisor in the chat or viceversa.
+- match FK
+- user
+- body
+- created_on
 
 
-For more information on the field types and the relations between models, view this [database schema](/media/README-files/data-schema.svg).
+For more information on the field types and the relations between models, view this [database schema](/media/README-files/data-model-advice-found.png).
 
 
 ## Technologies and tools used
@@ -835,7 +850,7 @@ For more information on the field types and the relations between models, view t
 - [JavaScript](https://it.wikipedia.org/wiki/JavaScript)
 - [Python](https://www.python.org/)
 - [Django](https://www.djangoproject.com/)
-- [Materialize](https://materializecss.com/)
+- [Bootstrap](https://getbootstrap.com/)
 - Version control: [Git](https://git-scm.com/)
 - Public repository: [GitHub](https://github.com/)
 - Google Font: [Open Sans](https://fonts.google.com/specimen/Open+Sans)

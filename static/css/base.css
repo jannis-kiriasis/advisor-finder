@@ -44,12 +44,14 @@ body {
     --bs-alert-margin-bottom: 0;
 }
 
-input,
+input[type=text],
+input[type=password],
+input[type=email],
 select,
 textarea {
     margin: 10px 0px;
     width: 100%;
-
+    padding: 8px;
 }
 
 input,
@@ -133,6 +135,7 @@ label {
     border-radius: 5px;
 }
 
+button[type=submit],
 .btn {
     border-style: solid;
     width: 250px;

@@ -9,18 +9,15 @@ from .models import Match
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-
 import random
 from random import shuffle
 
 
 @login_required
 def match(request):
-
     """
     View to show best match.
     """
-
     # Get seekers profile of logged in user
 
     user = request.user
@@ -92,6 +89,7 @@ def match(request):
     return render(request, 'matches/match.html', context)
 
 
+@login_required
 def create_match(request, *arg, **kwargs):
 
     """
