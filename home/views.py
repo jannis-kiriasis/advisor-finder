@@ -11,12 +11,7 @@ from matches.models import Match
 def index(request):
     """Return index.html page"""
 
-    canonical_url = request.build_absolute_uri(request.path)
-
-    context = {
-        'canonical_url': canonical_url
-    }
-    return render(request, 'home/index.html', context)
+    return render(request, 'home/index.html')
 
 
 @login_required

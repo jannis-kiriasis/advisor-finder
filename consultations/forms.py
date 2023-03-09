@@ -14,15 +14,29 @@ class ConsultationForm(forms.ModelForm):
 
         fields = ['date', 'time', 'price',]
 
-        labels = {
-            'date': 'Consultation date',
-            'time': 'Consultation time',
-            'price': 'Consultation fee in €'
-        }
-
         widgets = {
             'date': widgets.DateInput(
                 attrs={'type': 'date'}
             ),
             'time': forms.TimeInput(attrs={'type': 'time'})
         }
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders to fields and remove labels
+        """
+        super(AdvisorSignupForm, self).__init__(*args, **kwargs)
+
+        placeholders = {
+            'date': 'Consultation date',
+            'time': 'Consultation time',
+            'price': 'Consultation fee in €'
+        }
+
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False

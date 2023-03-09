@@ -44,19 +44,39 @@ body {
     --bs-alert-margin-bottom: 0;
 }
 
-input[type=text],
-input[type=password],
-input[type=email],
-select,
-textarea {
-    margin: 10px 0px;
-    width: 100%;
-    padding: 8px;
-}
-
 input,
 select {
     height: 40px;
+}
+
+input[type="number"],
+input[type="time"],
+input[type="date"],
+input,
+select,
+textarea,
+.card {
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid var(--sapphire-medium) !important;
+  font-size: 1rem;
+  padding: 8px;
+  margin: 10px 0px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date],
+input[type=time],
+input[type=number],
+select,
+textarea {
+    width: 100%;
 }
 
 ::placeholder,
@@ -260,31 +280,6 @@ label[for="id_body"] {
 #consultation-form > div > label,
 #consultation-form > div > input {
     margin: 0 5px;
-}
-/* 
-input[type="number"],
-input[type="time"] {
-    border-radius: 0.5rem;
-    border: 1px solid var(--sapphire-medium);
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px;
-    margin-bottom: 10px;
-} */
-
-input,
-select,
-textarea,
-.card {
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-  border: 1px solid var(--sapphire-medium) !important;
-  font-size: 1rem;
-  padding: 10px;
 }
 
 /* advisors/matches/client */

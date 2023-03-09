@@ -5,7 +5,7 @@ from .forms import AdvisorSignupForm, MessageForm
 from .models import AdvisorUserProfile, User
 from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email, email_note_to_seeker
 from matches.models import Match, Message
-from consultations.views import create_consultation
+from consultations.utils import create_consultation
 from consultations.forms import ConsultationForm
 from consultations.models import Consultation
 from itertools import chain
