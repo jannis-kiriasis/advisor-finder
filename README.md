@@ -68,7 +68,7 @@ Advice Found is for advice seeker and financial advisor.
 - An online consultation platform.
 - A dashboard for financial advisors to see all of their clients and consultations scheduled.
 
-![The Checklistar responsive design](./media/README-files/i-am-responsive.png)  
+![Advice Found responsive design](./media/README-files/I-am-responsive.png)  
 
 
 ## Business model
@@ -990,8 +990,8 @@ All the functionality tests have been carried out and achieved a PASS on the fol
 - 1280x800 (Nest Hub Max)
 - 2560x1600 (Macbook Pro M1)
 
-The website has also been tested for responsiveness on [https://ui.dev/amiresponsive](https://ui.dev/amiresponsive?url=https://the-checklistar.herokuapp.com/).
-- [dashboard.html](./media/README-files/i-am-responsive.png)  
+The website has also been tested for responsiveness on [https://ui.dev/amiresponsive](https://ui.dev/amiresponsive?url=https://advisor-finder.herokuapp.com/).
+- [dashboard.html](./media/README-files/I-am-responsive.png)  
 
 
 ### User stories testing

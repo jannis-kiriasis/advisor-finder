@@ -216,7 +216,8 @@ nav > div > ul > li > a,
 nav > div > ul > li > a:hover,
 .nav-link:hover,
 .dropdown-item:hover {
-    text-decoration: underline;}
+    text-decoration: underline;
+}
 
 #forgot-password {
     font-size: 0.8rem;

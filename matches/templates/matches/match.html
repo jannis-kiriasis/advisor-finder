@@ -38,28 +38,34 @@ Choose your advisor
 {% endblock %}
 {% block white_bg_content %}
 
-    {% if not other_advisors %}
-    {% else %}
-    <div class="col-12 col-md-6">
-    <div class="d-flex flex-column justify-content-center align-items-center pb-5">
-        <div class="mt-5 mb-5">
-            <h2 class="text-center">Other advisors you may like
-            </h2>
-        </div>
-        {% for other_advisor in other_advisors %}
-        <div class="card mt-4 text-center">
-            <div class="card-body">
-                <h3 class="card-title pb-2">{{ other_advisor.business_name }}</h3>
-                <p class="card-text"><span class="fw-bold">Location: </span>{{ other_advisor.town_or_city }}</p>
-                <p class="card-text"><span class="fw-bold">Specialisation: </span>{{ other_advisor.specialisation }}</p>
-                <p class="card-text">{{ other_advisor.business_description }}.</p>
-                <a href="{% url 'create_match' other_advisor.id %}" class="btn btn-outline-dark advisor mt-2">Message
-                    advisor</a>
+{% if not other_advisors %}
+{% else %}
+<section>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 div-md-6">
+            <div class="d-flex flex-column justify-content-center align-items-center pb-5">
+                <div class="mt-5 mb-5">
+                    <h2 class="text-center">Other advisors you may like
+                    </h2>
+                </div>
+                {% for other_advisor in other_advisors %}
+                <div class="card mt-4 text-center">
+                    <div class="card-body">
+                        <h3 class="card-title pb-2">{{ other_advisor.business_name }}</h3>
+                        <p class="card-text"><span class="fw-bold">Location: </span>{{ other_advisor.town_or_city }}</p>
+                        <p class="card-text"><span class="fw-bold">Specialisation:
+                            </span>{{ other_advisor.specialisation }}</p>
+                        <p class="card-text">{{ other_advisor.business_description }}.</p>
+                        <a href="{% url 'create_match' other_advisor.id %}"
+                            class="btn btn-outline-dark advisor mt-2">Message
+                            advisor</a>
 
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
-    {% endif %}
-</div>
+</section>
+{% endif %}
 {% endblock %}

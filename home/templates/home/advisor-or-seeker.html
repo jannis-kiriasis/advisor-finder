@@ -5,23 +5,41 @@
 Are you seeker or advisor?
 {% endblock %}
 
+{% block light_red_bg_content %}
+<section>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 text-center">
+                <h1 class="black my-3">
+                    Are you looking for financial advice or are you a financial advisor?
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
 {% block white_bg_content %}
+<section>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 text-center">
 
-<div class="col-12 col-md-6 text-center">
+                <h1 class="black my-3">
+                    Are you looking for financial advice or are you a financial advisor?
+                </h1>
 
-    <h1 class="black my-3">
-        Are you looking for financial advice or are you a financial advisor?
-    </h1>
+                <form method="POST">
 
-    <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
 
-        {% csrf_token %}
-        {{ form.as_p }}
+                    <button class="btn my-5" type="submit">Next
+                    </button>
 
-        <button class="btn my-5" type="submit">Next
-        </button>
-
-    </form>
-</div>
-
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
