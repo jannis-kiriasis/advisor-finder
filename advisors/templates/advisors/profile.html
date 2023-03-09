@@ -16,32 +16,38 @@
 {% endblock %}
 
 {% block white_bg_content %}
-<div class="py-5 col-12 col-md-6 justify-content-center align-items-center mx-auto">
+<section>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 col-md-6 justify-content-center align-items-center mx-auto">
+                <!-- Advisro signup form -->
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="row d-flex justify-content-center">
+                        <button class="btn mt-5 mb-5" id="update_advisor" data-url="{% url 'update_advisor' %}"
+                        type="submit">
+                        Update profile
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-6 text-center">
+                {% if profile.active == 1 %}
 
-    <!-- Advisro signup form -->
-    <form method="POST">
+                <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
+                    aria-label="Deactivate profile">Deactivate profile</a>
 
-        {% csrf_token %}
-        {{ form.as_p }}
+                {% else %}
 
-        <button class="btn mt-5 mb-5" id="update_advisor" data-url="{% url 'update_advisor' %}" type="submit">
-            Update profile
-        </button>
-
-    </form>
-
-    {% if profile.active == 1 %}
-
-    <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
-        aria-label="Deactivate profile">Deactivate profile</a>
-
-    {% else %}
-
-    <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
-        aria-label="Deactivate profile">Activate profile</a>
-
-</div>
-
-{% endif %}
+                <a href="{% url 'deactivate_profile' %}" class="btn btn-secondary" id="deactivate_advisor"
+                    aria-label="Deactivate profile">Activate profile</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

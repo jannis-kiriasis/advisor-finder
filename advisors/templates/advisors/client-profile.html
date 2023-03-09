@@ -8,7 +8,6 @@
 
 {% block light_red_bg_content %}
 <div class="match pb-5">
-
     <div class="h-100 d-flex flex-column justify-content-center align-items-center">
 
         <h1 class="text-center pt-4 pb-5">Your Client
@@ -23,7 +22,6 @@
             </div>
 
         </div>
-
         <div class="mt-4 text-center message-bg">
             {% include 'consultations/consultation-form.html' %}
         </div>
@@ -34,121 +32,125 @@
 {% block white_bg_content %}
 {% if not elements %}
 {% else %}
+<section>
+    <div class="row d-flex justify-content-center px-3">
+        <div class="pb-150 col-12 col-md-6 justify-content-center align-items-center">
 
-<div class="pb-150 col-12 col-md-6 justify-content-center align-items-center">
+            <div class="my-5">
+                <h2 class="text-center">Messages
+                </h2>
+            </div>
 
-    <div class="my-5">
-        <h2 class="text-center">Messages
-        </h2>
-    </div>
+            <!-- Iterate through elements list -->
 
-    <!-- Iterate through elements list -->
+            {% for el in elements %}
 
-    {% for el in elements %}
-
-    <div class="justify-content-between">
-        <div class="comment-form flex-column">
-            <!-- If the element in the list has a user value,
-                     it must be a note -->
-            {% if el.user %}
-            <!-- If the note is from the requester do this -->
-            {% if el.user == request.user %}
-            <div class="row text-end justify-content-end">
-                <div class="col-auto">
-                    <div class="text-start card message-card message-bg">
-                        <p>{{ el.body }}</p>
-                        <p>
-                            <span class="small">
-                                {{ el.created_on }}
-                            </span>
-                        </p>
+            <div class="justify-content-between">
+                <div class="comment-form flex-column">
+                    <!-- If the element in the list has a user value,
+                             it must be a note -->
+                    {% if el.user %}
+                    <!-- If the note is from the requester do this -->
+                    {% if el.user == request.user %}
+                    <div class="row text-end justify-content-end">
+                        <div class="col-auto message-box">
+                            <div class="text-start card message-card message-bg">
+                                <p>{{ el.body }}</p>
+                                <p>
+                                    <span class="small">
+                                        {{ el.created_on }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
+                    <!-- If the note is not from the requester do this -->
+                    {% elif el.user != request.user %}
+                    <div class="row text-start justify-content-start">
+                        <div class="col-auto message-box">
+                            <div class="text-start card message-card">
+                                <p>{{ el.body }}</p>
+                                <p>
+                                    <span class="small">
+                                        {{ el.created_on }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- If the el.user is not true, 
+                            the element in the list must be a consultation, 
+                            so do this -->
+                    {% else %}
+                    <div class="row text-end justify-content-end">
+
+                        <div class="col-auto">
+                            <div class="text-start py-4 card message-card message-bg">
+                                <p class="fw-bold">Consultation:</p>
+                                <p><span class="fw-bold">date:</span>
+                                    {{ el.date }}
+                                </p>
+                                <p><span class="fw-bold">Time:</span>
+                                    {{ el.time }}
+                                </p>
+                                <p><span class="fw-bold">Fee:</span>
+                                    {{ el.price }}
+                                </p>
+
+                                {% if el.status == 0 %}
+
+                                <p><span class="fw-bold">Status:</span>
+                                    Not confirmed
+                                </p>
+
+                                <a class="btn btn-secondary mt-2" href="{{match.id}}/delete/{{ el.id }}">
+                                    Cancel
+                                </a>
+                                {% else %}
+
+                                <p><span class="fw-bold">Status:</span>
+                                    Confirmed
+                                </p>
+
+                                <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank">
+                                    Start meeting
+                                </a>
+                                {% endif %}
+                                <p>
+                                    <span class="small">
+                                        {{ el.created }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
-            <!-- If the note is not from the requester do this -->
-            {% elif el.user != request.user %}
-            <div class="row text-start justify-content-start">
-                <div class="col-auto">
-                    <div class="text-start card message-card">
-                        <p>{{ el.body }}</p>
-                        <p>
-                            <span class="small">
-                                {{ el.created_on }}
-                            </span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
             {% endif %}
-            <!-- If the el.user is not true, 
-                    the element in the list must be a consultation, 
-                    so do this -->
+
+            {% if not match %}
             {% else %}
-            <div class="row text-end justify-content-end">
 
-                <div class="col-auto">
-                    <div class="text-start py-4 card message-card message-bg">
-                        <p class="fw-bold">Consultation:</p>
-                        <p><span class="fw-bold">date:</span>
-                            {{ el.date }}
-                        </p>
-                        <p><span class="fw-bold">Time:</span>
-                            {{ el.time }}
-                        </p>
-                        <p><span class="fw-bold">Fee:</span>
-                            {{ el.price }}
-                        </p>
-
-                        {% if el.status == 0 %}
-
-                        <p><span class="fw-bold">Status:</span>
-                            Not confirmed
-                        </p>
-
-                        <a class="btn btn-secondary mt-2" href="{{match.id}}/delete/{{ el.id }}">
-                            Cancel
-                        </a>
-                        {% else %}
-
-                        <p><span class="fw-bold">Status:</span>
-                            Confirmed
-                        </p>
-
-                        <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank">
-                            Start meeting
-                        </a>
-                        {% endif %}
-                        <p>
-                            <span class="small">
-                                {{ el.created }}
-                            </span>
-                        </p>
+            <div class="fixed-bottom">
+                <div class="row">
+                    <div class="col message-form-container">
+                        <form method="POST"
+                            class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
+                            {% csrf_token %}
+                            {{ message_form }}
+                            <button type="submit" class="btn btn-primary">
+                                Send
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-            {% endif %}
         </div>
     </div>
-    {% endfor %}
-    {% endif %}
+</section>
 
-    {% if not match %}
-    {% else %}
-
-    <div class="fixed-bottom">
-        <div class="row">
-            <div class="col message-form-container">
-                <form method="POST"
-                    class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
-                    {% csrf_token %}
-                    {{ message_form }}
-                    <button type="submit" class="btn btn-primary">
-                        Send
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 {% endif %}
 {% endblock %}

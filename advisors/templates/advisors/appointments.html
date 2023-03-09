@@ -15,57 +15,59 @@
 {% endblock %}
 {% block white_bg_content %}
 
-<div class="pb-5">
+<section>
+    <div class="container">
+        <div class="pb-5">
+            <div class="row flex-row justify-content-center align-items-center my-3 mx-auto">
 
+                {% for consultation in consultations %}
+                <div class="card card-clients mx-1 my-1 col-md-1">
 
-    <div class="row flex-row justify-content-center align-items-center my-3 mx-auto">
+                    <div class="card-body">
 
-        {% for consultation in consultations %}
-        <div class="card card-clients mx-1 my-1 col-md-1">
+                        <h2 class="card-title">
+                            {{ consultation.match.seeker.user.first_name }}
+                            {{ consultation.match.seeker.user.last_name }}
+                        </h2>
 
-            <div class="card-body">
+                    </div>
 
-                <h2 class="card-title">
-                    {{ consultation.match.seeker.user.first_name }} {{ consultation.match.seeker.user.last_name }}
-                </h2>
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            <span class="fw-bold">Date:</span> {{ consultation.date }}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Time:</span> {{ consultation.time }}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Fee:</span> {{ consultation.price }}
+                        </li>
+                        <li class="list-group-item">
+                            <span class="fw-bold">Status:</span>
+                            {% if consultation.status == 0 %}
+                            Not confirmed
+                            {% else %}
+                            Confirmed
+                            {% endif %}
+                        </li>
+
+                    </ul>
+
+                    <div class="card-body text-center">
+                        {% if consultation.status == 0 %}
+                        <a href="delete/{{ consultation.id }} " class="btn btn-secondary">Cancel</a>
+
+                        {% else %}
+                        <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank">Start meeting</a>
+                        {% endif %}
+                    </div>
+
+                </div>
+                {% endfor %}
 
             </div>
-
-            <ul class="list-group list-group-flush">
-
-                <li class="list-group-item">
-                    <span class="fw-bold">Date:</span> {{ consultation.date }}
-                </li>
-                <li class="list-group-item">
-                    <span class="fw-bold">Time:</span> {{ consultation.time }}
-                </li>
-                <li class="list-group-item">
-                    <span class="fw-bold">Fee:</span> {{ consultation.price }}
-                </li>
-                <li class="list-group-item">
-                    <span class="fw-bold">Status:</span>
-                    {% if consultation.status == 0 %}
-                    Not confirmed
-                    {% else %}
-                    Confirmed
-                    {% endif %}
-                </li>
-
-            </ul>
-
-            <div class="card-body text-center">
-                {% if consultation.status == 0 %}
-                <a href="delete/{{ consultation.id }} " class="btn btn-secondary">Cancel</a>
-
-                {% else %}
-                <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank">Start meeting</a>
-                {% endif %}
-            </div>
-
         </div>
-        {% endfor %}
-
     </div>
-</div>
-
+</section>
 {% endblock %}

@@ -240,6 +240,10 @@ nav > div > ul > li > a:hover,
     background-color: var(--lavander-blush) !important;
 }
 
+.message-box {
+    max-width: 75%;
+}
+
 /* .message-card {
     border-radius: 50px;
     padding: 7px 25px;

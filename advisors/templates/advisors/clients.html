@@ -17,50 +17,53 @@ My clients
 {% endblock %}
 
 {% block white_bg_content %}
-<div class="py-5">
-    <div class="container container-xxl row justify-content-center align-items-center mx-auto">
+<section>
+    <div class="container">
+        <div class="row d-flex py-5 justify-content-center">
+            <div class="col-12 col-md-6">
 
-        {% for match in matches %}
+                {% for match in matches %}
 
-        {% if matches_count == 0 %}
-        <p>You have no clients. You will be match with advice seekers soon.</p>
-        {% else %}
-        <div class="card card-clients mx-1 my-1 col-md-1">
+                {% if matches_count == 0 %}
+                <p>You have no clients. You will be match with advice seekers soon.</p>
+                {% else %}
+                <div class="card card-clients mx-1 my-1 col-md-1 mx-auto">
 
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
 
-            <div class="card-body">
+                    <div class="card-body">
 
-                <h2 class="card-title">
-                    {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
-                </h2>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        <h2 class="card-title">
+                            {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
+                        </h2>
+                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p> -->
 
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            Need: {{ match.seeker.need }}
+                        </li>
+                        <li class="list-group-item">
+                            Location: {{ match.seeker.town_or_city }}
+                        </li>
+
+                    </ul>
+
+                    <div class="card-body text-center">
+
+                        <a href="client/{{ match.id }}" class="btn btn-outline-dark">Profile and chat</a>
+
+                    </div>
+
+                </div>
+                {% endif %}
+                {% endfor %}
+
             </div>
-
-            <ul class="list-group list-group-flush">
-
-                <li class="list-group-item">
-                    Need: {{ match.seeker.need }}
-                </li>
-                <li class="list-group-item">
-                    Location: {{ match.seeker.town_or_city }}
-                </li>
-
-            </ul>
-
-            <div class="card-body text-center">
-
-                <a href="client/{{ match.id }}" class="btn btn-outline-dark">Profile and chat</a>
-
-            </div>
-
         </div>
-        {% endif %}
-        {% endfor %}
-
     </div>
-</div>
-
+</section>
 {% endblock %}
