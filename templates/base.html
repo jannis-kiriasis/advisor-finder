@@ -48,15 +48,15 @@
         {% include 'includes/navigation.html' %}
     </header>
 
-    <div class="message-cointainer">
-        {% block page_header %}
+    {% block page_header %}
+    <section class="bg container-fluid p-0">
         {% if messages %}
         {% for message in messages %}
         {% include 'includes/toasts/toast.html' %}
         {% endfor %}
         {% endif %}
-        {% endblock %}
-    </div>
+    </section>
+    {% endblock %}
 
     <section class="bg">
         <div class="container">
@@ -78,9 +78,11 @@
         </div>
     </section>
 
+    {% block footer %}
     <footer class="py-3 pt-4 pb-4 mt-4 mt-auto">
         <p class="text-center">© 2023 Advice Found</p>
     </footer>
+    {% endblock %}
 
     {% block postloadjs %}
     <script src="{% static 'js/script.js' %}"></script>

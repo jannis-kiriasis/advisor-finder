@@ -6,45 +6,17 @@
 {{page_title}}
 {% endblock %}
 
-
-{% block page_header %}
-<div class="row">
-
-    {% if profile.approved == 1 %}
-
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <div class="container">
-            Your profile has been approved! You can now receive contact requests.
-        </div>
-    </div>
-
-    {% elif profile.approved == 0 %}
-
-    <div class="alert alert-warning fade show alert-dismissible" role="alert">
-        <div class="container">
-            Advice Found is reviewing your profile. You'll be notified once approved.
-        </div>
-    </div>
-
-    {% else %}
-
-    <div class="alert alert-danger fade show alert-dismissible" role="alert">
-        <div class="container">
-            Your profile has been not approved. Please contact Advice Found to know the reasons and get your profile
-            approved.
-        </div>
-    </div>
-
-    {% endif %}
-
+{% block light_red_bg_content %}
+<div class="pt-4 pb-5">
+    <h1 class="text-center">{{ profile.business_name }}'s Profile</h1>
+    <p class="text-center">
+        Here you see all the appointments you have scheduled and their status.
+    </p>
 </div>
-
 {% endblock %}
 
-
 {% block white_bg_content %}
-<div class="pb-5 col-12 col-md-6 justify-content-center align-items-center mx-auto">
-    <h1>{{ profile.business_name }}'s Profile</h1>
+<div class="py-5 col-12 col-md-6 justify-content-center align-items-center mx-auto">
 
     <!-- Advisro signup form -->
     <form method="POST">

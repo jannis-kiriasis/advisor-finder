@@ -31,11 +31,15 @@ def create_consultation(consultation_form, match, request):
             'Consultation created. An email has been sent to your client.'
             )
 
-        consultation = Consultation.objects.filter(match=match).latest('match')
+        consultation = Consultation.objects.filter(
+            match=match
+            ).latest(
+                'created'
+            )
 
         email_consultation_seeker(consultation)
 
     else:
         form = ConsultationForm(data=request.POST)
 
-        messages.error(request, 'not valid')
+        messages.error(request, 'Form not valid.')

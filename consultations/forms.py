@@ -25,7 +25,7 @@ class ConsultationForm(forms.ModelForm):
         """
         Add placeholders to fields and remove labels
         """
-        super(AdvisorSignupForm, self).__init__(*args, **kwargs)
+        super(ConsultationForm, self).__init__(*args, **kwargs)
 
         placeholders = {
             'date': 'Consultation date',

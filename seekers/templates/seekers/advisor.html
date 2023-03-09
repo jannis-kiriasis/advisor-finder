@@ -5,13 +5,9 @@
 My advisor
 {% endblock %}
 
-{% block page_header %}
-{% endblock %}
-
-
 {% block light_red_bg_content %}
 
-<div class="match py-5">
+<div class="match pt-4 pb-5">
 
     {% if not match %}
     <p class="mt-5 text-center">
@@ -59,15 +55,12 @@ My advisor
 
     <div class="justify-content-between">
         <div class="comment-form flex-column">
-
             <!-- If the element in the list has a user value,
                         it must be a note -->
 
             {% if el.user %}
-
             <!-- If the note is from the requester do this -->
             {% if el.user == request.user %}
-
             <div class="row text-end justify-content-end">
 
                 <div class="col-auto">
@@ -102,7 +95,6 @@ My advisor
             <!-- If the el.user is not true, 
                         the element in the list must be a consultation, 
                         so do this -->
-
             {% else %}
             <div class="row text-start justify-content-start">
                 <div class="col-auto">
@@ -166,3 +158,4 @@ My advisor
     </div>
     {% endif %}
     {% endblock %}
+    

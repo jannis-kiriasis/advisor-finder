@@ -1,26 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block extra_title %}
 {{page_title}}
 {% endblock %}
 
-
-{% block page_header %}
-{% endblock %}
-
-
-{% block white_bg_content %}
-
-<div class="pb-5">
-
+{% block light_red_bg_content %}
+<div class="pt-4 pb-5">
     <h1 class="text-center">Your appointments</h1>
     <p class="text-center">
         Here you see all the appointments you have scheduled and their status.
     </p>
+</div>
+{% endblock %}
+{% block white_bg_content %}
 
-    <div class="justify-content-center align-items-center mx-auto">
+<div class="pb-5">
+
+
+    <div class="row flex-row justify-content-center align-items-center my-3 mx-auto">
 
         {% for consultation in consultations %}
         <div class="card card-clients mx-1 my-1 col-md-1">

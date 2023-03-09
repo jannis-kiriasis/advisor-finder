@@ -10,6 +10,7 @@ from consultations.forms import ConsultationForm
 from consultations.models import Consultation
 from itertools import chain
 from home.models import Specialisation, Location
+from .utils import profile_status_messasge
 
 
 @login_required
@@ -67,6 +68,7 @@ def advisor_profile(request):
     profile = get_object_or_404(queryset, user=user)
 
     form = AdvisorSignupForm(instance=profile)
+    profile_status_messasge(request, profile)
 
     if request.method == 'POST':
 
@@ -95,6 +97,7 @@ def advisor_profile(request):
                 'save_registration_number'
                 ] = 'save_registration_number' in request.POST
             print(request.session['save_registration_number'])
+
             return redirect(reverse(
                 'update_advisor',
             ))
@@ -112,9 +115,7 @@ def advisor_profile(request):
 def update_advisor(request):
     """
     advisor_profile view for profile.html.
-    Rende
     """
-
     saved_specialisation = request.POST['save_specialisation']
     saved_business_name = request.POST['save_business_name']
     saved_business_description = request.POST['save_business_description']
@@ -148,13 +149,9 @@ def update_advisor(request):
 
     new_profile = profile.save()
 
-    advisor_to_approve_email(profile)
+    profile = new_profile
 
-    messages.success(
-        request,
-        'Your update request has been forwarded. \
-        Now wait for Advice Found review.'
-    )
+    advisor_to_approve_email(profile)
 
     return redirect(reverse('advisor_profile'))
 
@@ -224,14 +221,11 @@ def clients_list(request):
 
 @login_required
 def seeker_profile(request, match_id):
-
     """
     Show the seekers details together with their messages.
     Show the consultation form and the message form.
     """
-
     # Get seeker details
-
     match = get_object_or_404(Match, id=match_id)
     notes = Message.objects.filter(match=match)
     consultations = Consultation.objects.filter(match=match)
@@ -242,27 +236,16 @@ def seeker_profile(request, match_id):
     consultation_not_confirmed = False
 
     if hide_consultation_form is False:
-
         try:
             consultation_not_confirmed = get_object_or_404(
                 Consultation,
                 status=0
             )
-
         except:
-            messages.success(
-                request, (
-                    'There are no pending consultations. Schedule the next one!'
-                )
-            )
+            pass
+
         if consultation_not_confirmed:
             hide_consultation_form = True
-
-        messages.error(
-            request, (
-                'There is one consultation pending confirmation.'
-            )
-        )
 
     if request.method == 'POST':
 
