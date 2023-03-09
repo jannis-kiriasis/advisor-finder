@@ -54,7 +54,6 @@ form.addEventListener('submit', function(ev) {
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
 
-    // var saveInfo = Boolean($('#id-save-info').attr('checked'));
     var saveConsultation = $('#id_consultation').attr('value');
     var saveSeeker = $('#id_seeker').attr('value');
     var saveLastName = $('#id_last_name').attr('value');
@@ -63,7 +62,6 @@ form.addEventListener('submit', function(ev) {
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
-        // 'save_info': saveInfo,
         'save_consultation': saveConsultation,
         'save_seeker': saveSeeker,
         'save_last_name': saveLastName,
@@ -76,7 +74,6 @@ form.addEventListener('submit', function(ev) {
                 card: card,
                 billing_details: {
                     name: $.trim(form.name.value),
-                    // phone: $.trim(form.phone_number.value),
                     email: $.trim(form.email.value),
                     address:{
                         line1: $.trim(form.street_address.value),
@@ -106,5 +103,5 @@ form.addEventListener('submit', function(ev) {
     }).fail(function () {
         // just reload the page, the error will be in django messages
         location.reload();
-    })
+    });
 });

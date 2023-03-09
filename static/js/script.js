@@ -9,8 +9,8 @@ let alert = document.getElementsByClassName('alert')[0];
 // Remove alert box after 5 seconds
 if (alert) {
     setTimeout(() => {
-        alert.classList.remove('show')
-    }, 5000)
+        alert.classList.remove('show');
+    }, 5000);
 }
 
 // Event listeners for SweetAlerts defensive design
@@ -43,8 +43,7 @@ function goToDeleteUrl() {
     window.location.href = `${href}`;
 }
 
-/** Prevent button click, fire SweetAlerts2, 
-* after defensive design redirect.
+/** Defensive design for delete seeker button.
 */
 function confirmDelete(event) {
     event.preventDefault();
@@ -65,8 +64,8 @@ function confirmDelete(event) {
     });
 }
 
-/** Prevent button click, fire SweetAlerts2, 
-* after defensive design redirect.
+/** Save advisor details, fire defensive design
+ * and post the advisor details to the update advisor view.
 */
 function confirmUpdateAdvisor(event) {
     event.preventDefault();
@@ -107,17 +106,16 @@ function confirmUpdateAdvisor(event) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.post(url, postData).done(function(){
-                console.log('the data has been updated.')
             }).fail(function () {
                 // just reload the page, the error will be in django messages
-                console.log('There was a problem updating the data. Try again later.')
+                location.reload();
             });
         }
     });
 }
 
-/** Prevent button click, fire SweetAlerts2, 
-* after defensive design redirect.
+/** Save seeker details, fire defensive design
+ * and post the seeker details to the update seeker view.
 */
 function confirmUpdateSeeker(event) {
     event.preventDefault();
@@ -136,7 +134,7 @@ function confirmUpdateSeeker(event) {
         'save_street_address': saveStreetAddress,
     };
     var url = document.getElementById('update_seeker').getAttribute(
-        'data-url');;
+        'data-url');
 
     Swal.fire({
         title: 'Are you sure you want to update you profile?',
@@ -148,7 +146,11 @@ function confirmUpdateSeeker(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            $.post(url, postData);
+            $.post(url, postData).done(function(){
+            }).fail(function () {
+                // just reload the page, the error will be in django messages
+                location.reload();
+            });
         }
     });
 }
@@ -161,8 +163,7 @@ function goToDeactivateAdvisor() {
     window.location.href = `${href}`;
 }
 
-/** Prevent button click, fire SweetAlerts2, 
-* after defensive design redirect.
+/** Defensive design for deactivate advisor profile button
 */
 function deactivateAdvisor(event) {
     event.preventDefault();
@@ -180,10 +181,11 @@ function deactivateAdvisor(event) {
         if (result.isConfirmed) {
             goToDeactivateAdvisor();
         }
-    })
+    });
 }
 
-
+/** Defensive design for activate advisor profile button
+*/
 function activateAdvisor(event) {
     event.preventDefault();
 
@@ -203,7 +205,6 @@ function activateAdvisor(event) {
     });  
 }
 
-
 /** For deactivate_advisor button:
  * if button text is Deactivate profile call deativate function 
  * else call activate.
@@ -217,7 +218,6 @@ function deactivateAdvisorChoice(event) {
     }
 
 }
-
 
 /** Fire alert before to message advisor for the first time.
 */
@@ -235,9 +235,7 @@ function messageAdvisor(event) {
         confirmButtonText: 'Yes, start chat!'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = event.target.href
+            window.location.href = event.target.href;
         }
     });  
 }
-
-

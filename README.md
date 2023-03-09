@@ -893,9 +893,7 @@ All the pages passed the HTML validation with no errors or warnings.
 ### CSS validation
 
 Style.css passed the CSS validation with no errors.
-- [css validation](./media/README-files/css-w3c.pdf)  
-
-There are only 2 warnings related to imported style sheets and `-webkit-box-shadow` vendor extension.
+- [css validation]()  
 
 
 ### JS validation 
@@ -1022,20 +1020,6 @@ I've tested whether the user needs have been satisfied with the features created
 ## Issues fixed
 
 
-1. Create many to many relations and templates [Codemy](https://www.youtube.com/watch?v=H3joYTIRqKk&ab_channel=Codemy.com)
-2. Automatically create slug from project title [kodnito](https://www.kodnito.com/posts/slugify-urls-django/)
-3. Making 2 queries in one view (I thought I had to create 2 views in one template)[Stackoverflow](https://stackoverflow.com/questions/62704325/django-display-multiple-views-in-one-template)
-4. How to submit a form and a format together [Stackoverflow](https://stackoverflow.com/questions/62704325/django-display-multiple-views-in-one-template)
-5. Creating dynamic forms with JavaScript [BrennanTymrak](https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript)
-6. Filter a parent model based on a child model [Stackoverflow](https://stackoverflow.com/questions/28059987/how-can-filter-parent-based-on-children-in-django)
-7. How to add a date picker in Django forms [Stackoverflow](https://stackoverflow.com/questions/36293061/how-to-include-datepicker-in-django-modelform)
-8. Customise the default User model returned field (which is username)[Stackoverflow](https://stackoverflow.com/questions/34214320/django-customize-the-user-models-return-field)
-9. If a project with an existing title is submitted, a 500 error page comes up. Solution: used clean method to handle unique title errors [Stackoverflow](https://stackoverflow.com/questions/3473165/django-unique-constraint-form-errors)
-10. When a project description is added from the Admin panel, it renders with the paragraph tag. Solution: In the admin panel text editor for the project description field, the second last button in the text editor is 'Code view'. Select 'Code view' remove the tags and save. The text will render normally, without tags.
-11. Add first_name and last_name to user model from admin panel [stackoverflow](https://stackoverflow.com/questions/2552516/changing-user-modeladmin-for-django-admin)
-12. Users created from the admin panel can't log in. Solution: hash the password before saving the user.
-
-
 ## Known bugs
 
 There aren't known bugs currently.
@@ -1045,12 +1029,12 @@ There aren't known bugs currently.
 Below you can find all the steps to take in order to clone and deploy this application. A similar summary to setup a basic Django project and deploy it on Heroku was provided by the [Code Institute](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf).
 
 **1. To clone the website**
-1. Go to the GitHub repository [The Checklistar](https://github.com/jannis-kiriasis/the-checklistar/)
+1. Go to the GitHub repository [Adviser Finder](https://github.com/jannis-kiriasis/advisor-finder)
 2. Open the dropdown 'Code'
 3. Select the HTTPs tab
-4. Copy the given url (https://github.com/jannis-kiriasis/the-checklistar.git)
+4. Copy the given url (https://github.com/jannis-kiriasis/advisor-finder.git)
 5. Open 'Git Bash' on your favourite code editor and select the location where you want to save the cloned directory
-6. Type `git clone https://github.com/jannis-kiriasis/the-checklistar.git` and press enter to create a local copy
+6. Type `git clone https://github.com/jannis-kiriasis/advisor-finder.git` and press enter to create a local copy
 7. Install the required packages by typing `pip install -r requirements.txt` in the terminal
 8. In settings.py set `DEBUG=True` (Now it is set to False)
 9. To push changes to the repository, type the following commands in the terminal
@@ -1104,10 +1088,10 @@ Below you can find all the steps to take in order to clone and deploy this appli
 **5. Connect Heroku to GitHub**
 1. **On Heroku** Go to the Application Configuration page of your application and click on the 'Deploy' tab
 2. Under 'deployment method' select GitHub
-3. Enter the name of the repository https://github.com/jannis-kiriasis/the-checklistar
+3. Enter the name of the repository https://github.com/jannis-kiriasis/advisor-finder
 4. Scroll down and chose automatic deployment or manual deployment then save
 5. On the application configuration page click on 'Open App'.
-6. Run the app https://the-checklistar.herokuapp.com/
+6. Run the app https://advisor-finder.herokuapp.com/
 
 **6. Final deployment**
 1. **In 'settings.py'** set `DEBUG=False`
@@ -1123,12 +1107,5 @@ Below you can find all the steps to take in order to clone and deploy this appli
 
 Brian Macharia, my mentor, helped me test the website functionalities and provide excellent recommendations.
 
-I followed this video from [Code with Stein](https://www.youtube.com/watch?v=C8pYT1R8yo4&ab_channel=CodeWithStein) to create the notifications.
-
-I followed this article from [Brennan Tymrak](https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript) to create the dynamic formset with JavaScript to create and edit a project.
-
-I've looked at the tests run on this project from [Elaine Broche](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main/hikebooker) to structure my automated python testing. 
-
 To create the README.md file I've used a previously created by me README.md [Insured README.md](https://github.com/jannis-kiriasis/insured/blob/main/README.md) and updated it as needed.
 
-This app has been thought for companies internal use. It is possible to sign up and in but ideally it is something that needs to be cloned and connected to existing databases to register all the employees. 
