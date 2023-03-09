@@ -64,5 +64,14 @@ class MessageForm(forms.ModelForm):
         fields = ['body',]
 
         widgets = {
-          'body': Textarea(attrs={'rows': 2, 'cols':20}),
+          'body': Textarea(attrs={'rows': 2, 'cols': 20}),
         }
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super(MessageForm, self).__init__(*args, **kwargs)
+
+        self.fields['body'].widget.attrs['placeholder'] = 'Send a message to your client'

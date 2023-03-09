@@ -11,27 +11,25 @@
 }
 
 body,
-html {
-    font-family: 'Open Sans', Helvetica, sans-serif;
-    height: 100%;
-    font-size: 1rem;
-}
-
-
-.row {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-body,
 html,
 input {
     font-family: 'Open Sans', Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
+body,
+html {
+    height: 100%;
+    font-size: 1rem;
+}
+/* 
 body {
     position: relative;
+} */
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .alert {
@@ -140,7 +138,6 @@ label {
     border-radius: 5px;
 }
 
-/* button:focus:not(:focus-visible) */
 [type=submit]:hover,
 .btn-primary:hover,
 .btn-secondary {
@@ -218,7 +215,6 @@ nav > div > ul > li > a:hover,
     font-size: 0.8rem;
 }
 
-
 /* advisors/profile/ */
 
 .btn-position {
@@ -227,7 +223,6 @@ nav > div > ul > li > a:hover,
     padding: 0 !important;
     align-items: right !important;
 }
-
 
 /* advisors/clients */
 
@@ -282,4 +277,26 @@ label[for="id_body"] {
 .btn:disabled {
     background-color: var(--brown);
     border-color: var(--brown);
+}
+
+/* Homepage */
+
+.services {
+    background-color: var(--lavander-blush);
+}
+
+.fa-solid {
+    color: var(--sapphire);
+}
+
+.fa-circle-1,
+.fa-circle-2,
+.fa-circle-3,
+.fa-circle-4,
+.fa-circle-5 {
+    color: var(--sapphire) !important;
+}
+
+.no-border {
+    border-color: #ffffff;
 }

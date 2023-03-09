@@ -35,11 +35,9 @@ class SeekerSignupForm(forms.ModelForm):
 
 
 class MessageForm(forms.ModelForm):
-
     """
     Create chat message form
     """
-
     class Meta:
         model = Message
         fields = ['body',]
@@ -47,3 +45,12 @@ class MessageForm(forms.ModelForm):
         widgets = {
           'body': Textarea(attrs={'rows': 2, 'cols': 20}),
         }
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super(MessageForm, self).__init__(*args, **kwargs)
+
+        self.fields['body'].widget.attrs['placeholder'] = 'Send a message to your advisor'
