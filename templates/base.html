@@ -27,14 +27,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
     {% block extra_js %}
-    <!-- Sweet alert script - To use Sweet alerts (Swal.fire in JS files) -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% endblock %}
 
     <!-- Favicon -->
@@ -44,11 +39,11 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
+    {% block page_header %}
     <header>
         {% include 'includes/navigation.html' %}
     </header>
-
-    {% block page_header %}
     <section class="bg container-fluid p-0">
         {% if messages %}
         {% for message in messages %}
@@ -58,27 +53,18 @@
     </section>
     {% endblock %}
 
-    <section class="bg">
-        <div class="container">
-            <div class="row w-100 d-flex justify-content-center text-center">
-                <div class="col-12 col-md-6">
-                    {% block light_red_bg_content %}
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-    </section>
-
+    {% block light_red_bg_content %}
+    {% endblock %}
 
     {% block white_bg_content %}
     {% endblock %}
 
-    <footer class="py-5 container-fluid">
+    <footer class="py-3 container-fluid mt-auto">
         <div class="row">
             <div class="col d-flex flex-column justify-content-center">
                 <p class="text-center">© 2023 Advice Found</p>
-                <a href="https://res.cloudinary.com/dyl7p4jev/image/upload/v1678487229/AF_facebook_page_ejda5g.png" class="mx-auto my-2"
-                    target="_blank">
+                <a href="https://res.cloudinary.com/dyl7p4jev/image/upload/v1678487229/AF_facebook_page_ejda5g.png"
+                    class="mx-auto my-2" target="_blank">
                     <i class="fa-brands fa-facebook fa-xl text-white"></i>
                 </a>
             </div>
@@ -88,6 +74,10 @@
     {% block postloadjs %}
     <script src="{% static 'js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/ee196b5910.js" crossorigin="anonymous"></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Sweet alert script - To use Sweet alerts (Swal.fire in JS files) -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% endblock %}
 
 </body>

@@ -7,26 +7,32 @@
 {% endblock %}
 
 {% block light_red_bg_content %}
-<div class="match pb-5">
-    <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+<section class="bg">
+    <div class="container pb-5">
+        <div class="row w-100">
+            <div class="col-12 col-md-6 match h-100 d-flex flex-column justify-content-center align-items-center">
+                <h1 class="text-center pt-4 pb-5">Your Client
+                </h1>
 
-        <h1 class="text-center pt-4 pb-5">Your Client
-        </h1>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h2 class="card-title pb-2">{{ match.seeker.user.first_name }}
+                            {{ match.seeker.user.last_name }}
+                        </h2>
+                        <p class="card-text"><span class="fw-bold">Location:
+                            </span>{{ match.seeker.town_or_city }}</p>
+                        <p class="card-text"><span class="fw-bold">Specialisation:</span>
+                            {{ match.seeker.need }}</p>
+                    </div>
 
-        <div class="card text-center">
-            <div class="card-body">
-                <h2 class="card-title pb-2">{{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
-                </h2>
-                <p class="card-text"><span class="fw-bold">Location: </span>{{ match.seeker.town_or_city }}</p>
-                <p class="card-text"><span class="fw-bold">Specialisation:</span> {{ match.seeker.need }}</p>
+                </div>
+                <div class="mt-4 text-center message-bg">
+                    {% include 'consultations/consultation-form.html' %}
+                </div>
             </div>
-
-        </div>
-        <div class="mt-4 text-center message-bg">
-            {% include 'consultations/consultation-form.html' %}
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
 
 {% block white_bg_content %}

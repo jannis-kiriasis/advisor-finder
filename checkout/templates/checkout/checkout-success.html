@@ -9,100 +9,111 @@
 Checkout processed
 {% endblock %}
 
+{% block light_red_bg_content %}
+
+<section class="bg">
+    <div class="container pt-3 pb-4">
+        <div class="row w-100 d-flex justify-content-center text-center">
+            <div class="col-12 col-md-6">
+                <h1 class="mb-2">Thank you</h1>
+                <p>
+                    Your order (number {{ order.order_number }}) has been processed. A confirmation email will be
+                    sent
+                    to <span class="fw-bold">
+                        {{ order.email }}</span>.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
 {% block white_bg_content %}
-<div class="col-12 col-md-6 text-break">
-    <div class="mx-auto text-center">
-        <h1 class="mb-2">Thank you</h1>
-        <p>
-            Your order (number {{ order.order_number }}) has been processed. A confirmation email will be sent to <span
-                class="fw-bold">
-                {{ order.email }}</span>.
-        </p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12 col-md-6 my-3 mx-auto text-center">
-        <h2>Order Summary</h2>
-        <div class="mx-auto text-break">
-            <table class="table table-responsive text-start mt-2">
-                <tbody>
-                    <tr>
-                        <th class="col-6">Item</th>
-                        <th class="col-6">Cost</th>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Consultation fee:</td>
-                        <td class="col-6">€{{ order.fee }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Advice found fee:</td>
-                        <td class="col-6">€{{ order.af_fee }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Total:</td>
-                        <td class="col-6">€{{ order.grand_total }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12 col-md-6 my-3 mx-auto text-center">
-        <h2>Billing info</h2>
-        <div class="mx-auto text-break">
-            <table class="table table-responsive text-start mt-2">
-                <tbody>
-                    <tr>
-                        <td class="col-6">First name</td>
-                        <td class="col-6">{{ order.name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Last name</td>
-                        <td class="col-6">{{ order.last_name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Order date</td>
-                        <td class="col-6">{{ order.date }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Address</td>
-                        <td class="col-6">{{ order.street_address }}</td>
-                    </tr>
-                    <tr>
-                        <td class="col-6">Town or city</td>
-                        <td class="col-6">{{ order.town_or_city }}</td>
-                    </tr>
-                    {% if order.postcode %}
-                    <tr>
-                        <td class="col-6">Postcode</td>
-                        <td class="col-6">{{ order.postcode }}</td>
-                    </tr>
-                    {% endif %}
-                    {% if order.postcode %}
-
-                    <tr>
-                        <td class="col-6">Phone number</td>
-                        <td class="col-6">{{ order.phone_number }}</td>
-                    </tr>
-                    {% endif %}
-
-                </tbody>
-            </table>
+<section>
+    <div class="container">
+        <div class="row w-100 d-flex justify-content-center text-center">
+            <div class="col-12 col-md-6 my-3 mx-auto text-center">
+                <h2>Order Summary</h2>
+                <div class="mx-auto text-break">
+                    <table class="table table-responsive text-start mt-2">
+                        <tbody>
+                            <tr>
+                                <th class="col-6">Item</th>
+                                <th class="col-6">Cost</th>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Consultation fee:</td>
+                                <td class="col-6">€{{ order.fee }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Advice found fee:</td>
+                                <td class="col-6">€{{ order.af_fee }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Total:</td>
+                                <td class="col-6">€{{ order.grand_total }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
-    </div>
-</div>
+        <div class="row">
+            <div class="col-12 col-md-6 my-3 mx-auto text-center">
+                <h2>Billing info</h2>
+                <div class="mx-auto text-break">
+                    <table class="table table-responsive text-start mt-2">
+                        <tbody>
+                            <tr>
+                                <td class="col-6">First name</td>
+                                <td class="col-6">{{ order.name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Last name</td>
+                                <td class="col-6">{{ order.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Order date</td>
+                                <td class="col-6">{{ order.date }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Address</td>
+                                <td class="col-6">{{ order.street_address }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-6">Town or city</td>
+                                <td class="col-6">{{ order.town_or_city }}</td>
+                            </tr>
+                            {% if order.postcode %}
+                            <tr>
+                                <td class="col-6">Postcode</td>
+                                <td class="col-6">{{ order.postcode }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if order.postcode %}
 
-<div class="row my-5">
-    <div class="col-12 col-md-6 text-center mx-auto">
-        <a href="{% url 'advisor' %}" class="btn btn-secondary">
-            <span class="text-uppercase">Back to the chat</span>
-        </a>
-    </div>
-</div>
+                            <tr>
+                                <td class="col-6">Phone number</td>
+                                <td class="col-6">{{ order.phone_number }}</td>
+                            </tr>
+                            {% endif %}
 
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-12 col-md-6 text-center mx-auto">
+                <a href="{% url 'advisor' %}" class="btn btn-secondary">
+                    <span class="text-uppercase">Back to the chat</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

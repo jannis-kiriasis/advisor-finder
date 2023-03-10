@@ -107,6 +107,7 @@ p {
 
 h1 {
     color: var(--sapphire);
+    font-size: 2.3rem;
 }
 
 .h1-emphasis {
@@ -117,6 +118,10 @@ h1 {
 .h1-red {
     color: var(--brown);
     font-weight: 600;
+}
+
+h2 {
+    font-size: 2rem;
 }
 
 .black {

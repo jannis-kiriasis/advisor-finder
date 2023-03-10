@@ -47,7 +47,7 @@ def advisor_seeker(request):
 
         # check if the logged in user has a userProfile. If not, create one
 
-        if UserProfile.objects.get(user=request.user).exists():
+        if UserProfile.objects.filter(user=request.user).exists():
 
             user_profile = UserProfile.objects.get(user=request.user)
 
@@ -56,7 +56,7 @@ def advisor_seeker(request):
 
                 # If it's advisor, check advisor profile has been created.
                 # If not, create one.
-                if AdvisorUserProfile.objects.get(user=request.user).exists():
+                if AdvisorUserProfile.objects.filter(user=request.user).exists():
 
                     # check the profile is approved. If so show clients.
                     # If not, show profile
