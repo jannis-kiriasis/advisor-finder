@@ -61,12 +61,12 @@ def match(request):
                 active=1,
             )
 
-        else:
-            messages.warning(
-                request,
-                'There are no advisors available currently, try again later.'
-            )
-            logout(request)
+            if not filter_advisors:
+                messages.warning(
+                    request,
+                    'There are no advisors available currently, try again later.'
+                )
+                logout(request)
 
     advisor = random.choice(filter_advisors)
 

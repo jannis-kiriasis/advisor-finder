@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block white_bg_content %}
-<div class="col-12 col-md-6">
-    <div class="my-auto">
-        <h1 class="display-4">
-            The page you are looking for isn't available
-        </h1>
-        <div class="my-5">
-            <h4>
-                <a href="{% url 'home' %}" class="btn btn-secondary">
-                    Return to homepage
-                </a>
-            </h4>
+<section>
+    <div class="container">
+        <div class="row w-100 d-flex justify-content-center text-center">
+            <div class="col-12 col-md-6">
+                <div class="my-auto">
+                    <h1 class="display-4">
+                        The page you are looking for isn't available
+                    </h1>
+                    <div class="my-5">
+                        <h4>
+                            <a href="{% url 'home' %}" class="btn btn-secondary">
+                                Return to homepage
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
 {% endblock %}
