@@ -48,13 +48,21 @@ Find Indipendent Financial Advisors in Ireland
                 {% endif %}
                 {% else %}
                 <div class="mt-4 mb-4">
-                    <a class="btn btn-primary" href="{% url 'account_login' %}"
-                        aria-labelledby="Advisors and seekers login">Login</a>
+
+                    <span class="hovertext small" data-hover="Login for financial advisors and advice seekers">
+                        <a class="btn btn-primary" href="{% url 'account_login' %}"
+                            aria-labelledby="Advisors and seekers login">Login</a>
+                    </span>
 
                 </div>
                 <div class="mt-4 mb-4">
-                    <a class="btn btn-secondary" href="{% url 'account_signup' %}"
-                        aria-labelledby="Advisors and seekers login">Signup</a>
+
+                    <span class="hovertext small" data-hover="Signup for financial advisors and advice seekers">
+                        <a class="btn btn-secondary" href="{% url 'account_signup' %}"
+                            aria-labelledby="Advisors and seekers signup">Signup</a>
+                    </span>
+
+
                 </div>
                 {% endif %}
             </div>

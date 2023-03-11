@@ -55,7 +55,7 @@ function confirmDelete(event) {
         iconColor: 'var(--ecru)',
         showCancelButton: true,
         confirmButtonColor: 'var(--brown)',
-        cancelButtonColor: 'var(--sapphire)',
+        cancelButtonColor: 'var(--cobalt)',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -76,7 +76,7 @@ function confirmDeleteAppointment(event) {
         iconColor: 'var(--ecru)',
         showCancelButton: true,
         confirmButtonColor: 'var(--brown)',
-        cancelButtonColor: 'var(--sapphire)',
+        cancelButtonColor: 'var(--cobalt)',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {

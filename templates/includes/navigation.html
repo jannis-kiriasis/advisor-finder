@@ -37,6 +37,10 @@
 
                     {% endif %}
 
+                {% elif not request.user.profiles %}
+
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
+
                 {% endif %}
 
             {% else %}

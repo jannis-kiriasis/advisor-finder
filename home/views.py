@@ -39,11 +39,11 @@ def advisor_seeker(request):
             elif form.instance.user_type == 1:
                 return redirect('seeker_signup')
 
-        else:
+        elif not form.is_valid():
             messages.error(request, 'Signup not completed. Try again.')
             return redirect('choice')
 
-    else: 
+    else:
 
         # check if the logged in user has a userProfile. If not, create one
 

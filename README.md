@@ -645,9 +645,9 @@ In the following paragraph, I'm going to explain the colours, typography and ima
 
 I've used a similar colour palette to a project I previously realised (pp2 and pp4) so the reasoning behind the colour choice is very similar.
 
-The main colour used is a shade of blue (sapphire). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
+The main colour used is a shade of blue (cobalt). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
 
-All the main buttons are in brown. It's different enough to differentiate from the main sapphire colour. The secondary buttons are white with brown borders.
+All the main buttons are in brown. It's different enough to differentiate from the main cobalt colour. The secondary buttons are white with brown borders.
 
 A lighter shade of brown was used to highlight the best match, the seeker's advisor and the advisor's clients profiles.
 It was also used to color the background of the messages sent.

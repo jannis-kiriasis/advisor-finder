@@ -4,7 +4,8 @@
 /* Global styles */
 
 :root {
-    --sapphire: #04449f;
+    --cobalt: #04449f;
+    --cobalt-medium: #d4d9ee;
     --brown: #9D3801;
     --lavander-blush: #f9e7e7;
     --caribbean-current: #296161;
@@ -59,7 +60,7 @@ textarea,
   transition: box-shadow 150ms ease;
   border-radius: 0.5rem;
   background-color: #ffffff;
-  border: 1px solid var(--sapphire-medium) !important;
+  border: 1px solid var(--cobalt-medium) !important;
   font-size: 1rem;
   padding: 8px;
   margin: 10px 0px;
@@ -88,7 +89,7 @@ textarea {
 .navbar-toggler:focus,
 .navbar-toggler {
     max-width: min-content;
-    background-color: var(--sapphire) !important;
+    background-color: var(--cobalt) !important;
     border: none;
 }
 
@@ -101,12 +102,12 @@ p {
 }
 
 h1 {
-    color: var(--sapphire);
+    color: var(--cobalt);
     font-size: 2.3rem;
 }
 
 .h1-emphasis {
-    color: var(--sapphire);
+    color: var(--cobalt);
     font-weight: 600;
 }
 
@@ -163,17 +164,17 @@ button[type=submit],
     align-items: center;
 }
 .btn-third {
-    background-color: var(--sapphire);
+    background-color: var(--cobalt);
     color: #ffffff;
-    border-color: var(--sapphire);
+    border-color: var(--cobalt);
     border-radius: 5px;
     width: 250px;
 }
 
 .btn-third:hover {
-    color: var(--sapphire);
+    color: var(--cobalt);
     background-color: #ffffff;
-    border-color: var(--sapphire);
+    border-color: var(--cobalt);
     border-radius: 5px;
     width: 250px;
 }
@@ -200,7 +201,7 @@ textarea[name=body]{
 nav,
 .dropdown-menu,
 footer {
-    background-color: var(--sapphire);
+    background-color: var(--cobalt);
     color: #ffffff;
 }
 
@@ -283,7 +284,7 @@ label[for="id_body"] {
 }
 
 .fa-solid {
-    color: var(--sapphire);
+    color: var(--cobalt);
 }
 
 .fa-circle-1,
@@ -291,9 +292,39 @@ label[for="id_body"] {
 .fa-circle-3,
 .fa-circle-4,
 .fa-circle-5 {
-    color: var(--sapphire) !important;
+    color: var(--cobalt) !important;
 }
 
 .no-border {
     border-color: #ffffff;
+}
+
+.hovertext {
+    position: relative;
+}
+
+.hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 140px;
+    background-color: var(--brown);
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ffffff ;
+    padding: 5px;
+    transition: opacity 1s ease-in-out;
+    transition-delay: 1000ms;
+    margin: 5px;
+
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+}
+
+.hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
 }
