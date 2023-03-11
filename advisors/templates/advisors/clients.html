@@ -31,11 +31,14 @@ My clients
         <div class="pb-5">
             <div class="row flex-row justify-content-center align-items-center my-3 mx-auto">
 
+                {% if not matches %}
+                <div class="col-12 col-md-6 py-5 text-center">
+                    <p>You have no clients currently. Our algorithm is looking for someone you can help. You'll be notified when a new client shows up.</p>
+                </div>
+                {% else %}
+
                 {% for match in matches %}
 
-                {% if matches_count == 0 %}
-                <p>You have no clients. You will be match with advice seekers soon.</p>
-                {% else %}
                 <div class="card card-clients mx-1 my-1 col-md-1">
 
                     <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
@@ -68,8 +71,8 @@ My clients
                     </div>
 
                 </div>
-                {% endif %}
                 {% endfor %}
+                {% endif %}
 
             </div>
         </div>
