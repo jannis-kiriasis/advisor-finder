@@ -652,10 +652,11 @@ All the main buttons are in brown. It's different enough to differentiate from t
 A lighter shade of brown was used to highlight the best match, the seeker's advisor and the advisor's clients profiles.
 It was also used to color the background of the messages sent.
 
-![Color Palette](./media/README-files/colors.png)  
+![Color Palette](./media/README-files/colors.png)
 
 All the text colour combinations have been tested for accessibility and they all achieve WCAG AAA.
-- [Colour contrast test: shappire on white](https://webaim.org/resources/contrastchecker/?fcolor=054FB9&bcolor=FFFFFF)   
+- [Colour contrast test: cobalt on white](https://webaim.org/resources/contrastchecker/?fcolor=054FB9&bcolor=FFFFFF)   
+- [Colour contrast test: cobalt on lavander blush](https://webaim.org/resources/contrastchecker/?fcolor=04449F&bcolor=F9E7E7)   
 - [Colour contrast test: brown on white](https://webaim.org/resources/contrastchecker/?fcolor=9D3801&bcolor=FFFFFF)   
 
 Tested with [Contrast checker](https://webaim.org/resources/contrastchecker/).

@@ -43,20 +43,6 @@ if (chooseAdvisorButton) {
      }
 }
 
-// /** Get href url of button delete.
-// */
-// function goToDeleteUrl() {
-//     let href = document.getElementById('delete').getAttribute('href');
-//     window.location.href = `${href}`;
-// }
-
-// /** Get href url of button deleteAppointment.
-// */
-// function goToDeleteAppointmentUrl() {
-//     let href = document.getElementsByClassName('delete-appointment').getAttribute('href');
-//     window.location.href = `${href}`;
-// }
-
 /** Defensive design for delete seeker button.
 */
 function confirmDelete(event) {
@@ -66,7 +52,7 @@ function confirmDelete(event) {
         text: 
         "This action is non-reversible. You will loose all of your data and conversations with your advisor!",
         icon: 'warning',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
         confirmButtonColor: 'var(--brown)',
         cancelButtonColor: 'var(--sapphire)',
@@ -87,7 +73,7 @@ function confirmDeleteAppointment(event) {
         text: 
         "This action is non-reversible. You'll have to reschedule one if needed.",
         icon: 'warning',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
         confirmButtonColor: 'var(--brown)',
         cancelButtonColor: 'var(--sapphire)',
@@ -133,9 +119,9 @@ function confirmUpdateAdvisor(event) {
         text: 
         "Your profile will be sent to Advice Found for approval. You won't be able to receive new clients while your profile in under review.",
         icon: 'warning',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--dark-verdigris)',
+        confirmButtonColor: 'var(--caribbean-current)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
@@ -174,9 +160,9 @@ function confirmUpdateSeeker(event) {
     Swal.fire({
         title: 'Are you sure you want to update you profile?',
         icon: 'warning',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--dark-verdigris)',
+        confirmButtonColor: 'var(--caribbean-current)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
@@ -207,9 +193,9 @@ function deactivateAdvisor(event) {
         title: 'Are you sure you want to deactivate you profile?',
         text: 'You will be hidden and not assigned new leads.',
         icon: 'warning',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--dark-verdigris)',
+        confirmButtonColor: 'var(--caribbean-current)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, deactivate me!'
     }).then((result) => {
@@ -228,9 +214,9 @@ function activateAdvisor(event) {
         title: 'Are you sure you want to activate you profile?',
         text: 'You will be visible and will start to receive new leads.',
         icon: 'warning',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--dark-verdigris)',
+        confirmButtonColor: 'var(--caribbean-current)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, activate me!'
     }).then((result) => {
@@ -263,9 +249,9 @@ function messageAdvisor(event) {
         title: 'Ready to chat?',
         text: "You'll be assigned to this advisor. Should you wish to change advisor in the future please contact jannis.kiriasis@gmail.com",
         icon: 'info',
-        iconColor: 'var(--tan)',
+        iconColor: 'var(--ecru)',
         showCancelButton: true,
-        confirmButtonColor: 'var(--dark-verdigris)',
+        confirmButtonColor: 'var(--caribbean-current)',
         cancelButtonColor: 'var(--brown)',
         confirmButtonText: 'Yes, start chat!'
     }).then((result) => {
