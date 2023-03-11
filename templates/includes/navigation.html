@@ -12,14 +12,14 @@
 
                     {% if request.user.users %}
 
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'consultations' %}">Appointments</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'clients' %}">Clients</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'advisor_profile' %}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'consultations' %}" aria-labelledby="Appointments">Appointments</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'clients' %}" aria-labelledby="Clients">Clients</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'advisor_profile' %}" aria-labelledby="Profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
 
                     {% else %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
 
                     {% endif %}
 
@@ -27,13 +27,13 @@
                 
                     {% if request.user.seekers %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor' %}">Advisor</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'seeker_profile' %}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor' %}" aria-labelledby="Advisor">Advisor</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'seeker_profile' %}" aria-labelledby="Profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
 
                     {% else %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
 
                     {% endif %}
 
@@ -41,8 +41,8 @@
 
             {% else %}
 
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}" aria-labelledby="Register">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}" aria-labelledby="Login">Login</a></li>
 
             {% endif %}
         </ul>

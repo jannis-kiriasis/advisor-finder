@@ -97,7 +97,7 @@ To onboard seekeres, digital channels will be the favourites with a mix of organ
 
 On the website there is a newsletter signup. The heading is a hook to get users sign up. "A guide to the best financial returns" sounds like an attractive piece if you are looking to save on taxes, invest your money or planning for retirement. Once an email list is created, it can be used to promote material for the same audience. The audience can be segmented based on how they behave on the emails (they read it or not, open or not etc). So then the emailing strategy will differ for every segment. For example, if with the segmentation we figure out there is an audience interested in tax planning, we'll send them information about tax deadlines, tax credits available etc.
 
-A Facebook page has also been created. Since it doesn't focus on a specific area such as retirements or investments or taxes only, but it is a business page, we can talk about personal finance here. Personal finance is pretty generic so we can use it to give people tips on savings, tracking investments, budgeting etc.
+A [Facebook page](/media/README-files/af-facebook-page.png) has also been created. Since it doesn't focus on a specific area such as retirements or investments or taxes only, but it is a business page, we can talk about personal finance here. Personal finance is pretty generic so we can use it to give people tips on savings, tracking investments, budgeting etc.
 
 More on SEO and marketing in the following paragraphs.
 

@@ -25,13 +25,13 @@
                         {{ form.as_p }}
 
                         <button class="btn my-5" id="update_seeker" data-url="{% url 'seeker_update' %}"
-                            type="submit">Update profile
+                            type="submit" aria-labelledby="Update profile">Update profile
                         </button>
 
                     </form>
 
                     <a href="{% url 'seeker_delete' %}" class="btn btn-secondary mt-5" id="delete"
-                        aria-label="Delete project">Delete
+                        aria-labelledby="Delete profile">Delete
                         profile</a>
                 </div>
             </div>

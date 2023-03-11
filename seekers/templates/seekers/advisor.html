@@ -15,7 +15,7 @@ My advisor
                     {% if not match %}
                     <p class="mt-5 text-center">
                         You don't have an advisor yet. Go to
-                        <a href="{% url 'match' %}">the matchign page</a>
+                        <a href="{% url 'match' %}" aria-labelledby="Matching page">the matchign page</a>
                         to see all the advisors availalbe.
                     </p>
                     {% else %}
@@ -123,11 +123,11 @@ My advisor
                                         {{ el.price }}
                                     </p>
                                     {% if el.status == 0 %}
-                                    <a class="btn btn-primary mt-2" href="{% url 'checkout' %}">
+                                    <a class="btn btn-primary mt-2" href="{% url 'checkout' %}" aria-labelledby="Confirm consultation">
                                         Confirm consultation
                                     </a>
                                     {% else %}
-                                    <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank">
+                                    <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank" aria-labelledby="Start meeting">
                                         Start meeting
                                     </a>
                                     {% endif %}
@@ -159,7 +159,7 @@ My advisor
                                 {% csrf_token %}
                                 {{ message_form }}
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" aria-labelledby="Send">
                                     Send
                                 </button>
 

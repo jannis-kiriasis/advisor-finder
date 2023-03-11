@@ -38,12 +38,12 @@
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
-                    <button type="submit" class="mt-5">{% trans "Sign Up" %} &raquo;</button>
+                    <button type="submit" class="mt-5" aria-labelledby="Sign up">{% trans "Sign Up" %} &raquo;</button>
                 </form>
 
                 <p class="mt-4">
                     {% blocktrans %}Already have an account? Then please
-                    <a href="{{ login_url }}">sign in</a>
+                    <a href="{{ login_url }}" aria-labelledby="sign in">sign in</a>
                     .{% endblocktrans %}
                 </p>
             </div>
