@@ -48,7 +48,7 @@ class UserProfile(models.Model):
     when someone logs in to the app again.
     """
 
-    user_type = models.IntegerField(choices=USER_TYPE, blank=True)
+    user_type = models.IntegerField(choices=USER_TYPE, blank=False, null=False)
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profiles'
     )

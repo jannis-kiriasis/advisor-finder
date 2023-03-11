@@ -143,6 +143,14 @@ label {
     display: none;
 }
 
+.progress-bar {
+    background-color: var(--brown);
+}
+
+.progress {
+    --bs-progress-bg: var(--cobalt-medium);
+}
+
 [type=submit]:not(:disabled),
 .btn-primary,
 .btn-secondary:hover {
