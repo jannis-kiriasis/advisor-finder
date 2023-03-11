@@ -93,6 +93,12 @@ textarea {
     border: none;
 }
 
+.errorlist + p > input {
+    color: var(--brown) !important;
+    list-style-type: none;
+    border: 2px solid var(--brown) !important;
+}
+
 a {
     text-decoration: none;
 }
