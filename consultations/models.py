@@ -10,18 +10,15 @@ CONFIRMED = ((0, 'Not confirmed'), (1, 'Confirmed'))
 
 
 def validate_date(date):
-
     if date < timezone.now().date():
         raise ValidationError("Date cannot be in the past")
 
 
 class Consultation(models.Model):
-
     """
     A consultation has a 1 to many relation with a match. One match can have
     many consultations, one consultation can have one match only.
     """
-
     match = models.ForeignKey(
         Match, on_delete=models.SET_NULL,
         null=True, blank=True,
@@ -29,14 +26,10 @@ class Consultation(models.Model):
         )
 
     price = models.DecimalField(max_digits=5, decimal_places=2)
-
     date = models.DateField(validators=[validate_date])
     time = models.TimeField()
-
     link = models.CharField(max_length=30)
-
     status = models.IntegerField(choices=CONFIRMED, default=0)
-
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

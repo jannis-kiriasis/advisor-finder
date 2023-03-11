@@ -16,6 +16,7 @@ from .models import AdvisorUserProfile
 from .emails import advisor_to_approve_email, advisor_deactivated_email
 from .emails import advisor_activated_email, email_note_to_seeker
 from .utils import profile_status_messasge
+from .utils import save_advisor_updates_in_request_session
 
 
 @login_required
@@ -36,8 +37,7 @@ def advisor_signup(request):
             form.instance.user = request.user
             form.save()
 
-            queryset = AdvisorUserProfile.objects
-            profile = get_object_or_404(queryset, user=request.user)
+            profile = get_advisor_by_request_user(request)
 
             advisor_to_approve_email(profile)
 
@@ -67,11 +67,6 @@ def advisor_profile(request):
     advisor_profile view for profile.html.
     Render all the business details related to an advisor.
     """
-
-    # user = request.user
-    # queryset = AdvisorUserProfile.objects
-    # profile = get_object_or_404(queryset, user=user)
-
     profile = get_advisor_by_request_user(request)
 
     form = AdvisorSignupForm(instance=profile)
@@ -83,28 +78,10 @@ def advisor_profile(request):
         form = AdvisorSignupForm(request.POST, instance=profile)
 
         if form.is_valid():
-            request.session[
-                'save_business_name'
-                ] = 'save_business_name' in request.POST
-            request.session[
-                'save_business_description'
-                ] = 'save_business_description' in request.POST
-            request.session[
-                'save_specialisation'
-                ] = 'save_specialisation' in request.POST
-            request.session[
-                'save_postcode'
-                ] = 'save_postcode' in request.POST
-            request.session[
-                'save_street_address'
-                ] = 'save_street_address' in request.POST
-            request.session[
-                'save_town_or_city'
-                ] = 'save_town_or_city' in request.POST
-            request.session[
-                'save_registration_number'
-                ] = 'save_registration_number' in request.POST
-            print(request.session['save_registration_number'])
+
+            # Save POST data in request session to pass to the update_advisor
+            # view after defensive design
+            save_advisor_updates_in_request_session(request)
 
             return redirect(reverse(
                 'update_advisor',
@@ -154,9 +131,7 @@ def update_advisor(request):
     profile.approved = 0
 
     new_profile = profile.save()
-
     profile = new_profile
-
     advisor_to_approve_email(profile)
 
     return redirect(reverse('advisor_profile'))
@@ -200,17 +175,13 @@ def deactivate_profile(request):
 
 @login_required
 def clients_list(request):
-
     """
-    View to show all of an advisor matches.
+    View to show all of the advisor clients.
     """
-
-    # # Get advisor profile of logged in user
-
+    # Get advisor profile of logged in user
     advisor = get_advisor_by_request_user(request)
 
     # Filter matches by logged in advisor
-
     matches = Match.objects.filter(advisor=advisor)
     matches_count = matches.count()
 
@@ -225,30 +196,20 @@ def clients_list(request):
 @login_required
 def seeker_profile(request, match_id):
     """
-    Show the seekers details together with their messages.
+    Show the seekers details together with the messages.
     Show the consultation form and the message form.
     """
     # Get seeker details
     match = get_object_or_404(Match, id=match_id)
     notes = Message.objects.filter(match=match)
     consultations = Consultation.objects.filter(match=match)
+
     # Combine notes and consultations in 1 iterable list for template
     elements = list(chain(notes, consultations))
 
-    hide_consultation_form = False
-    consultation_not_confirmed = False
-
-    if hide_consultation_form is False:
-        try:
-            consultation_not_confirmed = get_object_or_404(
-                Consultation,
-                status=0
-            )
-        except:
-            pass
-
-        if consultation_not_confirmed:
-            hide_consultation_form = True
+    # Hide consultation scheduling form
+    # if there is a non confirmed consultation
+    hide_consultation_form = find_uncorfirmed_consutltation(consultations)
 
     if request.method == 'POST':
 
@@ -262,18 +223,21 @@ def seeker_profile(request, match_id):
                 user = request.user
                 message_form.instance.match = match
                 message_form.instance.user = request.user
-
                 message_form.save()
 
-                messages.success(request, 'You have sent a message successfully. Your client will receive an email.')
+                messages.success(
+                    request,
+                    'You have sent a message successfully. \
+                        Your client will receive an email.'
+                )
 
                 # Email last message to advisor
-
                 # Get all messages by logged in user
                 messages_sent = Message.objects.filter(user=user)
 
                 # Get last message for logged in user by created_on and send
                 last_message = messages_sent.latest('created_on')
+
                 email_note_to_seeker(last_message)
 
             else:
@@ -313,7 +277,7 @@ def consultation_list(request):
     Render all the consultations the advisor have scheduled.
     Order by date.
     """
-    get_advisor_profile = get_object_or_404(AdvisorUserProfile, user=request.user)
+    get_advisor_profile = get_advisor_by_request_user(request)
 
     get_all_matches = Match.objects.filter(advisor=get_advisor_profile)
 

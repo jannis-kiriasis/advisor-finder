@@ -19,13 +19,10 @@ def create_consultation(consultation_form, match, request):
     """
     Save consultation object in Consultation model
     """
-
     if consultation_form.is_valid():
 
         consultation_form.instance.match = match
-
         consultation_form.save()
-
         messages.success(
             request,
             'Consultation created. An email has been sent to your client.'

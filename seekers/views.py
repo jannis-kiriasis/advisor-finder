@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
+from matches.models import Match, Message
+from home.models import Location, Specialisation
+from consultations.models import Consultation
+from advisor_finder.utils import get_seeker_by_request_user
+
 from .forms import SeekerSignupForm
 from .models import SeekerUserProfile, User
-from django.contrib.auth import logout
-from matches.models import Match, Message
 from .forms import MessageForm
 from .emails import email_note_to_advisor
-from consultations.models import Consultation
+from .utils import save_seeker_updates_in_request_session
+
 from itertools import chain
-from home.models import Location, Specialisation
 
 
 @login_required
@@ -20,12 +25,10 @@ def seeker_signup(request):
 
     If the seeker profile is created, send a feedback.
     """
-
     if request.method == 'POST':
         form = SeekerSignupForm(request.POST)
 
         if form.is_valid():
-
             form.instance.user = request.user
             form.save()
 
@@ -48,35 +51,20 @@ def seeker_signup(request):
 
 @login_required
 def seeker_profile(request):
-
     """
     seeker_profile view for profile.html.
     Render all the business details related to an advisor.
     """
-
-    user = request.user
-    queryset = SeekerUserProfile.objects
-    profile = get_object_or_404(queryset, user=user)
+    profile = get_seeker_by_request_user(request)
 
     form = SeekerSignupForm(instance=profile)
 
     if request.method == 'POST':
-
         form = SeekerSignupForm(request.POST, instance=profile)
 
         if form.is_valid():
-            request.session[
-                'save_need'
-                ] = 'save_need' in request.POST
-            request.session[
-                'save_postcode'
-                ] = 'save_postcode' in request.POST
-            request.session[
-                'save_town_or_city'
-                ] = 'save_town_or_city' in request.POST
-            request.session[
-                'save_street_address'
-                ] = 'save_street_address' in request.POST
+            # on request.POST save seeker info in request.session
+            save_seeker_updates_in_request_session(request)
 
             return redirect(reverse(
                 'seeker_update',
@@ -97,7 +85,6 @@ def update_profile(request):
     View to delete profile.
     If profile is deleted, send a feedback.
     """
-
     saved_need = request.POST['save_need']
     saved_postcode = request.POST['save_postcode']
     saved_street_address = request.POST['save_street_address']
@@ -137,7 +124,7 @@ def delete_profile(request):
     View to delete profile.
     If profile is deleted, send a feedback.
     """
-    profile = get_object_or_404(SeekerUserProfile, user=request.user)
+    profile = get_seeker_by_request_user(request)
     profile.delete()
 
     user = get_object_or_404(User, id=request.user.id)
@@ -151,49 +138,47 @@ def delete_profile(request):
 
 @login_required
 def advisor_profile(request):
-
     """
     View to show advisor profile to the seeker.
     """
-
     # Get advisor profile of logged in user
+    seeker = get_seeker_by_request_user(request)
 
-    user = request.user
-    seeker = get_object_or_404(SeekerUserProfile, user=user)
     match = False
     try:
         matches = Match.objects
         match = get_object_or_404(matches, seeker=seeker)
-    except:
+    except Exception:
         pass
 
     notes = Message.objects.filter(match=match)
     consultations = Consultation.objects.filter(match=match)
 
     # Combine notes and consultations in 1 iterable list for template
-
     elements = list(chain(notes, consultations))
 
     if request.method == 'POST':
         message_form = MessageForm(data=request.POST)
 
         # If message form is valid get user id and save
-
         if message_form.is_valid():
 
-            user = request.user
-            seeker_profile = SeekerUserProfile.objects.filter(user=user)
+            seeker_profile = get_seeker_by_request_user(request)
             message_form.instance.match = match
             message_form.instance.user = request.user
 
             message_form.save()
 
-            messages.success(request, 'You have sent a message successfully. You advisor will reply as soon as possible.')
+            messages.success(
+                request,
+                'You have sent a message successfully. \
+                You advisor will reply as soon as possible.'
+            )
 
             # Email last message to advisor
 
             # Get all messages by logged in user
-            messages_sent = Message.objects.filter(user=user)
+            messages_sent = Message.objects.filter(user=request.user)
 
             # Get last message for logged in user by created_on and send
             last_message = messages_sent.latest('created_on')

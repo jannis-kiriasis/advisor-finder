@@ -4,11 +4,9 @@ from django.forms import widgets
 
 
 class ConsultationForm(forms.ModelForm):
-
     """
-    Create a consultation.
+    Create a consultation form.
     """
-
     class Meta:
         model = Consultation
 

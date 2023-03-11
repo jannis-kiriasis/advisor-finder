@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib import messages
+from django.contrib.auth.models import User
 
+from advisor_finder.utils import get_seeker_by_request_user
 from advisors.models import AdvisorUserProfile
 from seekers.models import SeekerUserProfile
 from seekers.forms import SeekerSignupForm
+
 from .models import Match
-from django.contrib import messages
-from django.contrib.auth.models import User
+from .utils import best_match_logic
 
 import random
 from random import shuffle
@@ -20,9 +23,7 @@ def match(request):
     """
     # Get seekers profile of logged in user
 
-    user = request.user
-    seeker_objects = SeekerUserProfile.objects
-    seeker = get_object_or_404(seeker_objects, user=user)
+    seeker = get_seeker_by_request_user(request)
 
     # If seeker is already matched, go to advisor page
     find_match = False
@@ -31,53 +32,19 @@ def match(request):
         find_match = Match.objects.filter(
             seeker=seeker
         )
-
     if find_match:
         return redirect('advisor')
 
-    # Filter advisors by approved and active statuses and then location 
+    # Filter advisors by approved and active statuses and then location
     # and specialisation. Finally, take a random object from the queryset
-
-    advisor_objects = AdvisorUserProfile.objects
-    filter_advisors = advisor_objects.filter(
-        approved=1,
-        active=1,
-        town_or_city=seeker.town_or_city,
-        specialisation=seeker.need
-    )
-
-    if not filter_advisors:
-
-        filter_advisors = advisor_objects.filter(
-            approved=1,
-            active=1,
-            specialisation=seeker.need
-        )
-
-        if not filter_advisors:
-
-            filter_advisors = advisor_objects.filter(
-                approved=1,
-                active=1,
-            )
-
-            if not filter_advisors:
-                messages.warning(
-                    request,
-                    'There are no advisors available currently, try again later.'
-                )
-                logout(request)
-
-    advisor = random.choice(filter_advisors)
+    advisor = best_match_logic(request)
 
     # Query all the advisors that specialise in the seeker need.
     # Return the queryset in random order
-
     other_advisors = list(
         AdvisorUserProfile.objects.filter(specialisation=seeker.need)
     )
 
-    # other_advisors = AdvisorUserProfile.objects.all()
     shuffle(other_advisors)
 
     context = {
@@ -91,12 +58,10 @@ def match(request):
 
 @login_required
 def create_match(request, *arg, **kwargs):
-
     """
-    Save the match after defensive design confirmation. 
+    Save the match after defensive design confirmation.
     Make sure seekers doesn't have an adviser yet.
     """
-
     # get view url
     url = request.path
 
@@ -105,7 +70,7 @@ def create_match(request, *arg, **kwargs):
 
     user = request.user
     advisor = AdvisorUserProfile(id=advisor_id)
-    seeker = get_object_or_404(SeekerUserProfile, user=user)
+    seeker = get_seeker_by_request_user(request)
 
     # Check if the seeker already has an advisor, if not create the match
     if Match.objects.filter(seeker=seeker):
