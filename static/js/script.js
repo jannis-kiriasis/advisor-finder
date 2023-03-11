@@ -1,4 +1,5 @@
 const deleteButton = document.getElementById('delete');
+const deleteAppointmentButton = document.getElementsByClassName('delete-appointment');
 const updateAdvisorButton = document.getElementById('update_advisor');
 const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
@@ -16,6 +17,12 @@ if (alert) {
 // Event listeners for SweetAlerts defensive design
 if (deleteButton) {
     deleteButton.addEventListener('click', confirmDelete);
+}
+
+if (deleteAppointmentButton) {
+    for (var i = 0 ; i < deleteAppointmentButton.length; i++) {
+        deleteAppointmentButton[i].addEventListener('click', confirmDeleteAppointment);
+    }
 }
 
 if (updateAdvisorButton) {
@@ -36,12 +43,19 @@ if (chooseAdvisorButton) {
      }
 }
 
-/** Get href url of button delete.
-*/
-function goToDeleteUrl() {
-    let href = document.getElementById('delete').getAttribute('href');
-    window.location.href = `${href}`;
-}
+// /** Get href url of button delete.
+// */
+// function goToDeleteUrl() {
+//     let href = document.getElementById('delete').getAttribute('href');
+//     window.location.href = `${href}`;
+// }
+
+// /** Get href url of button deleteAppointment.
+// */
+// function goToDeleteAppointmentUrl() {
+//     let href = document.getElementsByClassName('delete-appointment').getAttribute('href');
+//     window.location.href = `${href}`;
+// }
 
 /** Defensive design for delete seeker button.
 */
@@ -59,8 +73,29 @@ function confirmDelete(event) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            goToDeleteUrl();
-        }
+                window.location.href = event.target.href;
+            }
+    });
+}
+
+/** Defensive design for delete appointment button.
+*/
+function confirmDeleteAppointment(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Are you sure you want to delete this consultation?',
+        text: 
+        "This action is non-reversible. You'll have to reschedule one if needed.",
+        icon: 'warning',
+        iconColor: 'var(--tan)',
+        showCancelButton: true,
+        confirmButtonColor: 'var(--brown)',
+        cancelButtonColor: 'var(--sapphire)',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+                window.location.href = event.target.href;
+            }
     });
 }
 

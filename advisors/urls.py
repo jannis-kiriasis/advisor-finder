@@ -32,12 +32,12 @@ urlpatterns = [
     ),
 
     path(
-        'clients/client/<match_id>',
+        'clients/<match_id>',
         views.seeker_profile,
         name='client_profile'
     ),
     path(
-        'clients/client/<match_id>/delete/<consultation_id>',
+        'clients/<match_id>/delete/<consultation_id>',
         views.client_delete_consultation,
         name='client_delete_consultation'
     ),

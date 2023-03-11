@@ -64,7 +64,7 @@
 
                     <div class="card-body text-center">
                         {% if consultation.status == 0 %}
-                        <a href="delete/{{ consultation.id }} " class="btn btn-secondary" aria-labelledby="Cancel">Cancel</a>
+                        <a href="{% url 'delete' consultation.id %} " class="btn btn-secondary delete-appointment" aria-labelledby="Cancel">Cancel</a>
 
                         {% else %}
                         <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank" rel="nofollow" aria-labelledby="Start meeting">Start meeting</a>

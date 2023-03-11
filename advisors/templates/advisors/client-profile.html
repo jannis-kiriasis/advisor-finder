@@ -9,10 +9,9 @@
 {% block light_red_bg_content %}
 <section class="bg">
     <div class="container pb-5">
-        <div class="row w-100">
-            <div class="col-12 col-md-6 match h-100 d-flex flex-column justify-content-center align-items-center">
-                <h1 class="text-center pt-4 pb-5">Your Client
-                </h1>
+        <div class="row w-100 d-flex flex-column justify-content-center align-items-center">
+            <div class="col-12 col-md-6 match h-100">
+                <h1 class="text-center pt-4 pb-5">Your Client</h1>
 
                 <div class="card text-center">
                     <div class="card-body">
@@ -110,7 +109,7 @@
                                     Not confirmed
                                 </p>
 
-                                <a class="btn btn-secondary mt-2" href="{{match.id}}/delete/{{ el.id }}" aria-labelledby="Cancel">
+                                <a class="btn btn-secondary mt-2 delete-appointment" href="{{ match.id }}/delete/{{ el.id }}" aria-labelledby="Cancel">
                                     Cancel
                                 </a>
                                 {% else %}
