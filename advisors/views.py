@@ -1,15 +1,20 @@
+from itertools import chain
+
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import AdvisorSignupForm, MessageForm
-from .models import AdvisorUserProfile, User
-from .emails import advisor_to_approve_email, advisor_deactivated_email, advisor_activated_email, email_note_to_seeker
+
+from advisor_finder.utils import get_advisor_by_request_user
 from matches.models import Match, Message
 from consultations.utils import create_consultation
 from consultations.forms import ConsultationForm
 from consultations.models import Consultation
-from itertools import chain
 from home.models import Specialisation, Location
+
+from .forms import AdvisorSignupForm, MessageForm
+from .models import AdvisorUserProfile
+from .emails import advisor_to_approve_email, advisor_deactivated_email
+from .emails import advisor_activated_email, email_note_to_seeker
 from .utils import profile_status_messasge
 
 
@@ -63,11 +68,14 @@ def advisor_profile(request):
     Render all the business details related to an advisor.
     """
 
-    user = request.user
-    queryset = AdvisorUserProfile.objects
-    profile = get_object_or_404(queryset, user=user)
+    # user = request.user
+    # queryset = AdvisorUserProfile.objects
+    # profile = get_object_or_404(queryset, user=user)
+
+    profile = get_advisor_by_request_user(request)
 
     form = AdvisorSignupForm(instance=profile)
+
     profile_status_messasge(request, profile)
 
     if request.method == 'POST':
@@ -133,10 +141,8 @@ def update_advisor(request):
         city=saved_town_or_city
     ).latest('city')
 
-    profile = get_object_or_404(
-        AdvisorUserProfile,
-        user=request.user
-        )
+    profile = get_advisor_by_request_user(request)
+
     print(saved_registration_number)
     profile.specialisation = specialisation
     profile.business_name = saved_business_name
@@ -163,15 +169,14 @@ def deactivate_profile(request):
     If profile is deactivated / activated, send a feedback.
     """
 
-    user = request.user
-    profile = get_object_or_404(AdvisorUserProfile, user=user)
+    profile = get_advisor_by_request_user(request)
 
     if profile.active == 1:
 
         profile.active = 0
         profile.save()
 
-        advisor_deactivated_email(user, profile)
+        advisor_deactivated_email(profile)
 
         messages.success(
             request,
@@ -183,7 +188,7 @@ def deactivate_profile(request):
         profile.active = 1
         profile.save()
 
-        advisor_activated_email(user, profile)
+        advisor_activated_email(profile)
 
         messages.success(
             request,
@@ -202,9 +207,7 @@ def clients_list(request):
 
     # # Get advisor profile of logged in user
 
-    user = request.user
-    advisor_objects = AdvisorUserProfile.objects
-    advisor = get_object_or_404(advisor_objects, user=user)
+    advisor = get_advisor_by_request_user(request)
 
     # Filter matches by logged in advisor
 

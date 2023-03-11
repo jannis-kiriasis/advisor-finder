@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def profile_status_messasge(request, profile):
     if profile.approved == 0:

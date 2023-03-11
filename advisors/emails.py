@@ -16,20 +16,21 @@ def advisor_to_approve_email(profile):
     send_mail(subject, message, email_from, recipient_list)
 
 
-def advisor_deactivated_email(user, profile):
-
+def advisor_deactivated_email(profile):
     """
     Specifics of Advisor account deactivated email.
     """
-
     subject = 'Advisor Profile deactivated'
-    message = f'Dear {profile.business_name}, your profile has been deactivated. You will be hidden from AdviceFound and will not be able to receive new leads.'
+    message = f'Dear {profile.business_name}, \
+        your profile has been deactivated. \
+        You will be hidden from AdviceFound. \
+        and will not be able to receive new leads.'
     email_from = settings.EMAIL_HOST_USER
-    recipient_list = [user.email, ]
+    recipient_list = [profile.user.email, ]
     send_mail(subject, message, email_from, recipient_list)
 
 
-def advisor_activated_email(user, profile):
+def advisor_activated_email(profile):
 
     """
     Specifics of Advisor account activated email.
@@ -38,7 +39,7 @@ def advisor_activated_email(user, profile):
     subject = 'Advisor Profile activated'
     message = f'Dear {profile.business_name}, your profile has been activated. You are now able to receive new leads.'
     email_from = settings.EMAIL_HOST_USER
-    recipient_list = [user.email, ]
+    recipient_list = [profile.user.email, ]
     send_mail(subject, message, email_from, recipient_list)
 
 
