@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from home.models import Location, Specialisation
+from home.models import Location
 
 from .forms import OrderForm
 

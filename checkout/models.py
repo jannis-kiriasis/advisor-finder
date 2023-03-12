@@ -6,12 +6,13 @@ from seekers.models import SeekerUserProfile
 from consultations.models import Consultation
 from consultations.utils import confirm_consultation
 from home.models import Location
-from checkout.emails import _consultation_confirmed_email_advisor, _consultation_confirmed_email_seeker
+from checkout.emails import _consultation_confirmed_email_advisor
+from checkout.emails import _consultation_confirmed_email_seeker
 
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    # consultation and seeker can be null becuase if a seeker deletes 
+    # consultation and seeker can be null becuase if a seeker deletes
     # their profile, I want to keep records of their orders
     consultation = models.OneToOneField(
         Consultation, on_delete=models.SET_NULL,

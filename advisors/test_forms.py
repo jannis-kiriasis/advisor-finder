@@ -52,7 +52,6 @@ class TestAdvisorSignupForm(TestCase):
             'street_address': 'fff',
             'postcode': ''
             }
-
         )
         self.assertTrue(form.is_valid())
 
