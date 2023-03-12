@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['advisor-finder.herokuapp.com', 'localhost']
 
@@ -117,15 +117,8 @@ LOGIN_REDIRECT_URL = '/advisor-or-seeker/'
 WSGI_APPLICATION = 'advisor_finder.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
-# DATABASES = {
-#    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
