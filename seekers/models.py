@@ -4,13 +4,11 @@ from home.models import Specialisation, Location, UserProfile
 
 
 class SeekerUserProfile(models.Model):
-
     """
     SeekerUserProfile model: stores seeker information
     that aren't in User model. A SeekerUserProfile belongs only to one user.
     One user can only have one user profile.
     """
-
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='seekers'
     )
@@ -32,7 +30,6 @@ class SeekerUserProfile(models.Model):
     )
 
     def __str__(self):
-
         """
         Change display value of seeker profile
         """

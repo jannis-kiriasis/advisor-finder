@@ -8,6 +8,9 @@ class UserTypeForm(forms.ModelForm):
     Create an UserTypeForm.
     """
     class Meta:
+        """
+        Define fields to show in form.
+        """
         model = UserProfile
         fields = [
             'user_type',
@@ -22,7 +25,6 @@ class CustomSignupForm(SignupForm):
     Add first_name, last_name.
     Validate and save the new fields.
     """
-
     first_name = forms.CharField(
         max_length=30,
         label='First name',
@@ -45,7 +47,7 @@ class CustomSignupForm(SignupForm):
 
     def signup(self, request, user):
         """
-        Validate new fields and save
+        Save first and last name.
         """
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']

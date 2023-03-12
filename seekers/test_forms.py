@@ -7,7 +7,7 @@ from .forms import SeekerSignupForm, MessageForm
 
 class TestSeekerSignupForm(TestCase):
     """
-    Tests for seeker signup form
+    Tests for seeker signup form.
     """
     def test_required_fields_is_required(self):
         """
@@ -54,7 +54,7 @@ class TestSeekerSignupForm(TestCase):
 
 class TestMessageForm(TestCase):
     """
-    Tests for message form
+    Tests for message form.
     """
     def test_required_fields_is_required(self):
         """

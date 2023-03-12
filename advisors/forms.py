@@ -9,6 +9,9 @@ class AdvisorSignupForm(forms.ModelForm):
     Create an Advisor Signup form.
     """
     class Meta:
+        """
+        Define fields to show in form.
+        """
         model = AdvisorUserProfile
         fields = [
             'business_name',
@@ -26,7 +29,7 @@ class AdvisorSignupForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto-generated
+        Add placeholdersadn empty labels. Remove auto-generated
         labels and set autofocus on first field
         """
         super(AdvisorSignupForm, self).__init__(*args, **kwargs)
@@ -56,12 +59,13 @@ class AdvisorSignupForm(forms.ModelForm):
 
 
 class MessageForm(forms.ModelForm):
-
     """
-    Create chat message form
+    Create chat message form.
     """
-
     class Meta:
+        """
+        Define fields to show in form.
+        """
         model = Message
         fields = ['body',]
 
@@ -71,8 +75,7 @@ class MessageForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        Add placeholders to body field.
         """
         super(MessageForm, self).__init__(*args, **kwargs)
 

@@ -10,6 +10,9 @@ CONFIRMED = ((0, 'Not confirmed'), (1, 'Confirmed'))
 
 
 def validate_date(date):
+    """
+    Function to check if date input is a past date. If so, raise an error.
+    """
     if date < timezone.now().date():
         raise ValidationError("Date cannot be in the past")
 
@@ -36,7 +39,9 @@ class Consultation(models.Model):
         return f'{self.id}'
 
     def save(self, *args, **kwargs):
-
+        """
+        On save, create a link for the meeting.
+        """
         # Create meeting link with random string
         self.link = 'https://gotalk.to/' + get_random_string(length=10)
         super().save(*args, **kwargs)

@@ -19,6 +19,7 @@ def order_paid(order):
 
 def save_order_form(order_form, request, total, af_fee, grand_total):
     """
+    Fill all the order object fields.
     Save order form in checkout view after validation.
     """
     order_form.instance.fee = total

@@ -11,6 +11,9 @@ from checkout.emails import _consultation_confirmed_email_seeker
 
 
 class Order(models.Model):
+    """
+    Orer model. Includes all the details about an order.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     # consultation and seeker can be null becuase if a seeker deletes
     # their profile, I want to keep records of their orders
@@ -50,6 +53,10 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def __init__(self, *args, **kwargs):
+        """
+        Set original paid to paid to check whether the status changes
+        with the next save method call. 
+        """
         super().__init__(*args, **kwargs)
         self.__original_paid = self.paid
 
@@ -75,4 +82,7 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """
+        Change display name.
+        """
         return self.order_number

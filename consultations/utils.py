@@ -9,6 +9,9 @@ from .emails import email_consultation_seeker
 
 
 def confirm_consultation(order):
+    """
+    When payment is completed, change the consultation status to confirmed.
+    """
     get_consultation = order.consultation
 
     get_consultation.status = 1
@@ -17,7 +20,7 @@ def confirm_consultation(order):
 
 def create_consultation(consultation_form, match, request):
     """
-    Save consultation object in Consultation model
+    Save consultation object in Consultation model.
     """
     if consultation_form.is_valid():
 

@@ -43,7 +43,6 @@ def advisor_seeker(request):
             return redirect('choice')
 
     else:
-
         # function to decide what page to show to users depending on:
         # - their user profile exists or not
         # - their user_type

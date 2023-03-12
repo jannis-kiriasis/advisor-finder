@@ -4,11 +4,9 @@ from django.template.loader import render_to_string
 
 
 def email_consultation_seeker(consultation):
-
     """
     Send an email to the seeker with the Advisor schedule an appointment.
     """
-
     context = {
         'seeker': consultation.match.seeker.user.first_name,
         'advisor': consultation.match.advisor.business_name,

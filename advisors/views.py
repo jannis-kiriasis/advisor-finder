@@ -61,7 +61,6 @@ def advisor_signup(request):
 
 @login_required
 def advisor_profile(request):
-
     """
     advisor_profile view for profile.html.
     Render all the business details related to an advisor.
@@ -152,7 +151,6 @@ def deactivate_profile(request):
     View to deactivate profile.
     If profile is deactivated / activated, send a feedback.
     """
-
     profile = get_advisor_by_request_user(request)
 
     if profile.active == 1:
@@ -305,11 +303,9 @@ def consultation_list(request):
 
 @login_required
 def delete_consultation(request, consultation_id):
-
     """
     Delete consultation and show message.
     """
-
     consultation = get_object_or_404(Consultation, id=consultation_id)
     consultation.delete()
     messages.success(request, 'The consultation has been deleted.')
@@ -319,11 +315,9 @@ def delete_consultation(request, consultation_id):
 
 @login_required
 def client_delete_consultation(request, consultation_id, match_id):
-
     """
     Delete consultation and show message.
     """
-
     find_consultation = Consultation.objects.filter(
         match=match_id,
     )

@@ -34,7 +34,7 @@ def match(request):
     if find_match:
         return redirect('advisor')
 
-    # Filter advisors by approved and active statuses and then location 
+    # Filter advisors by approved and active statuses and then location
     # and specialisation. Finally, take a random object from the queryset
     advisor_objects = AdvisorUserProfile.objects
     filter_advisors = advisor_objects.filter(

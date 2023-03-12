@@ -7,7 +7,7 @@ from .forms import AdvisorSignupForm
 
 class TestAdvisorSignupForm(TestCase):
     """
-    Tests for advisor signup form
+    Tests for advisor signup form.
     """
     def test_required_fields_is_required(self):
         """

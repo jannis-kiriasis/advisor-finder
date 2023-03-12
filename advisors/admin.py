@@ -4,7 +4,10 @@ from .models import AdvisorUserProfile
 
 @admin.register(AdvisorUserProfile)
 class AdvisorAdmin(admin.ModelAdmin):
-
+    """
+    Create action to approve advisor.
+    Choose fields to display at preview level.
+    """
     actions = [
         'approve_advisor',
         'not_approve_advisor'

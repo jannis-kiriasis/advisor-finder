@@ -16,7 +16,9 @@ from .emails import _send_payment_failed_email
 
 
 class StripeWH_Handler:
-    """Handle Stripe webhooks"""
+    """
+    Handle Stripe webhooks
+    """
 
     def __init__(self, request):
         self.request = request
@@ -35,7 +37,6 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        # save_info = intent.metadata.save_info
         consultation = intent.metadata.save_consultation
         seeker = intent.metadata.save_seeker
 
@@ -72,8 +73,6 @@ class StripeWH_Handler:
         if order_exists:
             confirm_consultation(order)
             order_paid(order)
-            # self._consultation_confirmed_email_advisor(order)
-            # self._consultation_confirmed_email_seeker(order)
 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} \
@@ -88,7 +87,6 @@ class StripeWH_Handler:
                     name=billing_details.name,
                     last_name=intent.metadata.save_last_name,
                     email=billing_details.email,
-                    # phone_number=billing_details.phone,
                     postcode=billing_details.address.postal_code,
                     town_or_city=billing_details.address.city,
                     street_address=billing_details.address.line1,
@@ -109,8 +107,6 @@ class StripeWH_Handler:
 
         confirm_consultation(order)
         order_paid(order)
-        # self._consultation_confirmed_email_advisor(order)
-        # self._consultation_confirmed_email_seeker(order)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} \
@@ -121,7 +117,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
-
         self._send_payment_failed_email(order)
 
         return HttpResponse(

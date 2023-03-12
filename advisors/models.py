@@ -8,17 +8,14 @@ ACTIVE = ((0, 'Not active'), (1, 'Active'))
 
 
 class AdvisorUserProfile(models.Model):
-
     """
     AdvisorUserProfile model: stores advisor information
     that aren't in User model. An AdvisorUserProfile belongs only to one user.
     One user can only have one user profile.
     """
-
     user = models.OneToOneField(
         User, on_delete=models.PROTECT, related_name='users'
     )
-
     business_name = models.CharField(max_length=100)
     business_description = models.CharField(max_length=500)
     postcode = models.CharField(max_length=20, null=True, blank=True)
@@ -28,7 +25,6 @@ class AdvisorUserProfile(models.Model):
         on_delete=models.PROTECT,
         related_name='locations'
     )
-
     street_address = models.CharField(max_length=80, null=False, blank=False)
 
     specialisation = models.ForeignKey(
@@ -42,30 +38,30 @@ class AdvisorUserProfile(models.Model):
     active = models.IntegerField(choices=ACTIVE, default=1)
 
     def save(self):
-
         """
         Send email when approved is updated.
         """
-
         # Check whether the choice value has been changed when saving.
         # Send emails accordingly to the choice value.
         if self.id:
-
             old_approved_choice = AdvisorUserProfile.objects.get(pk=self.id)
 
             if old_approved_choice.approved == 0 and self.approved == 1:
-
                 send_approval_email(
                     self,
                     'approved. \
-                    Now you can login at https://advisor-finder.herokuapp.com/accounts/login/')
+                    Now you can login at\
+                    https://advisor-finder.herokuapp.com/accounts/login/'
+                )
 
             elif old_approved_choice.approved == 0 and self.approved == 2:
-
                 send_approval_email(
                     self,
                     'not approved. \
-                        Please review your profile at https://advisor-finder.herokuapp.com/accounts/login/ or email jannis.kiriasis@gmail.com to learn more')
+                    Please review your profile at\
+                    https://advisor-finder.herokuapp.com/accounts/login/ or\
+                    email jannis.kiriasis@gmail.com to learn more'
+                )
 
         super(AdvisorUserProfile, self).save()
 

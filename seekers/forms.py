@@ -26,19 +26,30 @@ class SeekerSignupForm(forms.ModelForm):
         """
         super(SeekerSignupForm, self).__init__(*args, **kwargs)
 
-        self.fields['postcode'].widget.attrs['placeholder'] = 'Your postcode'
-        self.fields['street_address'].widget.attrs['placeholder'] = 'Your street address'
-        self.fields['need'].empty_label = 'What is the main area your are looking for advice on?'
-        self.fields['town_or_city'].empty_label = 'Your location (town or city)'
-        self.fields['need'].widget.attrs['class'] = 'text-muted'
-        self.fields['town_or_city'].widget.attrs['class'] = 'text-muted'
+        self.fields['postcode'].widget.attrs[
+            'placeholder'] = 'Your postcode'
+        self.fields[
+            'street_address'].widget.attrs[
+                'placeholder'] = 'Your street address'
+        self.fields[
+            'need'
+            ].empty_label = 'What type of advice are you looking for?'
+        self.fields[
+            'town_or_city'].empty_label = 'Your location (town or city)'
+        self.fields[
+            'need'].widget.attrs['class'] = 'text-muted'
+        self.fields[
+            'town_or_city'].widget.attrs['class'] = 'text-muted'
 
 
 class MessageForm(forms.ModelForm):
     """
-    Create chat message form
+    Create chat message form.
     """
     class Meta:
+        """
+        Define fields to show in message form.
+        """
         model = Message
         fields = ['body',]
 
@@ -53,4 +64,5 @@ class MessageForm(forms.ModelForm):
         """
         super(MessageForm, self).__init__(*args, **kwargs)
 
-        self.fields['body'].widget.attrs['placeholder'] = 'Send a message to your advisor'
+        self.fields['body'].widget.attrs[
+            'placeholder'] = 'Send a message to your advisor'

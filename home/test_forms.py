@@ -7,7 +7,7 @@ from .forms import UserTypeForm, CustomSignupForm
 
 class TestUserTypeForm(TestCase):
     """
-    Tests for user type form
+    Tests for user type form.
     """
     def test_required_fields_is_required(self):
         """
@@ -36,7 +36,7 @@ class TestUserTypeForm(TestCase):
 
 class TestCustomSignuoForm(TestCase):
     """
-    Tests for custom signup form
+    Tests for custom signup form.
     """
     def test_required_fields_is_required(self):
         """

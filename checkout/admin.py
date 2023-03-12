@@ -3,6 +3,10 @@ from .models import Order
 
 
 class OrderAdmin(admin.ModelAdmin):
+    """
+    Order admin panel. Decleare all fields to be available and 
+    all the fields that are read only.
+    """
     readonly_fields = ('order_number', 'date', 'grand_total',)
     fields = (
         'order_number', 'seeker', 'consultation', 'date',

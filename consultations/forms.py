@@ -8,6 +8,9 @@ class ConsultationForm(forms.ModelForm):
     Create a consultation form.
     """
     class Meta:
+        """
+        Define fields to show in form.
+        """
         model = Consultation
 
         fields = ['date', 'time', 'price',]

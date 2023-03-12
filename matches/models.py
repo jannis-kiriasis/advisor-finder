@@ -5,23 +5,19 @@ from seekers.models import SeekerUserProfile
 
 
 class Match(models.Model):
-
     """
     Match model: store details about a match.
     """
-
     advisor = models.ForeignKey(
         AdvisorUserProfile,
         on_delete=models.PROTECT,
         related_name='Advisors'
     )
-
     seeker = models.OneToOneField(
         SeekerUserProfile,
         on_delete=models.CASCADE,
         related_name='Seekers'
     )
-
     matched_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -30,12 +26,12 @@ class Match(models.Model):
 
 
 class Message(models.Model):
-
     """
+    Message model for the chat messages.
+
     A message can only have one match. One match
     can have many messages.
     """
-
     match = models.ForeignKey(
         Match, on_delete=models.CASCADE,
         null=True,
@@ -60,4 +56,7 @@ class Message(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
+        """
+        Change the display name.
+        """
         return f"Message by {self.user}"
