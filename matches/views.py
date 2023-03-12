@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 
 from advisor_finder.utils import get_seeker_by_request_user
 from advisors.models import AdvisorUserProfile
@@ -10,7 +10,6 @@ from seekers.models import SeekerUserProfile
 from seekers.forms import SeekerSignupForm
 
 from .models import Match
-from .utils import best_match_logic
 
 import random
 from random import shuffle
@@ -22,7 +21,6 @@ def match(request):
     View to show best match.
     """
     # Get seekers profile of logged in user
-
     seeker = get_seeker_by_request_user(request)
 
     # If seeker is already matched, go to advisor page
@@ -32,19 +30,50 @@ def match(request):
         find_match = Match.objects.filter(
             seeker=seeker
         )
+
     if find_match:
         return redirect('advisor')
 
-    # Filter advisors by approved and active statuses and then location
+    # Filter advisors by approved and active statuses and then location 
     # and specialisation. Finally, take a random object from the queryset
-    advisor = best_match_logic(request)
+    advisor_objects = AdvisorUserProfile.objects
+    filter_advisors = advisor_objects.filter(
+        approved=1,
+        active=1,
+        town_or_city=seeker.town_or_city,
+        specialisation=seeker.need
+    )
+    if not filter_advisors:
+        filter_advisors = advisor_objects.filter(
+            approved=1,
+            active=1,
+            specialisation=seeker.need
+        )
+        if not filter_advisors:
+
+            filter_advisors = advisor_objects.filter(
+                approved=1,
+                active=1,
+            )
+            if not filter_advisors:
+                messages.warning(
+                    request,
+                    'There are no advisors available currently. \
+                    Try again later.'
+                )
+                logout(request)
+                return redirect('account_login')
+
+    advisor = random.choice(filter_advisors)
 
     # Query all the advisors that specialise in the seeker need.
     # Return the queryset in random order
+
     other_advisors = list(
         AdvisorUserProfile.objects.filter(specialisation=seeker.need)
     )
 
+    # other_advisors = AdvisorUserProfile.objects.all()
     shuffle(other_advisors)
 
     context = {

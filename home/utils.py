@@ -3,6 +3,11 @@ from django.shortcuts import redirect, get_object_or_404
 from advisor_finder.utils import get_advisor_by_request_user
 from advisor_finder.utils import get_seeker_by_request_user
 from advisor_finder.utils import get_user_profile_by_request_user
+from advisors.models import AdvisorUserProfile
+from seekers.models import SeekerUserProfile
+from matches.models import Match
+
+from .models import UserProfile
 
 
 def choose_the_page_to_return_to_user(request):

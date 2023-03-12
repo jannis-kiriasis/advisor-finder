@@ -8,7 +8,7 @@ from matches.models import Match
 
 from .forms import UserTypeForm
 from .models import UserProfile
-from . utils import choose_the_page_to_return_to_user
+from .utils import choose_the_page_to_return_to_user
 
 
 def index(request):
@@ -48,7 +48,7 @@ def advisor_seeker(request):
         # - their user profile exists or not
         # - their user_type
         # - they have completed the advisor / seeker signup form
-        choose_the_page_to_return_to_user(request)
+        return choose_the_page_to_return_to_user(request)
 
     form = UserTypeForm()
 

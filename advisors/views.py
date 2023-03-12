@@ -17,18 +17,17 @@ from .emails import advisor_to_approve_email, advisor_deactivated_email
 from .emails import advisor_activated_email, email_note_to_seeker
 from .utils import profile_status_messasge
 from .utils import save_advisor_updates_in_request_session
+from .utils import find_uncorfirmed_consultation
 
 
 @login_required
 def advisor_signup(request):
-
     """
     View to let an advisor signup. Takes the form it is valid
     and if so save the objects in the related models.
 
     If the advisor profile is created, send a feedback.
     """
-
     if request.method == 'POST':
         form = AdvisorSignupForm(request.POST)
 
@@ -134,6 +133,16 @@ def update_advisor(request):
     profile = new_profile
     advisor_to_approve_email(profile)
 
+    del request.session['save_specialisation']
+    del request.session['save_business_name']
+    del request.session['save_business_description']
+    del request.session['save_registration_number']
+    del request.session['save_postcode']
+    del request.session['save_street_address']
+    del request.session['save_town_or_city']    
+
+    messages.success(request, 'Your edits have been forwarded for approval.')
+
     return redirect(reverse('advisor_profile'))
 
 
@@ -209,7 +218,7 @@ def seeker_profile(request, match_id):
 
     # Hide consultation scheduling form
     # if there is a non confirmed consultation
-    hide_consultation_form = find_uncorfirmed_consutltation(consultations)
+    hide_consultation_form = find_uncorfirmed_consultation(consultations)
 
     if request.method == 'POST':
 
@@ -217,7 +226,6 @@ def seeker_profile(request, match_id):
             message_form = MessageForm(data=request.POST)
 
             # If message form is valid get user id and save
-
             if message_form.is_valid():
 
                 user = request.user

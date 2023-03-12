@@ -50,7 +50,7 @@ def save_advisor_updates_in_request_session(request):
         ] = 'save_registration_number' in request.POST
 
 
-def find_uncorfirmed_consutltation(consultations):
+def find_uncorfirmed_consultation(consultations):
     """
     Find uncorfirmed consultations. If there are uncorfimed consultations,
     don't show consultation scheduling form on seeker_profile view GET request.

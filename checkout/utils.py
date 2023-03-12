@@ -1,10 +1,10 @@
-import stripe
-
 from django.contrib import messages
 from django.conf import settings
 
 from consultations.models import Consultation
 from matches.models import Match
+
+import stripe
 
 
 def order_paid(order):
@@ -17,43 +17,7 @@ def order_paid(order):
         order.save()
 
 
-def show_fees(consultation):
-    """
-    Show consultation fee breakdown in checkout view.
-    """
-    total = consultation.price
-
-    af_fee = total * 5 / 100
-    grand_total = total + af_fee
-
-    return total, af_fee, grand_total
-
-
-def get_seeker_unconfirmed_consultation(get_seeker_profile):
-    """
-    Get any non confirmed consultation (not paid). It can't be more than 1.
-    If it doesn't exist, redirect seeker to the advisor page.
-    """
-
-    # Get the seeker matches (it's 1 only)
-    get_all_matches = Match.objects.filter(seeker=get_seeker_profile)
-
-    # Get latest consultation schedule of the match if it exisits.
-    # If it doesn't exist redirect user to chat.
-    try:
-        consultation = Consultation.objects.get(
-            match__id__in=get_all_matches,
-            status=0
-            )
-    except Consultation.DoesNotExist:
-        message.error(request, ("Consultation doesn't exist."))
-
-        return redirect('advisor')
-
-    return get_all_matches, consultation
-
-
-def save_order_form(order_form, request):
+def save_order_form(order_form, request, total, af_fee, grand_total):
     """
     Save order form in checkout view after validation.
     """
@@ -72,17 +36,8 @@ def save_order_form(order_form, request):
     return order
 
 
-def save_POST_data_in_request_session(request):
-    """
-    Save checkout request.POST data in session request.
-    """
-    request.session['save_consultation'] = 'save-consultation' in request.POST
-    request.session['save_seeker'] = 'save-seeker' in request.POST
-    request.session['save_last_name'] = 'save-last-name' in request.POST
-
-
 def checkout_data_for_get_request(
-        total, get_seeker_profile, request, consultation):
+        total, get_seeker_profile, request, consultation, stripe_secret_key):
     """
     Get all the data needed for the checkout view GET request.
     """

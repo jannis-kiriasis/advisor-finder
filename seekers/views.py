@@ -115,7 +115,12 @@ def update_profile(request):
         'Your profile has been updated.'
     )
 
-    return redirect('seeker_profile')
+    del request.session['save_need']
+    del request.session['save_postcode']
+    del request.session['save_street_address']
+    del request.session['save_town_or_city']
+
+    return redirect(reverse('seeker_update'))
 
 
 @login_required

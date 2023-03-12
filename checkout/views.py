@@ -13,10 +13,8 @@ from home.models import UserProfile
 
 from .forms import OrderForm
 from .models import Order
-from .utils import show_fees, get_seeker_unconfirmed_consultation
-from .utils import save_order_form, save_POST_data_in_request_session
+from .utils import save_order_form
 from .utils import checkout_data_for_get_request
-
 
 import json
 import stripe
@@ -49,15 +47,30 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     # Get the seeker profile
-    get_seeker_profile = get_seeker_by_request_user(request)
+    get_seeker_profile = get_object_or_404(
+        SeekerUserProfile,
+        user=request.user
+    )
 
-    # Get seeker unconfirmed consultation
-    consultation, get_all_matches = get_seeker_unconfirmed_consultation(
-        get_seeker_profile
-        )
+    # Get the seeker matches (it's 1 only)
+    get_all_matches = Match.objects.filter(seeker=get_seeker_profile)
 
-    # Calculate fees
-    total, af_fee, grand_total = show_fees(consultation)
+    # Get latest consultation schedule of the match if it exisits.
+    # If it doesn't exist redirect user to chat.
+    try:
+        consultation = Consultation.objects.get(
+            match__id__in=get_all_matches,
+            status=0
+            )
+    except Consultation.DoesNotExist:
+        message.error(request, ("Consultation doesn't exist."))
+
+        return redirect('advisor')
+
+    total = consultation.price
+
+    af_fee = total * 5 / 100
+    grand_total = total + af_fee
 
     if request.method == 'POST':
 
@@ -65,9 +78,15 @@ def checkout(request):
 
         if order_form.is_valid():
 
-            order = save_order_form(order_form, request)
+            order = save_order_form(
+                order_form, request, total, af_fee, grand_total)
 
-            save_POST_data_in_request_session(request)
+            request.session[
+                'save_consultation'] = 'save-consultation' in request.POST
+            request.session[
+                'save_seeker'] = 'save-seeker' in request.POST
+            request.session[
+                'save_last_name'] = 'save-last-name' in request.POST
 
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]
@@ -81,7 +100,8 @@ def checkout(request):
     elif request.method == 'GET':
 
         stripe_total, intent, data = checkout_data_for_get_request(
-            get_seeker_profile, total, consultation, request)
+            total, get_seeker_profile, request, consultation, stripe_secret_key
+        )
 
         order_form = OrderForm(data)
 
