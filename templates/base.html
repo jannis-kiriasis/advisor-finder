@@ -44,13 +44,13 @@
     <header>
         {% include 'includes/navigation.html' %}
     </header>
-    <section class="bg container-fluid p-0">
+    <div class="bg container-fluid p-0">
         {% if messages %}
         {% for message in messages %}
         {% include 'includes/toasts/toast.html' %}
         {% endfor %}
         {% endif %}
-    </section>
+    </div>
     {% endblock %}
 
     {% block light_red_bg_content %}

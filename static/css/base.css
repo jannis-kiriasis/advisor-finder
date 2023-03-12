@@ -294,6 +294,11 @@ label[for="id_body"] {
 
 /* Homepage */
 
+.icon-text-size {
+    height: 80px;
+    width: 80px;
+}
+
 .services {
     background-color: var(--lavander-blush);
 }

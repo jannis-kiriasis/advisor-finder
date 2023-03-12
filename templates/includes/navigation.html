@@ -12,14 +12,14 @@
 
                     {% if request.user.users %}
 
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'consultations' %}" aria-labelledby="Appointments">Appointments</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'clients' %}" aria-labelledby="Clients">Clients</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'advisor_profile' %}" aria-labelledby="Profile">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'consultations' %}" aria-label="Appointments">Appointments</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'clients' %}" aria-label="Clients">Clients</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'advisor_profile' %}" aria-label="Profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
 
                     {% else %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
 
                     {% endif %}
 
@@ -27,19 +27,19 @@
                 
                     {% if request.user.seekers %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor' %}" aria-labelledby="Advisor">Advisor</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'seeker_profile' %}" aria-labelledby="Profile">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'advisor' %}" aria-label="Advisor">Advisor</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'seeker_profile' %}" aria-label="Profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
 
                     {% else %}
 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
 
                     {% endif %}
 
                 {% elif not request.user.profiles %}
 
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-labelledby="Logout">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
 
                 {% endif %}
 
