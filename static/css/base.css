@@ -173,7 +173,7 @@ label {
 button[type=submit],
 .btn {
     border-style: solid;
-    width: 250px;
+    width: 210px;
     height: 40px;
     justify-content: center;
     align-items: center;
@@ -183,7 +183,7 @@ button[type=submit],
     color: #ffffff;
     border-color: var(--cobalt);
     border-radius: 5px;
-    width: 250px;
+    width: 210px;
 }
 
 .btn-third:hover {
@@ -191,7 +191,7 @@ button[type=submit],
     background-color: #ffffff;
     border-color: var(--cobalt);
     border-radius: 5px;
-    width: 250px;
+    width: 210px;
 }
 
 .swal2-confirm:target .swal2-styled:target .swal2-default-outline:target {

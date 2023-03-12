@@ -67,3 +67,16 @@ def email_note_to_seeker(last_message):
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [last_message.match.seeker.user.email, ]
     send_mail(subject, message, email_from, recipient_list)
+
+
+def consultation_cancelled():
+
+    """
+    Advisor receives an email when seeker send a message.
+    """
+
+    subject = 'Advice Found: you have a new message'
+    message = f'From: {last_message.user.users.business_name}. Message: {last_message.body}. Sent on {last_message.created_on}.'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [last_message.match.seeker.user.email, ]
+    send_mail(subject, message, email_from, recipient_list)

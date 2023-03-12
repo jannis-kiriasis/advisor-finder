@@ -9,7 +9,7 @@ let alert = document.getElementsByClassName('alert');
 
 // Remove alert boxes after 5 seconds
 if (alert) {
-    for (var i = 0 ; i < aler.length; i++) {
+    for (var i = 0 ; i < alert.length; i++) {
     setTimeout(() => {
         alert[i].classList.remove('show');
     }, 5000);
