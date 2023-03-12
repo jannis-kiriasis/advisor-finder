@@ -55,11 +55,17 @@ class AdvisorUserProfile(models.Model):
 
             if old_approved_choice.approved == 0 and self.approved == 1:
 
-                send_approval_email(self, 'approved. Now you can login at https://advisor-finder.herokuapp.com/accounts/login/')
+                send_approval_email(
+                    self,
+                    'approved. \
+                    Now you can login at https://advisor-finder.herokuapp.com/accounts/login/')
 
             elif old_approved_choice.approved == 0 and self.approved == 2:
 
-                send_approval_email(self, 'not approved. Please review your profile at https://advisor-finder.herokuapp.com/accounts/login/ or email jannis.kiriasis@gmail.com to learn more')
+                send_approval_email(
+                    self,
+                    'not approved. \
+                        Please review your profile at https://advisor-finder.herokuapp.com/accounts/login/ or email jannis.kiriasis@gmail.com to learn more')
 
         super(AdvisorUserProfile, self).save()
 

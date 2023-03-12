@@ -11,6 +11,8 @@ from checkout.emails import _consultation_confirmed_email_advisor, _consultation
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    # consultation and seeker can be null becuase if a seeker deletes 
+    # their profile, I want to keep records of their orders
     consultation = models.OneToOneField(
         Consultation, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='consultation'

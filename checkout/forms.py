@@ -6,7 +6,7 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = (
+        fields = [
             'name',
             'last_name',
             'email',
@@ -14,7 +14,7 @@ class OrderForm(forms.ModelForm):
             'town_or_city',
             'consultation',
             'seeker'
-        )
+        ]
 
         widgets = {
             'consultation': forms.HiddenInput(),

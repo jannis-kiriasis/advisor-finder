@@ -49,8 +49,10 @@ class AdvisorSignupForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
-        self.fields['specialisation'].empty_label = 'What do you specialise in? *'
-        self.fields['town_or_city'].empty_label = 'Your business location *'
+        self.fields[
+            'specialisation'].empty_label = 'What do you specialise in? *'
+        self.fields[
+            'town_or_city'].empty_label = 'Your business location *'
 
 
 class MessageForm(forms.ModelForm):
@@ -74,4 +76,5 @@ class MessageForm(forms.ModelForm):
         """
         super(MessageForm, self).__init__(*args, **kwargs)
 
-        self.fields['body'].widget.attrs['placeholder'] = 'Send a message to your client'
+        self.fields['body'].widget.attrs[
+                'placeholder'] = 'Send a message to your client'
