@@ -5,8 +5,8 @@
 
 ## Table of contents
 -  [Introduction](#introduction)
--  [Ecommerce business model](#ecommerce-business-model)
--   [User Experience (UX)](#user-experience-ux---user-stories)
+-  [Ecommerce business model](#business-model)
+-   [User Experience (UX)](#user-experience-(UX)-–-the-needs)
 -	[Features](#features)
 -	[Where user stories meet features](#where-user-stories-meet-features)
 -	[Wireframes](#wireframes)
@@ -27,7 +27,7 @@
 
 Advice Found is a platform that matches financial advisors to financial advice seekers. 
 
-Advice seekers can find financial advivors and meet them online through the platform.
+Financial advice seekers can find financial advisors and meet them online through the platform.
 
 Many people don't even know who financial advisors are and what they do.
 
@@ -60,34 +60,34 @@ This is what you can do with Advice Found:
 Advice Found is for advice seeker and financial advisor.
 
 ### What Advice Found offer:
-- A simple registrtion form for Advice Seekers and Financial Advisor.
-- An algorithm that matches the advice seeker's need with the financial advisor's specialisation.
-- A chat to connect the two parties.
-- A consultation scheduling system.
-- A checkout system.
-- An online consultation platform.
-- A dashboard for financial advisors to see all of their clients and consultations scheduled.
+- A simple registration form for Advice Seekers and Financial Advisors
+- An algorithm that matches the advice seeker's need with the financial advisor's specialisation
+- A chat to connect the two parties
+- A consultation scheduling system
+- A checkout system
+- An online consultation platform
+- A dashboard for financial advisors to see all of their clients and consultations scheduled
 
 ![Advice Found responsive design](./media/README-files/I-am-responsive.png)  
 
 
 ## Business model
 
-Advice Found put together financial advisers and financial advice seekers. It offers them a platform to meet and communicate.
+Advice Found is where financial advisers and financial advice seekers meet. It offers a platform to meet and communicate.
 
 It is an opportunity for advisors to find new clients online without having to worry about managing payment 
 and marketing their business. That is what Advice Found do.
 
 It is also an opportunity for seekers to to be matched with an advisor that knows what do to.
 Every situation is different and many seekers don't know where to start from when looking for financial advice.
-It's their money we are talking about so they want to be carefull. From here the idea of a 'best match'.
+It's their money we are talking about so they want to be careful. From here the idea of a 'best match'.
 
-## Where does Advice found revenue come from?
+## Where does Advice Found revenue come from?
 
 At the moment Advice Found adds a 5% fee on the transactions. So everytime a consultation is confirmed,
 Advice Found makes 5% of it. The fee is on the seekers. To grow the revenue it is also possible to apply a fee to the advisors.
 
-The idea is that seekers and advisors can build a long lasting relationship on the platform. The risk is that once the 2 parties get to know each other, they make the conversation off the platform. For this reason it's important to keep the payment on the platform and keep building features and tools that advisor and seekers would use manage their finances. The likes of tax calculators, budget calculators, savings and investment growth calculatorsl, financial health check etc.
+The idea is that seekers and advisors can build a long lasting relationship on the platform. The risk is that once the 2 parties get to know each other, they make the conversation off the platform. For this reason it's important to keep the payments on the platform and keep building features and tools that advisors and seekers would use to manage their finances. The likes of tax calculators, budget calculators, savings and investment growth calculators, financial health check etc.
 
 The more tools we can build to keep the engagement on the platform and the more seekers and advisors will come back to use it.
 
@@ -111,7 +111,7 @@ The advice seeker is looking for a financial advisor and doens't know how to cho
 
 The advice seeker wants a financial advisor close to its location and that can best solve their issue.
 
-The advice seeker wants to be guided in the choice. This is because the market is full of advisors it is often not clear 
+The advice seeker wants to be guided throguh the choice. The market is full of advisors, it is often not clear 
 what advisors do and how they can help.
 
 ### The financial advisor (FA)
@@ -119,9 +119,9 @@ what advisors do and how they can help.
 The financial advisor wants to find new leads. An online platform can extend their reach to the entire country. They will
 not be limited to local clients as it is more common for brick and mortar businesses.
 
-The financial advisor nees to be able to talk to their clients from remote and keep track of all the appointments.
+The financial advisor needs to be able to talk to their clients from remote and keep track of all the appointments.
 
-### The Advice found (AF)
+### Advice Found (AF)
 
 The company needs to make sure that the advisors are legit businesses.
 
@@ -142,9 +142,7 @@ I want to register to the platform by creating my advisor profile,
 so that I can market my specialisations to potential clients.
 
 **Acceptance criteria:**
-- The adviser's required information is a business name, business address, email, phone, business description, advisor photo/logo, location and specialisations, and registration number.
-- Log-in details and user profile are created simultaneously
-- Use defensive design to avoid mistakes
+- The adviser's required information is a business name, business address, business description, location, postcode, specialisations, and registration number.
 - Implement real-time feedback on the action taken
 
 **Subtasks:**
@@ -161,8 +159,8 @@ so that I can market my specialisations to potential clients.
 #### USER STORY 2: Advisor edit profile
 
 As a financial adviser,
-I want to edit and cancel my profile
-so that if I don’t work with this app anymore or make changes to my business profile, those changes are visible to potential customers.
+I want to edit and deactivate my profile
+so that if I want to make changes to my profile, or be hidden for a while, I can do so.
 
 **Acceptance criteria:**
 - All the Adviser information can be edited
@@ -194,7 +192,6 @@ I can validate the quality and legitimacy of the information declared.
 **Subtasks:**
 1. Create admin panel
 2. Create approve new profile button in the admin panel
-3. Create approve edit request in the admin panel
 4. Add pending approval status in the Adviser profile page (template and views)
 5. Add visual feedback in the Adviser template when the profile is approved
 6. Add visual feedback in the Adviser template when the profile is not approved
@@ -210,7 +207,7 @@ I can find an advisor.
 
 **Acceptance criteria:**
 - Give a Seeker the ability to register 
-- The Seeker required information are: name, address, email, phone, location and need.
+- The Seeker required information are: poscode, city, address, need
 - The Seeker must log in in order to create a profile
 - Implement real-time feedback on the action taken
 - Log-in details and user profile are created simultaneously
@@ -226,7 +223,7 @@ I can find an advisor.
 
 As a Seeker,
 I want to edit and cancel my profile so that
-if I don’t work with this app anymore or make changes to my profile, those changes are visible.
+if I don't want to use the app anymore or need to make some changes, I can do so.
 
 **Acceptance criteria:**
 - All the Seeker information can be edited
@@ -258,7 +255,6 @@ that best suits my need.
 **Acceptance criteria:** 
 - One main option must be given to the Seeker
 - The Seeker can still see other possible good options
-- The match must be based at least on location and specialisation/need
 - Add other relevant advisors after the best match
 - Notify the advisor when there is a new match
 
@@ -271,24 +267,24 @@ that best suits my need.
 6. Create queryset to add to the template other possible advisors
 
 
-#### USER STORY 7: Clients and matches view
+#### USER STORY 7: Clients view
 
 As an Adviser,
 I want to see all the Seekers I matched and the seekers who are already clients so that
 I can follow up on conversations easily.
 
 **Acceptance criteria:** 
-- See a list of the Seekers matched and their profile information (Name, need, location)
-- See a list of the clients and their profile information (Name, need, location)
+- See a list of the clients and their profile information
 - See the individual conversations with the Seekers
 
 **Subtasks:**
-1. Create clients  and matches template
+1. Create clients template
 2. Create views
 3. Create URLs
+4. Create seeker profile (templete view and url)
 
 
-### Epic 3 - The chat: Creation of the app that will facilitate the Seeker and the Adviser conversations.
+### Epic 3 - The chat: Creation of the app that will facilitate the Seeker and the Adviser conversations
 
 
 #### USER STORY 8: The chat - Seeker
@@ -298,7 +294,7 @@ I want to message the advisor I matched with so that
 we can schedule a consultation.
 
 **Acceptance criteria:** 
-- On the advisor’s page, the seeker must find a button to message the advisor
+- On the advisor’s page, the seeker must be able to message the advisor
 - I want to be notified when I have a message to read
 
 **Subtasks:**
@@ -317,7 +313,7 @@ I want to message the seeker I matched with so that
 we can schedule a consultation.
 
 **Acceptance criteria:**
-- On the client's page, there is a button to open the client’s profile whit the chat
+- On the client's page, the advisor can see the client’s profile whit the chat
 - On the client profile, there is a message form to message the client
 - On the client profile, the advisor can see the client’s details and chat
 - The client must be notified when there is a message to read
@@ -333,7 +329,7 @@ we can schedule a consultation.
 #### USER STORY 10: Advisor view
 
 As an Advice seeker,
-I want to see all the Information of the advisor I matched with and our conversation so that
+I want to see all the information of the advisor I matched with and our conversation so that
 I can find our information easily.
 
 **Acceptance criteria:** 
@@ -343,7 +339,9 @@ I can find our information easily.
 1. Create advisor template
 2. Create views
 3. Create URLs
-4. Epic 4 - The order: Creation of the checkout and payment processes.
+
+
+### Epic 4 - The order: Creation of the checkout and payment processes.
 
 
 #### USER STORY 11: Schedule consultation
@@ -382,10 +380,11 @@ so that I can keep up with every client.
 **Subtasks:**
 1. Create template and URLs for appointment page
 2. Create appointment view
-3. Create a view to mark the appointment confirmed after payment 	
+3. Create a view to mark the appointment confirmed after payment 
+(completed in later sprint)	
 4. Change consultation status
 5. Disable cancel button
-6. Seeker seeks link to the meeting instead of to confirm the consultation
+6. Seeker sees link to the meeting instead of to confirm the consultation
 
 
 ### USER STORY 13: The checkout
@@ -398,14 +397,14 @@ so that I can talk to an Adviser.
 - The Seeker needs to go through the checkout and pay for the consultation
 - The Adviser receives an email with the payment confirmed
 - The Seeker receives an email with the confirmation
-- The link to connect to the advisor becomes active
+- The link to start the meeting with the advisor becomes available
 
 **Subtasks:**
 1. Order model
 2. Create checkout form
 3. Create checkout views 
 4. Create checkout template
-5. Connect stripe
+5. Connect stripe (create webhooks)
 6. Send payment intent to stripe
 7. Add on page notification of order processed
 8. Send email to seeker with consultation schedule and payment link
@@ -415,9 +414,7 @@ so that I can talk to an Adviser.
 ### USER STORY 14: Notify advisor of consultation confirmed
 
 As an adviser, 
-
-I want to be notified about the payment success and the consultation confirmation 
-
+I want to be notified about the payment success and the consultation confirmation
 so that I can get ready for the meeting.
 
 **Acceptance Criteria**
