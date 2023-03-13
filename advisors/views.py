@@ -48,9 +48,6 @@ def advisor_signup(request):
                 'Signup completed. Now wait for Advice Found profile check.'
                 )
 
-        else:
-            messages.error(request, 'Signup not completed. Try again.')
-
     form = AdvisorSignupForm()
 
     context = {

@@ -39,8 +39,6 @@ def seeker_signup(request):
 
             return redirect('match')
 
-    messages.error(request, 'Signup not completed. Try again.')
-
     form = SeekerSignupForm()
 
     context = {
