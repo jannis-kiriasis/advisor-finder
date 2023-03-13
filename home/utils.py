@@ -49,7 +49,6 @@ def choose_the_page_to_return_to_user(request):
             if SeekerUserProfile.objects.filter(user=request.user):
 
                 seeker = get_seeker_by_request_user(request)
-                print(seeker)
                 # If the seeker has an advisor, go to advisor page
                 # if not, go to match page
 
@@ -60,4 +59,3 @@ def choose_the_page_to_return_to_user(request):
 
             else:
                 return redirect('seeker_signup')
-

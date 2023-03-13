@@ -10,14 +10,13 @@
     <div class="container pt-4 pb-5">
         <div class="row w-100 d-flex justify-content-center text-center">
             <div class="col-12 col-md-6">
-                <div class="">
-                    <h1 class="text-center">Your appointments</h1>
-                    <p class="text-center">
-                        Here you see all the appointments you have scheduled and their status.
-                    </p>
-                </div>
+                <h1 class="text-center">Your appointments</h1>
+                <p class="text-center">
+                    Here you see all the appointments you have scheduled and their status.
+                </p>
             </div>
         </div>
+    </div>
 </section>
 
 {% endblock %}
@@ -70,10 +69,12 @@
 
                     <div class="card-body text-center">
                         {% if consultation.status == 0 %}
-                        <a href="{% url 'delete' consultation.id %} " class="btn btn-secondary delete-appointment" aria-labelledby="Cancel">Cancel</a>
+                        <a href="{% url 'delete' consultation.id %} " class="btn btn-secondary delete-appointment"
+                            aria-label="Cancel">Cancel</a>
 
                         {% else %}
-                        <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank" rel="nofollow" aria-labelledby="Start meeting">Start meeting</a>
+                        <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank" rel="nofollow"
+                            aria-label="Start meeting">Start meeting</a>
                         {% endif %}
                     </div>
 

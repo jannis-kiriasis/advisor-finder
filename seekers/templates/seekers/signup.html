@@ -38,7 +38,7 @@ Advice Seeker Signup
 {% endblock %}
 
 {% block white_bg_content %}
-<section>
+<div>
     <div class="container">
         <div class="row w-100 d-flex justify-content-center text-center">
             <div class="col-12 col-md-6 text-center my-5">
@@ -50,7 +50,7 @@ Advice Seeker Signup
                         {% csrf_token %}
                         {{ form.as_p }}
 
-                        <button class="btn my-5" type="submit" aria-labelledby="Complete signup">Complete signup
+                        <button class="btn my-5" type="submit" aria-label="Complete signup">Complete signup
                         </button>
 
                     </form>
@@ -58,5 +58,5 @@ Advice Seeker Signup
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

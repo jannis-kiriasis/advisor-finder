@@ -29,15 +29,11 @@ class ConsultationForm(forms.ModelForm):
         super(ConsultationForm, self).__init__(*args, **kwargs)
 
         placeholders = {
-            'date': 'Consultation date',
-            'time': 'Consultation time',
             'price': 'Consultation fee in €'
         }
 
         for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
+
+        self.fields['price'].widget.attrs[
+            'placeholder'] = 'Consultation fee in € *'

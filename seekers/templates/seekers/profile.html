@@ -24,7 +24,7 @@
 
 {% block white_bg_content %}
 
-<section>
+<div>
     <div class="container">
         <div class="row w-100 d-flex justify-content-center text-center">
             <div class="col-12 col-md-6 my-5">
@@ -35,18 +35,18 @@
                     {{ form.as_p }}
 
                     <button class="btn my-5" id="update_seeker" data-url="{% url 'seeker_update' %}" type="submit"
-                        aria-labelledby="Update profile">Update profile
+                        aria-label="Update profile">Update profile
                     </button>
 
                 </form>
 
                 <a href="{% url 'seeker_delete' %}" class="btn btn-secondary mt-5" id="delete"
-                    aria-labelledby="Delete profile">Delete
+                    aria-label="Delete profile">Delete
                     profile</a>
 
             </div>
         </div>
     </div>
-</section>
+</div>
 
 {% endblock %}

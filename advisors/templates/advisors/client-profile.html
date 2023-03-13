@@ -109,7 +109,7 @@
                                     Not confirmed
                                 </p>
 
-                                <a class="btn btn-secondary mt-2 delete-appointment" href="{{ match.id }}/delete/{{ el.id }}" aria-labelledby="Cancel">
+                                <a class="btn btn-secondary mt-2 delete-appointment" href="{{ match.id }}/delete/{{ el.id }}" aria-label="Cancel">
                                     Cancel
                                 </a>
                                 {% else %}
@@ -118,7 +118,7 @@
                                     Confirmed
                                 </p>
 
-                                <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank" rel="nofollow" aria-labelledby="Start meeting">
+                                <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank" rel="nofollow" aria-label="Start meeting">
                                     Start meeting
                                 </a>
                                 {% endif %}
@@ -145,8 +145,8 @@
                         <form method="POST"
                             class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
                             {% csrf_token %}
-                            {{ message_form }}
-                            <button type="submit" class="btn btn-primary" aria-labelledby="Send">
+                            {{ message_form.as_p }}
+                            <button type="submit" class="btn btn-primary" aria-label="Send">
                                 Send
                             </button>
                         </form>

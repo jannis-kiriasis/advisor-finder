@@ -37,12 +37,12 @@ Find Indipendent Financial Advisors in Ireland
                 {% if user.is_authenticated %}
                 {% if user.profiles.user_type == 1 %}
                 <div class="mt-4 mb-4">
-                    <a class="btn btn-primary" href="{% url 'advisor' %}" aria-labelledby="Your advisor">Your
+                    <a class="btn btn-primary" href="{% url 'advisor' %}" aria-label="Your advisor">Your
                         advisor</a>
                 </div>
                 {% elif user.profiles.user_type == 0 %}
                 <div class="mt-4 mb-4">
-                    <a class="btn btn-primary" href="{% url 'clients' %}" aria-labelledby="Your clients">Your
+                    <a class="btn btn-primary" href="{% url 'clients' %}" aria-label="Your clients">Your
                         clients</a>
                 </div>
                 {% endif %}
@@ -51,7 +51,7 @@ Find Indipendent Financial Advisors in Ireland
 
                     <span class="hovertext small" data-hover="Login for financial advisors and advice seekers">
                         <a class="btn btn-primary" href="{% url 'account_login' %}"
-                            aria-labelledby="Advisors and seekers login">Login</a>
+                            aria-label="Advisors and seekers login">Login</a>
                     </span>
 
                 </div>
@@ -59,7 +59,7 @@ Find Indipendent Financial Advisors in Ireland
 
                     <span class="hovertext small" data-hover="Signup for financial advisors and advice seekers">
                         <a class="btn btn-secondary" href="{% url 'account_signup' %}"
-                            aria-labelledby="Advisors and seekers signup">Signup</a>
+                            aria-label="Advisors and seekers signup">Signup</a>
                     </span>
 
 
@@ -166,7 +166,7 @@ Find Indipendent Financial Advisors in Ireland
                             <div class="optionalParent">
                                 <div class="clear foot">
                                     <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
-                                        class="btn btn-secondary" aria-labelledby="Subscribe">
+                                        class="btn btn-secondary" aria-label="Subscribe">
                                 </div>
                             </div>
                         </div>

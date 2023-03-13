@@ -55,7 +55,7 @@ My advisor
             <div class="col-12 col-md-6">
                 <p class="mt-5 text-center">
                     You don't have an advisor yet. Go to
-                    <a href="{% url 'match' %}" aria-labelledby="Matching page">the matchign page</a>
+                    <a href="{% url 'match' %}" aria-label="Matching page">the matchign page</a>
                     to see all the advisors availalbe.
                 </p>
             </div>
@@ -139,12 +139,12 @@ My advisor
                                     </p>
                                     {% if el.status == 0 %}
                                     <a class="btn btn-primary mt-2" href="{% url 'checkout' %}"
-                                        aria-labelledby="Confirm consultation">
+                                        aria-label="Confirm consultation">
                                         Confirm consultation
                                     </a>
                                     {% else %}
                                     <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank" rel="nofollow"
-                                        aria-labelledby="Start meeting">
+                                        aria-label="Start meeting">
                                         Start meeting
                                     </a>
                                     {% endif %}
@@ -173,9 +173,9 @@ My advisor
                                 class="container container-xxl h-100 d-flex flex-row justify-content-center align-items-center">
 
                                 {% csrf_token %}
-                                {{ message_form }}
+                                {{ message_form.as_p }}
 
-                                <button type="submit" class="btn btn-primary" aria-labelledby="Send">
+                                <button type="submit" class="btn btn-primary" aria-label="Send">
                                     Send
                                 </button>
 
