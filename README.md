@@ -924,21 +924,21 @@ I've carried out the following tests:
 ### HTML validation
 
 All the pages passed the HTML validation with no errors or warnings.
-- [account/signup.html](./media/README-files/signup-w3c.pdf)  
-- [account/login.html](./media/README-files/signin-w3c.pdf)  
-- [account/signout.html](./media/README-files/signout-w3c.pdf) 
-- [home/index.html](./media/README-files/signup-w3c.pdf)
-- [advisors/appointments.html](./media/README-files/signin-w3c.pdf)  
-- [advisors/client-profile.html](./media/README-files/signout-w3c.pdf)
-- [advisors/profile.html](./media/README-files/signup-w3c.pdf)  
-- [advisors/signup.html](./media/README-files/signin-w3c.pdf)  
-- [checkout.html](./media/README-files/signout-w3c.pdf) 
-- [checkout/checkout-success.html](./media/README-files/signup-w3c.pdf)  
-- [home/advisor-or-seeker.html](./media/README-files/signin-w3c.pdf)  
-- [match/match.html](./media/README-files/signout-w3c.pdf) 
-- [seekers/advisor.html](./media/README-files/signout-w3c.pdf) 
-- [seekers/profile.html](./media/README-files/signout-w3c.pdf) 
-- [seekers/signup.html](./media/README-files/signout-w3c.pdf) 
+- [account/signup.html]
+- [account/login.html]
+- [account/signout.html](./media/README-files/signout-w3c.pdf)
+- [home/index.html]()
+- [advisors/appointments.html](./media/README-files/appointments-w3c.pdf)  
+- [advisors/client-profile.html](./media/README-files/advisor-seeker-profile-w3c.pdf)
+- [advisors/profile.html](./media/README-files/advisor-profile-w3c.pdf)  
+- [advisors/signup.html](./media/README-files/advisor-signup-w3c.pdf)  
+- [checkout.html](./media/README-files/checkout-w3c.pdf)
+- [checkout/checkout-success.html](./media/README-files/checkout-success-w3c.png)
+- [home/advisor-or-seeker.html](./media/README-files/seeker-or-advisor-w3c.pdf)
+- [match/match.html]
+- [seekers/advisor.html](./media/README-files/seekers-advisor-profile-w3c.pdf)
+- [seekers/profile.html](./media/README-files/seeker-profile-w3c.pdf) 
+- [seekers/signup.html](./media/README-files/seeker-signup-w3c.pdf) 
 
 
 ### CSS validation

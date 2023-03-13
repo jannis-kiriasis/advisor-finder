@@ -45,9 +45,9 @@ class AdvisorSignupForm(forms.ModelForm):
 
         self.fields['business_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if self.fields[field] != fields[
+            if self.fields[field] != self.fields[
                 'specialisation'] and self.fields[
-                    field] != fields['town_or_city']:
+                    field] != self.fields['town_or_city']:
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:

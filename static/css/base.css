@@ -198,10 +198,6 @@ button[type=submit],
     color: #ffffff !important;
 }
 
-textarea[name=body]{
-    margin: 10px;
-}
-
 .errorlist {
     color: var(--brown);
     list-style-type: none;
@@ -285,6 +281,9 @@ label[for="id_body"] {
     margin: 0 5px;
 }
 
+.send {
+    width: 100px !important;
+}
 /* advisors/matches/client */
 
 .btn:disabled {

@@ -1,10 +1,10 @@
 
 {% if hide_consultation_form is True %}
-<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo" aria-labelledby="Consultation pending" disabled>
+<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo" aria-label="Consultation pending" disabled>
     Consultation pending
 </button>
 {% else %}
-<button class="btn btn-primary" data-bs-toggle="collapse" aria-labelledby="Schedule consultation" data-bs-target="#demo">
+<button class="btn btn-primary" data-bs-toggle="collapse" aria-label="Schedule consultation" data-bs-target="#demo">
     Schedule consultation
 </button>
 {% endif %}
@@ -15,7 +15,7 @@
         {% csrf_token %}
         {{ consultation_form.as_p }}
 
-        <button type="submit" name="consultation" class="btn btn-primary" aria-labelledby="Send consultation invite">
+        <button type="submit" name="consultation" class="btn btn-primary" aria-label="Send consultation invite">
             Send consultation invite
         </button>
 
