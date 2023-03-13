@@ -1,0 +1,11 @@
+Hi {consultation.seeker.user.first_name},
+
+Your advisor cancelled your consultation.
+
+Login to Advice Found at the link below to reply.
+
+https://advisor-finder.herokuapp.com/accounts/login/
+
+Best regards,
+
+Advice Found

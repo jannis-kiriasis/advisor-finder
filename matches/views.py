@@ -10,6 +10,7 @@ from seekers.models import SeekerUserProfile
 from seekers.forms import SeekerSignupForm
 
 from .models import Match
+from .emails import new_client_email
 
 import random
 from random import shuffle
@@ -109,5 +110,11 @@ def create_match(request, *arg, **kwargs):
             advisor=advisor,
             seeker=get_object_or_404(SeekerUserProfile, user=user)
         )
+
+        new_client_email(match)
+
+        messages.success(
+            request,
+            'Great job! Send a message to your new advisor below!')
 
     return redirect('advisor')

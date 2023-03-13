@@ -15,6 +15,7 @@ from .forms import AdvisorSignupForm, MessageForm
 from .models import AdvisorUserProfile
 from .emails import advisor_to_approve_email, advisor_deactivated_email
 from .emails import advisor_activated_email, email_note_to_seeker
+from .emails import consultation_cancelled
 from .utils import profile_status_messasge
 from .utils import save_advisor_updates_in_request_session
 from .utils import find_uncorfirmed_consultation
@@ -307,6 +308,8 @@ def delete_consultation(request, consultation_id):
     Delete consultation and show message.
     """
     consultation = get_object_or_404(Consultation, id=consultation_id)
+
+    consultation_cancelled(consultation)
     consultation.delete()
     messages.success(request, 'The consultation has been deleted.')
 
@@ -326,6 +329,7 @@ def client_delete_consultation(request, consultation_id, match_id):
         id=consultation_id
     )
 
+    consultation_cancelled(consultation)
     consultation.delete()
 
     messages.success(request, 'The consultation has been deleted.')

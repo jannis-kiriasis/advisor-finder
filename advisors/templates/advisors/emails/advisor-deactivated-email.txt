@@ -1,0 +1,14 @@
+Dear {profile.business_name},
+
+your profile has been deactivated. 
+You will be hidden from AdviceFound and will not be able to receive new leads.
+
+Should you wish to update your profile again, login to Advice Found.
+
+https://advisor-finder.herokuapp.com/accounts/login/
+
+Best regards,
+
+Advice Found
+
+

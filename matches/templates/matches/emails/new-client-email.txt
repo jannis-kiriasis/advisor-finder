@@ -1,0 +1,15 @@
+You have a new client on Advice Found!
+
+Name: {match.seeker.user.first_name} {match.seeker.user.last_name}.
+
+Looking for: {match.seeker.need}.
+
+Located in: {match.seeker.town_or_city}.
+
+Login to Advice Found at the link below to send a message!
+
+https://advisor-finder.herokuapp.com/accounts/login/
+
+Best regards,
+
+Advice Found

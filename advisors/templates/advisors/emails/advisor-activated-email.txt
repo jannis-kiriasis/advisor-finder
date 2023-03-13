@@ -1,0 +1,13 @@
+Dear {profile.business_name},
+
+your profile has been activated. 
+
+You are now able to receive new leads.
+
+Login to Advice Found to start getting new leads.
+
+https://advisor-finder.herokuapp.com/accounts/login/
+
+Best regards,
+
+Advice Found

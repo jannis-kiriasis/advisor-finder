@@ -1,0 +1,9 @@
+Hi Advice Found,
+
+A new profile ({profile.business_name}) has been submitted for review.
+
+Login to the admin panel at the link below to review and approve it.
+
+https://advisor-finder.herokuapp.com/admin/
+
+Advice Found

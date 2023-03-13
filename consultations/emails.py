@@ -17,7 +17,9 @@ def email_consultation_seeker(consultation):
     }
 
     subject = 'Advice Found: you have a new appointment request'
-    message = render_to_string('emails/consultation-email.txt', context)
+    message = render_to_string(
+        'consultations/emails/consultation-email.txt',
+        context)
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [consultation.match.seeker.user.email, ]
     send_mail(subject, message, email_from, recipient_list)
