@@ -5,16 +5,17 @@ const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
 const chooseAdvisorButton = document.getElementsByClassName('advisor');
 
-let alert = document.getElementsByClassName('alert');
+// Get alert box
+const alert = document.getElementsByClassName('alert');
 
-// Remove alert boxes after 5 seconds
-if (alert) {
+// Make alert box disappear after 5 seconds
+setTimeout(function() {
     for (var i = 0 ; i < alert.length; i++) {
-    setTimeout(() => {
-        alert[i].classList.remove('show');
-    }, 5000);
+        setTimeout(function() {
+            alert.style.display = 'none';
+        }, 5000);
     }
-}
+});
 
 // Event listeners for SweetAlerts defensive design
 if (deleteButton) {

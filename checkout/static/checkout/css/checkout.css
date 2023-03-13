@@ -1,26 +1,26 @@
 .StripeElement,
 .stripe-style-input {
-  box-sizing: border-box;
-  height: 40px;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-  border: 1px solid var(--cobalt-medium) !important;
-  width: 100%;
-  font-size: 1rem;
-  padding: 8px;
+    box-sizing: border-box;
+    height: 40px;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid var(--cobalt-medium) !important;
+    width: 100%;
+    font-size: 1rem;
+    padding: 8px;
 }
 
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+    background-color: #fefde5 !important;
 }
 
 .stripe-style-input::placeholder {
@@ -53,8 +53,8 @@ select option[value=""] {
 }
 
 #loading-overlay {
-	display: none;
-	position: fixed;
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -64,7 +64,7 @@ select option[value=""] {
 }
 
 .loading-spinner {
-	display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;

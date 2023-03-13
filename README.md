@@ -924,10 +924,10 @@ I've carried out the following tests:
 ### HTML validation
 
 All the pages passed the HTML validation with no errors or warnings.
-- [account/signup.html]
-- [account/login.html]
+- [account/signup.html](./media/README-files/signup-w3c.pdf)
+- [account/login.html](./media/README-files/login-w3c.pdf)
 - [account/signout.html](./media/README-files/signout-w3c.pdf)
-- [home/index.html]()
+- [home/index.html](./media/README-files/index-w3c.pdf)
 - [advisors/appointments.html](./media/README-files/appointments-w3c.pdf)  
 - [advisors/client-profile.html](./media/README-files/advisor-seeker-profile-w3c.pdf)
 - [advisors/profile.html](./media/README-files/advisor-profile-w3c.pdf)  
@@ -935,7 +935,7 @@ All the pages passed the HTML validation with no errors or warnings.
 - [checkout.html](./media/README-files/checkout-w3c.pdf)
 - [checkout/checkout-success.html](./media/README-files/checkout-success-w3c.png)
 - [home/advisor-or-seeker.html](./media/README-files/seeker-or-advisor-w3c.pdf)
-- [match/match.html]
+- [match/match.html](./media/README-files/match-w3c.pdf)
 - [seekers/advisor.html](./media/README-files/seekers-advisor-profile-w3c.pdf)
 - [seekers/profile.html](./media/README-files/seeker-profile-w3c.pdf) 
 - [seekers/signup.html](./media/README-files/seeker-signup-w3c.pdf) 
@@ -943,8 +943,9 @@ All the pages passed the HTML validation with no errors or warnings.
 
 ### CSS validation
 
-Style.css passed the CSS validation with no errors.
-- [css validation]()  
+Base.css and checkout.js passed the CSS validation with no errors.
+- [base.css](./media/README-files/base-css-val.pdf)  
+- [checkout.css](./media/README-files/checkout-css-val.pdf)  
 
 
 ### JS validation 

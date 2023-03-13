@@ -39,7 +39,7 @@ html {
     border-radius: 0;
     --bs-gutter-y: 0;
     --bs-alert-margin-bottom: 0;
-    --bs-alert-padding-y:0.4rem;
+    --bs-alert-padding-y: 0.4rem;
 }
 
 input,
@@ -54,16 +54,16 @@ input,
 select,
 textarea,
 .card {
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-  border: 1px solid var(--cobalt-medium) !important;
-  font-size: 1rem;
-  padding: 8px;
-  margin: 10px 0px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid var(--cobalt-medium) !important;
+    font-size: 1rem;
+    padding: 8px;
+    margin: 10px 0px;
 }
 
 input[type=text],
@@ -83,7 +83,7 @@ input,
 select,
 textarea {
     --bs-text-opacity: 1;
-    color: var(--bs-secondary-color)!important;
+    color: var(--bs-secondary-color) !important;
 }
 
 .navbar-toggler:focus,
@@ -93,8 +93,8 @@ textarea {
     border: none;
 }
 
-.errorlist + input,
-.errorlist + p > input {
+.errorlist+input,
+.errorlist+p>input {
     color: var(--brown) !important;
     list-style-type: none;
     border: 2px solid var(--brown) !important;
@@ -178,6 +178,7 @@ button[type=submit],
     justify-content: center;
     align-items: center;
 }
+
 .btn-third {
     background-color: var(--cobalt);
     color: #ffffff;
@@ -203,7 +204,7 @@ button[type=submit],
     list-style-type: none;
 }
 
-.errorlist > input {
+.errorlist>input {
     border-color: var(--brown);
 }
 
@@ -217,7 +218,7 @@ footer {
 }
 
 .navbar-brand,
-nav > div > ul > li > a,
+nav>div>ul>li>a,
 .nav-link,
 .dropdown-item {
     color: #ffffff;
@@ -225,7 +226,7 @@ nav > div > ul > li > a,
     padding: 15px;
 }
 
-nav > div > ul > li > a:hover,
+nav>div>ul>li>a:hover,
 .nav-link:hover,
 .dropdown-item:hover {
     text-decoration: underline;
@@ -255,7 +256,7 @@ nav > div > ul > li > a:hover,
     max-width: 75%;
 }
 
-.message-card > p {
+.message-card>p {
     height: max-content;
 }
 
@@ -276,14 +277,15 @@ label[for="id_body"] {
     padding-bottom: 150px;
 }
 
-#consultation-form > div > label,
-#consultation-form > div > input {
+#consultation-form>div>label,
+#consultation-form>div>input {
     margin: 0 5px;
 }
 
 .send {
     width: 100px !important;
 }
+
 /* advisors/matches/client */
 
 .btn:disabled {
@@ -332,7 +334,7 @@ label[for="id_body"] {
     color: #ffffff;
     text-align: center;
     border-radius: 5px;
-    border: 1px solid #ffffff ;
+    border: 1px solid #ffffff;
     padding: 5px;
     transition: opacity 1s ease-in-out;
     transition-delay: 1000ms;
