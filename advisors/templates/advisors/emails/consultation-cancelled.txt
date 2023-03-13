@@ -1,4 +1,4 @@
-Hi {consultation.seeker.user.first_name},
+Hi {consultation.match.seeker.user.first_name},
 
 Your advisor cancelled your consultation.
 
