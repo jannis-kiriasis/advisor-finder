@@ -949,9 +949,15 @@ Base.css and checkout.js passed the CSS validation with no errors.
 
 
 ### JS validation 
+
 The JavaScript files have been passed through [Jshint](https://jshint.com/): I have added a few semicolumns and removed unused variables. There are no issues with the code.
 
 There are also no errors in the Console (Google Developer Tools).
+
+
+### Python validation
+
+All the python files have been passed through a python linter [CI python linter](https://pep8ci.herokuapp.com/).
 
 
 ### Automated testing
@@ -960,7 +966,7 @@ I've used [Django testing tools](https://docs.djangoproject.com/en/3.2/topics/te
 
 The tests were run on the SQLite3 local database.
 
-I've tested the following files in project_management:
+I've tested the following files:
 
 [advisors/test_forms.py](https://github.com/jannis-kiriasis/advisor-finder/blob/main/advisors/test_forms.py)  
 [checkout/test_forms.py](https://github.com/jannis-kiriasis/advisor-finder/blob/main/checkout/test_forms.py)  
@@ -1065,7 +1071,7 @@ I've tested whether the user needs have been satisfied with the features created
 ## Issues fixed
 - prevent user from selecting a past date when scheduling a consultation (consultation model). [stackoverflow](https://stackoverflow.com/questions/50002600/django-models-datefield-prevent-past)
 - add a data and time picker in Django model form (scheduling consultation form). [stackoverflow](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django)
-- make a post request in JS to calla python view and pass data (update seeker and advisor profiles after defensive design popup) [stackoverflow](https://stackoverflow.com/questions/13175510/call-python-function-from-javascript-code)
+- make a post request in JS to call a python view and pass data (update seeker and advisor profiles after defensive design popup) [stackoverflow](https://stackoverflow.com/questions/13175510/call-python-function-from-javascript-code)
 - handle different post requests on the same view (advisors/profile/)[stackoverflow](https://stackoverflow.com/questions/1395807/proper-way-to-handle-multiple-forms-on-one-page-in-django)
 - creating email templates [stackoverflow](https://stackoverflow.com/questions/2809547/creating-email-templates-with-django)
 - check if model object field has changed in a model save method [stackoverflow](https://stackoverflow.com/questions/1355150/when-saving-how-can-you-check-if-a-field-has-changed)
@@ -1160,3 +1166,4 @@ Brian Macharia, my mentor, helped me test the website functionalities and provid
 
 To create the README.md file I've used a previously created by me README.md [Insured README.md](https://github.com/jannis-kiriasis/insured/blob/main/README.md) and updated it as needed.
 
+I work for a global insurance company as an SEO specialist so I have experience around marketing, SEO, financial advice marketing and business needs.

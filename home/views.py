@@ -39,7 +39,6 @@ def advisor_seeker(request):
                 return redirect('seeker_signup')
 
         elif not form.is_valid():
-            messages.error(request, 'Signup not completed. Try again.')
             return redirect(reverse('choice'))
 
     elif request.method == 'GET':
