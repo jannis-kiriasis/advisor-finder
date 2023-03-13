@@ -111,6 +111,10 @@ def create_match(request, *arg, **kwargs):
             seeker=get_object_or_404(SeekerUserProfile, user=user)
         )
 
+        match = get_object_or_404(
+            Match,
+            seeker=seeker)
+
         new_client_email(match)
 
         messages.success(
