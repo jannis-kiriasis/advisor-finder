@@ -18,20 +18,27 @@ My advisor
                     </h1>
                     {% else %}
 
-                    <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+                    <div class="h-100 d-flex flex-column 
+                    justify-content-center align-items-center">
 
                         <h1 class="text-center">Your Advisor
                         </h1>
 
                         <div class="card text-center">
                             <div class="card-body">
-                                <h2 class="card-title pb-2">{{ match.advisor.business_name }}</h2>
-                                <p class="card-text"><span class="fw-bold">Location:
-                                    </span>{{ match.advisor.town_or_city }}</p>
-                                <p class="card-text"><span class="fw-bold">Specialisation:</span>
+                                <h2 class="card-title pb-2">
+                                    {{ match.advisor.business_name }}
+                                </h2>
+                                <p class="card-text">
+                                    <span class="fw-bold">Location:</span>
+                                    {{ match.advisor.town_or_city }}</p>
+                                <p class="card-text">
+                                    <span class="fw-bold">Specialisation:</span>
                                     {{ match.advisor.specialisation }}
                                 </p>
-                                <p class="card-text">{{ match.advisor.business_description }}.</p>
+                                <p class="card-text">
+                                    {{ match.advisor.business_description }}.
+                                </p>
                             </div>
 
                         </div>
@@ -55,7 +62,9 @@ My advisor
             <div class="col-12 col-md-6">
                 <p class="mt-5 text-center">
                     You don't have an advisor yet. Go to
-                    <a href="{% url 'match' %}" aria-label="Matching page">the matchign page</a>
+                    <a href="{% url 'match' %}" aria-label="Matching page">
+                        the matchign page
+                    </a>
                     to see all the advisors availalbe.
                 </p>
             </div>
@@ -92,7 +101,8 @@ My advisor
                         <div class="row text-end justify-content-end">
 
                             <div class="col-auto">
-                                <div class="text-start card message-card message-bg">
+                                <div class="text-start 
+                                card message-card message-bg">
                                     <p>{{ el.body }}</p>
                                     <p>
                                         <span class="small">
@@ -138,13 +148,16 @@ My advisor
                                         {{ el.price }}
                                     </p>
                                     {% if el.status == 0 %}
-                                    <a class="btn btn-primary mt-2" href="{% url 'checkout' %}"
-                                        aria-label="Confirm consultation">
+                                    <a class="btn btn-primary mt-2" 
+                                    href="{% url 'checkout' %}"
+                                    aria-label="Confirm consultation">
                                         Confirm consultation
                                     </a>
                                     {% else %}
-                                    <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank" rel="nofollow"
-                                        aria-label="Start meeting">
+                                    <a class="btn btn-primary mt-2" 
+                                    href="{{ el.link }}" target="_blank" 
+                                    rel="nofollow"
+                                    aria-label="Start meeting">
                                         Start meeting
                                     </a>
                                     {% endif %}
@@ -168,13 +181,17 @@ My advisor
                 <div class="fixed-bottom bg">
                     <div class="container">
                         <div class="row h-100 py-1">
-                            <form method="POST" class="row justify-content-center align-items-center">
+                            <form method="POST" class="row 
+                            justify-content-center align-items-center">
                                 {% csrf_token %}
                                 <div class="col-12 col-md-9">
                                     {{ message_form.as_p }}
                                 </div>
-                                <div class="col-12 col-md-3 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary send" aria-label="Send">
+                                <div class="col-12 col-md-3 
+                                d-flex justify-content-center">
+                                    <button type="submit" 
+                                    class="btn btn-primary send" 
+                                    aria-label="Send">
                                         Send
                                     </button>
                                 </div>

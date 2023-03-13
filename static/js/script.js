@@ -1,5 +1,6 @@
 const deleteButton = document.getElementById('delete');
-const deleteAppointmentButton = document.getElementsByClassName('delete-appointment');
+const deleteAppointmentButton = document.getElementsByClassName(
+    'delete-appointment');
 const updateAdvisorButton = document.getElementById('update_advisor');
 const updateSeekerButton = document.getElementById('update_seeker');
 const deactivateButton = document.getElementById('deactivate_advisor');
@@ -9,13 +10,15 @@ const chooseAdvisorButton = document.getElementsByClassName('advisor');
 const alert = document.getElementsByClassName('alert');
 
 // Make alert box disappear after 5 seconds
-setTimeout(function() {
-    for (var i = 0 ; i < alert.length; i++) {
-        setTimeout(function() {
-            alert.style.display = 'none';
-        }, 5000);
-    }
-});
+if (alert) {
+    setTimeout(function() {
+        for (var i = 0 ; i < alert.length; i++) {
+            setTimeout(function() {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+    });
+}
 
 // Event listeners for SweetAlerts defensive design
 if (deleteButton) {
@@ -24,7 +27,8 @@ if (deleteButton) {
 
 if (deleteAppointmentButton) {
     for (var i = 0 ; i < deleteAppointmentButton.length; i++) {
-        deleteAppointmentButton[i].addEventListener('click', confirmDeleteAppointment);
+        deleteAppointmentButton[i].addEventListener(
+            'click', confirmDeleteAppointment);
     }
 }
 

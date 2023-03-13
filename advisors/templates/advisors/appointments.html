@@ -12,7 +12,8 @@
             <div class="col-12 col-md-6">
                 <h1 class="text-center">Your appointments</h1>
                 <p class="text-center">
-                    Here you see all the appointments you have scheduled and their status.
+                    Here you see all the appointments you have scheduled 
+                    and their status.
                 </p>
             </div>
         </div>
@@ -25,7 +26,8 @@
 <section>
     <div class="container">
         <div class="pb-5">
-            <div class="row flex-row justify-content-center align-items-center my-3 mx-auto">
+            <div class="row flex-row justify-content-center 
+            align-items-center my-3 mx-auto">
 
                 {% if not consultations %}
                 <div class="col-12 col-md-6 py-5 text-center">
@@ -48,13 +50,16 @@
                     <ul class="list-group list-group-flush">
 
                         <li class="list-group-item">
-                            <span class="fw-bold">Date:</span> {{ consultation.date }}
+                            <span class="fw-bold">Date: </span>
+                            {{ consultation.date }}
                         </li>
                         <li class="list-group-item">
-                            <span class="fw-bold">Time:</span> {{ consultation.time }}
+                            <span class="fw-bold">Time: </span>
+                            {{ consultation.time }}
                         </li>
                         <li class="list-group-item">
-                            <span class="fw-bold">Fee:</span> {{ consultation.price }}
+                            <span class="fw-bold">Fee: </span>
+                            {{ consultation.price }}
                         </li>
                         <li class="list-group-item">
                             <span class="fw-bold">Status:</span>
@@ -69,11 +74,13 @@
 
                     <div class="card-body text-center">
                         {% if consultation.status == 0 %}
-                        <a href="{% url 'delete' consultation.id %} " class="btn btn-secondary delete-appointment"
+                        <a href="{% url 'delete' consultation.id %} " 
+                        class="btn btn-secondary delete-appointment"
                             aria-label="Cancel">Cancel</a>
 
                         {% else %}
-                        <a href="{{ consultation.link }}" class="btn btn-primary" target="_blank" rel="nofollow"
+                        <a href="{{ consultation.link }}" 
+                        class="btn btn-primary" target="_blank" rel="nofollow"
                             aria-label="Start meeting">Start meeting</a>
                         {% endif %}
                     </div>

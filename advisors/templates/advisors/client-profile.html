@@ -9,19 +9,25 @@
 {% block light_red_bg_content %}
 <section class="bg">
     <div class="container pb-5">
-        <div class="row w-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="row w-100 d-flex flex-column 
+        justify-content-center align-items-center">
             <div class="col-12 col-md-6 match h-100">
-                <h1 class="text-center pt-4 pb-5 text-break">Your Client</h1>
+                <h1 class="text-center pt-4 pb-5 text-break">
+                    Your Client
+                </h1>
 
                 <div class="card text-center">
                     <div class="card-body">
-                        <h2 class="card-title pb-2">{{ match.seeker.user.first_name }}
+                        <h2 class="card-title pb-2">
+                            {{ match.seeker.user.first_name }}
                             {{ match.seeker.user.last_name }}
                         </h2>
                         <p class="card-text"><span class="fw-bold">Location:
                             </span>{{ match.seeker.town_or_city }}</p>
-                        <p class="card-text"><span class="fw-bold">Specialisation:</span>
-                            {{ match.seeker.need }}</p>
+                        <p class="card-text">
+                            <span class="fw-bold">Specialisation:</span>
+                            {{ match.seeker.need }}
+                        </p>
                     </div>
 
                 </div>
@@ -39,7 +45,8 @@
 {% else %}
 <section>
     <div class="row d-flex justify-content-center px-3">
-        <div class="pb-150 col-12 col-md-6 justify-content-center align-items-center">
+        <div class="pb-150 col-12 col-md-6 
+        justify-content-center align-items-center">
 
             <div class="my-5">
                 <h2 class="text-center">Messages
@@ -59,7 +66,8 @@
                     {% if el.user == request.user %}
                     <div class="row text-end justify-content-end">
                         <div class="col-auto message-box">
-                            <div class="text-start card message-card message-bg">
+                            <div class="text-start card 
+                            message-card message-bg">
                                 <p>{{ el.body }}</p>
                                 <p>
                                     <span class="small">
@@ -91,7 +99,8 @@
                     <div class="row text-end justify-content-end">
 
                         <div class="col-auto">
-                            <div class="text-start py-4 card message-card message-bg">
+                            <div class="text-start py-4 
+                            card message-card message-bg">
                                 <p class="fw-bold">Consultation:</p>
                                 <p><span class="fw-bold">date:</span>
                                     {{ el.date }}
@@ -109,7 +118,10 @@
                                     Not confirmed
                                 </p>
 
-                                <a class="btn btn-secondary mt-2 delete-appointment" href="{{ match.id }}/delete/{{ el.id }}" aria-label="Cancel">
+                                <a class="btn btn-secondary 
+                                mt-2 delete-appointment" 
+                                href="{{ match.id }}/delete/{{ el.id }}" 
+                                aria-label="Cancel">
                                     Cancel
                                 </a>
                                 {% else %}
@@ -118,7 +130,9 @@
                                     Confirmed
                                 </p>
 
-                                <a class="btn btn-primary mt-2" href="{{ el.link }}" target="_blank" rel="nofollow" aria-label="Start meeting">
+                                <a class="btn btn-primary mt-2" 
+                                href="{{ el.link }}" target="_blank" 
+                                rel="nofollow" aria-label="Start meeting">
                                     Start meeting
                                 </a>
                                 {% endif %}
@@ -143,13 +157,16 @@
                 <div class="container">
                     <div class="row h-100 py-1">
                         <form method="POST"
-                            class="row justify-content-center align-items-center">
+                            class="row justify-content-center 
+                            align-items-center">
                             {% csrf_token %}
                             <div class="col-12 col-md-9">
                                 {{ message_form.as_p }}
                             </div>
-                            <div class="col-12 col-md-3 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary send" aria-label="Send">
+                            <div class="col-12 col-md-3 d-flex 
+                            justify-content-center">
+                                <button type="submit" class="btn 
+                                btn-primary send" aria-label="Send">
                                     Send
                                 </button>
                             </div>

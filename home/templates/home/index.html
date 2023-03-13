@@ -4,16 +4,21 @@
 {% block extra_meta %}
 <!-- SEO metadata -->
 <meta name="description"
-    content="The first platform in Ireland that finds a financial advisor that suits your needs. Fast, indipendent and reliable. Find an advisor today.">
+    content="The first platform in Ireland that finds a 
+    financial advisor that suits your needs. Fast, indipendent and reliable. 
+    Find an advisor today.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://advisor-finder.herokuapp.com/">
 
 <!-- OG tags-->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Find Indipendent Financial Advisors in Ireland | Advice Found">
+<meta property="og:title" content="Find Indipendent Financial Advisors 
+in Ireland | Advice Found">
 <meta property="og:description"
-    content="The first platform in Ireland that finds a financial advisor that suits your needs. Fast, indipendent and reliable. Find an advisor today.">
-<meta name="image" property="og:image" content="assets/images/advice-found-logo.png">
+content="The first platform in Ireland that finds a financial advisor 
+that suits your needs. Fast, indipendent and reliable. Find an advisor today.">
+<meta name="image" property="og:image" 
+content="assets/images/advice-found-logo.png">
 <meta property="og:url" content="{% url 'home' %}">
 <meta property="og:site_name" content="Advice Found">
 <meta name="author" content="Jannis Kiriasis">
@@ -37,28 +42,34 @@ Find Indipendent Financial Advisors in Ireland
                 {% if user.is_authenticated %}
                 {% if user.profiles.user_type == 1 %}
                 <div class="mt-4 mb-4">
-                    <a class="btn btn-primary" href="{% url 'advisor' %}" aria-label="Your advisor">Your
+                    <a class="btn btn-primary" href="{% url 'advisor' %}" 
+                    aria-label="Your advisor">Your
                         advisor</a>
                 </div>
                 {% elif user.profiles.user_type == 0 %}
                 <div class="mt-4 mb-4">
-                    <a class="btn btn-primary" href="{% url 'clients' %}" aria-label="Your clients">Your
+                    <a class="btn btn-primary" href="{% url 'clients' %}" 
+                    aria-label="Your clients">Your
                         clients</a>
                 </div>
                 {% endif %}
                 {% else %}
                 <div class="mt-4 mb-4">
 
-                    <span class="hovertext small" data-hover="Login for financial advisors and advice seekers">
-                        <a class="btn btn-primary" href="{% url 'account_login' %}"
-                            aria-label="Advisors and seekers login">Login</a>
+                    <span class="hovertext small" data-hover="Login for 
+                    financial advisors and advice seekers">
+                        <a class="btn btn-primary" 
+                        href="{% url 'account_login' %}"
+                        aria-label="Advisors and seekers login">Login</a>
                     </span>
 
                 </div>
                 <div class="mt-4 mb-4">
 
-                    <span class="hovertext small" data-hover="Signup for financial advisors and advice seekers">
-                        <a class="btn btn-secondary" href="{% url 'account_signup' %}"
+                    <span class="hovertext small" data-hover="Signup for 
+                    financial advisors and advice seekers">
+                        <a class="btn btn-secondary" 
+                        href="{% url 'account_signup' %}"
                             aria-label="Advisors and seekers signup">Signup</a>
                     </span>
 
@@ -110,63 +121,87 @@ Find Indipendent Financial Advisors in Ireland
         <div class="row justify-content-center text-center">
             <h2>5 Reasons to get financial advice</h2>
 
-            <div class="col-12 col-md-6 m-5 d-flex flex-row flex-wrap justify-content-center text-center">
+            <div class="col-12 col-md-6 m-5 d-flex flex-row 
+            flex-wrap justify-content-center text-center">
                 <div class="col-5 col-sm-5 col-md-3 m-2">
                     <i class="fa-solid fa-1 fa-2xl"></i>
-                    <p class="m-2">Financial advice improves planning and decision-making.</p>
+                    <p class="m-2">Financial advice 
+                        improves planning and decision-making.</p>
                 </div>
                 <div class="col-5 col-sm-5 col-md-3 m-2">
                     <i class="fa-solid fa-2 fa-2xl"></i>
-                    <p class="m-2">Personalized advice tailored to your unique financial situation.</p>
+                    <p class="m-2">Personalized advice 
+                        tailored to your unique financial situation.</p>
                 </div>
                 <div class="col-5 col-sm-5 col-md-3 m-2">
                     <i class="fa-solid fa-3 fa-2xl"></i>
-                    <p class="m-2">Access to expertise and valuable insights.</p>
+                    <p class="m-2">Access to expertise 
+                        and valuable insights.</p>
                 </div>
                 <div class="col-5 col-sm-5 col-md-3 m-2">
                     <i class="fa-solid fa-4 fa-2xl"></i>
-                    <p class="m-2">Better investment performance over the long term.</p>
+                    <p class="m-2">Better investment performance 
+                        over the long term.</p>
                 </div>
                 <div class="col-5 col-sm-5 col-md-3 m-2">
                     <i class="fa-solid fa-5 fa-2xl"></i>
-                    <p class="m-2">Provides peace of mind and confidence.</p>
+                    <p class="m-2">Provides peace of mind 
+                        and confidence.</p>
                 </div>
             </div>
             <div class="col-12 col-md-6 m-3">
                 <!-- Begin Mailchimp Signup Form -->
                 <div id="mc_embed_signup" class="text-center">
                     <h3>A guide to the best financial returns</h3>
-                    <p>Susbribe to our newsletter to get our guide as well as other articls.</p>
+                    <p>Susbribe to our newsletter to get our 
+                        guide as well as other articls.</p>
                     <form
                         action="https://herokuapp.us21.list-manage.com/subscribe/post?u=8c209ab86f1e8a33d8e9a7994&amp;id=3e3efed010&amp;f_id=003cffe1f0"
-                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                        method="post" id="mc-embedded-subscribe-form" 
+                        name="mc-embedded-subscribe-form" class="validate"
                         target="_blank">
                         <div id="mc_embed_signup_scroll">
 
                             <div class="mc-field-group">
                                 <label for="mce-FNAME">First Name </label>
-                                <input type="text" value="" name="FNAME" class="" placeholder="Your name"
+                                <input type="text" value="" name="FNAME" 
+                                class="" placeholder="Your name"
                                     id="mce-FNAME">
-                                <span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+                                <span id="mce-FNAME-HELPERTEXT" 
+                                class="helper_text"></span>
                             </div>
                             <div class="mc-field-group">
-                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span>
+                                <label for="mce-EMAIL">Email Address 
+                                    <span class="asterisk">*</span>
                                 </label>
-                                <input type="email" value="" name="EMAIL" class="required email"
-                                    placeholder="Your email" id="mce-EMAIL" required>
-                                <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                                <input type="email" value="" name="EMAIL" 
+                                class="required email"
+                                    placeholder="Your email" 
+                                    id="mce-EMAIL" required>
+                                <span id="mce-EMAIL-HELPERTEXT" 
+                                class="helper_text"></span>
                             </div>
                             <div id="mce-responses" class="clear foot">
-                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                <div class="response" id="mce-success-response" style="display:none"></div>
+                                <div class="response" 
+                                id="mce-error-response" 
+                                style="display:none"></div>
+                                <div class="response" 
+                                id="mce-success-response" 
+                                style="display:none"></div>
                             </div>
-                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-                                    name="b_8c209ab86f1e8a33d8e9a7994_3e3efed010" tabindex="-1" value=""></div>
+                            <!-- real people should not fill this 
+                                in and expect good things - do not 
+                                remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" 
+                            aria-hidden="true"><input type="text"
+                                    name="b_8c209ab86f1e8a33d8e9a7994_3e3efed010" 
+                                    tabindex="-1" value=""></div>
                             <div class="optionalParent">
                                 <div class="clear foot">
-                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
-                                        class="btn btn-secondary" aria-label="Subscribe">
+                                    <input type="submit" value="Subscribe" 
+                                    name="subscribe" id="mc-embedded-subscribe"
+                                        class="btn btn-secondary" 
+                                        aria-label="Subscribe">
                                 </div>
                             </div>
                         </div>

@@ -29,11 +29,15 @@ My clients
 <section>
     <div class="container">
         <div class="pb-5">
-            <div class="row flex-row justify-content-center align-items-center my-3 mx-auto">
+            <div class="row flex-row justify-content-center 
+            align-items-center my-3 mx-auto">
 
                 {% if not matches %}
                 <div class="col-12 col-md-6 py-5 text-center">
-                    <p>You have no clients currently. Our algorithm is looking for someone you can help. You'll be notified when a new client shows up.</p>
+                    <p>You have no clients currently. 
+                        Our algorithm is looking for someone you can help. 
+                        You'll be notified when a new client shows up.
+                    </p>
                 </div>
                 {% else %}
 
@@ -44,7 +48,8 @@ My clients
                     <div class="card-body">
 
                         <h2 class="card-title">
-                            {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}
+                            {{ match.seeker.user.first_name }} 
+                            {{ match.seeker.user.last_name }}
                         </h2>
 
                     </div>
@@ -62,7 +67,9 @@ My clients
 
                     <div class="card-body text-center">
 
-                        <a href="{% url 'client_profile' match.id %}" class="btn btn-outline-dark" aria-label="Profile and chat">Profile and chat</a>
+                        <a href="{% url 'client_profile' match.id %}" 
+                        class="btn btn-outline-dark" 
+                        aria-label="Profile and chat">Profile and chat</a>
 
                     </div>
 
