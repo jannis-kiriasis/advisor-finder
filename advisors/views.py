@@ -138,7 +138,7 @@ def update_advisor(request):
     del request.session['save_registration_number']
     del request.session['save_postcode']
     del request.session['save_street_address']
-    del request.session['save_town_or_city']    
+    del request.session['save_town_or_city']
 
     messages.success(request, 'Your edits have been forwarded for approval.')
 

@@ -72,7 +72,7 @@ class MessageForm(forms.ModelForm):
         Define fields to show in form.
         """
         model = Message
-        fields = ['body',]
+        fields = ['body', ]
 
         widgets = {
           'body': Textarea(attrs={'rows': 2, 'cols': 20}),

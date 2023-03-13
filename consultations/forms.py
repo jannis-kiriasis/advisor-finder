@@ -13,7 +13,7 @@ class ConsultationForm(forms.ModelForm):
         """
         model = Consultation
 
-        fields = ['date', 'time', 'price',]
+        fields = ['date', 'time', 'price', ]
 
         widgets = {
             'date': widgets.DateInput(

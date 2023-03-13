@@ -23,7 +23,7 @@ import stripe
 @require_POST
 def cache_checkout_data(request):
     """
-    Save the following information in request.POST. 
+    Save the following information in request.POST.
     """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]

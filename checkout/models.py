@@ -55,7 +55,7 @@ class Order(models.Model):
     def __init__(self, *args, **kwargs):
         """
         Set original paid to paid to check whether the status changes
-        with the next save method call. 
+        with the next save method call.
         """
         super().__init__(*args, **kwargs)
         self.__original_paid = self.paid

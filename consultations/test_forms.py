@@ -34,4 +34,4 @@ class TestConsultationForm(TestCase):
         Test that fields are explicit in form metaclass.
         """
         form = ConsultationForm()
-        self.assertEqual(form.Meta.fields, ['date', 'time', 'price',])
+        self.assertEqual(form.Meta.fields, ['date', 'time', 'price', ])
