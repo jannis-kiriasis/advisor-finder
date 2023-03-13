@@ -6,7 +6,7 @@
 ## Table of contents
 -  [Introduction](#introduction)
 -  [E-commerce business model](#business-model)
--   [User Experience (UX)](#user-experience-(UX)-–-the-needs)
+-   [User Experience (UX)](#user-experience-ux-–-the-needs)
 -	[Features](#features)
 -	[Where user stories meet features](#where-user-stories-meet-features)
 -	[Wireframes](#wireframes)
@@ -21,6 +21,7 @@
 -	[Issues fixed](#issues-fixed)
 -	[Known bugs](#known-bugs)
 -	[Deployment](#deployment)
+- [Icons credits](#icons-credits)
 -  [Acknowledgements](#acknowledgements)
 
 ## Introduction
@@ -1150,6 +1151,12 @@ Below you can find all the steps to take in order to clone and deploy this appli
 5. **On Heroku** find the Config Vars (step 3.4)
 6. Remove 'DISABLE_COLLECTSTATIC': '1'
 7. Deploy the app (from steps 5.4 to 5.6)
+
+
+## Icons Credits
+
+[Insurance Logo Vectors by Vecteezy](https://www.vecteezy.com/free-vector/insurance-logo)
+[Web Vectors by Vecteezy](https://www.vecteezy.com/free-vector/web)
 
 
 ## Acknowledgements
