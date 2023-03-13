@@ -297,6 +297,7 @@ label[for="id_body"] {
 .icon-text-size {
     height: 80px;
     width: 80px;
+    margin: auto;
 }
 
 .services {

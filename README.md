@@ -441,46 +441,48 @@ In the following paragraphs, we are going to see what features appear on the web
 
 ### 1. Main navigation
 
-   The main navigation in different from logged in users and logged out users.
+The main navigation in different from logged in users and logged out users.
 
-   Logged out users can only see the links to login and register to the app.
+Logged out users can only see the links to login and register to the app.
 
-   Navigation is also different for users that have completed the signup process and users that haven't completed the sign up process.
+Navigation is also different for users that have completed the signup process and users that haven't completed the sign up process.
 
-   Users that haven't completed the signup process can only see a link to logout.
+Users that haven't completed the signup process can only see a link to logout.
 
-   Users that have completed the signup process see different navigation whether they are seekers or advisors.
+Users that have completed the signup process see different navigation menus whether they are seekers or advisors.
 
-   Advisors see the following links:
+Advisors see the following links:
 
-   ![Advisors nav](./media/README-files/navigation-advisor.png)  
+![Advisors nav](./media/README-files/navigation-advisor.png)  
 
-   They are self explenatory. The difference between a match and a client is that a client has accepted a consultation, a match hasn't.
+They are self explenatory.
 
-   Seekers see the following links:
+Seekers see the following links:
 
-   ![Advisors nav](./media/README-files/navigation-seeker.png)  
+![Advisors nav](./media/README-files/navigation-seeker.png)  
 
 
 ### 2. The signup - User creation
 
 The first part of the signup process requires the user to create an account with their personal informations.
 
-   ![Advisors nav](./media/README-files/navigation-seeker.png)  
+![Advisors nav](./media/README-files/navigation-seeker.png)  
 
 ### 2. The signup - User choice
 
 The second part of the signup process requires users to select whether they are a seekers or advisors.
+
+[Signup 2](./media/README-files/signup-two.png)  
 
 ### 2. The signup - Seeker or advisor profile creation
 
 The third step of the signup process requires users to complete the seeker or advisor forms with information specific to each user type.
 
 **Advisor form**
-   ![Advisors nav](./media/README-files/advisor-form.png)  
+![Advisors form](./media/README-files/advisor-form.png)  
 
 **Seeker form**
-   ![Advisors nav](./media/README-files/seeker-form.png)  
+![Seekers form](./media/README-files/seeker-form.png)  
 
 
 ### 3. The matching page
@@ -505,7 +507,14 @@ Currently, the seekers can't be rematched. This feature can be added in the futu
 
 ### 4. The seeker profile
 
-On this page, the seeker can review their generalities and update them if needed.
+On this page, the seeker can review their profile details and update them if needed.
+
+They can also cancel their profiles.
+
+A defensive desing popup will ask to confirm both the actions.
+
+![Seeker profile](./media/README-files/seeker-profile.png)  
+
 
 ### 5. The seeker's advisor
 
@@ -517,11 +526,17 @@ On this same page, on the consultation proposals, the seeker can accept the cons
 
 Only after the checkout is completed, the seeker receives the video conference link to meeet the advisor on the date agreed.
 
+![Seeker's advisor](./media/README-files/seeker-advisor.png)  
+
+
 ### 6. The checkout
 
 On the checkout page, the seekers can review their fees, their personal details and pay.
 
 The checkout page doesn't appear if there are not consultations to checkout.
+
+![Checkout](./media/README-files/checkout.png)
+
 
 ### 7. The checkout success
 
@@ -530,6 +545,9 @@ After the checkout is completed, the user sees a checkout completed page with a 
 They receive an email with the details of the consultation.
 
 The can now see the meeting link also on their advisor's consultation proposal.
+
+![Checkout success](./media/README-files/checkout-success.png)
+
 
 ### 8. The advisor profile page
 
@@ -543,6 +561,9 @@ From this page, the advisor can deactivate their profile. Deactivating the profi
 
 The advisor can't cancel their profile as the seekers will need to be re-matched. This fetuare could be developed on a future sprint.
 
+![Advisor profile page](./media/README-files/advisor-profile-page.png)
+
+
 ### 9. The advisor's appointments page
 
 On this page, the advisors can see all the appointment they have scheduled and their status. An appointment must be paid by 
@@ -550,13 +571,19 @@ the seeker before it's confirmed.
 
 From this page the advisor can also navigate to the seeker's profile pages.
 
-### 10. The adviror's seekers profiles
+![Advisor appointments page](./media/README-files/appointments.png)
+
+
+### 10. The adviror's client profiles
 
 On their client personal pages, the advisor can see all the main details about a client as well a schedule a meeting and send a normal message.
 
 The advisor can schedule only 1 meeting at a time. If their is a consultation pending confirmation, the option to schedule another meeting is disabled.
 
 On this page the advisor also see the full conversation wit the client.
+
+![Advisor's client profile page](./media/README-files/client-profile.png)
+
 
 ### 11. The consultation scheduler
 With the meeting scheduler, the advisor can schedule a meeting with the seeker.
@@ -567,9 +594,15 @@ The meeting link is automatically generated with a thid party tool https://gotal
 
 The seeker receives the meeting link after the payment is completed.
 
+![Consultation scheduler](./media/README-files/consultation-scheduler.png)
+
+
 ### 12. The clients page
 
 On the clients page, the advisor sees a list of all of their clients, and a link to go to their personal profiles.
+
+![Advisor clients page](./media/README-files/clients.png)
+
 
 ### 13. Login
 
@@ -591,13 +624,13 @@ The application let the users know every time they perform an action whether it 
 
 The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.
 
-[Custom 404 page](./media/README-files/404.png)  
+![Custom 404 page](./media/README-files/404.png)  
 
 ### 16. Admin advisor approval
 
 The admin can approve an andvisor from the admin panel
 
-[Advisor approval](./media/README-files/advisor-approval.png)  
+![Advisor approval](./media/README-files/advisor-approval.png)  
 
 ## Where user stories meet features
 

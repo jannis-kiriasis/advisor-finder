@@ -27,7 +27,7 @@ def choose_the_page_to_return_to_user(request):
 
             # If it's advisor, check advisor profile has been created.
             # If not, create one.
-            if AdvisorUserProfile.objects.filter(user=request.user).exists():
+            if AdvisorUserProfile.objects.filter(user=request.user):
 
                 # check the profile is approved. If so show clients.
                 # If not, show profile
@@ -46,10 +46,10 @@ def choose_the_page_to_return_to_user(request):
             # If seeker profile exists,
             # check whether an advisor has been assigned
 
-            if SeekerUserProfile.objects.filter(user=request.user).exists():
+            if SeekerUserProfile.objects.filter(user=request.user):
 
                 seeker = get_seeker_by_request_user(request)
-
+                print(seeker)
                 # If the seeker has an advisor, go to advisor page
                 # if not, go to match page
 
@@ -60,3 +60,4 @@ def choose_the_page_to_return_to_user(request):
 
             else:
                 return redirect('seeker_signup')
+

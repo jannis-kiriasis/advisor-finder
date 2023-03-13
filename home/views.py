@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -40,20 +40,23 @@ def advisor_seeker(request):
 
         elif not form.is_valid():
             messages.error(request, 'Signup not completed. Try again.')
-            return redirect('choice')
+            return redirect(reverse('choice'))
 
-    else:
+    elif request.method == 'GET':
         # function to decide what page to show to users depending on:
         # - their user profile exists or not
         # - their user_type
         # - they have completed the advisor / seeker signup form
-        return choose_the_page_to_return_to_user(request)
+        user_profile = UserProfile.objects.filter(user=request.user)
 
-    form = UserTypeForm()
+        if user_profile:
+            return choose_the_page_to_return_to_user(request)
 
-    context = {
-        'form': form,
-        'page_title': 'Are you Advisor or Seeker?'
-    }
+        form = UserTypeForm()
+
+        context = {
+            'form': form,
+            'page_title': 'Are you Advisor or Seeker?'
+        }
 
     return render(request, 'home/advisor-or-seeker.html', context)
