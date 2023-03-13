@@ -636,22 +636,22 @@ The admin can approve an andvisor from the admin panel
 
 In the following table, I’m going to match features with user stories and the issues the app solves. All the user stories, features and needs outlined in the paragraphs above have a number that corresponds to the number you see in the table below.
 
-|                    User stories                    | Features  | Test result |
-|:--------------------------------------------------:|-----------|-------------|
-|          E1 US1 - Advisor profile creation         | 2         | PASS        |
-|            E1 US2 – Advisor edit profile           | 8         | PASS        |
-|        E1 US3 – Admin registration approval        | 16        | PASS        |
-|          E1 US4 – Seeker profile creation          | 2, 14     | PASS        |
-|       E1 US5 – Seeker profile edit and cancel      | 4, 14     | PASS        |
-|               E2 US6 – Matching logic              | 3, 14     | PASS        |
-|                E2 US7 - Clients view               | 1, 12     | PASS        |
-|             E3 US8 - The chat - Seeker             | 1, 14     | PASS        |
-|             E3 US9 - The chat - Advisor            | 1, 10, 14 | PASS        |
-|               E3 US10 - Advisor view               | 1, 7      | PASS        |
-|           E3 US11 - Schedule consultation          | 1, 11     | PASS        |
-|               E3 US12 - Appointments               | 1, 8, 14  | PASS        |
-|               E3 US13 - The checkout               | 6         | PASS        |
-| E3 US14 - Notify advisor of consultation confirmed | 14        | PASS        |
+|                    User stories                    | Features  |
+|:--------------------------------------------------:|-----------|
+|          E1 US1 - Advisor profile creation         | 2         |
+|            E1 US2 – Advisor edit profile           | 8         |
+|        E1 US3 – Admin registration approval        | 16        |
+|          E1 US4 – Seeker profile creation          | 2, 14     |
+|       E1 US5 – Seeker profile edit and cancel      | 4, 14     |
+|               E2 US6 – Matching logic              | 3, 14     |
+|                E2 US7 - Clients view               | 1, 12     |
+|             E3 US8 - The chat - Seeker             | 1, 14     |
+|             E3 US9 - The chat - Advisor            | 1, 10, 14 |
+|               E3 US10 - Advisor view               | 1, 7      |
+|           E3 US11 - Schedule consultation          | 1, 11     |
+|               E3 US12 - Appointments               | 1, 8, 14  |
+|               E3 US13 - The checkout               | 6         |
+| E3 US14 - Notify advisor of consultation confirmed | 14        |
 
 
 ## Wireframes
@@ -662,7 +662,7 @@ Below you can find a link the initial wireframes created. The main goal when I c
 the wireframes was to fulfil the user story requirements. Later on during the development
 I've upgraded the styling getting to the final version that you see live.
 
-![Wireframe](./media/README-files/wireframes.pdf)  
+[Wireframe](./media/README-files/wireframes.pdf)  
 
 
 ## Features to be implemented
@@ -679,7 +679,7 @@ In the following paragraph, I'm going to explain the colours, typography and ima
 
 ### Colours
 
-I've used a similar colour palette to a project I previously realised (pp2 and pp4) so the reasoning behind the colour choice is very similar.
+I've used a similar colour palette to projects I previously realised (pp2 and pp4) so the reasoning behind the colour choice is very similar.
 
 The main colour used is a shade of blue (cobalt). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
 
@@ -697,6 +697,8 @@ All the text colour combinations have been tested for accessibility and they all
 
 Tested with [Contrast checker](https://webaim.org/resources/contrastchecker/).
 
+The Lighthouse reports also shows no accessibility issues (100%). More on Lighthouse below.
+
 ### Typography
 
 The typography was chosen for my liking, again I've used it in previous projects PP2. Open Sans is a very popular font if not the most popular.
@@ -707,14 +709,14 @@ The fallback font used is Helvetica for all body elements.
 
 ### Imagery
 
-The only image used in this project is the favicon.
+The only image used in this project is the favicon. I've user few icons on the homepage from Fontawesome.
 
 
 ## Accessibility
 
 As mentioned above, all the colour combinations used for text passed a contrast ratio test.
 
-I've also aria labels to describe links.  
+I've also used aria labels to describe links.  
 The pages have been structured using semantic HTML markup.  
 
 
@@ -771,7 +773,8 @@ I also made sure that:
 - There aren't broken internal links
 - All external links I don't want to pass link authority to, have a rel no follow attribute (there is no sponsored content or paid content on my site)
 - 404 errors and server errors are handled nicely
-- accessibility score is good (more on the Lighthouse report below)
+- accessibility score is 100% (more on the Lighthouse report below)
+- SEO score on Lighthouse is 100%
 - Core web vitals are good (more on the Lighthouse report below)
 - All the links have a aria-label or aria-labelledby attribute
 - Semantic html have been used thotughtout the app (nav, header, section, footer. etc.)
@@ -924,14 +927,16 @@ All the pages passed the HTML validation with no errors or warnings.
 - [account/signup.html](./media/README-files/signup-w3c.pdf)  
 - [account/login.html](./media/README-files/signin-w3c.pdf)  
 - [account/signout.html](./media/README-files/signout-w3c.pdf) 
-- [dashboard.html](./media/README-files/dashboard-w3c.pdf)  
-- [my-projects.html](./media/README-files/my-projects-w3c.pdf)  
-- [my-approvals.html](./media/README-files/my-approvals-w3c.pdf)  
-- [project-details.html](./media/README-files/project-details-w3c.pdf)  
-- [create-project.html](./media/README-files/create-project-w3c.pdf)  
-- [edit-project.html](./media/README-files/edit-project-w3c.pdf)  
-- [400.html](./media/README-files/404-w3c.pdf)  
-- [notifications.html](./media/README-files/notification-w3c.pdf)  
+- [account/signup.html](./media/README-files/signup-w3c.pdf)  
+- [account/login.html](./media/README-files/signin-w3c.pdf)  
+- [account/signout.html](./media/README-files/signout-w3c.pdf)
+- [account/signup.html](./media/README-files/signup-w3c.pdf)  
+- [account/login.html](./media/README-files/signin-w3c.pdf)  
+- [account/signout.html](./media/README-files/signout-w3c.pdf) 
+- [account/signup.html](./media/README-files/signup-w3c.pdf)  
+- [account/login.html](./media/README-files/signin-w3c.pdf)  
+- [account/signout.html](./media/README-files/signout-w3c.pdf) 
+  
 
 
 ### CSS validation
