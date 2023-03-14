@@ -36,7 +36,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['advisor-finder.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['advice-found.herokuapp.com', 'localhost']
 
 # Application definition
 

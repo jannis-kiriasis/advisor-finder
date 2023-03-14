@@ -1,6 +1,6 @@
 # Project 5 - The Advice Found
 
-[Advice Found live demo](https://advisor-finder.herokuapp.com/)\
+[Advice Found live demo](https://advice-found.herokuapp.com/)\
 [Advice Found repository](https://github.com/jannis-kiriasis/advisor-finder)
 
 ## Table of contents
@@ -1035,7 +1035,7 @@ All the functionality tests have been carried out and achieved a PASS on the fol
 - 1280x800 (Nest Hub Max)
 - 2560x1600 (Macbook Pro M1)
 
-The website has also been tested for responsiveness on [https://ui.dev/amiresponsive](https://ui.dev/amiresponsive?url=https://advisor-finder.herokuapp.com/).
+The website has also been tested for responsiveness on [https://ui.dev/amiresponsive](https://ui.dev/amiresponsive?url=https://advice-found.herokuapp.com/).
 
 - [dashboard.html](./media/README-files/I-am-responsive.png)  
 
@@ -1162,7 +1162,7 @@ Below you can find all the steps to take in order to clone and deploy this appli
 3. Enter the name of the repository https://github.com/jannis-kiriasis/advisor-finder
 4. Scroll down and chose automatic deployment or manual deployment then save
 5. On the application configuration page click on 'Open App'.
-6. Run the app https://advisor-finder.herokuapp.com/
+6. Run the app https://advice-found.herokuapp.com/
 
 **6. Final deployment**
 1. **In 'settings.py'** set `DEBUG=False`
