@@ -8,9 +8,15 @@ const chooseAdvisorButton = document.getElementsByClassName('advisor');
 
 // Get alert box
 const alert = document.getElementsByClassName('alert')[0];
-
+const alertTwo = document.getElementsByClassName('alert')[1];
 // Make alert box disappear after 5 seconds
 if (alert) {
+    setTimeout(function() {
+        alert.classList.remove('show');
+    }, 5000);
+}
+
+if (alertTwo) {
     setTimeout(function() {
         alert.classList.remove('show');
     }, 5000);
