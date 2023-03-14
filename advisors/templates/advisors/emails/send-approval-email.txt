@@ -4,7 +4,7 @@ your profile has been {is_approved}.
 
 Login to Advice Found at the link below.
 
-https://advisor-finder.herokuapp.com/accounts/login/
+https://advice-found.herokuapp.com/accounts/login/
 
 Best regards,
 

@@ -1,10 +1,10 @@
 You have a new client on Advice Found!
 
-Name: {match.seeker.user.first_name} {match.seeker.user.last_name}.
+Name: {{ match.seeker.user.first_name }} {{ match.seeker.user.last_name }}.
 
-Looking for: {match.seeker.need}.
+Looking for: {{ match.seeker.need }}.
 
-Located in: {match.seeker.town_or_city}.
+Located in: {{ match.seeker.town_or_city }}.
 
 Login to Advice Found at the link below to send a message!
 

@@ -40,7 +40,7 @@ class AdvisorSignupForm(forms.ModelForm):
         self.fields['business_description'].widget.attrs[
             'placeholder'] = 'Business description *'
         self.fields['postcode'].widget.attrs[
-            'placeholder'] = 'Your postcode *'
+            'placeholder'] = 'Your postcode'
         self.fields['street_address'].widget.attrs[
             'placeholder'] = 'Business address *'
         self.fields['registration_number'].widget.attrs[

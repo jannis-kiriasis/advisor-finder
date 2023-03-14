@@ -7,12 +7,12 @@ successfully. Your consultation details are:
 - time: {{ order.consultation.time }}
 - online meeting: {{ order.consultation.link }}
 
-Total cost: {{ order.grand_total }}
+Total cost: {{ order.grand_total }} €.
 
 Login to Advice Found and your consultation details will be
 in your advisor's messages.
 
-https://advisor-finder.herokuapp.com/accounts/login/
+https://advice-found.herokuapp.com/accounts/login/
 
 Thank you for usying Advice Found.
 
