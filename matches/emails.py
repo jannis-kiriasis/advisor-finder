@@ -12,5 +12,5 @@ def new_client_email(match):
         'matches/emails/new-client-email.txt',
         {'match': match})
     email_from = settings.EMAIL_HOST_USER
-    recipient = match.advisor.user.email
-    send_mail(subject, message, email_from, [recipient])
+    recipient = [match.advisor.user.email, ]
+    send_mail(subject, message, email_from, recipient_list)
