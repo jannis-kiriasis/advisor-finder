@@ -25,6 +25,19 @@
 
 {% block extra_title %}{% trans "Sign In" %}{% endblock %}
 
+{% block page_header %}
+<header>
+    {% include 'includes/navigation.html' %}
+</header>
+<div class="container-fluid p-0">
+    {% if messages %}
+    {% for message in messages %}
+    {% include 'includes/toasts/toast.html' %}
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block white_bg_content %}
 <section>
     <div class="container">

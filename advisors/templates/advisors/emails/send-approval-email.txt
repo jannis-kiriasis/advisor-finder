@@ -1,6 +1,6 @@
-Dear {self.business_name},
+Dear {{ self.business_name }},
 
-your profile has been {is_approved}. 
+your profile has been {{ is_approved }}. 
 
 Login to Advice Found at the link below.
 

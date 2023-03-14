@@ -18,7 +18,7 @@ if (alert) {
 
 if (alertTwo) {
     setTimeout(function() {
-        alert.classList.remove('show');
+        alertTwo.classList.remove('show');
     }, 5000);
 }
 
