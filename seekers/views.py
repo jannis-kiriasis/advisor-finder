@@ -12,7 +12,6 @@ from .forms import SeekerSignupForm
 from .models import SeekerUserProfile, User
 from .forms import MessageForm
 from .emails import email_note_to_advisor
-from .utils import save_seeker_updates_in_request_session
 
 from itertools import chain
 
@@ -61,8 +60,6 @@ def seeker_profile(request):
         form = SeekerSignupForm(request.POST, instance=profile)
 
         if form.is_valid():
-            # on request.POST save seeker info in request.session
-            save_seeker_updates_in_request_session(request)
 
             return redirect(reverse(
                 'seeker_update',

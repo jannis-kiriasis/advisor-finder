@@ -22,34 +22,6 @@ def profile_status_messasge(request, profile):
         )
 
 
-def save_advisor_updates_in_request_session(request):
-    """
-    Save the advisor updated details in the request session to pass to the
-    update advisor view.
-    """
-    request.session[
-        'save_business_name'
-        ] = 'save_business_name' in request.POST
-    request.session[
-        'save_business_description'
-        ] = 'save_business_description' in request.POST
-    request.session[
-        'save_specialisation'
-        ] = 'save_specialisation' in request.POST
-    request.session[
-        'save_postcode'
-        ] = 'save_postcode' in request.POST
-    request.session[
-        'save_street_address'
-        ] = 'save_street_address' in request.POST
-    request.session[
-        'save_town_or_city'
-        ] = 'save_town_or_city' in request.POST
-    request.session[
-        'save_registration_number'
-        ] = 'save_registration_number' in request.POST
-
-
 def find_uncorfirmed_consultation(consultations):
     """
     Find uncorfirmed consultations. If there are uncorfimed consultations,

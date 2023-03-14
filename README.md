@@ -1061,6 +1061,27 @@ I've tested whether the user needs have been satisfied with the features created
 |               E3 US13 - The checkout               | 6         | PASS        |
 | E3 US14 - Notify advisor of consultation confirmed | 14        | PASS        |
 
+
+### Lighthouse
+
+I've run the Lighthouse report on the homepage since it is my most important page. 
+
+The results are pretty good showing some room for improvement in the performance tab.
+
+![Lighthouse](/media/README-files/lighthouse.png)  
+
+The are 2 main actions that can be taken to improve the performance.
+
+![Lighthouse opportunities](./media/README-files/lighthouse-opportunities.png)
+
+The Stripe script is increasing the loading time on every page. One solution could be to load Stripe only on the checkout page.
+However, it is recommended to load it across the website for improved security. Another option is to explore the lazy loading of the script
+as described here (https://github.com/stripe/stripe-js/issues/43).
+
+Bootstrap, Cloudinary and Jquery are all render-blocking resources. However, they are all needed for this project. Asynchronously load or deferring the loading of those scripts
+could be an option to try.
+
+
 ## Issues fixed
 - prevent a user from selecting a past date when scheduling a consultation (consultation model). [stackoverflow](https://stackoverflow.com/questions/50002600/django-models-datefield-prevent-past)
 - add a date and time picker in Django model form (scheduling consultation form). [stackoverflow](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django)

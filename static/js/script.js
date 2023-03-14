@@ -11,13 +11,11 @@ const alert = document.getElementsByClassName('alert');
 
 // Make alert box disappear after 5 seconds
 if (alert) {
-    setTimeout(function() {
-        for (var i = 0 ; i < alert.length; i++) {
-            setTimeout(function() {
-                alert.style.display = 'none';
-            }, 5000);
-        }
-    });
+    for (var i = 0 ; i < alert.length; i++) {
+        setTimeout(function() {
+            alert[i].classList.remove('show');
+        }, 5000);
+    };
 }
 
 // Event listeners for SweetAlerts defensive design

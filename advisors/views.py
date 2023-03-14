@@ -17,7 +17,6 @@ from .emails import advisor_to_approve_email, advisor_deactivated_email
 from .emails import advisor_activated_email, email_note_to_seeker
 from .emails import consultation_cancelled
 from .utils import profile_status_messasge
-from .utils import save_advisor_updates_in_request_session
 from .utils import find_uncorfirmed_consultation
 
 
@@ -74,10 +73,6 @@ def advisor_profile(request):
         form = AdvisorSignupForm(request.POST, instance=profile)
 
         if form.is_valid():
-
-            # Save POST data in request session to pass to the update_advisor
-            # view after defensive design
-            save_advisor_updates_in_request_session(request)
 
             return redirect(reverse(
                 'update_advisor',
