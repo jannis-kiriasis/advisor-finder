@@ -38,7 +38,7 @@ def advisor_signup(request):
 
             profile = get_advisor_by_request_user(request)
 
-            advisor_to_approve_email(profile)
+            advisor_to_approve_email()
 
             return redirect('advisor_profile')
 
