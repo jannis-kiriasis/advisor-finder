@@ -1194,7 +1194,7 @@ Below you can find all the steps to take in order to clone and deploy this appli
 6. Enter `https://your-app-name.herokuapp.com/checkout/wh/`
 7. Then select all the events and click 'add events'
 8. Click 'add endpoint'
-9. Now from the webhook page copyu your webhook secret key
+9. Now from the webhook page copy your webhook secret key
 10. From the Stripe main dashboard copy your public and secrey keys
 11. **in settings.py** add the following lines:
     - `STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')`
@@ -1208,7 +1208,6 @@ Below you can find all the steps to take in order to clone and deploy this appli
 14. Create a stripe_elements.js file in your checkout app
 15. Copy the lines 9 to 12 in my stype_elements.py file into yours
 16. Costumise the Stripe elements as you wish
-
 
 **8. Final deployment**
 1. **In 'settings.py'** set `DEBUG=False`
