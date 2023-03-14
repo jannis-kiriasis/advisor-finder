@@ -2,7 +2,7 @@ Hi {{ seeker }},
 Your advisor {{ advisor }} send you a consultation request.
 date: {{ date }}
 time: {{ time }}
-fee: {{ price }} Euro
+fee: {{ fee }} Euro
 Login to complete the payment and accept the invite.
 
 Thank you for usying Advice Found.
