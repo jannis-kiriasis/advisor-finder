@@ -472,7 +472,7 @@ The first part of the signup process requires the user to create an account with
 
 The second part of the signup process requires users to select whether they are seekers or advisors.
 
-[Signup 2](./media/README-files/signup-two.png)  
+![Signup 2](./media/README-files/signup-two.png)  
 
 ### 2. The signup - Seeker or advisor profile creation
 
@@ -571,7 +571,7 @@ On this page, the advisors can see all the appointment they have scheduled and t
 
 From this page, the advisor can also navigate to the seeker's profile pages.
 
-![Advisor appointments page](./media/README-files/appointments.png)
+![Advisor appointments page](./media/README-files/appoitments.png)
 
 
 ### 10. The advisors' client profiles
@@ -912,6 +912,7 @@ I've carried out the following tests:
 5. [Browsers compatibility](#browser-compatibility)
 6. [Responsiveness testing](#responsiveness-testing)
 7. [User stories testing](#user-stories-testing)
+8. [Lighthouse report](#lighthouse)
 
 
 ### HTML validation
@@ -1037,7 +1038,7 @@ All the functionality tests have been carried out and achieved a PASS on the fol
 
 The website has also been tested for responsiveness on [https://ui.dev/amiresponsive](https://ui.dev/amiresponsive?url=https://advice-found.herokuapp.com/).
 
-- [dashboard.html](./media/README-files/I-am-responsive.png)  
+- [Responsive design](./media/README-files/I-am-responsive.png)  
 
 
 ### User stories testing
@@ -1164,7 +1165,52 @@ Below you can find all the steps to take in order to clone and deploy this appli
 5. On the application configuration page click on 'Open App'.
 6. Run the app https://advice-found.herokuapp.com/
 
-**6. Final deployment**
+**6. Send emails with Gmail**
+1. Login to your Gmail account (or create one) and go to your settings
+2. Click on the tab 'accounts and import'
+3. Click on 'other Google account settings'
+4. Navigate to the Google security tab and turn on the two step verification following the on screen steps
+5. Go back to the security tab and click on 'App passwords'
+6. Select 'Mail', 'Other devices' and type Django
+7. **In heroku** Copy the password generated and add it to Heroku as a config variable (step 3.4)
+8. Add the following config vars to Heroku
+    - `EMAIL_HOST_PASS = "The Gmail password copied at the previous point"`
+    - `EMAIL_HOST_USER = "Your gmail address"`
+9. **In settings.py** add:
+    - `EMAIL_BACKEND = django.core.mail.backends.smtp.EmailBackend`
+    - `EMAIL_USE_TLS = True`
+    - `EMAIL_PORT = 587`
+    - `EMAIL_HOST = smtp.gmail.com`
+    - `EMAIL_HOST_USER = "os.environ.get('EMAIL_HOST_USER')"`
+    - `EMAIL_HOST_PASSWORD = "os.environ.get('EMAIL_HOST_PASS')"`
+    - `DEFAULT_FROM_EMAIL = "os.environ.get('EMAIL_HOST_USER')"`
+
+**7. Setup Stripe for payments**
+1. Signup to [Stripe](https://stripe.com)
+2. There is no need to activate the account unless you want to take real payments
+3. Add `<script src="https://js.stripe.com/v3/"></script>` in the HEAD of all your html documents
+4. In Stripe go to the Developers tab
+5. In the sidenav click on 'webhooks', then 'Add endpoint'
+6. Enter `https://your-app-name.herokuapp.com/checkout/wh/`
+7. Then select all the events and click 'add events'
+8. Click 'add endpoint'
+9. Now from the webhook page copyu your webhook secret key
+10. From the Stripe main dashboard copy your public and secrey keys
+11. **in settings.py** add the following lines:
+    - `STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')`
+    - `STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')`
+    - `STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')`
+12. **in Heroku** add the following config vars:
+    - `STRIPE_PUBLIC_KEY = 'insert your stripe publishable key'`
+    - `STRIPE_SECRET_KEY = 'insert your secret key'`
+    - `STRIPE_WH_SECRET = 'insert your webhooks secret key'`
+13. On your checkut page, copy the postload js code I have in checkout.html from line 109 to 114
+14. Create a stripe_elements.js file in your checkout app
+15. Copy the lines 9 to 12 in my stype_elements.py file into yours
+16. Costumise the Stripe elements as you wish
+
+
+**8. Final deployment**
 1. **In 'settings.py'** set `DEBUG=False`
 2. **In 'settings.py'** check if you have (or add) `X_FRAME_OPTIONS = 'SAMEORIGIN'`
 3. Update requirements.txt with the command `pip3 freeze --local > requirements.txt`
@@ -1176,8 +1222,8 @@ Below you can find all the steps to take in order to clone and deploy this appli
 
 ## Icons Credits
 
-[Insurance Logo Vectors by Vecteezy](https://www.vecteezy.com/free-vector/insurance-logo)
-[Web Vectors by Vecteezy](https://www.vecteezy.com/free-vector/web)
+[Insurance Logo Vectors by Vecteezy](https://www.vecteezy.com/free-vector/insurance-logo)  
+[Web Vectors by Vecteezy](https://www.vecteezy.com/free-vector/web)  
 
 
 ## Acknowledgements
