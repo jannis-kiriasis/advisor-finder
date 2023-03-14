@@ -34,27 +34,19 @@ class AdvisorSignupForm(forms.ModelForm):
         """
         super(AdvisorSignupForm, self).__init__(*args, **kwargs)
 
-        placeholders = {
-            'business_name': 'Business name',
-            'business_description': 'Business description',
-            'postcode': 'Your postcode',
-            'street_address': 'Business address',
-            'town_or_city': 'Town or city',
-            'registration_number': 'Registration number'
-        }
-
         self.fields['business_name'].widget.attrs['autofocus'] = True
-        for field in self.fields:
-            if self.fields[field] != self.fields[
-                'specialisation'] and self.fields[
-                    field] != self.fields['town_or_city']:
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-                    self.fields[field].widget.attrs[
-                        'placeholder'] = placeholder
+        self.fields['business_name'].widget.attrs[
+            'placeholder'] = 'Business name *'
+        self.fields['business_description'].widget.attrs[
+            'placeholder'] = 'Business description *'
+        self.fields['postcode'].widget.attrs[
+            'placeholder'] = 'Your postcode *'
+        self.fields['street_address'].widget.attrs[
+            'placeholder'] = 'Business address *'
+        self.fields['registration_number'].widget.attrs[
+            'placeholder'] = 'Registration number *'
 
+        for field in self.fields:
             self.fields[field].label = False
 
         self.fields[
