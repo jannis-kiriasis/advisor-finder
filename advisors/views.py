@@ -122,8 +122,7 @@ def update_advisor(request):
     profile.approved = 0
 
     new_profile = profile.save()
-    profile = new_profile
-    advisor_to_approve_email(profile)
+    advisor_to_approve_email()
 
     del request.session['save_specialisation']
     del request.session['save_business_name']

@@ -3,15 +3,14 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
 
-def advisor_to_approve_email(profile):
+def advisor_to_approve_email():
     """
     Specifics of Advice Found email received when advisors signs up
     or edit their account.
     """
     subject = 'Advisor Profile to review'
     message = render_to_string(
-        'advisors/emails/advisor-to-approve-email.txt',
-        {'profile': profile})
+        'advisors/emails/advisor-to-approve-email.txt')
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [settings.EMAIL_HOST_USER, ]
     send_mail(subject, message, email_from, recipient_list)
