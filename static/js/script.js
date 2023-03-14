@@ -7,15 +7,13 @@ const deactivateButton = document.getElementById('deactivate_advisor');
 const chooseAdvisorButton = document.getElementsByClassName('advisor');
 
 // Get alert box
-const alert = document.getElementsByClassName('alert');
+const alert = document.getElementsByClassName('alert')[0];
 
 // Make alert box disappear after 5 seconds
 if (alert) {
-    for (var i = 0 ; i < alert.length; i++) {
-        setTimeout(function() {
-            alert[i].classList.remove('show');
-        }, 5000);
-    };
+    setTimeout(function() {
+        alert.classList.remove('show');
+    }, 5000);
 }
 
 // Event listeners for SweetAlerts defensive design
